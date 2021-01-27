@@ -1,6 +1,8 @@
 
 https://alexis098.github.io/Platformer/
 
+http://localhost/platformer/
+
 
 
 # On va travailler sur un Platformer
