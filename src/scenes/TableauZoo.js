@@ -65,7 +65,7 @@ class TableauZoo extends Tableau{
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         new MonsterFly(this,600,100);
-        new MonstreVolant(this,500,68);
+        //new MonstreVolant(this,500,68);
        
     }
 
