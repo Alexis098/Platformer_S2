@@ -2,7 +2,7 @@ class Tableau08 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('star', 'assets/star.png');
+        this.load.image('rubis', 'assets/rubis.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('sky-2', 'assets/sky-2.jpg');
     }
@@ -22,7 +22,7 @@ class Tableau08 extends Tableau{
         this.platforms=this.physics.add.staticGroup();
         for(let posX=20;posX<largeurDuTableau;posX+=100){
             let etoileY=350+Math.sin(posX)*100;
-            let star=this.stars.create(posX ,etoileY,"star");
+            let star=this.stars.create(posX ,etoileY,"rubis");
             star.body.allowGravity=false;
             let plate=this.platforms.create(posX ,etoileY+50,"ground");
             plate.setDisplaySize(60,10);

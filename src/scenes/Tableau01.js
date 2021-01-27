@@ -2,7 +2,7 @@ class Tableau01 extends Tableau00{
 
     preload() {
         super.preload();
-        this.load.image('star', 'assets/star.png');
+        this.load.image('rubis', 'assets/rubis.png');
         this.load.image('ground', 'assets/test.png');
     }
     create() {

@@ -2,7 +2,7 @@ class Tableau02 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('star', 'assets/star.png');
+        this.load.image('rubis', 'assets/rubis.png');
         this.load.image('ground', 'assets/platform.png');
     }
     create() {
@@ -13,13 +13,13 @@ class Tableau02 extends Tableau{
 
         //un groupe d'étoiles
         this.stars=this.physics.add.group();
-        this.stars.create(100,0,"star").setCollideWorldBounds(true).setBounce(0.4);
-        this.stars.create(200,0,"star").setCollideWorldBounds(true).setBounce(0.5);
-        this.stars.create(300,0,"star").setCollideWorldBounds(true).setBounce(0.6);
-        this.stars.create(400,0,"star").setCollideWorldBounds(true).setBounce(0.7);
-        this.stars.create(500,0,"star").setCollideWorldBounds(true).setBounce(0.8);
-        this.stars.create(600,0,"star").setCollideWorldBounds(true).setBounce(0.9);
-        this.stars.create(700,0,"star").setCollideWorldBounds(true).setBounce(1);
+        this.stars.create(100,0,"rubis").setCollideWorldBounds(true).setBounce(0.4);
+        this.stars.create(200,0,"rubis").setCollideWorldBounds(true).setBounce(0.5);
+        this.stars.create(300,0,"rubis").setCollideWorldBounds(true).setBounce(0.6);
+        this.stars.create(400,0,"rubis").setCollideWorldBounds(true).setBounce(0.7);
+        this.stars.create(500,0,"rubis").setCollideWorldBounds(true).setBounce(0.8);
+        this.stars.create(600,0,"rubis").setCollideWorldBounds(true).setBounce(0.9);
+        this.stars.create(700,0,"rubis").setCollideWorldBounds(true).setBounce(1);
         //si le joueur touche une étoile dans le groupe...
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
 
