@@ -1,4 +1,4 @@
-class MonstreVolant extends ObjetEnnemi{
+class MonsterSkull extends ObjetEnnemi{
     /**
      *
      * @param {Tableau} scene
@@ -6,7 +6,7 @@ class MonstreVolant extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, "monstre-volant");
+        super(scene, x, y, "monster-skull");
         //pas de gravité
         this.body.allowGravity=false;
 
@@ -21,13 +21,13 @@ class MonstreVolant extends ObjetEnnemi{
 
         // X
         this.originalX=x;
-        this.minX=x+200;
-        this.maxX=x-200;
+        this.minX=x-200;
+        this.maxX=x+200;
 
         // Y
         this.originalY=y;
         this.minY=y-5;
-        this.maxY=y+300;
+        this.maxY=y+5;
 
         // on applique les propriétés du début de l'animation
         this.x=this.minX;
@@ -68,8 +68,8 @@ class MonstreVolant extends ObjetEnnemi{
             y: {
                 from: this.minY,
                 to:this.maxY,
-                duration: 800,
-                ease: 'Circ.easeInOut',
+                duration: 5000,
+                ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1
             }

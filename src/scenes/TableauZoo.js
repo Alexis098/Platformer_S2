@@ -16,18 +16,19 @@ class TableauZoo extends Tableau{
     create() {
         super.create();
 
-       
+       /*
         //notre monstre
-        this.monstre=this.physics.add.sprite(200,this.sys.canvas.height-140,"monster-skull");
+        this.monstre=this.physics.add.sprite(200,this.sys.canvas.height-500,"monster-skull");
         this.monstre.setOrigin(0,0);
         this.monstre.setDisplaySize(80,80);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
         this.monstre.setVelocityX(50);
-        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);*/
+        
 
         //notre deuxième monstre
-        this.monstre=this.physics.add.sprite(450,this.sys.canvas.height-70,"monster-zelda");
+        this.monstre=this.physics.add.sprite(450,this.sys.canvas.height,"monster-zelda");
         this.monstre.setOrigin(0,0);
         this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
@@ -46,26 +47,29 @@ class TableauZoo extends Tableau{
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);*/
 
         //notre quatrième monstre
-        this.monstre=this.physics.add.sprite(500,this.sys.canvas.height,"monster-boss");
+        this.monstre=this.physics.add.sprite(500,this.sys.canvas.height-140,"monster-boss");
         this.monstre.setOrigin(0,0);
         this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
         this.monstre.setVelocityX(70);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+        
 
 
         //notre cinquième monstre
-        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-100,"monster-orange");
+        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-200,"monster-orange");
         this.monstre.setOrigin(0,0);
         this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
-        this.monstre.setVelocityX(80);
+        this.monstre.setVelocityX(160);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         new MonsterFly(this,600,100);
-        //new MonstreVolant(this,500,68);
+        new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
+        new MonsterSkull(this,450,150);
+        
        
     }
 
