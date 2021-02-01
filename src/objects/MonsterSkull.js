@@ -26,7 +26,7 @@ class MonsterSkull extends ObjetEnnemi{
 
         // Y
         this.originalY=y;
-        this.minY=y-5;
+        this.minY=y-50;
         this.maxY=y+5;
 
         // on applique les propriétés du début de l'animation
@@ -71,7 +71,7 @@ class MonsterSkull extends ObjetEnnemi{
                 duration: 5000,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
-                repeat:-1
+                repeat:-1,
             }
         });
     }

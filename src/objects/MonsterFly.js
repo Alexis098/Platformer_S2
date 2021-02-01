@@ -6,7 +6,7 @@ class MonsterFly extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, "monster-fly");
+        super(scene, x, y, "monster-fly"); //on fait un srpite étendu, une déclinaisaon d'un sprite donc obligé de suivre cette syntaxe de phaser
         //pas de gravité
         this.body.allowGravity=false;
 

@@ -1,4 +1,4 @@
-class ObjetEnnemi extends ObjetPhysique{
+class ObjetEnnemi extends ObjetPhysique{ //quand le monstre touche le player, il le tue
     /**
      * Quand Player touche cet objet, il a perdu
      * @param {Tableau} scene

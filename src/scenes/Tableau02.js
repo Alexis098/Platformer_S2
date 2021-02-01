@@ -7,12 +7,12 @@ class Tableau02 extends Tableau{
     }
     create() {
         super.create();
-        /*for (let i = 0; i<500; i++){
+            for (let i = 0; i<500; i++){
             this.stars.create(i,0,"star").setCollideWorldBounds(true).setBounce(0.2);
-        }*/
+        }
 
         //un groupe d'étoiles
-        this.stars=this.physics.add.group();
+        /*this.stars=this.physics.add.group();
         this.stars.create(100,0,"rubis").setCollideWorldBounds(true).setBounce(0.4);
         this.stars.create(200,0,"rubis").setCollideWorldBounds(true).setBounce(0.5);
         this.stars.create(300,0,"rubis").setCollideWorldBounds(true).setBounce(0.6);
@@ -20,7 +20,7 @@ class Tableau02 extends Tableau{
         this.stars.create(500,0,"rubis").setCollideWorldBounds(true).setBounce(0.8);
         this.stars.create(600,0,"rubis").setCollideWorldBounds(true).setBounce(0.9);
         this.stars.create(700,0,"rubis").setCollideWorldBounds(true).setBounce(1);
-        //si le joueur touche une étoile dans le groupe...
+        //si le joueur touche une étoile dans le groupe...*/
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
 
         //des plateformes
