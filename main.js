@@ -16,13 +16,13 @@ let config = {
     scene: [
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
-        new Tableau02("Plein d'étoiles"),
+        
         new TableauZoo("Zoo"),
         new Tableau00A("toto"),
         
         new Tableau00("Des étoiles"),
         new Tableau01("Des plateformes"),
-        
+        new Tableau02("Plein d'étoiles"),
         new Tableau03("Des plateformes qui bougent"),
         new Tableau04("Jouer avec les groupes"),
         new Tableau05("Extend un tableau"),
