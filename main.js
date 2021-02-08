@@ -17,6 +17,7 @@ let config = {
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
         
+        new TableauLong("Machala"),
         new TableauZoo("Zoo"),
         new Tableau00A("toto"),
         

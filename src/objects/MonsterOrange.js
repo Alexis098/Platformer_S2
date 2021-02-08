@@ -5,11 +5,11 @@ class MonsterOrange extends ObjetEnnemi{
      * @param x
      * @param y
      */
-    constructor(scene, x, y) {
+    constructor(scene, x, y) { //constructor est l'équivalent de Create dans une classe
         super(scene, x, y, "monster-orange");
     
         
-        this.setBodySize(this.body.width-400,this.body.height-400);
+        this.setBodySize(this.body.width,this.body.height);
         this.setOrigin(0,0);
         this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);

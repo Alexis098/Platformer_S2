@@ -9,7 +9,7 @@ class MonsterZelda extends ObjetEnnemi{
         super(scene, x, y, "monster-zelda");
     
         
-        this.setBodySize(this.body.width-400,this.body.height-400);
+        this.setBodySize(this.body.width,this.body.height);
    
         this.setOrigin(0,0);
         this.setDisplaySize(64,64);
