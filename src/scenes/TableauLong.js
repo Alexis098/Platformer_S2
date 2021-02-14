@@ -3,14 +3,15 @@ class TableauLong extends Tableau{
     preload() {
         super.preload();
         this.load.image('rubis', 'assets/rubis.png');
-        this.load.image('ground', 'assets/platform.png');
+        this.load.image('ground', 'assets/plateform_rouge.png');
         this.load.image('sky-2', 'assets/sky3.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
         this.load.image('avant_plan', 'assets/avantplan.png');
         this.load.image('flowers', 'assets/flowers.png');
-        this.load.image('trees', 'assets/trees.png');
+        
         this.load.image('beach', 'assets/beach.png');
         this.load.image('flares', 'assets/flares.png');
+        this.load.image('nuages', 'assets/nuages.png');
 
         this.load.image('monster-skull', 'assets/monster-skull.png');
         this.load.image('monster-zelda', 'assets/monster-zelda.png');
@@ -46,8 +47,23 @@ class TableauLong extends Tableau{
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.player,this.platforms);
 
+       
+        
+
+        
+
 
         //on ajoute une deuxième couche de ciel
+
+        this.sky8=this.add.tileSprite(
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'nuages'
+        );
+        this.sky8.setScrollFactor(0);
+        this.sky8.setOrigin(0,0);
 
         this.sky7=this.add.tileSprite(
             30,
@@ -130,6 +146,8 @@ class TableauLong extends Tableau{
         this.sky3.setDepth(9)
         this.sky6.setDepth(5)
         this.sky7.setDepth(5)
+        this.sky8.setDepth(10)
+
         
         
         
@@ -139,8 +157,8 @@ class TableauLong extends Tableau{
         new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
         new MonsterSkull(this,450,150);
         new MonsterZelda(this,300,100);
-        new MonsterOrange(this, 500, height-140);
-        new MonsterBoss(this, 500, height-140);*/
+        new MonsterOrange(this, 500, height-140);*/
+        new MonsterBoss(this, 500, height-140);
     }
 
     update(){
@@ -163,6 +181,9 @@ class TableauLong extends Tableau{
 
         this.sky7.tilePositionX=this.cameras.main.scrollX*0.1;
         this.sky7.tilePositionY=this.cameras.main.scrollY*0.2-31;
+
+        this.sky8.tilePositionX=this.cameras.main.scrollX*0.15;
+        this.sky8.tilePositionY=this.cameras.main.scrollY*0.2;
     }
 
 
