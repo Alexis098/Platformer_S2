@@ -42,6 +42,7 @@ class TableauLong extends Tableau{
             star.body.allowGravity=false;
             let plate=this.platforms.create(posX ,etoileY+50,"ground");
             //plate.setDisplaySize(64,64);
+            //change la taille de la hitbox
             //plate.body.setSize(64, 64);
             plate.refreshBody();
         }
@@ -154,11 +155,11 @@ class TableauLong extends Tableau{
         
         
         //on crée un objet en appelant la classe correspondante ici
-        /*new MonsterFly(this,600,100);//penser à importer l'image au début de cette page
+        new MonsterFly(this,600,100);//penser à importer l'image au début de cette page
         new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
         new MonsterSkull(this,450,150);
         new MonsterZelda(this,300,100);
-        new MonsterOrange(this, 500, height-140);*/
+        new MonsterOrange(this, 500, height-140);
         new MonsterBoss(this, 500, height-140);
     }
 

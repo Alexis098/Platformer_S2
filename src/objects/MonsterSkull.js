@@ -14,8 +14,9 @@ class MonsterSkull extends ObjetEnnemi{
         this.setDisplaySize(64,64);
 
         //on réduit un peu la zone de hit
-        this.setBodySize(this.body.width,this.body.height);
-        this.setOffset(150, 250);
+        //this.setBodySize(this.body.width,this.body.height);
+        this.body.setSize(800,1400);
+        //this.setOffset(150, 250);
 
         //définir les propriétés que l'on va utiliser dans notre animation
 

@@ -9,7 +9,8 @@ class MonsterOrange extends ObjetEnnemi{
         super(scene, x, y, "monster-orange");
     
         
-        this.setBodySize(this.body.width,this.body.height);
+        //this.setBodySize(this.body.width,this.body.height);
+        this.body.setSize(1400,1500);
         this.setOrigin(0,0);
         this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
