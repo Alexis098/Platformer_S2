@@ -41,7 +41,8 @@ class TableauLong extends Tableau{
             let star=this.stars.create(posX ,etoileY,"rubis");
             star.body.allowGravity=false;
             let plate=this.platforms.create(posX ,etoileY+50,"ground");
-            plate.setDisplaySize(60,10);
+            //plate.setDisplaySize(64,64);
+            //plate.body.setSize(64, 64);
             plate.refreshBody();
         }
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
