@@ -4,7 +4,7 @@ class TableauLong extends Tableau{
         super.preload();
         this.load.image('rubis', 'assets/rubis.png');
         this.load.image('ground', 'assets/plateform_rouge.png');
-        this.load.image('sky-2', 'assets/sky3.png');
+        this.load.image('sky-2', 'assets/sky4.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
         this.load.image('avant_plan', 'assets/avantplan.png');
         this.load.image('flowers', 'assets/flowers.png');
@@ -33,7 +33,7 @@ class TableauLong extends Tableau{
 
         this.cameras.main.startFollow(this.player, false, 0.05, 0.05);
 
-        //quelques étoiles et plateformes qui vont avec
+       /* //quelques étoiles et plateformes qui vont avec
         this.stars=this.physics.add.group();
         this.platforms=this.physics.add.staticGroup();
         for(let posX=20;posX<largeurDuTableau;posX+=100){
@@ -47,7 +47,35 @@ class TableauLong extends Tableau{
             plate.refreshBody();
         }
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
-        this.physics.add.collider(this.player,this.platforms);
+        this.physics.add.collider(this.player,this.platforms);*/
+
+       /* this.platforms=this.physics.add.sprite(500,450,"ground");        
+        this.platforms.setOrigin(0,0);//pour positionner plus facilement
+        this.platforms.body.allowGravity=0   ; //la gravité n'a pas d'effet ici
+        this.platforms.setImmovable(true); //ne bouge pas quand on rentre dedans
+        this.physics.add.collider(this.player, this.platforms);//le joueur rebondit dessus*/
+
+      //un groupe de plateformes statiques
+      this.platforms = this.physics.add.staticGroup();
+      this.platforms.create(400, 450, 'ground');
+      this.platforms.create(500, 350, 'ground');
+      this.platforms.create(600, 450, 'ground');
+      this.platforms.create(600, 250, 'ground');
+      this.platforms.create(500, 150, 'ground');
+     
+      this.platforms.create(1300, 450, 'ground');
+      this.platforms.create(1400, 350, 'ground');
+      this.platforms.create(1500, 450, 'ground');
+     
+
+      //pour chacun des enfants du groupe
+      this.platforms.children.iterate(function (child) {
+          //child.setTintFill(0x00FF00); //applique une couleur verte
+          child.setOrigin(0,0);//pour positionner plus facilement
+          child.refreshBody();//dit au groupe d'appliquer les changements
+      });
+
+      this.physics.add.collider(this.player,this.platforms);//le joueur rebondit sur les plateformes du goupe vert
 
        
         
@@ -143,7 +171,7 @@ class TableauLong extends Tableau{
         //fait passer les éléments devant le ciel
         this.sky4.setDepth(15)
         this.platforms.setDepth(10)
-        this.stars.setDepth(10)
+        //this.stars.setDepth(10)
         this.player.setDepth(10)
         this.sky3.setDepth(9)
         this.sky6.setDepth(5)
@@ -158,9 +186,9 @@ class TableauLong extends Tableau{
         new MonsterFly(this,600,100);//penser à importer l'image au début de cette page
         new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
         new MonsterSkull(this,450,150);
-        new MonsterZelda(this,300,100);
-        new MonsterOrange(this, 500, height-140);
-        new MonsterBoss(this, 500, height-140);
+        new MonsterZelda(this,1300,100);
+        new MonsterOrange(this, 1500, height-140);
+        new MonsterBoss(this, 1500, height-140);
     }
 
     update(){
@@ -186,6 +214,8 @@ class TableauLong extends Tableau{
 
         this.sky8.tilePositionX=this.cameras.main.scrollX*0.15;
         this.sky8.tilePositionY=this.cameras.main.scrollY*0.2;
+
+        
     }
 
 

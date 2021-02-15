@@ -61,7 +61,7 @@ class MonstreVolant extends ObjetEnnemi{
                 from: this.minX,
                 to:this.maxX,
                 duration: 10*1000,
-                ease: 'Circ.easeInOut',
+                ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1,
                 flipX:true,

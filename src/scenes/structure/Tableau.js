@@ -45,6 +45,35 @@ class Tableau extends Phaser.Scene{
         this.player.move();
     }
 
+    /**
+     *
+     * @param {Sprite} object Objet qui saigne
+     * @param {function} onComplete Fonction à appeler quand l'anim est finie
+     */
+    saigne(object,onComplete){
+        let me=this;
+        me.blood.visible=true;
+        me.blood.rotation = Phaser.Math.Between(0,6);
+        me.blood.x=object.x;
+        me.blood.y=object.y;
+        me.tweens.add({
+            targets:me.blood,
+            duration:200,
+            displayHeight:{
+                from:40,
+                to:70,
+            },
+            displayWidth:{
+                from:40,
+                to:70,
+            },
+            onComplete: function () {
+                me.blood.visible=false;
+                onComplete();
+            }
+        })
+    }
+
     ramasserEtoile (player, star)
     {
         star.disableBody(true, true);
@@ -96,7 +125,7 @@ class Tableau extends Phaser.Scene{
         if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
             if(
                 // si le player descend
-                player.body.velocity.y > 0
+                player.body.velocity.y >= 0
                 // et si le bas du player est plus haut que le monstre
                 && player.getBounds().bottom < monster.getBounds().top+30
 
