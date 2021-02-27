@@ -83,7 +83,7 @@ class TableauLong extends Tableau{
         
 
 
-        //on ajoute une deuxième couche de ciel
+        
 
         this.sky8=this.add.tileSprite(
             0,
@@ -117,7 +117,7 @@ class TableauLong extends Tableau{
         this.sky6.setOrigin(0,0);
 
 
-        //on ajoute une deuxième couche de ciel
+        
         this.sky4=this.add.tileSprite(
             0,
             15,
@@ -128,7 +128,7 @@ class TableauLong extends Tableau{
         this.sky4.setScrollFactor(0);
         this.sky4.setOrigin(0,0);
         
-        //on ajoute une deuxième couche de ciel
+        
         this.sky3=this.add.tileSprite(
             0,
             45,
@@ -140,7 +140,7 @@ class TableauLong extends Tableau{
         this.sky3.setOrigin(0,0);
       
 
-        //on ajoute une deuxième couche de ciel
+       
         this.sky2=this.add.tileSprite(
             0,
             40,
