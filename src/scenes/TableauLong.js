@@ -9,16 +9,17 @@ class TableauLong extends Tableau{
         this.load.image('avant_plan', 'assets/avantplan.png');
         this.load.image('flowers', 'assets/flowers.png');
         
+        
         this.load.image('beach', 'assets/beach.png');
         this.load.image('flares', 'assets/flares.png');
-        this.load.image('nuages', 'assets/nuages.png');
+        this.load.image('nuages', 'assets/nuages3.png');
 
         this.load.image('monster-skull', 'assets/monster-skull.png');
         this.load.image('monster-zelda', 'assets/monster-zelda.png');
         
         this.load.image('monster-fly', 'assets/monster-dragon.png');
         
-        this.load.image('monster-orange', 'assets/monster-orange.png');
+        this.load.image('monster-orange', 'assets/monster_katana.png');
         this.load.image('monster-boss', 'assets/monster-boss.png');
         this.load.image('monstre-volant', 'assets/monster-orange.png');
     }
