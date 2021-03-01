@@ -16,6 +16,7 @@ class MonsterOrange extends ObjetEnnemi{
         this.setCollideWorldBounds(true);
         this.setBounce(1);
         this.setVelocityX(160);
+        this.setDepth(10);
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
     
     }

@@ -66,6 +66,7 @@ class TableauLong extends Tableau{
       this.platforms.create(1300, 450, 'ground');
       this.platforms.create(1400, 350, 'ground');
       this.platforms.create(1500, 450, 'ground');
+      
      
 
       //pour chacun des enfants du groupe
@@ -73,10 +74,16 @@ class TableauLong extends Tableau{
           //child.setTintFill(0x00FF00); //applique une couleur verte
           child.setOrigin(0,0);//pour positionner plus facilement
           child.refreshBody();//dit au groupe d'appliquer les changements
+          //child.setScrollFactor(0);
       });
 
       this.physics.add.collider(this.player,this.platforms);//le joueur rebondit sur les plateformes du goupe vert
-
+      //effet tween sur les pétales pour faire comme si elles tombaient sur le sol 
+      // les séparées en plusieurs sprites pour faire plusieurs couches 
+      //nuages changer la nuance de couleur pour les nuages en arrière plan *
+      //trop de monstres
+      //les plateformes ne doivent pas permettre de monter pour rien
+      //regler la plage pour qu'elle aparaissent derrière les monstres (tester un setdepth dans la classe des monstres)
        
         
 
@@ -178,10 +185,6 @@ class TableauLong extends Tableau{
         this.sky7.setDepth(5)
         this.sky8.setDepth(10)
 
-        
-        
-        
-        
         //on crée un objet en appelant la classe correspondante ici
         new MonsterFly(this,600,100);//penser à importer l'image au début de cette page
         new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
@@ -217,6 +220,8 @@ class TableauLong extends Tableau{
 
         
     }
+
+    
 
 
 

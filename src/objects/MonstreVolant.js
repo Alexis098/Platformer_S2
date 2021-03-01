@@ -17,7 +17,7 @@ class MonstreVolant extends ObjetEnnemi{
         /*this.setBodySize(this.body.width,this.body.height);
         this.setOffset(150, 250);*/
         this.body.setSize(1400,1500);
-
+        this.setDepth(10);
         //définir les propriétés que l'on va utiliser dans notre animation
 
         // X
