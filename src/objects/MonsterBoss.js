@@ -12,7 +12,7 @@ class MonsterBoss extends ObjetEnnemi{
         this.body.setSize(1500,1200);
         this.setCollideWorldBounds(true);
         this.setBounce(1);
-        this.setVelocityX(70);
+        this.setVelocityX(-70);
         this.setDepth(10);
         //this.physics.add.overlap(this.player, this.monstre, this.hitMonster, null, this)
         

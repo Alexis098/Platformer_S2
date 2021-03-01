@@ -2,7 +2,7 @@ class TableauLong extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/rubis.png');
+        this.load.image('rubis', 'assets/truc.png');
         this.load.image('ground', 'assets/plateform_rouge.png');
         this.load.image('sky-2', 'assets/sky4.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
@@ -25,6 +25,10 @@ class TableauLong extends Tableau{
     }
     create() {
         super.create();
+        this.star1=this.physics.add.sprite(1430,100,"rubis");
+        this.star1.setCollideWorldBounds(true);
+        this.star1.setBounce(0);
+        this.physics.add.overlap(this.player, this.star1, this.ramasserEtoile, null, this);
 
         //on définit la taille du tableau
         let largeurDuTableau=2000;
@@ -179,7 +183,7 @@ class TableauLong extends Tableau{
         //fait passer les éléments devant le ciel
         this.sky4.setDepth(15)
         this.platforms.setDepth(10)
-        //this.stars.setDepth(10)
+        this.star1.setDepth(10)
         this.player.setDepth(10)
         this.sky3.setDepth(9)
         this.sky6.setDepth(5)
@@ -188,11 +192,11 @@ class TableauLong extends Tableau{
 
         //on crée un objet en appelant la classe correspondante ici
         new MonsterFly(this,600,100);//penser à importer l'image au début de cette page
-        new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
-        new MonsterSkull(this,450,150);
-        new MonsterZelda(this,1300,100);
+        //new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
+        //new MonsterSkull(this,450,150);
+        new MonsterZelda(this,600,100);
         new MonsterOrange(this, 1500, height-140);
-        new MonsterBoss(this, 1500, height-140);
+        new MonsterBoss(this, 600, height-140);
         //new Petales(this, 0,0);
     }
 

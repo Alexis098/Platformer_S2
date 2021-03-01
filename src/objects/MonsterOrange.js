@@ -22,7 +22,7 @@ class MonsterOrange extends ObjetEnnemi{
 
         // X
         this.originalX=x;
-        this.minX=x+200;
+        this.minX=x;
         this.maxX=x-200;
 
         // Y
