@@ -63,10 +63,10 @@ class TableauLong extends Tableau{
       //un groupe de plateformes statiques
       this.platforms = this.physics.add.staticGroup();
       this.platforms.create(400, 450, 'ground');
-      this.platforms.create(500, 350, 'ground');
+      //this.platforms.create(500, 350, 'ground');
       this.platforms.create(600, 450, 'ground');
-      this.platforms.create(600, 250, 'ground');
-      this.platforms.create(500, 150, 'ground');
+      //this.platforms.create(600, 250, 'ground');
+      //this.platforms.create(500, 150, 'ground');
      
       this.platforms.create(1300, 450, 'ground');
       this.platforms.create(1400, 350, 'ground');
@@ -191,7 +191,7 @@ class TableauLong extends Tableau{
         this.sky8.setDepth(10)
 
         //on crée un objet en appelant la classe correspondante ici
-        new MonsterFly(this,600,100);//penser à importer l'image au début de cette page
+        new MonsterFly(this,600,400);//penser à importer l'image au début de cette page
         //new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
         //new MonsterSkull(this,450,150);
         new MonsterZelda(this,600,100);
