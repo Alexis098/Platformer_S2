@@ -22,7 +22,7 @@ class MonsterFly extends ObjetEnnemi{
 
         // X
         this.originalX=x;
-        this.minX=x+200;
+        this.minX=x+30;
         this.maxX=x-200;
 
         // Y

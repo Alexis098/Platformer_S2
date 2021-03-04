@@ -30,6 +30,8 @@ class TableauLong extends Tableau{
         this.star1.setBounce(0);
         this.physics.add.overlap(this.player, this.star1, this.ramasserEtoile, null, this);
 
+        
+
         //on définit la taille du tableau
         let largeurDuTableau=2000;
         let hauteurDuTableau=600; //la hauteur est identique au cadre du jeu
@@ -89,7 +91,17 @@ class TableauLong extends Tableau{
       //trop de monstres
       //les plateformes ne doivent pas permettre de monter pour rien
       //regler la plage pour qu'elle aparaissent derrière les monstres (tester un setdepth dans la classe des monstres)
-       
+      this.star2=this.physics.add.sprite(432,440,"rubis");
+        this.star2.setCollideWorldBounds(true);
+        this.star2.setBounce(0);
+        this.physics.add.overlap(this.player, this.star2, this.ramasserEtoile, null, this);
+        this.physics.add.collider(this.star2, this.platforms);//l'étoile3 rebondit dessus
+
+        this.star3=this.physics.add.sprite(632,440,"rubis");
+        this.star3.setCollideWorldBounds(true);
+        this.star3.setBounce(0);
+        this.physics.add.overlap(this.player, this.star3, this.ramasserEtoile, null, this);
+        this.physics.add.collider(this.star3, this.platforms);//l'étoile3 rebondit dessus 
         
 
         
@@ -184,6 +196,8 @@ class TableauLong extends Tableau{
         this.sky4.setDepth(15)
         this.platforms.setDepth(10)
         this.star1.setDepth(10)
+        this.star2.setDepth(10)
+        this.star3.setDepth(10)
         this.player.setDepth(10)
         this.sky3.setDepth(9)
         this.sky6.setDepth(5)
@@ -194,7 +208,7 @@ class TableauLong extends Tableau{
         new MonsterFly(this,600,400);//penser à importer l'image au début de cette page
         //new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
         //new MonsterSkull(this,450,150);
-        new MonsterZelda(this,600,100);
+        //new MonsterZelda(this,600,100);
         new MonsterOrange(this, 1500, height-140);
         new MonsterBoss(this, 600, height-140);
         //new Petales(this, 0,0);
