@@ -4,14 +4,14 @@ class TableauLong extends Tableau{
         super.preload();
         this.load.image('rubis', 'assets/truc.png');
         this.load.image('ground', 'assets/plateform_rouge.png');
-        this.load.image('sky-2', 'assets/sky4.png');
+        this.load.image('sky-2', 'assets/sky5.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
         this.load.image('avant_plan', 'assets/avantplan.png');
         this.load.image('flowers', 'assets/flowers.png');
         
         
         this.load.image('beach', 'assets/beach.png');
-        this.load.image('flares', 'assets/flares.png');
+        this.load.image('flares', 'assets/flares_2.png');
         this.load.image('nuages', 'assets/nuages3.png');
 
         this.load.image('monster-skull', 'assets/monster-skull.png');
