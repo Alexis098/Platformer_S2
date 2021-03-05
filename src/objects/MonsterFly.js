@@ -60,16 +60,16 @@ class MonsterFly extends ObjetEnnemi{
             x: {
                 from: this.minX,
                 to:this.maxX,
-                duration: 10*1000,
+                duration: 10*200,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
-                repeat:-1,
+                repeat: -1,
                 flipX:true,
             },
             y: {
                 from: this.minY,
                 to:this.maxY,
-                duration: 500,
+                duration: 1000,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1
