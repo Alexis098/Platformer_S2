@@ -3,7 +3,7 @@ class TableauLong extends Tableau{
     preload() {
         super.preload();
         this.load.image('rubis', 'assets/truc.png');
-        this.load.image('ground', 'assets/plateform_rouge.png');
+        this.load.image('ground', 'assets/plateform_1.png');
         this.load.image('sky-2', 'assets/sky5.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
         this.load.image('avant_plan', 'assets/avantplan.png');
@@ -203,6 +203,7 @@ class TableauLong extends Tableau{
         this.sky6.setDepth(5)
         this.sky7.setDepth(5)
         this.sky8.setDepth(10)
+        
 
         //on crée un objet en appelant la classe correspondante ici
         new MonsterFly(this,600,400);//penser à importer l'image au début de cette page
