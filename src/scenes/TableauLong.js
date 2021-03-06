@@ -167,7 +167,7 @@ class TableauLong extends Tableau{
        
         this.sky2=this.add.tileSprite(
             0,
-            40,
+            60,
             this.sys.canvas.width,
             this.sys.canvas.height,
             'mid_ground'
@@ -221,7 +221,7 @@ class TableauLong extends Tableau{
         this.sky.tilePositionX=this.cameras.main.scrollX*0.05;
         this.sky.tilePositionY=this.cameras.main.scrollY*0.2-31;
         //le deuxième ciel se déplace moins vite pour accentuer l'effet
-        this.sky2.tilePositionX=this.cameras.main.scrollX*0.1-25;
+        this.sky2.tilePositionX=this.cameras.main.scrollX*0.15-50;
         this.sky2.tilePositionY=this.cameras.main.scrollY*0.2+30;
 
         this.sky3.tilePositionX=this.cameras.main.scrollX*0.5;
