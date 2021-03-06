@@ -211,7 +211,7 @@ class TableauLong extends Tableau{
         //new MonsterSkull(this,450,150);
         //new MonsterZelda(this,600,100);
         new MonsterOrange(this, 1500, height-140);
-        new MonsterBoss(this, 600, height-140);
+        //new MonsterBoss(this, 600, height-140);
         //new Petales(this, 0,0);
     }
 
