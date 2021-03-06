@@ -2,7 +2,7 @@ class TableauLong extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/truc.png');
+        this.load.image('rubis', 'assets/soleil.png');
         this.load.image('ground', 'assets/plateform_1.png');
         this.load.image('sky-2', 'assets/sky5.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
