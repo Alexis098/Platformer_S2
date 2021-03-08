@@ -58,7 +58,7 @@ start(){
         x: {
             from: this.minX,
             to:this.maxX,
-            duration: 10*1000,
+            duration: 10*200,
             ease: 'Sine.easeInOut',
             yoyo: -1,
             repeat:-1,
