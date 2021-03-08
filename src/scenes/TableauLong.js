@@ -3,7 +3,11 @@ class TableauLong extends Tableau{
     preload() {
         super.preload();
         this.load.image('rubis', 'assets/truc.png');
+<<<<<<< HEAD
         this.load.image('ground', 'assets/plateform_rouge.png');
+=======
+        this.load.image('ground', 'assets/plateform_1.png');
+>>>>>>> parent of a8b0503 (suns)
         this.load.image('sky-2', 'assets/sky5.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
         this.load.image('avant_plan', 'assets/avantplan.png');
