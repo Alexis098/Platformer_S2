@@ -22,9 +22,13 @@ class TableauLong extends Tableau{
         this.load.image('monster-orange', 'assets/monster_katana.png');
         this.load.image('monster-boss', 'assets/monster-boss.png');
         this.load.image('monstre-volant', 'assets/monster-orange.png');
+        
     }
     create() {
         super.create();
+        
+        
+        
         this.star1=this.physics.add.sprite(1430,100,"rubis");
         this.star1.setCollideWorldBounds(true);
         this.star1.setBounce(0);

@@ -6,13 +6,13 @@ class MonsterOrange extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) { //constructor est l'équivalent de Create dans une classe
-        super(scene, x, y, "monster-orange");
+        super(scene, x, y, "enemy");
     
         
         //this.setBodySize(this.body.width,this.body.height);
-        this.body.setSize(64,64);
+        //this.body.setSize(64,64);
         this.setOrigin(0,0);
-        this.setDisplaySize(64,64);
+        //this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
         this.setBounce(1);
         this.setVelocityX(160);
@@ -49,31 +49,55 @@ class MonsterOrange extends ObjetEnnemi{
                 me.start();
             }
         })
+        this.anims.create({
+            key: 'left',
+            frames: this.anims.generateFrameNumbers('enemy', { start: 0, end: 3 }),
+            frameRate: 8,
+            repeat: -1
+        });
 
-}
+        this.anims.create({
+            key: 'right',
+            frames: this.anims.generateFrameNumbers('enemy', { start: 5, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'turn',
+            frames: [ { key: 'enemy', frame: 4 } ],
+            frameRate: 20
+        });
+        
+        this.anims.play('left', true);
 
-start(){
-    this.scene.tweens.add({
-        targets: this,
-        x: {
-            from: this.minX,
-            to:this.maxX,
-            duration: 10*200,
-            ease: 'Sine.easeInOut',
-            yoyo: -1,
-            repeat:-1,
-            flipX:true,
-        },
-        /*y: {
-            from: this.minY,
-            to:this.maxY,
-            duration: 500,
-            ease: 'Sine.easeInOut',
-            yoyo: -1,
-            repeat:-1
-        }*/
-    });
-}
+        
+    }
+    set directionX(value){
+        this._directionX=value;
+    }
+
+    start(){
+        this.scene.tweens.add({
+            targets: this,
+            x: {
+                from: this.minX,
+                to:this.maxX,
+                duration: 10*200,
+                ease: 'Sine.easeInOut',
+                yoyo: -1,
+                repeat:-1,
+                flipX:true,
+            },
+            /*y: {
+                from: this.minY,
+                to:this.maxY,
+                duration: 500,
+                ease: 'Sine.easeInOut',
+                yoyo: -1,
+                repeat:-1
+            }*/
+        });
+    }
     
 }
 
