@@ -17,7 +17,7 @@ let config = {
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
         
-        //new TableauTiled("100x100"),
+        new TableauTiled("100x100"),
 
         new TableauLong("Machala"),
         new TableauZoo("Zoo"),
