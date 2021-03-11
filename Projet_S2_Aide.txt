@@ -1,0 +1,50 @@
+Les DASHS : 
+
+Pour les dashs, on multiplie la vélocité par 3 par ex pendant 0.5 secondes quand on appuie sur un bouton
+
+accélération et décélération en début et fin de course/dash
+-> quand on appuie sur le bouton de dash, la vitesse augmente progressivement puis décélère progressivement (surtout la décélération plus longue que l'accélération)
+propriété physique gravity X dans la doc du moteur physique de phaser
+vitese progressive : velocityX = 100 en un certains temps avec une certaine slope (exponentielle par ex)
+fouiller les propriétés physiques du moteur permet peut être de ne pas le coder
+
+Pour appuyer sur des boutons, on a l'exemple du gamepad dans le code et aussi des entrées des flèches directionnelles 
+
+La TELEPORTATION :
+
+téléportation (FEEDBACK) : long à faire -> les effets graphiques, la transition dans la map, timer ça correctement
+
+Time.event dans phaser pour un timer (peut être pour un cooldown aussi)
+
+
+Les lumières se codent... c'est pas du graphisme pur
+
+
+travailler sur le feeling des mouvements 
+
+changer la caméra pour qu'elle se centre sur l'écran plutôt que sur le personnage elle ne varie plus en hauteur -> fait
+
+comment garder la direction gauche ou droite en fonction de setvelocityX pour afficher le sprtie à gauche s'il se déplaçait vers la gauche et de même pour la droite au lieu de toout le temps se tourner vers la droite
+
+
+
+webGL pour des effets mais très dur de faire ça (permet de discuter directement avec la carte graphique)
+
+
+intégrer les effets visuels : 
+
+
+
+
+
+Tiled : tiled layer dans tileset pour les claques (comme photoshop)
+exporter en JSON dans le dossier tiled dans assets de platformer pour le lire par phaser
+
+
+dessiner des trucs dans tiled dans phaser et importer dans phaser (voir le tuto stackabuse pour savoir comment importer le tiled dans phaser)
+le background
+le sol
+et les plateformes
+
+pour passer en mode gomme : appuyer sur la touche E
+

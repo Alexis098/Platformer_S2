@@ -44,6 +44,10 @@ class TableauLong extends Tableau{
 
         this.cameras.main.startFollow(this.player, false, 0.05, 0.05);
 
+        //la caméra ne suit plus le personnage sur l'axe des Y, mettre 150 comme valeur de Y pour lemain camera setbounds
+        //this.cameras.main.startFollow(this.player, false, 0.05, 0);
+
+
        /* //quelques étoiles et plateformes qui vont avec
         this.stars=this.physics.add.group();
         this.platforms=this.physics.add.staticGroup();
