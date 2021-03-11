@@ -17,10 +17,11 @@ class TableauTiled extends Tableau{
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1..json');
 
         // -----et puis aussi-------------
-       
+
         this.load.image('night', 'assets/images/background.png');
         //atlas de texture généré avec https://free-tex-packer.com/app/
         //on y trouve notre étoiles et une tête de mort
+
 
     }
     create() {

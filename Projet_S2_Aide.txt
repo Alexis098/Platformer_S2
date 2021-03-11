@@ -24,16 +24,17 @@ travailler sur le feeling des mouvements
 
 changer la caméra pour qu'elle se centre sur l'écran plutôt que sur le personnage elle ne varie plus en hauteur -> fait
 
-comment garder la direction gauche ou droite en fonction de setvelocityX pour afficher le sprtie à gauche s'il se déplaçait vers la gauche et de même pour la droite au lieu de toout le temps se tourner vers la droite
+comment garder la direction gauche ou droite en fonction de setvelocityX pour afficher le sprtie à gauche s'il se déplaçait vers la gauche et de même pour la droite au lieu de toout le temps se tourner vers la droit
 
-
+ajouter une animation de stance quand le personnage est immobile : au lieu d'appeler 'turn' quand setvelocityX = 0; on met une nouvelle spritesheet avec l'anim de stance en disant de lire les frames 0 à x par exemple
 
 webGL pour des effets mais très dur de faire ça (permet de discuter directement avec la carte graphique)
 
 
 intégrer les effets visuels : 
 
-
+le son : on ajoute les sons dans create puis dans chaque fonction dans laquelle se passe l'action liée au son en question, on ajoute le son .play dedans
+.stop pour le son pour le faire arrêter de jouer
 
 
 
@@ -48,3 +49,8 @@ et les plateformes
 
 pour passer en mode gomme : appuyer sur la touche E
 
+pourpousser des objets : 
+this.stars = this.physics.add.group({
+            allowGravity: true,
+            immovable: false, --------------------------> ici (pas sûr)
+            bounceY:1

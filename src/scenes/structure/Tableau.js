@@ -25,6 +25,7 @@ class Tableau extends Phaser.Scene{
             'assets/enemy_3.png',
             { frameWidth: 32, frameHeight: 48  }
         );
+        this.load.audio('track', 'assets/son/kamakura.mp3');
     }
     create(){
         Tableau.current=this;
@@ -42,7 +43,8 @@ class Tableau extends Phaser.Scene{
          * @type {Player}
          */
         this.player=new Player(this,0,0);
-
+        this.song = this.sound.add('track', {volume: 0.1})
+        this.song.play();
     }
     update(){
         super.update();
@@ -114,7 +116,9 @@ class Tableau extends Phaser.Scene{
         this.physics.pause();
         player.setTint(0xff0000);
         player.anims.play('turn');
+        this.song.stop();
         this.scene.restart();
+
 
     }
 
@@ -155,6 +159,7 @@ class Tableau extends Phaser.Scene{
                         me.player.isDead=false;
                         me.scene.restart();
                     })*/
+                    this.song.stop();
                     me.scene.restart();
 
                 }
@@ -171,6 +176,7 @@ class Tableau extends Phaser.Scene{
      */
     _destroy(){
         this.player.stop();
+        this.song.stop();
         this.scene.stop();
     }
 
@@ -178,7 +184,9 @@ class Tableau extends Phaser.Scene{
      * Quand on a gagné
      */
     win(){
+        this.song.stop();
         Tableau.suivant();
+
     }
 
     /**
@@ -209,6 +217,7 @@ class Tableau extends Phaser.Scene{
 
     static goTableau(tableau){
         if(Tableau.current){
+
             Tableau.current._destroy();
         }
         game.scene.start(tableau);
