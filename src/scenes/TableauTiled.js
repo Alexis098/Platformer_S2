@@ -83,14 +83,14 @@ class TableauTiled extends Tableau{
 
 
         //----------les monstres volants (objets tiled) ---------------------
-/*
+
         let monstersContainer=this.add.container();
         this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
         // On crée des monstres volants pour chaque objet rencontré
         this.flyingMonstersObjects.forEach(monsterObject => {
              let monster=new MonsterFly(this,monsterObject.x,monsterObject.y);
              monstersContainer.add(monster);
-         });*/
+         });
 
 
         //----------débug---------------------
@@ -154,7 +154,7 @@ class TableauTiled extends Tableau{
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
-        //monstersContainer.setDepth(z--);
+        monstersContainer.setDepth(z--);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
         this.devant.setDepth(z--);
