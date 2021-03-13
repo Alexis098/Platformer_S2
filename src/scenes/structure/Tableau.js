@@ -17,6 +17,7 @@ class Tableau extends Phaser.Scene{
     preload(){
         this.load.image('sky', 'assets/ciel.png');
         this.load.image('spike', 'assets/spike.png');
+        this.load.image('blood', 'assets/blood.png');
         this.load.spritesheet('player',
             'assets/player_3_couleurs.png',
             { frameWidth: 32, frameHeight: 48  }
@@ -45,6 +46,10 @@ class Tableau extends Phaser.Scene{
         this.player=new Player(this,0,0);
         this.song = this.sound.add('track', {volume: 0.1})
         this.song.play();
+        this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
+        this.blood.displayWidth=64;
+        this.blood.displayHeight=64;
+        this.blood.visible=false;
     }
     update(){
         super.update();
@@ -130,6 +135,7 @@ class Tableau extends Phaser.Scene{
      */
     hitMonster(player, monster){
         let me=this;
+        this.blood.setDepth(1000);
         if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
             if(
                 // si le player descend
@@ -141,24 +147,25 @@ class Tableau extends Phaser.Scene{
                 ui.gagne();
                 monster.isDead=true; //ok le monstre est mort
                 monster.disableBody(true,true);//plus de collisions
-                //this.saigne(monster,function(){
+                this.saigne(monster,function(){
                     //à la fin de la petite anim...ben il se passe rien :)
-                //})
+                })
                 //notre joueur rebondit sur le monstre
                 player.directionY=500;
             }else{
                 //le joueur est mort
                 if(!me.player.isDead){
+                    this.blood.setDepth(1000);
                     me.player.isDead=true;
                     me.player.visible=false;
                     //ça saigne...
-                    /*me.saigne(me.player,function(){
+                    me.saigne(me.player,function(){
                         //à la fin de la petite anim, on relance le jeu
                         me.blood.visible=false;
                         me.player.anims.play('turn');
                         me.player.isDead=false;
                         me.scene.restart();
-                    })*/
+                    })
                     this.song.stop();
                     me.scene.restart();
 
@@ -169,6 +176,7 @@ class Tableau extends Phaser.Scene{
         }
 
     }
+
 
     /**
      * Pour reset cette scène proprement
