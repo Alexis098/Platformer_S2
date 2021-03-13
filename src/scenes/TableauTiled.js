@@ -48,7 +48,7 @@ class TableauTiled extends Tableau{
 
         // this.solides = this.map.createLayer('solides', this.tileset, 0, 0);
         // this.lave = this.map.createLayer('lave', this.tileset, 0, 0);
-        // this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
+            this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
         this.devant = this.map.createLayer('Platforms', this.tileset, 0, 0);
 
         //on définit les collisions, plusieurs méthodes existent:
@@ -60,7 +60,7 @@ class TableauTiled extends Tableau{
         //this.lave.setCollisionByProperty({ collides: true });
 
         // 2 manière la plus simple (là où il y a des tiles ça collide et sinon non)
-        this.devant.setCollisionByExclusion(-1, true);
+        //this.devant.setCollisionByExclusion(-1, true);
         //this.lave.setCollisionByExclusion(-1, true);
 
         // 3 Permet d'utiliser l'éditeur de collision de Tiled...mais ne semble pas marcher pas avec le moteur de physique ARCADE, donc oubliez cette option :(
@@ -83,14 +83,14 @@ class TableauTiled extends Tableau{
 
 
         //----------les monstres volants (objets tiled) ---------------------
-
+/*
         let monstersContainer=this.add.container();
-        // this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
-        // // On crée des montres volants pour chaque objet rencontré
-        // this.flyingMonstersObjects.forEach(monsterObject => {
-        //     let monster=new MonsterFly(this,monsterObject.x,monsterObject.y);
-        //     monstersContainer.add(monster);
-        // });
+        this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
+        // On crée des monstres volants pour chaque objet rencontré
+        this.flyingMonstersObjects.forEach(monsterObject => {
+             let monster=new MonsterFly(this,monsterObject.x,monsterObject.y);
+             monstersContainer.add(monster);
+         });*/
 
 
         //----------débug---------------------
@@ -146,6 +146,7 @@ class TableauTiled extends Tableau{
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         //quand on touche la lave, on meurt
         this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
+        this.physics.add.collider(this.player, this.monster,this.hitMonster,null,this);
 
         //--------- Z order -----------------------
 
@@ -153,7 +154,7 @@ class TableauTiled extends Tableau{
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
-        monstersContainer.setDepth(z--);
+        //monstersContainer.setDepth(z--);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
         this.devant.setDepth(z--);
@@ -161,7 +162,7 @@ class TableauTiled extends Tableau{
         // this.laveFxContainer.setDepth(z--);
         // this.lave.setDepth(z--);
         this.player.setDepth(z--);
-        // this.derriere.setDepth(z--);
+        this.derriere.setDepth(z--);
         // this.sky2.setDepth(z--);
         this.sky.setDepth(z--);
 

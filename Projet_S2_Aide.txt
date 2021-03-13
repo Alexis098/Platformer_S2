@@ -54,3 +54,25 @@ this.stars = this.physics.add.group({
             allowGravity: true,
             immovable: false, --------------------------> ici (pas sûr)
             bounceY:1
+
+
+Pour les sons de tp et dashs : 
+enregistrer des sons de frottements de rideaux/sols pour évoquer le glisser, avec des mouvements/frottements de tissus 
+
+A voir pour les tp si on peut aller en que à droite et à gauche ou aussi en haut et en bas et en diagonalemais difficile à coder peut être ?
+
+laisser un tout petit délai pas dérengeant juste avant la TP pour permettre de jouer une courte animation de quelques images (genre 4) se faire avant que le personnage ne se tp 
+pour pouvoir synchroniser l'animation avec l'action
+
+Pour déclencher une nouvelle anim en fonction d'une action déclenchée par un bouton; tester ça :
+On met dans la même boucle de l'action This.anims.play(l'animation en question/spritesheet);
+
+
+pour déclencher une nouvelle musique à un endroit spécifique :
+if (this.player.posX>=1500px){
+this.song.play(un nouveau morceau);
+}
+
+Peut être essayer de faire trembler la caméra/l'écran un tout petit peu (très léger) quand on dash ou se tp pour rajouter des feedbacks (différent d'ailleurs si c'est pour le dassh ou la tp)
+
+les rayons de lumières 'statiques' ambiants du décor peuvent être animés en faisant juste une spritesheet qui boucle sur elle même comme pour donner un effet d'ondulation de la lumière ou comme un rideau qui ondule grâce au vent.
