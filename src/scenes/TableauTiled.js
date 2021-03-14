@@ -15,6 +15,7 @@ class TableauTiled extends Tableau{
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1..json');
+        this.load.image('monster-fly', 'assets/monster-dragon.png');
 
         // -----et puis aussi-------------
 
@@ -48,7 +49,7 @@ class TableauTiled extends Tableau{
 
         // this.solides = this.map.createLayer('solides', this.tileset, 0, 0);
         // this.lave = this.map.createLayer('lave', this.tileset, 0, 0);
-            this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
+        this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
         this.devant = this.map.createLayer('Platforms', this.tileset, 0, 0);
 
         //on définit les collisions, plusieurs méthodes existent:
@@ -173,7 +174,7 @@ class TableauTiled extends Tableau{
      */
     optimizeDisplay(){
         //return;
-        let world=this.cameras.main.worldView; // le rectagle de la caméra, (les coordonnées de la zone visible)
+        let world=this.cameras.main.worldView; // le rectangle de la caméra, (les coordonnées de la zone visible)
 
     //     // on va activer / désactiver les particules de lave
     //     for( let particule of this.laveFxContainer.getAll()){ // parcours toutes les particules de lave

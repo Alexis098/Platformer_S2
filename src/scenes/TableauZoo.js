@@ -10,7 +10,7 @@ class TableauZoo extends Tableau{
         this.load.image('monster-orange', 'assets/monster-orange.png');
         this.load.image('monster-boss', 'assets/monster-boss.png');
         this.load.image('monstre-volant', 'assets/monster-orange.png');
-        this.load.image('rubis', 'assets/rubis.png');
+        this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/platform.png');
        
 
@@ -19,7 +19,7 @@ class TableauZoo extends Tableau{
     create() { // fonction que l'on appelle qu'une fois et fait apparaitre les événements 
         super.create();
 
-        this.star1=this.physics.add.sprite(200,100,"rubis");
+        this.star1=this.physics.add.sprite(200,100,"star");
         this.star1.setCollideWorldBounds(true);
         this.star1.setBounce(0);
 

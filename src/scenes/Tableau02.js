@@ -2,7 +2,7 @@ class Tableau02 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/rubis.png');
+        this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/platform.png');
     }
     create() {

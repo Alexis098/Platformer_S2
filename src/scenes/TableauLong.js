@@ -2,7 +2,7 @@ class TableauLong extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/soleil.png');
+        this.load.image('star', 'assets/soleil.png');
         this.load.image('ground', 'assets/plateform_1.png');
         this.load.image('sky-2', 'assets/sky5.png');
         this.load.image('mid_ground', 'assets/mid_ground.png');
@@ -29,7 +29,7 @@ class TableauLong extends Tableau{
         
         
         
-        this.star1=this.physics.add.sprite(1430,100,"rubis");
+        this.star1=this.physics.add.sprite(1430,100,"star");
         this.star1.setCollideWorldBounds(true);
         this.star1.setBounce(0);
         this.physics.add.overlap(this.player, this.star1, this.ramasserEtoile, null, this);
@@ -99,13 +99,13 @@ class TableauLong extends Tableau{
       //trop de monstres
       //les plateformes ne doivent pas permettre de monter pour rien
       //regler la plage pour qu'elle aparaissent derrière les monstres (tester un setdepth dans la classe des monstres)
-      this.star2=this.physics.add.sprite(432,440,"rubis");
+      this.star2=this.physics.add.sprite(432,440,"star");
         this.star2.setCollideWorldBounds(true);
         this.star2.setBounce(0);
         this.physics.add.overlap(this.player, this.star2, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.star2, this.platforms);//l'étoile3 rebondit dessus
 
-        this.star3=this.physics.add.sprite(632,440,"rubis");
+        this.star3=this.physics.add.sprite(632,440,"star");
         this.star3.setCollideWorldBounds(true);
         this.star3.setBounce(0);
         this.physics.add.overlap(this.player, this.star3, this.ramasserEtoile, null, this);
