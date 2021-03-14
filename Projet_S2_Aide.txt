@@ -76,3 +76,6 @@ this.song.play(un nouveau morceau);
 Peut être essayer de faire trembler la caméra/l'écran un tout petit peu (très léger) quand on dash ou se tp pour rajouter des feedbacks (différent d'ailleurs si c'est pour le dassh ou la tp)
 
 les rayons de lumières 'statiques' ambiants du décor peuvent être animés en faisant juste une spritesheet qui boucle sur elle même comme pour donner un effet d'ondulation de la lumière ou comme un rideau qui ondule grâce au vent.
+
+
+les monstres doivent collider avec les plateformes

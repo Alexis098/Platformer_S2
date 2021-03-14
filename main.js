@@ -16,7 +16,8 @@ let config = {
     scene: [
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
-        
+
+        new TableauTiledRenew("definitiveEdition"),
         new TableauTiled("100x100"),
 
         new TableauLong("Machala"),
