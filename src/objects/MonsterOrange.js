@@ -56,7 +56,7 @@ class MonsterOrange extends ObjetEnnemi{
             repeat: -1
         });
 
-        this.anims.create({
+        /*this.anims.create({
             key: 'right',
             frames: this.anims.generateFrameNumbers('enemy', { start: 5, end: 8 }),
             frameRate: 10,
@@ -66,7 +66,7 @@ class MonsterOrange extends ObjetEnnemi{
             key: 'turn',
             frames: [ { key: 'enemy', frame: 4 } ],
             frameRate: 20
-        });
+        });*/
         
         this.anims.play('left', true);
 

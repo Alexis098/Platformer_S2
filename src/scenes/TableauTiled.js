@@ -15,7 +15,10 @@ class TableauTiled extends Tableau{
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1..json');
+
+        // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
+        this.load.image('monster-katana', 'assets/monster_katana.png');
 
         // -----et puis aussi-------------
 
@@ -89,9 +92,17 @@ class TableauTiled extends Tableau{
         this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
         // On crée des monstres volants pour chaque objet rencontré
         this.flyingMonstersObjects.forEach(monsterObject => {
-             let monster=new MonsterFly(this,monsterObject.x,monsterObject.y);
+             let monster=new MonsterFly(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
              monstersContainer.add(monster);
          });
+
+        //----------les monstres terrestres (objets tiled) ---------------------
+        /*this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
+        // On crée des monstres volants pour chaque objet rencontré
+        this.katanaMonstersObjects.forEach(monsterObject => {
+            let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            monstersContainer.add(monster);
+        });*/
 
 
         //----------débug---------------------
