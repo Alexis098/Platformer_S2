@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"level1.json"
+        }
+    },
  "height":10,
  "infinite":false,
  "layers":[
@@ -52,9 +60,32 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":4,
+         "name":"katanaMonsters",
+         "objects":[
+                {
+                 "gid":73,
+                 "height":64,
+                 "id":4,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":192,
+                 "y":512
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":4,
- "nextobjectid":2,
+ "nextlayerid":5,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

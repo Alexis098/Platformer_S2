@@ -96,6 +96,12 @@ class TableauTiledRenew extends Tableau{
             monstersContainer.add(monster);
         });
 
+        this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
+        this.katanaMonstersObjects.forEach(monsterObject => {
+            let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            monstersContainer.add(monster);
+        });
+
         //----------les monstres terrestres (objets tiled) ---------------------
         /*this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
         this.katanaMonstersObjects.forEach(monsterObject => {
