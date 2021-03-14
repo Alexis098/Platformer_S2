@@ -98,7 +98,6 @@ class TableauTiled extends Tableau{
 
         //----------les monstres terrestres (objets tiled) ---------------------
         /*this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
-        // On crée des monstres volants pour chaque objet rencontré
         this.katanaMonstersObjects.forEach(monsterObject => {
             let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             monstersContainer.add(monster);
@@ -158,7 +157,7 @@ class TableauTiled extends Tableau{
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         //quand on touche la lave, on meurt
         this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
-        this.physics.add.collider(this.player, this.monster,this.hitMonster,null,this);
+        //this.physics.add.collider(this.player, this.monster,this.hitMonster,null,this);
 
         //--------- Z order -----------------------
 
