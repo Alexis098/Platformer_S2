@@ -20,6 +20,9 @@ class TableauTiledRenew extends Tableau{
         this.load.image('monster-fly', 'assets/monster-dragon.png');
         this.load.image('monster-katana', 'assets/monster_katana.png');
 
+        //---------Les étoiles-----------
+        this.load.image('star', 'assets/soleil.png');
+
         // -----et puis aussi-------------
 
         this.load.image('night', 'assets/images/background.png');
