@@ -8,6 +8,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setBounce(0.3);
         this.setGravityY(700)
         this.setFriction(1,1);
+        this.sens = 1; //variable globale car elle est utilisée pour le sens du personnage affectant plusieurs fonctions, intégrer la fonction dans la fonction directement fait qu'elle ne sera pas prise en compte avec la deuxième fonction nécessaire pour ça
 
         this.setBodySize(this.body.width-4,this.body.height);
         this.setOffset(0, 0);
@@ -72,7 +73,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
      */
     move(){
 
-        let sens = 1;
+        //let sens = 1;
 
         switch (true){
             case this._directionX<0:
@@ -87,13 +88,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 break;
             default:
                 this.setVelocityX(0);
-                this.anims.play('stance', true);
-                /*if(this.sens=-1){
+                //this.anims.play('stance', true);
+                this.anims.play( this.sens===-1 ? 'back' : 'stance' ,true); //équivalent d'un if, pour mémoriser la position du personnage pour qu'il regarde à gauche ou à droite en fonction du dernier déplacement effectué
+                /*if(this.sens===-1){
                     this.anims.play('back',true);
-                } if(this.sens=1){
-                this.anims.play('stance', true);
-            }*/
-
+                }
+                if(this.sens===1){
+                    this.anims.play('stance', true);
+                }*/
         }
 
 

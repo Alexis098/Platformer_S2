@@ -63,20 +63,20 @@
         }, 
         {
          "draworder":"topdown",
-         "id":4,
+         "id":5,
          "name":"katanaMonsters",
          "objects":[
                 {
-                 "gid":73,
+                 "gid":72,
                  "height":64,
-                 "id":4,
+                 "id":3,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":64,
                  "x":192,
-                 "y":512
+                 "y":640
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -86,31 +86,19 @@
         }, 
         {
          "draworder":"topdown",
-         "id":5,
+         "id":6,
          "name":"stars",
          "objects":[
                 {
                  "gid":72,
                  "height":64,
-                 "id":5,
+                 "id":4,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":320,
-                 "y":512
-                }, 
-                {
-                 "gid":72,
-                 "height":64,
-                 "id":6,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":896,
+                 "x":256,
                  "y":512
                 }],
          "opacity":1,
@@ -119,8 +107,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":7,
+ "nextlayerid":7,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

@@ -81,12 +81,12 @@ class TableauTiledRenew extends Tableau{
             immovable: false,
             bounceY:1
         });
-        // this.starsObjects = this.map.getObjectLayer('stars')['objects'];
-        // // On crée des étoiles pour chaque objet rencontré
-        // this.starsObjects.forEach(starObject => {
-        //     // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
-        //     let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles','star');
-        // });
+         this.starsObjects = this.map.getObjectLayer('stars')['objects'];
+         // On crée des étoiles pour chaque objet rencontré
+         this.starsObjects.forEach(starObject => {
+             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
+             let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles','star');
+         });
 
 
         //----------les monstres volants (objets tiled) ---------------------
@@ -99,7 +99,7 @@ class TableauTiledRenew extends Tableau{
             monstersContainer.add(monster);
         });
 
-        this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
+        this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
         this.katanaMonstersObjects.forEach(monsterObject => {
             let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             monstersContainer.add(monster);
@@ -162,11 +162,12 @@ class TableauTiledRenew extends Tableau{
         //quoi collide avec quoi?
         this.physics.add.collider(this.player, this.devant);
         this.physics.add.collider(this.stars, this.devant);
+        //this.physics.add.collider(this.katanaMonstersObjects, this.devant);
         //si le joueur touche une étoile dans le groupe...
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         //quand on touche la lave, on meurt
         this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
-        //this.physics.add.collider(this.player, this.monster,this.hitMonster,null,this);
+
 
         //--------- Z order -----------------------
 
