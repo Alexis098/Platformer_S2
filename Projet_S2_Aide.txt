@@ -15,6 +15,7 @@ La TELEPORTATION :
 téléportation (FEEDBACK) : long à faire -> les effets graphiques, la transition dans la map, timer ça correctement
 
 Time.event dans phaser pour un timer (peut être pour un cooldown aussi)
+Timed.event (voir code de gregoire pour l'intro de son animation) à réutiliser pour les cooldown
 
 
 Les lumières se codent... c'est pas du graphisme pur
