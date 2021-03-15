@@ -14,7 +14,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V002.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -79,19 +79,20 @@ class TableauTiledRenew extends Tableau{
         this.stars = this.physics.add.group({
             allowGravity: true,
             immovable: false,
-            bounceY:1
+            bounceY:0
         });
-         this.starsObjects = this.map.getObjectLayer('stars')['objects'];
-         // On crée des étoiles pour chaque objet rencontré
-         this.starsObjects.forEach(starObject => {
-             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
-             let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles','star');
-         });
+        this.starsObjects = this.map.getObjectLayer('stars')['objects'];
+        // On crée des étoiles pour chaque objet rencontré
+        this.starsObjects.forEach(starObject => {
+            // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
+            let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles','star');
+        });
 
 
         //----------les monstres volants (objets tiled) ---------------------
 
         let monstersContainer=this.add.container();
+
         this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
         // On crée des monstres volants pour chaque objet rencontré
         this.flyingMonstersObjects.forEach(monsterObject => {
@@ -102,8 +103,11 @@ class TableauTiledRenew extends Tableau{
         this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
         this.katanaMonstersObjects.forEach(monsterObject => {
             let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
+            this.physics.add.collider(monster, this.devant);
         });
+
 
         //----------les monstres terrestres (objets tiled) ---------------------
         /*this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
@@ -162,6 +166,7 @@ class TableauTiledRenew extends Tableau{
         //quoi collide avec quoi?
         this.physics.add.collider(this.player, this.devant);
         this.physics.add.collider(this.stars, this.devant);
+
         //this.physics.add.collider(this.katanaMonstersObjects, this.devant);
         //si le joueur touche une étoile dans le groupe...
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);

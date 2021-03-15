@@ -7,16 +7,17 @@ class MonsterOrange extends ObjetEnnemi{
      */
     constructor(scene, x, y) { //constructor est l'équivalent de Create dans une classe
         super(scene, x, y, "enemy");
-    
+
+
         
         //this.setBodySize(this.body.width,this.body.height);
         //this.body.setSize(64,64);
         this.setOrigin(0,0);
         //this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
-        this.setBounce(1);
+        this.setBounce(0);
         this.setVelocityX(160);
-        this.setDepth(10);
+        //this.setDepth(10);
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
 
