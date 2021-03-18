@@ -27,8 +27,8 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 32, frameHeight: 48  }
         );
         this.load.spritesheet('enemy',
-            'assets/enemy_3.png',
-            { frameWidth: 32, frameHeight: 48  }
+            'assets/enemy_4.png',
+            { frameWidth: 39, frameHeight: 48  }
         );
         this.load.audio('track', 'assets/son/kamakura.mp3');
     }
