@@ -20,7 +20,7 @@ let config = {
         //new TableauTiledRenew("definitiveEdition"),
         //new TableauTiled("100x100"),
 
-        new TableauLong("Machala"),
+        new TableauLong("Sun Chaser"),
         new TableauZoo("Zoo"),
         new Tableau00A("toto"),
         
