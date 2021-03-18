@@ -39,6 +39,13 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             repeat: -1
         });
 
+        this.anims.create({
+            key: 'jump',
+            frames: this.anims.generateFrameNumbers('player_jump', { start: 0, end: 3  }),
+            frameRate: 5,
+            repeat: -1
+        });
+
 
         /*this.anims.create({
             key: 'back',
@@ -103,8 +110,10 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         if(this._directionY<0){ //gère la hauteur du saut du perso
             if(this.body.blocked.down || this.body.touching.down){
                 this.setVelocityY(-500);
+                this.anims.play('jump', true);
             }
         }
+
 
 
     }
