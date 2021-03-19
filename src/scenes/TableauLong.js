@@ -214,7 +214,7 @@ class TableauLong extends Tableau{
         
 
         //on crée un objet en appelant la classe correspondante ici
-        new MonsterFly(this,600,400);//penser à importer l'image au début de cette page
+        new MonsterFly(this,600,350);//penser à importer l'image au début de cette page
         //new MonstreVolant(this,500,68);//penser à rajouter un script dans l'index pour importer la classe
         //new MonsterSkull(this,450,150);
         //new MonsterZelda(this,600,100);
