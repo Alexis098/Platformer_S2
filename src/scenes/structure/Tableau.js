@@ -63,7 +63,7 @@ class Tableau extends Phaser.Scene{
          * Le joueur
          * @type {Player}
          */
-        this.player=new Player(this,0,536);
+        this.player=new Player(this,0,0);
         this.song = this.sound.add('track', {volume: 0.1})
         this.song.play();
         this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
@@ -84,6 +84,8 @@ class Tableau extends Phaser.Scene{
             this.player.dash();
             console.log('appuyer sur a');
         }
+        //comme pour le dash
+        //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
         if (Phaser.Input.Keyboard.JustDown(this.boutonTelep)){
             this.player.teleportation();
             console.log('appuyer sur z');
