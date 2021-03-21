@@ -41,7 +41,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         this.anims.create({
             key: 'jump',
-            frames: this.anims.generateFrameNumbers('player_jump', { start: 0, end: 3  }),
+            frames: this.anims.generateFrameNumbers('player_jump', { start: 5, end: 8  }),
             frameRate: 5,
             repeat: -1
         });
@@ -55,6 +55,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         this._directionX=0;
         this._directionY=0;
+
 
     }
 
@@ -79,7 +80,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
      * Déplace le joueur en fonction des directions données
      */
     move(){
-
+        /*var posX = this.x; // / 64;
+        var posY = this.y;*/
         //let sens = 1;
 
         switch (true){
@@ -96,7 +98,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             default:
                 this.setVelocityX(0);
                 //this.anims.play('stance', true);
-                this.anims.play( this.sens===-1 ? 'back' : 'stance' ,true); //équivalent d'un if, pour mémoriser la position du personnage pour qu'il regarde à gauche ou à droite en fonction du dernier déplacement effectué
+                this.anims.play(this.sens===-1 ? 'back' : 'stance' ,true); //équivalent d'un if, pour mémoriser la position du personnage pour qu'il regarde à gauche ou à droite en fonction du dernier déplacement effectué
                 /*if(this.sens===-1){
                     this.anims.play('back',true);
                 }
@@ -108,16 +110,73 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
         if(this._directionY<0){ //gère la hauteur du saut du perso
+            //this.anims.play('jump', true);
             if(this.body.blocked.down || this.body.touching.down){
                 this.setVelocityY(-500);
-                this.anims.play('jump', true);
+
+                //this.anims.play('jump', true);
             }
-            this.anims.play('jump', true);
+
+            /*if(this.body.touching.down || this.body.touching.platforms){
+                this.anims.play('jump', false);
+            }else{
+                this.anims.play('jump', true);
+            }*/
+
+
         }
 
 
+        /*dash(){ // la vitesse est la pour le dash //target est la cible du dash
+            var posX = this.x / 64;
+            posX = Math.trunc(posX);
+
+            var target;
+            if (this._directionX > 0){
+                target = posX + 4;
+            }
+            else if (this._directionX < 0){
+                target = posX - 4;
+            }
+            else {
+                target = posX;
+            }
+
+            if (target > posX){
+                this.setVelocityX(3000);
+            }
+            else if (target < posX){
+                this.setVelocityX(-3000);
+            }
+        }*/
 
     }
 
+    dash() {
+        this.posX = this.x;
+        //this.dashUse = scene.input.keyboard.addKey('SPACE');
 
-} 
+        var dir = 0;
+
+        if (this._directionX < 0) {
+            dir = posX - 5;
+        } else if (this._directionX > 0) {
+            dir = posX + 5;
+        }
+
+        if (dir < posX) {
+            this.player.setVelocityX(-300);
+        } else if (dir > posX) {
+            this.player.setVelocityX(300);
+        }
+    }
+
+    launchDash(){
+        this.dashUse = scene.input.keyboard.addKey('SPACE');
+        if (this.dashUse.isDown){
+            this.dash();
+        }
+    }
+
+}
+
