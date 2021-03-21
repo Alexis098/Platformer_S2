@@ -160,6 +160,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     dash() {
         console.log('dash');
         this.posX = this.x;
+        this.posY = this.y;
         //this.dashUse = scene.input.keyboard.addKey('SPACE');
 
         var dir;
@@ -172,9 +173,13 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (dir < this.posX) {
             this.setVelocityX(-3000);
+            //this.setAccelerationX(-1000);
             console.log('dash à gauche');
         } else if (dir > this.posX) {
+            //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
+
             this.setVelocityX(3000);
+            //this.setAccelerationX(1000)
             console.log('dash à droite');
         }
     }
