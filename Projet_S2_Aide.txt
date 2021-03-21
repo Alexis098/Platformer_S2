@@ -85,3 +85,6 @@ les monstres doivent collider avec les plateformes
 
 
 coder un système de points de vie
+
+l'accélération du dash se faitdirectement en joouant avec la physique de phaser (première piste : accelerateTo)
+pareil pour la décélération
