@@ -71,15 +71,22 @@ class Tableau extends Phaser.Scene{
         this.blood.displayHeight=64;
         this.blood.visible=false;
 
-
+        //DASH DU PLAYER
         this.boutonDash = this.input.keyboard.addKey('A');
+        //TP DU PLAYER
+        this.boutonTelep = this.input.keyboard.addKey('Z');
     }
     update(){
         super.update();
         this.player.move();
+        //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash)){
             this.player.dash();
             console.log('appuyer sur a');
+        }
+        if (Phaser.Input.Keyboard.JustDown(this.boutonTelep)){
+            this.player.teleportation();
+            console.log('appuyer sur z');
         }
 
     }

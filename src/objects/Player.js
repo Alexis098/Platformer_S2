@@ -184,6 +184,33 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         }
     }
 
+    teleportation() {
+        console.log('téléportation');
+        this.posX = this.x;
+        this.posY = this.y;
+        //this.dashUse = scene.input.keyboard.addKey('SPACE');
+
+        var dir;
+
+        if (this._directionX < 0 || this.sens===-1) {
+            dir = this.posX - 5;
+        } else if (this._directionX > 0 || this.sens===1) {
+            dir = this.posX + 5;
+        }
+
+        if (dir < this.posX) {
+            this.x=this.posX-100;
+            //this.setAccelerationX(-1000);
+            console.log('TP à gauche');
+        } else if (dir > this.posX) {
+            //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
+
+            this.x=this.posX+100;
+            //this.setAccelerationX(1000)
+            console.log('TP à droite');
+        }
+    }
+
 
 
 
