@@ -162,11 +162,11 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.posX = this.x;
         //this.dashUse = scene.input.keyboard.addKey('SPACE');
 
-        var dir = 0;
+        var dir;
 
-        if (this._directionX < 0) {
+        if (this._directionX < 0 || this.sens===-1) {
             dir = this.posX - 5;
-        } else if (this._directionX > 0) {
+        } else if (this._directionX > 0 || this.sens===1) {
             dir = this.posX + 5;
         }
 

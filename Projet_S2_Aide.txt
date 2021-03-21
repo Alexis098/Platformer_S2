@@ -82,3 +82,6 @@ les rayons de lumières 'statiques' ambiants du décor peuvent être animés en 
 
 
 les monstres doivent collider avec les plateformes
+
+
+coder un système de points de vie
