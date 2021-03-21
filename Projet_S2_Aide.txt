@@ -1,4 +1,4 @@
-Les DASHS : 
+Les DASHS : Penser à faire une anim pour le dash et la TP
 
 Pour les dashs, on multiplie la vélocité par 3 par ex pendant 0.5 secondes quand on appuie sur un bouton
 (brieux a fait sur le pixel art platformer un bouton qui fait dasher son perso, regarder le code : https://github.com/Brieux/plate-formmeur/commit/a8f160756fa3b1855b36cd115e566ddac1f5dbb3)

@@ -9,7 +9,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setGravityY(700)
         this.setFriction(1,1);
         this.sens = 1; //variable globale car elle est utilisée pour le sens du personnage affectant plusieurs fonctions, intégrer la fonction dans la fonction directement fait qu'elle ne sera pas prise en compte avec la deuxième fonction nécessaire pour ça
-
+        //this.boutonDash;
         this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
         this.setOffset(0, 0);
 
@@ -105,7 +105,12 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 if(this.sens===1){
                     this.anims.play('stance', true);
                 }*/
+
         }
+        /*this.boutonDash = this.input.keyboard.addKey('A');
+        if (this.Input.Keyboard.JustDown(boutonDash)){
+            this.dash();
+        }*/
 
 
 
@@ -153,30 +158,29 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     }
 
     dash() {
+        console.log('dash');
         this.posX = this.x;
         //this.dashUse = scene.input.keyboard.addKey('SPACE');
 
         var dir = 0;
 
         if (this._directionX < 0) {
-            dir = posX - 5;
+            dir = this.posX - 5;
         } else if (this._directionX > 0) {
-            dir = posX + 5;
+            dir = this.posX + 5;
         }
 
-        if (dir < posX) {
-            this.player.setVelocityX(-300);
-        } else if (dir > posX) {
-            this.player.setVelocityX(300);
+        if (dir < this.posX) {
+            this.setVelocityX(-3000);
+            console.log('dash à gauche');
+        } else if (dir > this.posX) {
+            this.setVelocityX(3000);
+            console.log('dash à droite');
         }
     }
 
-    launchDash(){
-        this.dashUse = scene.input.keyboard.addKey('SPACE');
-        if (this.dashUse.isDown){
-            this.dash();
-        }
-    }
+
+
 
 }
 

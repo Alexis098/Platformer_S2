@@ -9,6 +9,7 @@ class Tableau extends Phaser.Scene{
      */
     constructor(key) {
         super(key);
+
     }
 
     /**
@@ -44,6 +45,7 @@ class Tableau extends Phaser.Scene{
         );
         this.load.audio('track', 'assets/son/kamakura.mp3');
     }
+
     create(){
         Tableau.current=this;
         this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
@@ -68,10 +70,18 @@ class Tableau extends Phaser.Scene{
         this.blood.displayWidth=64;
         this.blood.displayHeight=64;
         this.blood.visible=false;
+
+
+        this.boutonDash = this.input.keyboard.addKey('A');
     }
     update(){
         super.update();
         this.player.move();
+        if (Phaser.Input.Keyboard.JustDown(this.boutonDash)){
+            this.player.dash();
+            console.log('appuyer sur a');
+        }
+
     }
 
     /**
