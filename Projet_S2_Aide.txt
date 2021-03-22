@@ -1,3 +1,5 @@
+pour les plateformes plus petites que du 64x64 ou différentes d'un carré, on fait comme pour les plateformes carrées et on ajoute un setBodySize (la ligne qui gère la taille de a hitbox) dans le for each platform dans dans le tableau du niveau (comme pour les étoiles)
+
 Les DASHS : Penser à faire une anim pour le dash et la TP
 
 Ajouter une décélération et une accélération
@@ -91,3 +93,27 @@ les monstres doivent collider avec les plateformes
 
 coder un système de points de vie
 
+
+INSPIRATIONS DES ANIMS :
+
+site pour les anims : https://blog.studiominiboss.com/pixelart
+dash est le numéro : 62
+tout en bas
+run est le numéro : 4
+smoke animation : 3 
+un mouvement de cape : 5
+electricity animation : 7
+animation d'effet spectrale/holographique : 8
+anim fluidité de particules : 12
+
+sur instagram; Penusbmic fait de bonnes animations de TP et de dash aussi (le renard, le chaman vert et le bonhomme au pinceau)
+
+
+easing phaser : courbes d'accélération librairie JavaScript : jsApp
+https://greensock.com/ease-visualizer/
+
+velocityX associé à tween (comme monsterFly)
+fonction mathématique lerp fonctonne
+
+tween pour phaser pour les easing pour jouer l'accélération du dash du perso
+http://phaser.io/examples/v3/view/tweens/paused-tween

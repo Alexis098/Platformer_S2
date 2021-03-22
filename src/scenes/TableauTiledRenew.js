@@ -21,7 +21,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('monster-katana', 'assets/monster_katana.png');
 
         //---------Les étoiles-----------
-        this.load.image('star', 'assets/soleil.png');
+        this.load.image('stars', 'assets/soleil.png');
 
         // -----et puis aussi-------------
 
@@ -63,7 +63,7 @@ class TableauTiledRenew extends Tableau{
         // 1 La méthode que je préconise (il faut définir une propriété dans tiled pour que ça marche)
         //permet de travailler sur un seul layer dans tiled et des définir les collisions en fonction des graphiques
         //exemple ici https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
-        this.devant.setCollisionByProperty({ collides: true });
+        this.devant.setCollisionByProperty({ collides: true }); //sert aussi pour déterminer quelle tuile joue quel son quand on marche dessus par ex a voir comment ça marche vraiment par contre
         //this.lave.setCollisionByProperty({ collides: true });
 
         // 2 manière la plus simple (là où il y a des tiles ça collide et sinon non)
@@ -77,7 +77,7 @@ class TableauTiledRenew extends Tableau{
 
         // c'est un peu plus compliqué, mais ça permet de maîtriser plus de choses...
         this.stars = this.physics.add.group({
-            allowGravity: true,
+            allowGravity: false,
             immovable: false,
             bounceY:0
         });

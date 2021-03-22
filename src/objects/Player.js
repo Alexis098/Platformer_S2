@@ -157,6 +157,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
+    //Le reste des fonctions dash et teleportation se trouve dans le tableau avec la fonction move pour appeler la fonction dans le tableau
     dash() {
         console.log('dash');
         this.posX = this.x;
@@ -182,6 +183,26 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             //this.setAccelerationX(1000)
             console.log('dash à droite');
         }
+        //cooldown
+        /*if (this.dashAvailable == false){
+            //console.log("recharge"); //on attends
+            this.delayDash -= delta;
+            if (this.delayDash < 0){
+                //console.log("Sort recup"); //on recup
+                this.dashAvailable = true;
+                this.delayDash = this.dashBasic;
+            }
+        }*/
+       /*this.tween = this.tweens.add({
+            targets: this.player,
+            this.setVelocityX: '+=600',
+            ease: 'Power2',
+            paused: true
+        });
+
+        this.input.once('pointerdown', function () {
+            tween.play();
+        });*/
     }
 
     teleportation() {

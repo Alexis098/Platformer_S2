@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"level1_V001.json"
+         "target":"level1_V002.json"
         }
     },
  "height":10,
@@ -30,16 +30,40 @@
          "name":"stars",
          "objects":[
                 {
-                 "gid":72,
+                 "gid":37,
                  "height":64,
-                 "id":2,
+                 "id":8,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":64,
                  "x":192,
+                 "y":448
+                }, 
+                {
+                 "gid":37,
+                 "height":64,
+                 "id":10,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":832,
                  "y":512
+                }, 
+                {
+                 "gid":37,
+                 "height":64,
+                 "id":11,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1856,
+                 "y":384
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -108,7 +132,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":7,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
