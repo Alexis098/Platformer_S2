@@ -75,6 +75,8 @@ class Tableau extends Phaser.Scene{
         this.boutonDash = this.input.keyboard.addKey('A');
         //TP DU PLAYER
         this.boutonTelep = this.input.keyboard.addKey('Z');
+
+
     }
     update(){
         super.update();

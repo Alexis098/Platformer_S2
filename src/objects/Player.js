@@ -200,7 +200,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             paused: true
         });
 
-        this.input.once('pointerdown', function () {
+        this.input.once('A', function () {
             tween.play();
         });*/
     }
