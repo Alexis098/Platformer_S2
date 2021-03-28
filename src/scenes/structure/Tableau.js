@@ -85,10 +85,13 @@ class Tableau extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash)){
             this.player.dash();
             console.log('appuyer sur a');
+
         }
         //comme pour le dash
         //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
         if (Phaser.Input.Keyboard.JustDown(this.boutonTelep)){
+            //tentative de delai avant la tp de 1 seconde
+            //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
             this.player.teleportation();
             console.log('appuyer sur z');
         }

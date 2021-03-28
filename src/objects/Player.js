@@ -198,15 +198,16 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.setVelocityX: '+=600',
             ease: 'Power2',
             paused: true
-        });
+        });*/
 
-        this.input.once('A', function () {
+        /*this.input.once('A', function () {
             tween.play();
         });*/
     }
 
     teleportation() {
         console.log('téléportation');
+        delay:2000
         this.posX = this.x;
         this.posY = this.y;
         //this.dashUse = scene.input.keyboard.addKey('SPACE');
