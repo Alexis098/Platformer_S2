@@ -14,7 +14,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V002.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V001.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -31,11 +31,13 @@ class TableauTiledRenew extends Tableau{
 
 
     }
+
+
     create() {
         super.create();
 
         //on en aura besoin...
-        let ici=this;
+        //let ici=this;
 
         //--------chargement de la tile map & configuration de la scène-----------------------
 
@@ -49,7 +51,7 @@ class TableauTiledRenew extends Tableau{
         let hauteurDuTableau=this.map.heightInPixels;
         this.physics.world.setBounds(0, 0, largeurDuTableau,  hauteurDuTableau);
         this.cameras.main.setBounds(0, 0, largeurDuTableau, hauteurDuTableau);
-        this.cameras.main.startFollow(this.player, true, 1, 1);
+        this.cameras.main.startFollow(this.player, true, 0.08, 0.2);
 
         //---- ajoute les plateformes simples ----------------------------
 
@@ -77,7 +79,7 @@ class TableauTiledRenew extends Tableau{
 
         // c'est un peu plus compliqué, mais ça permet de maîtriser plus de choses...
         this.stars = this.physics.add.group({
-            allowGravity: false,
+            allowGravity: true,
             immovable: false,
             bounceY:0
         });
@@ -92,20 +94,33 @@ class TableauTiledRenew extends Tableau{
         //----------les monstres volants (objets tiled) ---------------------
 
         let monstersContainer=this.add.container();
-
+        let ici=this;//pour faire collider les monstres
         this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
         // On crée des monstres volants pour chaque objet rencontré
+
         this.flyingMonstersObjects.forEach(monsterObject => {
-            let monster=new MonsterFly(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            let monster=new MonsterFly(ici,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             monstersContainer.add(monster);
         });
 
+        //----------les monstres terrestres (objets tiled) ---------------------
+
         this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
         this.katanaMonstersObjects.forEach(monsterObject => {
-            let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            let monster=new MonsterOrange(ici,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
-            this.physics.add.collider(monster, this.devant);
+            //this.physics.add.collider(monster, this.devant);
+        });
+
+        //Checkpoints
+        this.checkPoints = this.physics.add.staticGroup();
+        this.checkPointsObjects = this.map.getObjectLayer('checkPoints')['objects'];
+        //on crée des checkpoints pour chaque objet rencontré
+        this.checkPointsObjects.forEach(checkPointObject => {
+            let point=this.checkPoints.create(checkPointObject.x,checkPointObject.y/*,"particles","death-white"*/).setOrigin(0.5,1);
+            point.blendMode=Phaser.BlendModes.COLOR_DODGE;
+            point.checkPointObject=checkPointObject;
         });
 
 
@@ -166,12 +181,17 @@ class TableauTiledRenew extends Tableau{
         //quoi collide avec quoi?
         this.physics.add.collider(this.player, this.devant);
         this.physics.add.collider(this.stars, this.devant);
-
         //this.physics.add.collider(this.katanaMonstersObjects, this.devant);
         //si le joueur touche une étoile dans le groupe...
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         //quand on touche la lave, on meurt
         this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
+
+        //quand on touche un checkpoint
+        this.physics.add.overlap(this.player, this.checkPoints, function(player, checkPoint)
+         {
+             ici.saveCheckPoint(checkPoint.checkPointObject.name);
+         }, null, this);
 
 
         //--------- Z order -----------------------
@@ -192,6 +212,27 @@ class TableauTiledRenew extends Tableau{
         // this.sky2.setDepth(z--);
         this.sky.setDepth(z--);
 
+        this.restoreCheckPoint();
+
+    }
+
+    //Checkpoint
+    saveCheckPoint(checkPointName){
+        if (localStorage.getItem("checkPoint") !== checkPointName){
+            console.log("on atteint le checkpoint", checkPointName);
+            localStorage.setItem("checkPoint", checkPointName);
+        }
+    }
+    restoreCheckPoint(){
+        let storedCheckPoint=localStorage.getItem("checkPoint")
+        if(storedCheckPoint){
+            this.checkPointObject.forEach(checkPointObject => {
+                if(checkPointObject.name === storedCheckPoint){
+                    this.player.setPosition(checkPointObject.x, checkPointObject.y-64*2);
+                    console.log("on charge le checkpoint", checkPointName);
+                }
+            });
+        }
     }
 
     /**
@@ -223,6 +264,9 @@ class TableauTiledRenew extends Tableau{
         //     // ici vous pouvez appliquer le même principe pour des monstres, des étoiles etc...
     }
 
+
+
+
     /**
      * Fait se déplacer certains éléments en parallax
      */
@@ -233,6 +277,10 @@ class TableauTiledRenew extends Tableau{
         this.sky2.tilePositionX=this.cameras.main.scrollX*0.7+100;
         this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;
     }
+
+
+
+
 
 
     update(){

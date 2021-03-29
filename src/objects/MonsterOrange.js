@@ -9,7 +9,7 @@ class MonsterOrange extends ObjetEnnemi{
         super(scene, x, y, "enemy");
 
 
-        
+        this.body.allowGravity=true;
         //this.setBodySize(this.body.width,this.body.height);
         //this.body.setSize(64,64);
         this.setOrigin(0,0);
