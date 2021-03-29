@@ -38,7 +38,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":192,
+                 "x":1408,
                  "y":448
                 }, 
                 {
@@ -50,7 +50,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":832,
+                 "x":1152,
                  "y":448
                 }, 
                 {
@@ -140,12 +140,54 @@
                  "gid":32,
                  "height":64,
                  "id":15,
-                 "name":"",
+                 "name":"checkPoint_2",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":384,
+                 "x":576,
+                 "y":512
+                }, 
+                {
+                 "gid":32,
+                 "height":64,
+                 "id":16,
+                 "name":"checkPoints_1",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":128,
+                 "y":512
+                }, 
+                {
+                 "gid":32,
+                 "height":64,
+                 "id":17,
+                 "name":"checkPoint_3",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":832,
                  "y":512
                 }],
          "opacity":1,
@@ -155,10 +197,10 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":16,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.4.3",
  "tileheight":64,
  "tilesets":[
         {

@@ -198,6 +198,7 @@ class TableauTiledRenew extends Tableau{
 
         //on définit les z à la fin
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
+
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
         monstersContainer.setDepth(z--);
@@ -226,10 +227,10 @@ class TableauTiledRenew extends Tableau{
     restoreCheckPoint(){
         let storedCheckPoint=localStorage.getItem("checkPoint")
         if(storedCheckPoint){
-            this.checkPointObject.forEach(checkPointObject => {
+            this.checkPointsObjects.forEach(checkPointObject => {
                 if(checkPointObject.name === storedCheckPoint){
                     this.player.setPosition(checkPointObject.x, checkPointObject.y-64*2);
-                    console.log("on charge le checkpoint", checkPointName);
+                    //console.log("on charge le checkpoint", checkPointName);
                 }
             });
         }

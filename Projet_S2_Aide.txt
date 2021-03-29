@@ -124,3 +124,7 @@ http://phaser.io/examples/v3/view/tweens/paused-tween
 penser aux instruments narratif/narrative means du cours de narrative design pour savoir comment intégrer la narrationdans le niveau du plateformer
 les événements scriptés : simples à coder comme dire quand on arrive a la coordonnée x = 1500px -> lancerune musique/vidéo ou faire bouger un monstre etc...
 sert pour faire apparaitre un texte quand on arrive devant la stèle par exemple
+
+pour les faire reprendre le code de checkpoint save
+pour enregistrer la position à un endroit 
+on fait ensuite un code pour dire quoi faire quand on arrive dans la zone du checkpoint sans pour autant faire un checkpoint (evenement scripté)
