@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('monster-fly', 'assets/monster-dragon.png');
         this.load.image('monster-katana', 'assets/monster_katana.png');
 
-        //---------Les étoiles-----------
+        // ---------Les étoiles-----------
         this.load.image('stars', 'assets/soleil.png');
 
         // -----et puis aussi-------------
@@ -87,7 +87,7 @@ class TableauTiledRenew extends Tableau{
         // On crée des étoiles pour chaque objet rencontré
         this.starsObjects.forEach(starObject => {
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
-            let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles','star');
+            let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles', 'star');
         });
 
 

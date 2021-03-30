@@ -10,6 +10,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setFriction(1,1);
         this.sens = 1; //variable globale car elle est utilisée pour le sens du personnage affectant plusieurs fonctions, intégrer la fonction dans la fonction directement fait qu'elle ne sera pas prise en compte avec la deuxième fonction nécessaire pour ça
         //this.boutonDash;
+        this.temps = 0;
         this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
         this.setOffset(0, 0);
 
@@ -164,20 +165,21 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         var dir;
 
-        if (this._directionX < 0 || this.sens===-1) {
+        if (this._directionX < 0 || this.sens===-1) { //sens===-1 pour dasher dans le sens ou on regarde quand on est immobile
             dir = this.posX - 5;
         } else if (this._directionX > 0 || this.sens===1) {
             dir = this.posX + 5;
         }
 
         if (dir < this.posX) {
-            this.setVelocityX(-3000);
+            this.animGauche();
+            //this.setVelocityX(-3000);
             //this.setAccelerationX(-1000);
             console.log('dash à gauche');
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
-
-            this.setVelocityX(3000);
+            this.animDroite();
+            //this.setVelocityX(3000);
             //this.setAccelerationX(1000)
             console.log('dash à droite');
         }
@@ -191,7 +193,28 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 this.delayDash = this.dashBasic;
             }
         }*/
-       /*this.tween = this.tweens.add({
+
+
+    }
+
+    animDroite(){//tween pour l'avancement progressif du dash
+        this.scene.tweens.add({
+            targets: this,
+
+                x: '+=150',
+                //y: '-=150',
+                ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
+            //aussi tester entre easuInOut - easeIn et easeOut
+                duration: 500,
+                delay: 50
+
+            /*x: '+=600',
+            ease: 'Power2',
+            paused: true*/
+        });
+        console.log('ease sine');
+
+        /*this.tween = this.tweens.add({
             targets: this.player,
             this.setVelocityX: '+=600',
             ease: 'Power2',
@@ -202,10 +225,24 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             tween.play();
         });*/
     }
+    animGauche(){
+        this.scene.tweens.add({
+            targets: this,
+
+            x: '-=200',
+            ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
+            duration: 500,
+            delay: 50
+            /*x: '+=600',
+            ease: 'Power2',
+            paused: true*/
+        });
+        console.log('ease sine');
+    }
 
     teleportation() {
         console.log('téléportation');
-        delay:2000
+        //delay:2000
         this.posX = this.x;
         this.posY = this.y;
         //this.dashUse = scene.input.keyboard.addKey('SPACE');
@@ -223,8 +260,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             //this.setAccelerationX(-1000);
             console.log('TP à gauche');
         } else if (dir > this.posX) {
-            //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
-
             this.x=this.posX+100;
             //this.setAccelerationX(1000)
             console.log('TP à droite');
