@@ -18,6 +18,7 @@ class TableauLong extends Tableau{
         this.load.image('monster-zelda', 'assets/monster-zelda.png');
         
         this.load.image('monster-fly', 'assets/monster-dragon.png');
+        this.load.image('tireur', 'assets/tireur.png');
         
         this.load.image('monster-orange', 'assets/monster_katana.png');
         this.load.image('monster-boss', 'assets/monster-boss.png');
@@ -220,8 +221,11 @@ class TableauLong extends Tableau{
         //new MonsterZelda(this,600,100);
         new MonsterOrange(this, 1500, height-140);
         new MonsterLance(this, 600, height-140);
+
         //new MonsterBoss(this, 600, height-140);
         //new Petales(this, 0,0);
+
+        //new Tireur(this,200,height-140);
     }
 
     update(){

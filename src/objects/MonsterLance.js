@@ -99,6 +99,5 @@ class MonsterLance extends ObjetEnnemi{
             }*/
         });
     }
-
 }
 

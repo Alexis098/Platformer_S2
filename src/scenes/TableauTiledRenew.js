@@ -19,6 +19,8 @@ class TableauTiledRenew extends Tableau{
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
         this.load.image('monster-katana', 'assets/monster_katana.png');
+        this.load.image('tireur', 'assets/tireur.png');
+        this.load.image('projo', 'assets/projo.png');
 
         // ---------Les étoiles-----------
         this.load.image('stars', 'assets/soleil.png');
@@ -36,6 +38,15 @@ class TableauTiledRenew extends Tableau{
     create() {
         super.create();
 
+
+        this.projo1=this.physics.add.sprite(200,400,"projo");
+        this.projo1.setCollideWorldBounds(true);
+        this.projo1.setBounce(0);
+        this.projo1.body.allowGravity=false;
+        this.projo1.setVelocityX(100);
+        this.projo1.setDepth(1000);
+        this.projo1.body.setSize(35,50);
+        this.physics.add.overlap(this.player, this.projo1, this.hitMonster, null, this);
         //on en aura besoin...
         //let ici=this;
 
@@ -59,6 +70,7 @@ class TableauTiledRenew extends Tableau{
         // this.lave = this.map.createLayer('lave', this.tileset, 0, 0);
         this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
         this.devant = this.map.createLayer('Platforms', this.tileset, 0, 0);
+
 
         //on définit les collisions, plusieurs méthodes existent:
 
@@ -91,6 +103,8 @@ class TableauTiledRenew extends Tableau{
         });
 
 
+
+
         //----------les monstres volants (objets tiled) ---------------------
 
         let monstersContainer=this.add.container();
@@ -99,19 +113,39 @@ class TableauTiledRenew extends Tableau{
         // On crée des monstres volants pour chaque objet rencontré
 
         this.flyingMonstersObjects.forEach(monsterObject => {
-            let monster=new MonsterFly(ici,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            let monster=new MonsterFly(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             monstersContainer.add(monster);
         });
 
         //----------les monstres terrestres (objets tiled) ---------------------
 
-        this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
-        this.katanaMonstersObjects.forEach(monsterObject => {
-            let monster=new MonsterOrange(ici,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+        ici.katanaMonstersObjects = ici.map.getObjectLayer('katanaMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
+        ici.katanaMonstersObjects.forEach(monsterObject => {
+            let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
-            //this.physics.add.collider(monster, this.devant);
+            this.physics.add.collider(monster, this.devant);
         });
+
+        ici.tireurMonstersObjects = ici.map.getObjectLayer('tireurMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
+        ici.tireurMonstersObjects.forEach(monsterObject => {
+            let monster=new Tireur(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            let projo=new Projectile(this,monsterObject.x,monsterObject.y);
+            //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
+            monstersContainer.add(monster);
+            this.physics.add.collider(monster, this.devant);
+        });
+
+        ici.PlateformMouvObjects = ici.map.getObjectLayer('PlateformMouv')['objects']; //katanaMonsters est le nom du calque objet dans tiled
+        ici.PlateformMouvObjects.forEach(monsterObject => {
+            let monster=new PlateformMouv(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+
+            //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
+            monstersContainer.add(monster);
+            this.physics.add.collider(monster, this.player);
+        });
+
+
 
         //Checkpoints
         this.checkPoints = this.physics.add.staticGroup();
@@ -122,6 +156,7 @@ class TableauTiledRenew extends Tableau{
             point.blendMode=Phaser.BlendModes.COLOR_DODGE;
             point.checkPointObject=checkPointObject;
         });
+
 
 
         //----------les monstres terrestres (objets tiled) ---------------------
@@ -180,6 +215,8 @@ class TableauTiledRenew extends Tableau{
 
         //quoi collide avec quoi?
         this.physics.add.collider(this.player, this.devant);
+
+
         this.physics.add.collider(this.stars, this.devant);
         //this.physics.add.collider(this.katanaMonstersObjects, this.devant);
         //si le joueur touche une étoile dans le groupe...
@@ -198,12 +235,14 @@ class TableauTiledRenew extends Tableau{
 
         //on définit les z à la fin
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
-
+        this.checkPoints.setDepth(1000);
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
+
         monstersContainer.setDepth(z--);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
+
         this.devant.setDepth(z--);
         // this.solides.setDepth(z--);
         // this.laveFxContainer.setDepth(z--);
@@ -214,6 +253,10 @@ class TableauTiledRenew extends Tableau{
         this.sky.setDepth(z--);
 
         this.restoreCheckPoint();
+
+
+
+
 
     }
 
@@ -284,6 +327,8 @@ class TableauTiledRenew extends Tableau{
 
 
 
+
+
     update(){
         super.update();
         this.moveParallax();
@@ -298,6 +343,8 @@ class TableauTiledRenew extends Tableau{
             this.previousPosition=actualPosition;
             this.optimizeDisplay();
         }
+
+
     }
 
 

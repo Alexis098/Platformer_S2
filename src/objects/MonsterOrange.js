@@ -27,12 +27,12 @@ class MonsterOrange extends ObjetEnnemi{
         this.maxX=x-200;
 
         // Y
-        this.originalY=y;
+        /*this.originalY=y;
         this.minY=600;
-        this.maxY=600;
+        this.maxY=600;*/
         // on applique les propriétés du début de l'animation
         this.x=this.minX;
-        this.y=this.minY;
+        //this.y=this.minY;
         this.alpha=0;
         let me=this;
         //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation

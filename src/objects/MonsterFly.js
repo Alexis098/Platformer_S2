@@ -61,6 +61,8 @@ class MonsterFly extends ObjetEnnemi{
 
         this.anims.play('left', true);
 
+       
+
     }
 
     start(){

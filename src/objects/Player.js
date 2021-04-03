@@ -254,7 +254,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         } else if (this._directionX > 0 || this.sens===1) {
             dir = this.posX + 5;
         }
-
         if (dir < this.posX) {
             this.x=this.posX-100;
             //this.setAccelerationX(-1000);
@@ -265,9 +264,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             console.log('TP à droite');
         }
     }
-
-
-
 
 }
 

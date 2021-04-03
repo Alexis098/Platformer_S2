@@ -86,8 +86,6 @@ class Tableau extends Phaser.Scene{
             //this.player.anim();
             this.player.dash();
             console.log('appuyer sur a');
-
-
         }
         //comme pour le dash
         //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
@@ -97,6 +95,9 @@ class Tableau extends Phaser.Scene{
             this.player.teleportation();
             console.log('appuyer sur z');
         }
+
+
+
 
     }
 
@@ -274,6 +275,8 @@ class Tableau extends Phaser.Scene{
         }
         game.scene.start(tableau);
     }
+
+
 
 
 }
