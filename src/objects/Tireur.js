@@ -41,6 +41,7 @@ class Tireur extends ObjetEnnemi{
     /*set directionX(value){
         this._directionX=value;
     }*/
+    
 
 
 }

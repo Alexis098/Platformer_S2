@@ -38,15 +38,9 @@ class TableauTiledRenew extends Tableau{
     create() {
         super.create();
 
+        this.projectile();
 
-        this.projo1=this.physics.add.sprite(200,400,"projo");
-        this.projo1.setCollideWorldBounds(true);
-        this.projo1.setBounce(0);
-        this.projo1.body.allowGravity=false;
-        this.projo1.setVelocityX(100);
-        this.projo1.setDepth(1000);
-        this.projo1.body.setSize(35,50);
-        this.physics.add.overlap(this.player, this.projo1, this.hitMonster, null, this);
+
         //on en aura besoin...
         //let ici=this;
 
@@ -261,6 +255,17 @@ class TableauTiledRenew extends Tableau{
 
 
 
+    }
+
+    projectile(){
+        this.projo1=this.physics.add.sprite(200,400,"projo");
+        this.projo1.setCollideWorldBounds(true);
+        this.projo1.setBounce(0);
+        this.projo1.body.allowGravity=false;
+        this.projo1.setVelocityX(100);
+        this.projo1.setDepth(1000);
+        this.projo1.body.setSize(35,50);
+        this.physics.add.overlap(this.player, this.projo1, this.hitMonster, null, this);
     }
 
     //Checkpoint

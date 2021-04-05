@@ -44,6 +44,10 @@ class Projectile extends ObjetEnnemi {
         });
     }
 
+    /*recurrence(){
+        this.timedEvent = this.time.addEvent({ delay: 5000, callback: projo, callbackScope: this, loop: true });
+    }*/
+
     /*tir(){
         this.time.addEvent({
             delay: 1000,

@@ -10,7 +10,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setFriction(1,1);
         this.sens = 1; //variable globale car elle est utilisée pour le sens du personnage affectant plusieurs fonctions, intégrer la fonction dans la fonction directement fait qu'elle ne sera pas prise en compte avec la deuxième fonction nécessaire pour ça
         //this.boutonDash;
-        this.temps = 0;
+        //this.temps = 0;
+
         this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
         this.setOffset(0, 0);
 
@@ -237,6 +238,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             ease: 'Power2',
             paused: true*/
         });
+
+
         console.log('ease sine');
     }
 

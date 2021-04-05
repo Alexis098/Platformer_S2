@@ -9,6 +9,7 @@ class Tableau extends Phaser.Scene{
      */
     constructor(key) {
         super(key);
+        this.ptsVie=5;
 
     }
 
@@ -81,6 +82,7 @@ class Tableau extends Phaser.Scene{
     update(){
         super.update();
         this.player.move();
+        //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash)){
             //this.player.anim();
@@ -242,32 +244,36 @@ class Tableau extends Phaser.Scene{
                 })
                 //notre joueur rebondit sur le monstre
                 player.directionY=500;
-            }
-            else if(this.ptsVie>0){
-                this.ptsVie -= 1;
-                console.log('touché');
-                player.anims.play('player_jump');
-            }
-            else{
+            } else{
+                if(this.ptsVie>0){
+                    this.ptsVie -= 1;
+                    console.log('touché');
+                    console.log(this.ptsVie);
+                    player.anims.play('player_jump');
+                }
                 //le joueur est mort
-                if(!me.player.isDead){
-                    this.blood.setDepth(1000);
-                    me.player.isDead=true;
-                    me.player.visible=false;
-                    //ça saigne...
-                    me.saigne(me.player,function(){
-                        //à la fin de la petite anim, on relance le jeu
-                        me.blood.visible=false;
-                        me.player.anims.play('turn');
-                        me.player.isDead=false;
+                else if (this.ptsVie<=0) {
+                    console.log('MORT');
+                    if (!me.player.isDead) {
+                        this.blood.setDepth(1000);
+                        me.player.isDead = true;
+                        me.player.visible = false;
+                        //ça saigne...
+                        me.saigne(me.player, function () {
+                            //à la fin de la petite anim, on relance le jeu
+                            me.blood.visible = false;
+                            me.player.anims.play('turn');
+                            me.player.isDead = false;
+                            me.scene.restart();
+                        })
+                        this.song.stop();
                         me.scene.restart();
-                    })
-                    this.song.stop();
-                    me.scene.restart();
+
+                    }
+                    this.ptsVie=5;
+                    console.log('ptsVie = 5');
 
                 }
-
-
             }
         }
 
