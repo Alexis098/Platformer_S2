@@ -1,7 +1,7 @@
 
 https://alexis098.github.io/Platformer_S2/
 
-http://localhost/platformer/
+http://localhost/platformer_S2/
 
 
 
