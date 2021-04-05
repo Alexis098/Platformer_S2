@@ -2,7 +2,7 @@ class Tableau03 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/rubis.png');
+        this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/platform.png');
     }
     create() {
@@ -10,13 +10,13 @@ class Tableau03 extends Tableau{
 
         //un groupe d'étoiles
         this.stars=this.physics.add.group();
-        this.stars.create(100,0,"rubis");
-        this.stars.create(200,0,"rubis");
-        this.stars.create(300,0,"rubis");
-        this.stars.create(400,0,"rubis");
-        this.stars.create(500,0,"rubis");
-        this.stars.create(600,0,"rubis");
-        this.stars.create(700,0,"rubis");
+        this.stars.create(100,0,"star");
+        this.stars.create(200,0,"star");
+        this.stars.create(300,0,"star");
+        this.stars.create(400,0,"star");
+        this.stars.create(500,0,"star");
+        this.stars.create(600,0,"star");
+        this.stars.create(700,0,"star");
         this.stars.children.iterate(function (child) {
             child.setCollideWorldBounds(true);
             child.setBounce(0.9);

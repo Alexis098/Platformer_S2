@@ -2,7 +2,7 @@ class Tableau04 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/rubis.png');
+        this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/platform.png');
     }
     create() {
@@ -15,7 +15,7 @@ class Tableau04 extends Tableau{
 
         for(let i=0; i<7; i++){
             this.platforms.create(i*largeur ,Phaser.Math.Between(100,200),"ground");
-            this.stars.create(i*largeur+largeur/2 ,0,"rubis");
+            this.stars.create(i*largeur+largeur/2 ,0,"star");
         }
         this.platforms.children.iterate(function (child) {
             child.setDisplaySize (largeur,10);

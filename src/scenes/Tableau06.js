@@ -2,7 +2,7 @@ class Tableau06 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/rubis.png');
+        this.load.image('star', 'assets/rubis.png');
         this.load.image('monster-violet', 'assets/monster-violet.png');
 
     }
@@ -12,7 +12,7 @@ class Tableau06 extends Tableau{
         let largeur=64*2;
         this.stars=this.physics.add.group();
         for(let posX=largeur/2;posX<largeur*7;posX+=largeur){
-            this.stars.create(posX ,0,"rubis");
+            this.stars.create(posX ,0,"star");
         }
         this.stars.children.iterate(function (child) {
             child.setBounce(1);

@@ -14,9 +14,10 @@ class MonstreVolant extends ObjetEnnemi{
         this.setDisplaySize(64,64);
 
         //on réduit un peu la zone de hit
-        this.setBodySize(this.body.width,this.body.height);
-        this.setOffset(150, 250);
-
+        /*this.setBodySize(this.body.width,this.body.height);
+        this.setOffset(150, 250);*/
+        this.body.setSize(1400,1500);
+        this.setDepth(10);
         //définir les propriétés que l'on va utiliser dans notre animation
 
         // X
@@ -60,7 +61,7 @@ class MonstreVolant extends ObjetEnnemi{
                 from: this.minX,
                 to:this.maxX,
                 duration: 10*1000,
-                ease: 'Circ.easeInOut',
+                ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1,
                 flipX:true,

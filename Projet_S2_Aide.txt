@@ -1,0 +1,137 @@
+pour les plateformes plus petites que du 64x64 ou différentes d'un carré, on fait comme pour les plateformes carrées et on ajoute un setBodySize (la ligne qui gère la taille de a hitbox) dans le for each platform dans le tableau du niveau (comme pour les étoiles)
+
+Coder les tirs des créatures tireurs
+coder le sytsème de pointsde vie
+
+probleme graphique les tuiles sonttrop petites pour ne pas que ça pixellise !
+
+pendant le tween de l'anim de la tp, désactiver la ligne de collision avec les monstres et les plateformes verticales
+
+Les DASHS : Penser à faire une anim pour le dash et la TP
+
+Ajouter une décélération et une accélération
+l'accélération du dash se fait directement en joouant avec la physique de phaser (première piste : accelerateTo)
+pareil pour la décélération
+
+Pour les dashs, on multiplie la vélocité par 3 par ex pendant 0.5 secondes quand on appuie sur un bouton
+(brieux a fait sur le pixel art platformer un bouton qui fait dasher son perso, regarder le code : https://github.com/Brieux/plate-formmeur/commit/a8f160756fa3b1855b36cd115e566ddac1f5dbb3)
+(loic a aussi fait un truc pour stomper quand on est en l'air)
+
+accélération et décélération en début et fin de course/dash
+-> quand on appuie sur le bouton de dash, la vitesse augmente progressivement puis décélère progressivement (surtout la décélération plus longue que l'accélération)
+propriété physique gravity X dans la doc du moteur physique de phaser
+vitese progressive : velocityX = 100 en un certains temps avec une certaine slope (exponentielle par ex)
+fouiller les propriétés physiques du moteur permet peut être de ne pas le coder
+
+Pour appuyer sur des boutons, on a l'exemple du gamepad dans le code et aussi des entrées des flèches directionnelles 
+
+La TELEPORTATION :
+
+téléportation (FEEDBACK) : long à faire -> les effets graphiques, la transition dans la map, timer ça correctement
+ajouter un delay entre le moement ou on appuie sur le bouton de tp et le momement ou le perso se tp (laisse le temps de lire une animation aussi)
+
+Time.event dans phaser pour un timer (peut être pour un cooldown aussi)
+Timed.event (voir code de gregoire pour l'intro de son animation) à réutiliser pour les cooldown
+
+
+Les lumières se codent... c'est pas du graphisme pur
+
+
+travailler sur le feeling des mouvements 
+
+changer la caméra pour qu'elle se centre sur l'écran plutôt que sur le personnage elle ne varie plus en hauteur -> fait
+
+comment garder la direction gauche ou droite en fonction de setvelocityX pour afficher le sprtie à gauche s'il se déplaçait vers la gauche et de même pour la droite au lieu de toout le temps se tourner vers la droit
+
+ajouter une animation de stance quand le personnage est immobile : au lieu d'appeler 'turn' quand setvelocityX = 0; on met une nouvelle spritesheet avec l'anim de stance en disant de lire les frames 0 à x par exemple
+
+webGL pour des effets mais très dur de faire ça (permet de discuter directement avec la carte graphique)
+
+
+intégrer les effets visuels : 
+
+le son : on ajoute les sons dans create puis dans chaque fonction dans laquelle se passe l'action liée au son en question, on ajoute le son .play dedans
+.stop pour le son pour le faire arrêter de jouer
+
+
+
+Tiled : tiled layer dans tileset pour les claques (comme photoshop)
+exporter en JSON dans le dossier tiled dans assets de platformer pour le lire par phaser
+
+
+dessiner des trucs dans tiled dans phaser et importer dans phaser (voir le tuto stackabuse pour savoir comment importer le tiled dans phaser)
+le background
+le sol
+et les plateformes
+
+pour passer en mode gomme : appuyer sur la touche E
+
+pourpousser des objets : 
+this.stars = this.physics.add.group({
+            allowGravity: true,
+            immovable: false, --------------------------> ici (pas sûr)
+            bounceY:1
+
+
+Pour les sons de tp et dashs : 
+enregistrer des sons de frottements de rideaux/sols pour évoquer le glisser, avec des mouvements/frottements de tissus 
+
+A voir pour les tp si on peut aller en que à droite et à gauche ou aussi en haut et en bas et en diagonalemais difficile à coder peut être ?
+
+laisser un tout petit délai pas dérengeant juste avant la TP pour permettre de jouer une courte animation de quelques images (genre 4) se faire avant que le personnage ne se tp 
+pour pouvoir synchroniser l'animation avec l'action
+
+Pour déclencher une nouvelle anim en fonction d'une action déclenchée par un bouton; tester ça :
+On met dans la même boucle de l'action This.anims.play(l'animation en question/spritesheet);
+
+
+pour déclencher une nouvelle musique à un endroit spécifique :
+if (this.player.posX>=1500px){
+this.song.play(un nouveau morceau);
+}
+
+Peut être essayer de faire trembler la caméra/l'écran un tout petit peu (très léger) quand on dash ou se tp pour rajouter des feedbacks (différent d'ailleurs si c'est pour le dassh ou la tp)
+
+les rayons de lumières 'statiques' ambiants du décor peuvent être animés en faisant juste une spritesheet qui boucle sur elle même comme pour donner un effet d'ondulation de la lumière ou comme un rideau qui ondule grâce au vent.
+
+
+les monstres doivent collider avec les plateformes
+
+
+coder un système de points de vie
+
+
+INSPIRATIONS DES ANIMS :
+
+site pour les anims : https://blog.studiominiboss.com/pixelart
+dash est le numéro : 62
+tout en bas
+run est le numéro : 4
+smoke animation : 3 
+un mouvement de cape : 5
+electricity animation : 7
+animation d'effet spectrale/holographique : 8
+anim fluidité de particules : 12
+
+sur instagram; Penusbmic fait de bonnes animations de TP et de dash aussi (le renard, le chaman vert et le bonhomme au pinceau)
+
+
+easing phaser : courbes d'accélération librairie JavaScript : jsApp
+https://greensock.com/ease-visualizer/
+
+velocityX associé à tween (comme monsterFly)
+fonction mathématique lerp fonctonne
+
+tween pour phaser pour les easing pour jouer l'accélération du dash du perso
+http://phaser.io/examples/v3/view/tweens/paused-tween
+
+
+
+
+penser aux instruments narratif/narrative means du cours de narrative design pour savoir comment intégrer la narrationdans le niveau du plateformer
+les événements scriptés : simples à coder comme dire quand on arrive a la coordonnée x = 1500px -> lancerune musique/vidéo ou faire bouger un monstre etc...
+sert pour faire apparaitre un texte quand on arrive devant la stèle par exemple
+
+pour les faire reprendre le code de checkpoint save
+pour enregistrer la position à un endroit 
+on fait ensuite un code pour dire quoi faire quand on arrive dans la zone du checkpoint sans pour autant faire un checkpoint (evenement scripté)

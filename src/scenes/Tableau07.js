@@ -2,7 +2,7 @@ class Tableau07 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('rubis', 'assets/rubis.png');
+        this.load.image('star', 'assets/rubis.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
         this.load.image('ground', 'assets/platform.png');
 
@@ -13,7 +13,7 @@ class Tableau07 extends Tableau{
         let largeur=64*2;
         this.stars=this.physics.add.group();
         for(let posX=largeur/2;posX<largeur*7;posX+=largeur){
-            let star=this.stars.create(posX ,100,"rubis");
+            let star=this.stars.create(posX ,100,"star");
             star.body.allowGravity=false;
             star.setCollideWorldBounds(true);
         }

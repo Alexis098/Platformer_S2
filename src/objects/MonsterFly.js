@@ -9,19 +9,21 @@ class MonsterFly extends ObjetEnnemi{
         super(scene, x, y, "monster-fly"); //on fait un srpite étendu, une déclinaisaon d'un sprite donc obligé de suivre cette syntaxe de phaser
         //pas de gravité
         this.body.allowGravity=false;
-
+        this.setOrigin(0,0);
         //gestion de la taille
-        this.setDisplaySize(64,64);
+        //this.setDisplaySize(64,64);
 
         //on réduit un peu la zone de hit
-        this.setBodySize(this.body.width,this.body.height);
-        this.setOffset(150, 250);
-
+        //this.setBodySize(this.body.width,this.body.height);
+        this.body.setSize(40,65);
+        this.setOffset(10, 8);
+        this.setDepth(10);
         //définir les propriétés que l'on va utiliser dans notre animation
+
 
         // X
         this.originalX=x;
-        this.minX=x+200;
+        this.minX=x+30;
         this.maxX=x-200;
 
         // Y
@@ -50,6 +52,16 @@ class MonsterFly extends ObjetEnnemi{
                     me.start();
                 }
             })
+        this.anims.create({
+            key: 'left',
+            frames: this.anims.generateFrameNumbers('enemy_ninja', { start: 0, end: 2 }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.anims.play('left', true);
+
+       
 
     }
 
@@ -59,16 +71,16 @@ class MonsterFly extends ObjetEnnemi{
             x: {
                 from: this.minX,
                 to:this.maxX,
-                duration: 10*1000,
+                duration: 10*200,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
-                repeat:-1,
+                repeat: -1,
                 flipX:true,
             },
             y: {
                 from: this.minY,
                 to:this.maxY,
-                duration: 500,
+                duration: 1000,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1
