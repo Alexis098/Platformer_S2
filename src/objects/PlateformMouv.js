@@ -21,6 +21,7 @@ class PlateformMouv extends ObjetPhysique{
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
 
+
         // X
         this.originalX=x;
         this.minX=x;

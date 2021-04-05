@@ -14,7 +14,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V001.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V002.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -93,7 +93,8 @@ class TableauTiledRenew extends Tableau{
         this.stars = this.physics.add.group({
             allowGravity: true,
             immovable: false,
-            bounceY:0
+            bounceY:0,
+            bounceX:1,
         });
         this.starsObjects = this.map.getObjectLayer('stars')['objects'];
         // On crée des étoiles pour chaque objet rencontré
@@ -101,6 +102,7 @@ class TableauTiledRenew extends Tableau{
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles', 'star');
         });
+
 
 
 
@@ -220,7 +222,8 @@ class TableauTiledRenew extends Tableau{
         this.physics.add.collider(this.stars, this.devant);
         //this.physics.add.collider(this.katanaMonstersObjects, this.devant);
         //si le joueur touche une étoile dans le groupe...
-        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
+        //this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
+        this.physics.add.collider(this.stars, this.player);
         //quand on touche la lave, on meurt
         this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
 

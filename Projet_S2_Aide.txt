@@ -1,4 +1,4 @@
-pour les plateformes plus petites que du 64x64 ou différentes d'un carré, on fait comme pour les plateformes carrées et on ajoute un setBodySize (la ligne qui gère la taille de a hitbox) dans le for each platform dans dans le tableau du niveau (comme pour les étoiles)
+pour les plateformes plus petites que du 64x64 ou différentes d'un carré, on fait comme pour les plateformes carrées et on ajoute un setBodySize (la ligne qui gère la taille de a hitbox) dans le for each platform dans le tableau du niveau (comme pour les étoiles)
 
 Coder les tirs des créatures tireurs
 coder le sytsème de pointsde vie
