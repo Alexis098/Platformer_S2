@@ -16,7 +16,7 @@ let config = {
     scene: [
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
-        new TableauLong("Sun Chaser"),
+        //new TableauLong("Sun Chaser"),
         new TableauTiledRenew("definitiveEdition"),
         //new TableauTiled("100x100"),
 
