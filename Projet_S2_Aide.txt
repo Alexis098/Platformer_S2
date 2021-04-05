@@ -3,6 +3,8 @@ pour les plateformes plus petites que du 64x64 ou différentes d'un carré, on f
 Coder les tirs des créatures tireurs
 coder le sytsème de pointsde vie
 
+empêcher de faire un dash quand on se tp et inversement
+
 probleme graphique les tuiles sonttrop petites pour ne pas que ça pixellise !
 
 pendant le tween de l'anim de la tp, désactiver la ligne de collision avec les monstres et les plateformes verticales
@@ -125,6 +127,8 @@ fonction mathématique lerp fonctonne
 tween pour phaser pour les easing pour jouer l'accélération du dash du perso
 http://phaser.io/examples/v3/view/tweens/paused-tween
 
+
+arborescence : Ecran titre -> cinématique ? -> niveau 1
 
 
 

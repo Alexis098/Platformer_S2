@@ -21,7 +21,7 @@ let config = {
         //new TableauTiled("100x100"),
 
 
-        new TableauZoo("Zoo"),
+        /*new TableauZoo("Zoo"),
         new Tableau00A("toto"),
         
         new Tableau00("Des étoiles"),
@@ -32,7 +32,7 @@ let config = {
         new Tableau05("Extend un tableau"),
         new Tableau06("Un monstre!"),
         new Tableau07("Un monstre volant!"),
-        new Tableau08("Un plateau qui sort du cadre"),
+        new Tableau08("Un plateau qui sort du cadre"),*/
 
     ],
     width: width,

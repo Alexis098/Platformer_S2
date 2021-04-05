@@ -246,6 +246,7 @@ class Tableau extends Phaser.Scene{
             else if(this.ptsVie>0){
                 this.ptsVie -= 1;
                 console.log('touché');
+                player.anims.play('player_jump');
             }
             else{
                 //le joueur est mort
@@ -271,6 +272,8 @@ class Tableau extends Phaser.Scene{
         }
 
     }
+
+
 
 
     /**
