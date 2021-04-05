@@ -1,3 +1,8 @@
+Il faut que les dashs et les TP aient une véritable utilité dans le niveau de jeu 
+les dashs permettent de passer des crevasses par ex imoossible à traverser avec des simple sauts
+les tp permettent de traverser des murs par ex
+
+
 pour les plateformes plus petites que du 64x64 ou différentes d'un carré, on fait comme pour les plateformes carrées et on ajoute un setBodySize (la ligne qui gère la taille de a hitbox) dans le for each platform dans le tableau du niveau (comme pour les étoiles)
 
 Coder les tirs des créatures tireurs

@@ -82,13 +82,16 @@ class Tableau extends Phaser.Scene{
     update(){
         super.update();
         this.player.move();
+
         //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash)){
             //this.player.anim();
             this.player.dash();
             console.log('appuyer sur a');
+
         }
+
 
         //comme pour le dash
         //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée

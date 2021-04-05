@@ -11,6 +11,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         //this.boutonDash;
         //this.temps = 0;
 
+
         this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
         this.setOffset(0, 0);
 
@@ -158,6 +159,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     //Le reste des fonctions dash et teleportation se trouve dans le tableau avec la fonction move pour appeler la fonction dans le tableau
     dash() {
+        //this.scene.time.addEvent({ delay: 100, callback: this.invu, callbackScope: this, loop: true });
+        //this.scene.time.addEvent({ delay: 600, callback: this.vulne, callbackScope: this, loop: true });
         console.log('dash');
         this.posX = this.x;
         this.posY = this.y;
@@ -197,9 +200,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
-    truc(){
-        this.body.enable=false;
-    }
+
 
     animDroite(){//tween pour l'avancement progressif du dash
         this.scene.tweens.add({
@@ -242,7 +243,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             paused: true*/
         });
 
-        //this.time.events(Phaser.Timer.SECOND * 2, truc, this);
+
 
         console.log('ease sine');
     }
@@ -270,6 +271,13 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             //this.setAccelerationX(1000)
             console.log('TP à droite');
         }
+    }
+
+    invu(){
+        this.body.enable=false;
+    }
+    vulne(){
+        this.body.enable=true;
     }
 
 }
