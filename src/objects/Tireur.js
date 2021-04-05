@@ -7,7 +7,8 @@ class Tireur extends ObjetEnnemi{
      */
     constructor(scene, x, y) { //constructor est l'équivalent de Create dans une classe
         super(scene, x, y, "tireur");
-
+        this.dir = 1;
+        this.isAlive = true;
 
         this.body.allowGravity=true;
         //this.setBodySize(this.body.width,this.body.height);
@@ -18,7 +19,7 @@ class Tireur extends ObjetEnnemi{
         this.setBounce(0);
 
         this.setDepth(10);
-        scene.time.addEvent({ delay: 5000, callback: this.test, callbackScope: this, loop: true });
+        scene.time.addEvent({ delay: 1000, callback: this.test, callbackScope: this, loop: true });
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
 
@@ -44,6 +45,8 @@ class Tireur extends ObjetEnnemi{
     }*/
 
 
+
+
     test(){
         /*this.time.addEvent({
             delay: 5000,
@@ -53,15 +56,36 @@ class Tireur extends ObjetEnnemi{
             loop: true
         })*/
         //merci Loïc !
-        //if (this.scene.player.x > this.x - 600 && this.scene.player.x < this.x + 600){
-            //if (this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25){
+        if(this.isAlive) {
+            if (this.scene.player.x > this.x - 600 && this.scene.player.x < this.x + 600 && this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25) {
+                this.vivant();
+                this.pos();
                 //this.shotSound.play({volume:.5});
-        this.projo = new Projectile(this.scene, this.x, this.y+30,'projo')/*.setVelocityX(1*this.dir)*/;
-           //}
-        //}
+                this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocityX(150 * this.dir);
+
+
+            }
+        }
     }
 
+    vivant() {
+        if (this.body.touching.up && this.isAlive) {
+            //this.scene.player.setVelocityY(-400);
+            //this.killEffect();
+            //this.disableBody(true, true);
+            this.isAlive = false;
+            console.log('tireur mort');
+        }
+    }
 
-
+    pos(){
+        if (this.x < this.scene.player.x)
+        {
+            this.dir = 1;
+        }
+        else if (this.x > this.scene.player.x)
+        {
+            this.dir = -1;
+        }
+    }
 }
-
