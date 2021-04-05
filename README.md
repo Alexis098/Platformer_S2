@@ -1,5 +1,5 @@
 
-https://alexis098.github.io/Platformer/
+https://alexis098.github.io/Platformer_S2/
 
 http://localhost/platformer/
 
