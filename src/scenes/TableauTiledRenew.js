@@ -40,7 +40,6 @@ class TableauTiledRenew extends Tableau{
 
         this.projectile();
 
-
         //on en aura besoin...
         //let ici=this;
 
@@ -251,10 +250,6 @@ class TableauTiledRenew extends Tableau{
 
         this.restoreCheckPoint();
 
-
-
-
-
     }
 
     projectile(){
@@ -340,6 +335,7 @@ class TableauTiledRenew extends Tableau{
     update(){
         super.update();
         this.moveParallax();
+
 
         //optimisation
         //teste si la caméra a bougé

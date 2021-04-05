@@ -5,7 +5,7 @@ class Projectile extends ObjetEnnemi {
         this.setBounce(0);
         this.setVelocityX(160);
         this.setDepth(1000);
-        this.body.setSize(35,50);
+        this.body.setSize(15,30);
 
         this.originalX=x;
         this.minX=x;

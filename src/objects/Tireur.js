@@ -18,6 +18,7 @@ class Tireur extends ObjetEnnemi{
         this.setBounce(0);
 
         this.setDepth(10);
+        scene.time.addEvent({ delay: 5000, callback: this.test, callbackScope: this, loop: true });
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
 
@@ -41,7 +42,25 @@ class Tireur extends ObjetEnnemi{
     /*set directionX(value){
         this._directionX=value;
     }*/
-    
+
+
+    test(){
+        /*this.time.addEvent({
+            delay: 5000,
+            callback: ()=>{
+                this.bullet = new Projectile(this.world,this.x, this.y-15,'projo').setVelocityX(250);
+            },
+            loop: true
+        })*/
+        //merci Loïc !
+        //if (this.scene.player.x > this.x - 600 && this.scene.player.x < this.x + 600){
+            //if (this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25){
+                //this.shotSound.play({volume:.5});
+        this.projo = new Projectile(this.scene, this.x, this.y+30,'projo')/*.setVelocityX(1*this.dir)*/;
+           //}
+        //}
+    }
+
 
 
 }

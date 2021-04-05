@@ -3,7 +3,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         super(scene, x, y, "player")
         scene.add.existing(this)
         scene.physics.add.existing(this)
-
         this.setCollideWorldBounds(true)
         this.setBounce(0.3);
         this.setGravityY(700)
@@ -198,6 +197,10 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
+    truc(){
+        this.body.enable=false;
+    }
+
     animDroite(){//tween pour l'avancement progressif du dash
         this.scene.tweens.add({
             targets: this,
@@ -239,6 +242,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             paused: true*/
         });
 
+        //this.time.events(Phaser.Timer.SECOND * 2, truc, this);
 
         console.log('ease sine');
     }

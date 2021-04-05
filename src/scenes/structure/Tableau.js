@@ -89,6 +89,7 @@ class Tableau extends Phaser.Scene{
             this.player.dash();
             console.log('appuyer sur a');
         }
+
         //comme pour le dash
         //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
         if (Phaser.Input.Keyboard.JustDown(this.boutonTelep)){
