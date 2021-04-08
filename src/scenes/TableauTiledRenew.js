@@ -14,7 +14,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V002.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V003.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -38,7 +38,7 @@ class TableauTiledRenew extends Tableau{
     create() {
         super.create();
 
-        this.projectile();
+        //this.projectile();
 
         //on en aura besoin...
         //let ici=this;

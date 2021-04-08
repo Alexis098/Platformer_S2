@@ -1,11 +1,13 @@
 class Player extends Phaser.Physics.Arcade.Sprite{
+
     constructor(scene, x, y) {
         super(scene, x, y, "player")
         scene.add.existing(this)
         scene.physics.add.existing(this)
         this.setCollideWorldBounds(true)
-        this.setBounce(0.3);
+        this.setBounce(0.1);
         this.setGravityY(700)
+        //this.body.allowGravity=true;
         this.setFriction(1,1);
         this.sens = 1; //variable globale car elle est utilisée pour le sens du personnage affectant plusieurs fonctions, intégrer la fonction dans la fonction directement fait qu'elle ne sera pas prise en compte avec la deuxième fonction nécessaire pour ça
         //this.boutonDash;
@@ -58,8 +60,17 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this._directionX=0;
         this._directionY=0;
 
+        /*import{gsap} from "gsap";
+        import{CustomEase} from "gsap/CustomEase";*/
+
+        /*gsap.registerPlugin(CustomEase);
+        CustomEase.create("jump", "M0,0,C0.294,0,0.283,1,0.5,1,0.712,1,0.698,0,1,0");*/
+
 
     }
+
+
+
 
     set directionX(value){
         this._directionX=value;
@@ -85,6 +96,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         /*var posX = this.x; // / 64;
         var posY = this.y;*/
         //let sens = 1;
+
 
         switch (true){
             case this._directionX<0:
@@ -117,9 +129,16 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
         if(this._directionY<0){ //gère la hauteur du saut du perso
-            //this.anims.play('jump', true);
+            this.jump();//fonction gérant l'anim de saut
+
             if(this.body.blocked.down || this.body.touching.down){
-                this.setVelocityY(-500);
+                //this.setVelocityY(-500);
+                this.scene.tweens.add({
+                    targets: this,
+                    y: '-=110',
+                    ease: 'Power2',
+                    duration: 400,
+                })
             }
 
             /*if(this.body.touching.down || this.body.touching.platforms){
@@ -130,6 +149,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
         }
+
+
 
 
         /*dash(){ // la vitesse est la pour le dash //target est la cible du dash
@@ -157,6 +178,11 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
+    //joue l'anim de saut
+    jump(){
+        this.anims.play('jump', true);
+    }
+
     //Le reste des fonctions dash et teleportation se trouve dans le tableau avec la fonction move pour appeler la fonction dans le tableau
     dash() {
         //this.scene.time.addEvent({ delay: 100, callback: this.invu, callbackScope: this, loop: true });
@@ -164,8 +190,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         console.log('dash');
         this.posX = this.x;
         this.posY = this.y;
-        //this.dashUse = scene.input.keyboard.addKey('SPACE');
-
         var dir;
 
         if (this._directionX < 0 || this.sens===-1) { //sens===-1 pour dasher dans le sens ou on regarde quand on est immobile
@@ -206,12 +230,12 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.scene.tweens.add({
             targets: this,
 
-                x: '+=150',
+                x: '+=200',
                 //y: '-=150',
                 ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
             //aussi tester entre easuInOut - easeIn et easeOut
                 duration: 500,
-                delay: 50
+                //delay: 30
 
             /*x: '+=600',
             ease: 'Power2',
@@ -235,9 +259,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             targets: this,
 
             x: '-=200',
-            ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
+            ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
             duration: 500,
-            delay: 50
+            //delay: 30
             /*x: '+=600',
             ease: 'Power2',
             paused: true*/
@@ -263,22 +287,43 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             dir = this.posX + 5;
         }
         if (dir < this.posX) {
-            this.x=this.posX-100;
-            //this.setAccelerationX(-1000);
+            //this.x=this.posX-100;
+            this.scene.tweens.add({
+                targets: this,
+
+                x: '-=250',
+                ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
+                duration: 500,
+                delay: 50
+                /*x: '+=600',
+                ease: 'Power2',
+                paused: true*/
+            });
             console.log('TP à gauche');
         } else if (dir > this.posX) {
-            this.x=this.posX+100;
-            //this.setAccelerationX(1000)
+            //this.x=this.posX+100;
+            this.scene.tweens.add({
+                targets: this,
+
+                x: '+=250',
+                ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
+                duration: 500,
+                delay: 50
+                /*x: '+=600',
+                ease: 'Power2',
+                paused: true*/
+            });
             console.log('TP à droite');
         }
     }
 
-    invu(){
+    /*invu(){
         this.body.enable=false;
     }
+
     vulne(){
         this.body.enable=true;
-    }
+    }*/
 
 }
 

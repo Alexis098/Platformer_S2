@@ -7,9 +7,13 @@ class Tableau extends Phaser.Scene{
      *
      * @param {String} key identifiant de la scène à jouer
      */
+
     constructor(key) {
         super(key);
         this.ptsVie=5;
+
+
+
 
     }
 
@@ -82,12 +86,14 @@ class Tableau extends Phaser.Scene{
     update(){
         super.update();
         this.player.move();
-
+        this.hitFall();
         //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash)){
             //this.player.anim();
             this.player.dash();
+            //gravityDash() permet de supprimer la gravité le temps du dash pour ne pas retomber trop vite
+            this.gravityDash();
             console.log('appuyer sur a');
 
         }
@@ -99,6 +105,7 @@ class Tableau extends Phaser.Scene{
             //tentative de delai avant la tp de 1 seconde
             //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
             this.player.teleportation();
+            this.invincibleTP();
             console.log('appuyer sur z');
         }
 
@@ -174,9 +181,26 @@ class Tableau extends Phaser.Scene{
         player.anims.play('turn');
         this.song.stop();
         this.scene.restart();
-
-
     }
+
+    hitFall(){
+        if(this.player.y>=599){
+            console.log("tombé");
+            this.physics.pause();
+            this.player.setTint(0xff0000);
+            this.player.anims.play('turn');
+            this.song.stop();
+            this.respawnTime();
+            //this.ptsVie-=1; //pas nécessaire on recommence à un checkpoint
+            //console.log(this.ptsVie);
+        }
+    }
+
+    respawnTime(){
+        this.scene.restart();
+    }
+
+
 
     /**
      * Quand on touche un monstre
@@ -250,10 +274,12 @@ class Tableau extends Phaser.Scene{
                 player.directionY=500;
             } else{
                 if(this.ptsVie>0){
+                    this.invincible();
                     this.ptsVie -= 1;
                     console.log('touché');
                     console.log(this.ptsVie);
                     player.anims.play('player_jump');
+
                 }
                 //le joueur est mort
                 else if (this.ptsVie<=0) {
@@ -281,6 +307,44 @@ class Tableau extends Phaser.Scene{
             }
         }
 
+    }
+    //trouver un moyen de rendre le perso mobile pendant cette invulnérabilité
+    //invulnérable pendant un court instant quand on est touché par un ennemi
+    invincible(){
+        this.player.body.enable = false//mettre ici le codequi rend invulnérable
+        this.time.addEvent({
+            delay: 500,
+            callback: ()=>{
+                this.player.body.enable = true;//mettre ici le code qui rend invulnérable de nouveau
+            },
+            loop: false
+        })
+    }
+
+    //permettre le tween de tp tout en restant invulnérable pendant l'anim, on peut tout traverser comme ça
+    invincibleTP(){
+        this.player.body.enable = false//mettre ici le codequi rend invulnérable
+        this.player.alpha=0.01;
+        this.time.addEvent({
+            delay: 600,
+            callback: ()=>{
+                this.player.body.enable = true;//mettre ici le code qui rend invulnérable de nouveau
+                this.player.alpha=1;
+            },
+            loop: false
+        })
+    }
+
+    //gravityDash() permet de supprimer la gravité le temps du dash pour ne pas retomber trop vite
+    gravityDash(){
+        this.player.body.allowGravity=false;
+        this.time.addEvent({
+            delay: 600,
+            callback: ()=>{
+                this.player.body.allowGravity=true;
+            },
+            loop: false
+        })
     }
 
 
