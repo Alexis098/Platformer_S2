@@ -23,6 +23,9 @@ class Tireur extends ObjetEnnemi{
         scene.time.addEvent({ delay: 1000, callback: this.test, callbackScope: this, loop: true });
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
+        //le tireur peut de nouveau tirer après qu'on l'ait touché
+        scene.time.addEvent({ delay: 8000, callback: this.mort, callbackScope: this, loop: true });
+
 
 
         // X
@@ -57,16 +60,23 @@ class Tireur extends ObjetEnnemi{
             },
             loop: true
         })*/
-        //merci Loïc !
+
         this.vivant();
         this.pos();
 
         if(this.isAlive) {
             if (this.scene.player.x > this.x - 300 && this.scene.player.x < this.x + 300 /*&& this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25*/) {
                 //this.shotSound.play({volume:.5});
-                this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocityX(150 * this.dir);
+                if(this.scene.player.y>this.y){
+                    this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocityX(150 * this.dir);
+                }
+                else if(this.scene.player.y<this.y){
+                    this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocity(150 * this.dir, -150);
+                }
+
             }
         }
+
         /*if(this.projo.x>this.x+300){
             console.log('destroyyyyy');
             this.projo.destroy();
@@ -83,6 +93,13 @@ class Tireur extends ObjetEnnemi{
             console.log('tireur mort');
         }
 
+    }
+
+    mort(){
+        if(this.isAlive==false){
+            this.isAlive=true;
+            console.log('vivant');
+        }
     }
 
     pos(){

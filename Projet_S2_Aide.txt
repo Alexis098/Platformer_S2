@@ -2,6 +2,46 @@ Il faut que les dashs et les TP aient une véritable utilité dans le niveau de 
 les dashs permettent de passer des crevasses par ex impossible à traverser avec des simple sauts
 les tp permettent de traverser des murs par ex
 
+FAIRE LELEVEL DESIGN DU NIVEAU !
+
+checker la résolution du jeu (c'est toujours 896x448 dans le gdd on peut pas faire autre chose)
+
+les monstres ne sont pas tuables mais neutralisables pendant un certain temps en désactivant leur body : body.enable=false; avec callback
+on pourrait les soigner en les touchant positivement ? 
+On peut les blesser donc mais pas les tuer car notre perso n'est pas du genre à tuer. (on évite le probleme de natan drake d'uncharted)
+Faire en sorte que quand on saute sur la tête de 3 monstres on perd et on recommence le niveau
+le ciel s'assombrit au fur et à mesure qu'on tue des monstres 
+variable nbMonstre par ex et dans hitmonster dans la boucle du monster.isDead, nbMonstre +=1;
+dans une boucle if ailleurs, 
+if(nbMonstre=1){
+	this.anim.play('truc');ici, on joue une spritesheet du ciel qui change 
+}
+if(nbMonstre=2){
+	this.anim.play('truc');ici, on joue une spritesheet du ciel s'assombrit encore plus
+}
+if(nbMonstre=3){ 
+this.anim.play('truc'); devient encore plus noir
+scene.restart; avec un delay pour laisser l'anim se faire avant de restart;
+}
+
+PENSER A FAIRE DES ICONES DE PTS DE VIE (coeurs ou tete de lumel ?) ET DES FEEDBACKS VISUELS QUAND ON SE FAIT TOUCHER !! (pour les dash aussi et TP etc...)
+graphisme deplateformes et des checkpoints!
+
+pour voir les vies qui diminue dans le hud, on fait 5 images avec 1 coeur, puis 2 coeurs, etc...
+on fait ensuite if(ptsVie==5){
+this.load.image('5pv.png');
+}
+etc pour les 5 points de vie
+
+artwork concept art pour l'écran d'accueil animé si possible (donc fournir le psd dans le cas échéant)-> celui de la planete antagoniste d'alexandra
+
+	tester les tirs de tireur en diagonale aussi 
+	donc si lumel.y>tireur.y alors projectile.setVelocity(100,100); par ex pour tirer en ahut a droite
+	faire flipX sur le tireur en fonction de la pos de lumel par rapport au tireur
+
+
+
+
 
 POUR DU GAME OVER : this.transition = this.time.delayedCall(4000, function(){this.scene.start('gameOver')}, [], this);  // delay in ms
 
@@ -152,3 +192,15 @@ sert pour faire apparaitre un texte quand on arrive devant la stèle par exemple
 pour les faire reprendre le code de checkpoint save
 pour enregistrer la position à un endroit 
 on fait ensuite un code pour dire quoi faire quand on arrive dans la zone du checkpoint sans pour autant faire un checkpoint (evenement scripté)
+
+
+pour importer des anim/spritesheets :
+on importe dans le tableau structure laspritesheet 
+on l'apelle dans l'objet 
+on lui dit quelles frames lire etpour quelle fonction 
+
+
+
+if (this.player.X>this.platform.x){
+this.player.setVelocityX(0);
+}

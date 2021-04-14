@@ -11,6 +11,8 @@ class Tableau extends Phaser.Scene{
     constructor(key) {
         super(key);
         this.ptsVie=5;
+        this.verif=1;
+        this.verifTP=1;
 
 
 
@@ -87,26 +89,60 @@ class Tableau extends Phaser.Scene{
         super.update();
         this.player.move();
         this.hitFall();
+
         //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
-        if (Phaser.Input.Keyboard.JustDown(this.boutonDash)){
+        if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
             //this.player.anim();
             this.player.dash();
+
             //gravityDash() permet de supprimer la gravité le temps du dash pour ne pas retomber trop vite
-            this.gravityDash();
+            //this.gravityDash();
             console.log('appuyer sur a');
+            //cooldown de 700ms
+            this.verif=0;
+            this.time.addEvent({
+                delay: 700,
+                callback: ()=>{
+                    this.verif=1;//mettre ici le code qui rend invulnérable de nouveau
+                    //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
+                },
+                loop: false
+            })
 
         }
 
 
         //comme pour le dash
         //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
-        if (Phaser.Input.Keyboard.JustDown(this.boutonTelep)){
+        if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif==1 && this.verifTP==1){
             //tentative de delai avant la tp de 1 seconde
             //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
             this.player.teleportation();
             this.invincibleTP();
+            this.player.alpha=0.5;
             console.log('appuyer sur z');
+            //cooldown pour le dash empeche l'utilisation en même temps
+            this.verif=0;
+            this.time.addEvent({
+                delay: 700,
+                callback: ()=>{
+                    this.verif=1;//mettre ici le code qui rend invulnérable de nouveau
+                    //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
+                },
+                loop: false
+            })
+            //cooldown propre à la TPde 3secs
+            this.verifTP=0;
+            this.time.addEvent({
+                delay: 3000,
+                callback: ()=>{
+                    this.verifTP=1;//mettre ici le code qui rend invulnérable de nouveau
+                    //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
+                    this.player.alpha=1;
+                },
+                loop: false
+            })
         }
 
 
@@ -265,20 +301,32 @@ class Tableau extends Phaser.Scene{
 
             ){
                 ui.gagne();
-                monster.isDead=true; //ok le monstre est mort
-                monster.disableBody(true,true);//plus de collisions
-                this.saigne(monster,function(){
-                    //à la fin de la petite anim...ben il se passe rien :)
+                monster.body.enable = false//mettre ici le codequi rend invulnérable
+                //this.player.anims.play('right', true);//essayer de faire jouer une anim quand on prend un coup
+                this.time.addEvent({
+                    delay: 1500,
+                    callback: ()=>{
+                        monster.body.enable = true;//mettre ici le code qui rend invulnérable de nouveau
+                        //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
+                    },
+                    loop: false
                 })
+                /*monster.isDead=true; //ok le monstre est mort
+                monster.disableBody(true,true);//plus de collisions*/
+
+                /*this.saigne(monster,function(){
+                    //à la fin de la petite anim...ben il se passe rien :)
+                })*/
                 //notre joueur rebondit sur le monstre
                 player.directionY=500;
+                player.setVelocity(-300);
             } else{
                 if(this.ptsVie>0){
                     this.invincible();
                     this.ptsVie -= 1;
                     console.log('touché');
                     console.log(this.ptsVie);
-                    player.anims.play('player_jump');
+
 
                 }
                 //le joueur est mort
@@ -312,10 +360,12 @@ class Tableau extends Phaser.Scene{
     //invulnérable pendant un court instant quand on est touché par un ennemi
     invincible(){
         this.player.body.enable = false//mettre ici le codequi rend invulnérable
+        //this.player.anims.play('right', true);//essayer de faire jouer une anim quand on prend un coup
         this.time.addEvent({
             delay: 500,
             callback: ()=>{
                 this.player.body.enable = true;//mettre ici le code qui rend invulnérable de nouveau
+                //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
             },
             loop: false
         })
@@ -336,7 +386,7 @@ class Tableau extends Phaser.Scene{
     }
 
     //gravityDash() permet de supprimer la gravité le temps du dash pour ne pas retomber trop vite
-    gravityDash(){
+    /*gravityDash(){
         this.player.body.allowGravity=false;
         this.time.addEvent({
             delay: 600,
@@ -345,7 +395,9 @@ class Tableau extends Phaser.Scene{
             },
             loop: false
         })
-    }
+    }*/
+
+
 
 
 

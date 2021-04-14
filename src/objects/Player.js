@@ -60,11 +60,11 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this._directionX=0;
         this._directionY=0;
 
-        /*import{gsap} from "gsap";
+       /*import{gsap} from "gsap";
         import{CustomEase} from "gsap/CustomEase";*/
 
-        /*gsap.registerPlugin(CustomEase);
-        CustomEase.create("jump", "M0,0,C0.294,0,0.283,1,0.5,1,0.712,1,0.698,0,1,0");*/
+        //gsap.registerPlugin(CustomEase);
+        //CustomEase.create("jump", "M0,0,C0.294,0,0.283,1,0.5,1,0.712,1,0.698,0,1,0");
 
 
     }
@@ -132,14 +132,20 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.jump();//fonction gérant l'anim de saut
 
             if(this.body.blocked.down || this.body.touching.down){
-                //this.setVelocityY(-500);
-                this.scene.tweens.add({
+                this.setVelocityY(-500);
+                /*this.scene.tweens.add({
                     targets: this,
                     y: '-=110',
                     ease: 'Power2',
+                    //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.282,0.674,0.44,0.822,0.522,0.899,0.618,0.943,0.694,0.969,0.73,0.981,0.785,0.993,0.785,0.993,1.056,1.07,0.998,0,1,0"),
                     duration: 400,
-                })
+                })*/
+                /*gsap.to(this, {y: this.y-150, ease:
+                        CustomEase.create("custom", "M0,0,C0.202,0,0.298,1,0.5,1,0.706,1,0.795,0.766,0.99,0.736,0.99,0.819,0.999,0.2,1,0.2")});
+                */
             }
+
+
 
             /*if(this.body.touching.down || this.body.touching.platforms){
                 this.anims.play('jump', false);
@@ -206,6 +212,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
             this.animDroite();
+
             //this.setVelocityX(3000);
             //this.setAccelerationX(1000)
             console.log('dash à droite');
@@ -280,7 +287,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         //this.dashUse = scene.input.keyboard.addKey('SPACE');
 
         var dir;
-
+        //petit rebondaprès la TP pour du feedbacket enhainer avec du mouvement
+        this.setVelocityY(-100);
         if (this._directionX < 0 || this.sens===-1) {
             dir = this.posX - 5;
         } else if (this._directionX > 0 || this.sens===1) {

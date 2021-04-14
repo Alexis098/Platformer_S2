@@ -14,13 +14,14 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V003.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V008.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
         this.load.image('monster-katana', 'assets/monster_katana.png');
         this.load.image('tireur', 'assets/tireur.png');
         this.load.image('projo', 'assets/projo.png');
+
 
         // ---------Les étoiles-----------
         this.load.image('stars', 'assets/soleil.png');
@@ -55,7 +56,7 @@ class TableauTiledRenew extends Tableau{
         let hauteurDuTableau=this.map.heightInPixels;
         this.physics.world.setBounds(0, 0, largeurDuTableau,  hauteurDuTableau);
         this.cameras.main.setBounds(0, 0, largeurDuTableau, hauteurDuTableau);
-        this.cameras.main.startFollow(this.player, true, 0.08, 0.2);
+        this.cameras.main.startFollow(this.player, true, 0.08, 0.02);
 
         //---- ajoute les plateformes simples ----------------------------
 
@@ -72,6 +73,7 @@ class TableauTiledRenew extends Tableau{
         //exemple ici https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
         this.devant.setCollisionByProperty({ collides: true }); //sert aussi pour déterminer quelle tuile joue quel son quand on marche dessus par ex a voir comment ça marche vraiment par contre
         //this.lave.setCollisionByProperty({ collides: true });
+
 
         // 2 manière la plus simple (là où il y a des tiles ça collide et sinon non)
         //this.devant.setCollisionByExclusion(-1, true);
@@ -95,10 +97,6 @@ class TableauTiledRenew extends Tableau{
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles', 'star');
         });
-
-
-
-
 
         //----------les monstres volants (objets tiled) ---------------------
 
@@ -200,6 +198,7 @@ class TableauTiledRenew extends Tableau{
             this.sys.canvas.height,
             'night'
         );
+
         this.sky.setOrigin(0,0);
         this.sky2.setOrigin(0,0);
         this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
@@ -335,7 +334,6 @@ class TableauTiledRenew extends Tableau{
     update(){
         super.update();
         this.moveParallax();
-
 
         //optimisation
         //teste si la caméra a bougé
