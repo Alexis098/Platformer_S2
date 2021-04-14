@@ -82,9 +82,7 @@ class TableauTiledRenew extends Tableau{
         // 3 Permet d'utiliser l'éditeur de collision de Tiled...mais ne semble pas marcher pas avec le moteur de physique ARCADE, donc oubliez cette option :(
         //this.map.setCollisionFromCollisionGroup(true,true,this.plateformesSimples);
 
-        //----------les étoiles (objets) ---------------------
-
-        // c'est un peu plus compliqué, mais ça permet de maîtriser plus de choses...
+        //----------les objets déplaçables ---------------------
         this.stars = this.physics.add.group({
             allowGravity: true,
             immovable: false,
@@ -97,6 +95,7 @@ class TableauTiledRenew extends Tableau{
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles', 'star');
         });
+        
 
         //----------les monstres volants (objets tiled) ---------------------
 
@@ -114,7 +113,7 @@ class TableauTiledRenew extends Tableau{
 
         ici.katanaMonstersObjects = ici.map.getObjectLayer('katanaMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
         ici.katanaMonstersObjects.forEach(monsterObject => {
-            let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            let monster=new Patrouilleur(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
             this.physics.add.collider(monster, this.devant);
@@ -155,7 +154,7 @@ class TableauTiledRenew extends Tableau{
         //----------les monstres terrestres (objets tiled) ---------------------
         /*this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
         this.katanaMonstersObjects.forEach(monsterObject => {
-            let monster=new MonsterOrange(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
+            let monster=new Patrouilleur(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
             monstersContainer.add(monster);
         });*/
 

@@ -1,4 +1,4 @@
-class Tireur extends ObjetEnnemi{
+class Patrouilleur extends ObjetEnnemi{
     /**
      *
      * @param {Tableau} scene
@@ -6,13 +6,15 @@ class Tireur extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) { //constructor est l'équivalent de Create dans une classe
-        super(scene, x, y, "tireur");
+        super(scene, x, y, "enemy");
+
+
         this.dir = 1;
         this.isAlive = true;
 
         this.body.allowGravity=true;
         //this.setBodySize(this.body.width,this.body.height);
-        this.body.setSize(35,64);
+        //this.body.setSize(35,64);
         this.setOrigin(0,0);
         //this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
@@ -20,7 +22,7 @@ class Tireur extends ObjetEnnemi{
 
         this.setDepth(10);
         //execute une commande au bout de 1 seconde loop permet de lancer l'action en boucle à la manière d'un update pour savoir à chaque frame si il faut lancer la ligne de code
-        scene.time.addEvent({ delay: 2000, callback: this.test, callbackScope: this, loop: true });
+        scene.time.addEvent({ delay: 1000, callback: this.test, callbackScope: this, loop: true });
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         //le tireur peut de nouveau tirer après qu'on l'ait touché
@@ -66,22 +68,24 @@ class Tireur extends ObjetEnnemi{
 
         if(this.isAlive) {
             if (this.scene.player.x > this.x - 300 && this.scene.player.x < this.x + 300 /*&& this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25*/) {
-                //this.shotSound.play({volume:.5});
-                if(this.scene.player.y>this.y){
-                    this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocityX(150 * this.dir);
-                }
-                else if(this.scene.player.y<this.y){
-                    this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocity(150 * this.dir, -150);
-                }
+                //this.runPatSound.play({volume:0.5});
+                //if(this.scene.player.y>this.y){
+                    this.setVelocityX(150 * this.dir);
+                    if(this.scene.player.y < this.y){
+                        this.setVelocityY(-150);
+                    }
+                //}
+                /*else if(this.scene.player.y<this.y){
+                    this.setVelocityY(200);
+                }*/
 
+            }
+            else{
+                this.setVelocityX(0);
             }
         }
 
-        /*if(this.projo.x>this.x+300){
-            console.log('destroyyyyy');
-            this.projo.destroy();
-            this.projo.x=this.x;
-        }*/
+
     }
 
     vivant() {
@@ -90,7 +94,7 @@ class Tireur extends ObjetEnnemi{
             //this.killEffect();
             //this.disableBody(true, true);
             this.isAlive = false;
-            console.log('tireur mort');
+            console.log('patrouilleur HS');
         }
 
     }
@@ -98,7 +102,7 @@ class Tireur extends ObjetEnnemi{
     mort(){
         if(this.isAlive==false){
             this.isAlive=true;
-            console.log('vivant');
+            console.log('Patrouilleur actif');
         }
     }
 

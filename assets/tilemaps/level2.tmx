@@ -1093,7 +1093,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="stars">
-  <object id="5" gid="18" x="896" y="576" width="64" height="64"/>
+  <object id="5" gid="18" x="1792" y="448" width="64" height="64"/>
  </objectgroup>
  <layer id="8" name="derriere" width="50" height="10">
   <data encoding="base64">
@@ -1105,15 +1105,15 @@
  </objectgroup>
  <objectgroup id="4" name="checkPoints">
   <object id="11" name="checkPoints_1" gid="32" x="832" y="576" width="64" height="64"/>
-  <object id="12" name="checkPoints_2" gid="32" x="1984" y="512" width="64" height="64"/>
+  <object id="12" name="checkPoints_" gid="32" x="1984" y="512" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="5" name="flyingMonsters">
   <object id="8" gid="72" x="640" y="320" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="6" name="katanaMonsters">
-  <object id="7" gid="72" x="1216" y="512" width="64" height="64"/>
+  <object id="7" gid="72" x="448" y="512" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="7" name="PlateformMouv">
-  <object id="6" gid="2" x="1600" y="512" width="64" height="64"/>
+  <object id="6" gid="2" x="1600" y="448" width="64" height="64"/>
  </objectgroup>
 </map>

@@ -234,6 +234,9 @@ class Tableau extends Phaser.Scene{
 
     respawnTime(){
         this.scene.restart();
+        //réinitialise les cooldownsdesdashs et TP à la mort
+        this.verif=1;
+        this.verifTP=1;
     }
 
 
@@ -374,12 +377,12 @@ class Tableau extends Phaser.Scene{
     //permettre le tween de tp tout en restant invulnérable pendant l'anim, on peut tout traverser comme ça
     invincibleTP(){
         this.player.body.enable = false//mettre ici le codequi rend invulnérable
-        this.player.alpha=0.01;
+        //this.player.alpha=0.01;
         this.time.addEvent({
             delay: 600,
             callback: ()=>{
                 this.player.body.enable = true;//mettre ici le code qui rend invulnérable de nouveau
-                this.player.alpha=1;
+                //this.player.alpha=1;
             },
             loop: false
         })
