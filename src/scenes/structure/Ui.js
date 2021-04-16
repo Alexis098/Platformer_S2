@@ -21,6 +21,11 @@ class Ui extends Phaser.Scene{
             fill: '#fff'
         });
 
+        this._tutoText = this.add.text(16, 50   , 'Dash : A Téléportaiton : Z', {
+            font:'15px "Mondwest"', //ancienne police : Hanalei Fill
+            fill: '#fff'
+        });
+
         /**
          * Le champ texte avec la clé du tableau
          * @type {Phaser.GameObjects.Text}
