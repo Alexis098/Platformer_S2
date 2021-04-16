@@ -348,6 +348,8 @@ class Tableau extends Phaser.Scene{
                             me.scene.restart();
                         })
                         this.song.stop();
+                        this.verif=1;
+                        this.verifTP=1;
                         me.scene.restart();
 
                     }

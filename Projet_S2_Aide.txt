@@ -24,6 +24,8 @@ this.anim.play('truc'); devient encore plus noir
 scene.restart; avec un delay pour laisser l'anim se faire avant de restart;
 }
 
+
+
 PENSER A FAIRE DES ICONES DE PTS DE VIE (coeurs ou tete de lumel ?) ET DES FEEDBACKS VISUELS QUAND ON SE FAIT TOUCHER !! (pour les dash aussi et TP etc...)
 graphisme deplateformes et des checkpoints!
 
@@ -32,6 +34,8 @@ on fait ensuite if(ptsVie==5){
 this.load.image('5pv.png');
 }
 etc pour les 5 points de vie
+
+
 
 artwork concept art pour l'écran d'accueil animé si possible (donc fournir le psd dans le cas échéant)-> celui de la planete antagoniste d'alexandra
 
