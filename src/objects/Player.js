@@ -132,14 +132,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.jump();//fonction gérant l'anim de saut
 
             if(this.body.blocked.down || this.body.touching.down){
-                this.setVelocityY(-500);
-                /*this.scene.tweens.add({
+                //this.setVelocityY(-500);
+                this.scene.tweens.add({
                     targets: this,
                     y: '-=110',
                     ease: 'Power2',
                     //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.282,0.674,0.44,0.822,0.522,0.899,0.618,0.943,0.694,0.969,0.73,0.981,0.785,0.993,0.785,0.993,1.056,1.07,0.998,0,1,0"),
                     duration: 400,
-                })*/
+                })
                 /*gsap.to(this, {y: this.y-150, ease:
                         CustomEase.create("custom", "M0,0,C0.202,0,0.298,1,0.5,1,0.706,1,0.795,0.766,0.99,0.736,0.99,0.819,0.999,0.2,1,0.2")});
                 */
