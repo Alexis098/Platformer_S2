@@ -3,6 +3,7 @@ class Ui extends Phaser.Scene{
     {
         super({ key: 'ui', active: true });
         window.ui=this;
+        this.pv=5;
     }
     preload(){
         this.load.image('ui/full-screen-icon', 'assets/ui/full-screen.png');
@@ -22,6 +23,10 @@ class Ui extends Phaser.Scene{
         });
 
         this._tutoText = this.add.text(16, 50   , 'Dash : A Téléportaiton : Z', {
+            font:'15px "Mondwest"', //ancienne police : Hanalei Fill
+            fill: '#fff'
+        });
+        this._pvText = this.add.text(16, 85   , '...', {
             font:'15px "Mondwest"', //ancienne police : Hanalei Fill
             fill: '#fff'
         });
@@ -98,6 +103,13 @@ class Ui extends Phaser.Scene{
     {
         this.score+=points;
         this._scoreText.setText('Score: ' + this.score);
+    }
+    ptv(points=1){
+        this.pv-=points;
+        this._pvText.setText('Points de Vie : ' + this.pv);
+        if(this.pv<1){
+            this.pv=5;
+        }
     }
     update(){
         if(Tableau.current){

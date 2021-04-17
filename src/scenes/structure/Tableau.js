@@ -325,6 +325,7 @@ class Tableau extends Phaser.Scene{
                 player.setVelocity(-300);
             } else{
                 if(this.ptsVie>0){
+                    ui.ptv();
                     this.invincible();
                     this.ptsVie -= 1;
                     console.log('touché');
