@@ -16,8 +16,11 @@ On neutralise les monstres pendant un certain temps quand on leur saute dessus (
 
 A faire :
 animations
+
 explications ingame du scénario 
+
 des collisions propres pour les dashs et téléportations
+
 un saut plus propre qu'une parabole
 intégrer les graphismes des ICA
 faire un HUD
