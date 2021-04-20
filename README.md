@@ -22,7 +22,7 @@ A faire :
 - intégrer les graphismes des ICA
 - faire un HUD
 - améliorer les feedbacks des dashs et téléportations
-- le level design
+- le level design (premier jet en ligne mais brouillon)
 - écran d'accueil
 - rajouter des sons
 - afficher des boites de dialogues quand on arrive dans un endroit spécifique
