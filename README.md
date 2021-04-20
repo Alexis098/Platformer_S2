@@ -28,6 +28,6 @@ A faire :
 - écran d'accueil
 - rajouter des sons
 - afficher des boites de dialogues quand on arrive dans un endroit spécifique
-- comprendre pourquoi les images des calques objets de tiled comme les checkpoints n'apparaissent pas
+- faire des plate-formes mouvantes
 
 
