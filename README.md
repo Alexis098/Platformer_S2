@@ -12,6 +12,7 @@ Fait:
 - Le décompte de points de vie
 - Un cooldown pour empêcher le spam des dashs et des téléportation et leur utilisation en simultané
 - On neutralise les monstres pendant un certain temps quand on leur saute dessus (on ne les tue pas)
+- checkpoints
 
 
 A faire :
