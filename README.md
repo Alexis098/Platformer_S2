@@ -13,6 +13,7 @@ Fait:
 - Un cooldown pour empêcher le spam des dashs et des téléportation et leur utilisation en simultané
 - On neutralise les monstres pendant un certain temps quand on leur saute dessus (on ne les tue pas)
 - checkpoints
+- on meurt quandon tombe dans un trou
 
 
 A faire :
