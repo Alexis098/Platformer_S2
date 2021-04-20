@@ -29,5 +29,6 @@ A faire :
 - rajouter des sons
 - afficher des boites de dialogues quand on arrive dans un endroit spécifique
 - faire des plate-formes mouvantes
+- faire un saut qui joue une animation et sans avoir à maintenir le bouton
 
 
