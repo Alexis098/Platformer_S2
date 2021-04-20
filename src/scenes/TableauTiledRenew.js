@@ -24,7 +24,11 @@ class TableauTiledRenew extends Tableau{
 
 
         // ---------Les étoiles-----------
-        this.load.image('stars', 'assets/soleil.png');
+        this.load.image('star', 'assets/truc.png');
+
+        this.load.image('checkPoint', 'assets/soleil.png');
+
+        this.load.image('PlateformMouv', 'assets/plateform_rouge.png');
 
         // -----et puis aussi-------------
 
@@ -93,7 +97,7 @@ class TableauTiledRenew extends Tableau{
         // On crée des étoiles pour chaque objet rencontré
         this.starsObjects.forEach(starObject => {
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
-            let star = this.stars.create(starObject.x+32, starObject.y+32 , 'particles', 'star');
+            let star = this.stars.create(starObject.x+32, starObject.y+32 /*, 'particles'*/, 'star');
         });
         
 
@@ -144,7 +148,7 @@ class TableauTiledRenew extends Tableau{
         this.checkPointsObjects = this.map.getObjectLayer('checkPoints')['objects'];
         //on crée des checkpoints pour chaque objet rencontré
         this.checkPointsObjects.forEach(checkPointObject => {
-            let point=this.checkPoints.create(checkPointObject.x,checkPointObject.y/*,"particles","death-white"*/).setOrigin(0.5,1);
+            let point=this.checkPoints.create(checkPointObject.x,checkPointObject.y/*,"particles"*/,"checkPoint").setOrigin(0.5,1);
             point.blendMode=Phaser.BlendModes.COLOR_DODGE;
             point.checkPointObject=checkPointObject;
         });

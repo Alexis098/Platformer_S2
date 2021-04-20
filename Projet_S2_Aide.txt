@@ -1,8 +1,10 @@
+les graphismes sont bons, ils s'affichent et leur taille dépend de la taille du fichier initial. La plateforme mouvante a pris ces dimensionstoute seule, pareil pour l'étoile qui du coup apparait plus petite que les tuiles car bcp plus petite que du 64x64
+
 Il faut que les dashs et les TP aient une véritable utilité dans le niveau de jeu 
 les dashs permettent de passer des crevasses par ex impossible à traverser avec des simple sauts
 les tp permettent de traverser des murs par ex
 
-FAIRE LELEVEL DESIGN DU NIVEAU !
+FAIRE LE LEVEL DESIGN DU NIVEAU !
 
 checker la résolution du jeu (c'est toujours 896x448 dans le gdd on peut pas faire autre chose)
 
@@ -14,10 +16,10 @@ le ciel s'assombrit au fur et à mesure qu'on tue des monstres
 variable nbMonstre par ex et dans hitmonster dans la boucle du monster.isDead, nbMonstre +=1;
 dans une boucle if ailleurs, 
 if(nbMonstre=1){
-	this.anim.play('truc');ici, on joue une spritesheet du ciel qui change 
+	this.anim.play('truc'); ici, on joue une spritesheet du ciel qui change 
 }
 if(nbMonstre=2){
-	this.anim.play('truc');ici, on joue une spritesheet du ciel s'assombrit encore plus
+	this.anim.play('truc'); ici, on joue une spritesheet du ciel s'assombrit encore plus
 }
 if(nbMonstre=3){ 
 this.anim.play('truc'); devient encore plus noir
@@ -57,7 +59,7 @@ pour les plateformes plus petites que du 64x64 ou différentes d'un carré, on f
 	Coder les tirs des créatures tireurs
 	coder le système de points de vie (faire des frames d'invulnérabilité)
 
-empêcher de faire un dash quand on se tp et inversement(sorte de cooldown)
+	empêcher de faire un dash quand on se tp et inversement(sorte de cooldown)
 
 problème graphique les tuiles sont trop petites pour ne pas que ça pixellise !
 
@@ -157,7 +159,7 @@ les rayons de lumières 'statiques' ambiants du décor peuvent être animés en 
 les monstres doivent collider avec les plateformes
 
 
-coder un système de points de vie
+	coder un système de points de vie
 
 
 INSPIRATIONS DES ANIMS :
