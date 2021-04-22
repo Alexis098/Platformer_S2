@@ -37,6 +37,7 @@ class TableauTiledRenew extends Tableau{
         //on y trouve notre étoiles et une tête de mort
 
 
+
     }
 
 
@@ -229,7 +230,10 @@ class TableauTiledRenew extends Tableau{
          }, null, this);
 
 
+
+
         //--------- Z order -----------------------
+
 
         //on définit les z à la fin
         let z=1000; //niveau Z qui a chaque fois est décrémenté.

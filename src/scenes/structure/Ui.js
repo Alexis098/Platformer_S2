@@ -26,7 +26,7 @@ class Ui extends Phaser.Scene{
             font:'15px "Mondwest"', //ancienne police : Hanalei Fill
             fill: '#fff'
         });
-        this._pvText = this.add.text(16, 85   , '...', {
+        this._pvText = this.add.text(16, 85   , 'Points de Vie : 5', {
             font:'15px "Mondwest"', //ancienne police : Hanalei Fill
             fill: '#fff'
         });
@@ -109,6 +109,7 @@ class Ui extends Phaser.Scene{
         this._pvText.setText('Points de Vie : ' + this.pv);
         if(this.pv<1){
             this.pv=5;
+            this._pvText.setText('Points de Vie : ' + this.pv);
         }
     }
     update(){

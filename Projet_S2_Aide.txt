@@ -4,6 +4,8 @@ Il faut que les dashs et les TP aient une véritable utilité dans le niveau de 
 les dashs permettent de passer des crevasses par ex impossible à traverser avec des simple sauts
 les tp permettent de traverser des murs par ex
 
+faire une anim quand je me fais toucher par un monstre
+
 FAIRE LE LEVEL DESIGN DU NIVEAU !
 
 checker la résolution du jeu (c'est toujours 896x448 dans le gdd on peut pas faire autre chose)

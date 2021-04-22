@@ -51,6 +51,14 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 60, frameHeight: 80  }
         );
         this.load.audio('track', 'assets/son/kamakura.mp3');
+
+        this.load.image('5vies', 'assets/5vies.png');
+        this.load.image('4vies', 'assets/4vies.png');
+        this.load.image('3vies', 'assets/3vies.png');
+        this.load.image('2vies', 'assets/2vies.png');
+        this.load.image('1vies', 'assets/1vies.png');
+        this.load.image('0vies', 'assets/0vies.png');
+
     }
 
     create(){
@@ -83,12 +91,47 @@ class Tableau extends Phaser.Scene{
         //TP DU PLAYER
         this.boutonTelep = this.input.keyboard.addKey('Z');
 
+        this.cinqVies=this.add.sprite(600, 40, "5vies");
+        this.cinqVies.setDepth(1000);
+        this.cinqVies.setScrollFactor(0);
 
+
+
+
+    }
+    imgVies(){
+        if(this.ptsVie==4){
+            //OU this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
+            this.quatreVies=this.add.sprite(600, 40, "4vies");
+            this.quatreVies.setDepth(1000);
+            this.quatreVies.setScrollFactor(0);
+        }
+        if(this.ptsVie==3){
+            this.troisVies=this.add.sprite(600, 40, "3vies");
+            this.troisVies.setDepth(1000);
+            this.troisVies.setScrollFactor(0);
+        }
+        if(this.ptsVie==2){
+            this.deuxVies=this.add.sprite(600, 40, "2vies");
+            this.deuxVies.setDepth(1000);
+            this.deuxVies.setScrollFactor(0);
+        }
+        if(this.ptsVie==1){
+            this.uneVies=this.add.sprite(600, 40, "1vies");
+            this.uneVies.setDepth(1000);
+            this.uneVies.setScrollFactor(0);
+        }
+        if(this.ptsVie==0){
+            this.zeroVies=this.add.sprite(600, 40, "0vies");
+            this.zeroVies.setDepth(1000);
+            this.zeroVies.setScrollFactor(0);
+        }
     }
     update(){
         super.update();
         this.player.move();
         this.hitFall();
+        this.imgVies();
 
         //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
@@ -149,6 +192,8 @@ class Tableau extends Phaser.Scene{
 
 
     }
+
+
 
     /**
      *
@@ -324,7 +369,7 @@ class Tableau extends Phaser.Scene{
                 player.directionY=500;
                 player.setVelocity(-300);
             } else{
-                if(this.ptsVie>0){
+                if(this.ptsVie>=2){
                     ui.ptv();
                     this.invincible();
                     this.ptsVie -= 1;
@@ -334,7 +379,7 @@ class Tableau extends Phaser.Scene{
 
                 }
                 //le joueur est mort
-                else if (this.ptsVie<=0) {
+                else if (this.ptsVie<2) {
                     console.log('MORT');
                     if (!me.player.isDead) {
                         this.blood.setDepth(1000);
