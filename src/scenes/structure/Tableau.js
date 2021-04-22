@@ -101,27 +101,31 @@ class Tableau extends Phaser.Scene{
     }
     imgVies(){
         if(this.ptsVie==4){
-            //OU this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
+            //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.quatreVies=this.add.sprite(600, 40, "4vies");
             this.quatreVies.setDepth(1000);
             this.quatreVies.setScrollFactor(0);
         }
         if(this.ptsVie==3){
+            //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.troisVies=this.add.sprite(600, 40, "3vies");
             this.troisVies.setDepth(1000);
             this.troisVies.setScrollFactor(0);
         }
         if(this.ptsVie==2){
+            //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.deuxVies=this.add.sprite(600, 40, "2vies");
             this.deuxVies.setDepth(1000);
             this.deuxVies.setScrollFactor(0);
         }
         if(this.ptsVie==1){
+            //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.uneVies=this.add.sprite(600, 40, "1vies");
             this.uneVies.setDepth(1000);
             this.uneVies.setScrollFactor(0);
         }
         if(this.ptsVie==0){
+            //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.zeroVies=this.add.sprite(600, 40, "0vies");
             this.zeroVies.setDepth(1000);
             this.zeroVies.setScrollFactor(0);
