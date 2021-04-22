@@ -14,7 +14,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V011.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V013.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -36,6 +36,8 @@ class TableauTiledRenew extends Tableau{
         //atlas de texture généré avec https://free-tex-packer.com/app/
         //on y trouve notre étoiles et une tête de mort
 
+        //this.load.video('dialogue1','assets/videos/dialogue1.mp4');
+        this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
 
 
     }
@@ -154,6 +156,27 @@ class TableauTiledRenew extends Tableau{
             point.checkPointObject=checkPointObject;
         });
 
+        this.videos = this.physics.add.staticGroup();
+        this.videosObjects = this.map.getObjectLayer('videos')['objects'];
+        //on crée des checkpoints pour chaque objet rencontré
+        this.videosObjects.forEach(videosObject => {
+            let point=this.videos.create(videosObject.x,videosObject.y/*,"particles"*/,"videos").setOrigin(0.5,1);
+            point.blendMode=Phaser.BlendModes.COLOR_DODGE;
+            point.videosObject=videosObject;
+        });
+        this.video=this.add.video(5050, 425, 'dialogue1');
+        this.video.setDepth(1000);
+
+        //Fin du niveau - zone menant à la suite du jeu
+        // this.niveaux = this.physics.add.staticGroup();
+        // this.niveauxObjects = this.map.getObjectLayer('niveaux')['objects'];
+        // //on crée des checkpoints pour chaque objet rencontré
+        // this.niveauxObjects.forEach(niveauObject => {
+        //     let point=this.niveaux.create(niveauObject.x,niveauObject.y/*,"particles"*/,"checkPoint").setOrigin(0.5,1);
+        //     point.blendMode=Phaser.BlendModes.COLOR_DODGE;
+        //     point.niveauObject=niveauObject;
+        // });
+
 
 
         //----------les monstres terrestres (objets tiled) ---------------------
@@ -229,6 +252,10 @@ class TableauTiledRenew extends Tableau{
              ici.saveCheckPoint(checkPoint.checkPointObject.name);
          }, null, this);
 
+        this.physics.add.overlap(this.player, this.videos, function(player, videos)
+        {
+            ici.enigmeNiveau(videos.videosObject.name);
+        }, null, this);
 
 
 
@@ -334,13 +361,30 @@ class TableauTiledRenew extends Tableau{
 
 
 
+    //rajouter la condition de réussir l'énigme pour passer à la suite
+    finNiveau(){
+        if(this.player.x>=this.map.widthInPixels-100 /*&& condition de réussite de l'énigme*/){
+            //PLUS SIMPLE -> this.ecranFin=this.add.sprite(600, 40, "ecran de fin"); loaded au préalable dans preload avec this.load.image('');
+            //this.song.stop();
+            this.win();
+        }
+    }
 
+    enigmeNiveau(){
+        //if(this.player.x>=3000 /*&& condition de réussite de l'énigme*/){
 
+            //console.log('popVideo');
+            //this.vidDial.autoplay = true;
+            this.video.play();
+        //}
+    }
 
 
     update(){
         super.update();
         this.moveParallax();
+        this.finNiveau();
+
 
         //optimisation
         //teste si la caméra a bougé

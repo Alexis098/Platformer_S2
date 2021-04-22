@@ -1,5 +1,8 @@
 let width=14*64; //896;
 let height=7*64; //448;
+// let width=17*64; //896;
+// let height=8*64; //448;
+
 
 let config = {
     type: Phaser.AUTO,
@@ -9,14 +12,15 @@ let config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 100*3 },
-            debug: false,
+            debug: true,
         }
     },
     scene: [
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
-        //new TableauLong("Sun Chaser"),
+
         new TableauTiledRenew("definitiveEdition"),
+        new TableauLong("Sun Chaser"),
         //new TableauTiled("100x100"),
 
 
