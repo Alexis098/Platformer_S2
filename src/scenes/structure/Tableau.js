@@ -143,6 +143,8 @@ class Tableau extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
             //this.player.anim();
             this.player.dash();
+
+            //CAMERASHAKING au moment de faire le dash
             this.time.addEvent({
                 delay: 210,
                 callback: ()=>{
@@ -199,10 +201,11 @@ class Tableau extends Phaser.Scene{
                 },
                 loop: false
             })
+            //Flash au moment de faire la TP
             this.time.addEvent({
-                delay: 450,
+                delay: 400,
                 callback: ()=>{
-                    this.cameras.main.flash(100);
+                    this.cameras.main.flash(500);
                 },
                 loop: false
             })

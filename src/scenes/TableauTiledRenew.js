@@ -164,8 +164,9 @@ class TableauTiledRenew extends Tableau{
         //     point.blendMode=Phaser.BlendModes.COLOR_DODGE;
         //     point.videosObject=videosObject;
         // });
-        this.vidEnigme=this.video=this.add.video(5050, 425, 'dialogue1');
-        this.video.setDepth(1000);
+        this.vidEnigme=this.add.video(5050, 425, 'dialogue1');
+        this.vidEnigme.setDepth(1000);
+
         //AUTRE VIDEO
         //this.autreVideo=this.add.video(3000, 425, 'truc');
         //this.autreVideo.setDepth(1000);
@@ -375,13 +376,26 @@ class TableauTiledRenew extends Tableau{
 
     enigmeNiveau(){
         //if(this.player.x>=3000 /*&& condition de réussite de l'énigme*/){
-        if(this.player.x>5000){
+        if(this.player.x>=5000){
+            this.vidEnigme.alpha=1;
             this.vidEnigme.play();
-        }
-            //console.log('popVideo');
-            //this.vidDial.autoplay = true;
 
-        //}
+
+
+            // this.time.addEvent({
+            //     delay: 500,
+            //     callback: ()=>{
+            //         this.vidEnigme.pause(true);
+            //         console.log('pause');
+            //     },
+            //     loop: false
+            // })
+        }
+        if(this.player.x<5000){
+            this.vidEnigme.alpha=0;
+            console.log('alpha');
+        }
+
     }
 
 
