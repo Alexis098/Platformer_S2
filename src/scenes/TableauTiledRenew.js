@@ -156,16 +156,19 @@ class TableauTiledRenew extends Tableau{
             point.checkPointObject=checkPointObject;
         });
 
-        this.videos = this.physics.add.staticGroup();
-        this.videosObjects = this.map.getObjectLayer('videos')['objects'];
-        //on crée des checkpoints pour chaque objet rencontré
-        this.videosObjects.forEach(videosObject => {
-            let point=this.videos.create(videosObject.x,videosObject.y/*,"particles"*/,"videos").setOrigin(0.5,1);
-            point.blendMode=Phaser.BlendModes.COLOR_DODGE;
-            point.videosObject=videosObject;
-        });
-        this.video=this.add.video(5050, 425, 'dialogue1');
+        // this.videos = this.physics.add.staticGroup();
+        // this.videosObjects = this.map.getObjectLayer('videos')['objects'];
+        // //on crée des checkpoints pour chaque objet rencontré
+        // this.videosObjects.forEach(videosObject => {
+        //     let point=this.videos.create(videosObject.x,videosObject.y/*,"particles"*/,"videos").setOrigin(0.5,1);
+        //     point.blendMode=Phaser.BlendModes.COLOR_DODGE;
+        //     point.videosObject=videosObject;
+        // });
+        this.vidEnigme=this.video=this.add.video(5050, 425, 'dialogue1');
         this.video.setDepth(1000);
+        //AUTRE VIDEO
+        //this.autreVideo=this.add.video(3000, 425, 'truc');
+        //this.autreVideo.setDepth(1000);
 
         //Fin du niveau - zone menant à la suite du jeu
         // this.niveaux = this.physics.add.staticGroup();
@@ -252,10 +255,10 @@ class TableauTiledRenew extends Tableau{
              ici.saveCheckPoint(checkPoint.checkPointObject.name);
          }, null, this);
 
-        this.physics.add.overlap(this.player, this.videos, function(player, videos)
-        {
-            ici.enigmeNiveau(videos.videosObject.name);
-        }, null, this);
+        // this.physics.add.overlap(this.player, this.videos, function(player, videos)
+        // {
+        //     ici.enigmeNiveau(videos.videosObject.name);
+        // }, null, this);
 
 
 
@@ -372,18 +375,23 @@ class TableauTiledRenew extends Tableau{
 
     enigmeNiveau(){
         //if(this.player.x>=3000 /*&& condition de réussite de l'énigme*/){
-
+        if(this.player.x>5000){
+            this.vidEnigme.play();
+        }
             //console.log('popVideo');
             //this.vidDial.autoplay = true;
-            this.video.play();
+
         //}
     }
+
+
 
 
     update(){
         super.update();
         this.moveParallax();
         this.finNiveau();
+        this.enigmeNiveau();
 
 
         //optimisation

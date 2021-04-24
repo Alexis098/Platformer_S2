@@ -131,6 +131,7 @@ class Tableau extends Phaser.Scene{
             this.zeroVies.setScrollFactor(0);
         }
     }
+
     update(){
         super.update();
         this.player.move();
@@ -142,6 +143,14 @@ class Tableau extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
             //this.player.anim();
             this.player.dash();
+            this.time.addEvent({
+                delay: 210,
+                callback: ()=>{
+                    this.cameras.main.shake(125, 0.002);
+                },
+                loop: false
+            })
+
 
             //gravityDash() permet de supprimer la gravité le temps du dash pour ne pas retomber trop vite
             //this.gravityDash();
@@ -187,6 +196,13 @@ class Tableau extends Phaser.Scene{
                     this.verifTP=1;//mettre ici le code qui rend invulnérable de nouveau
                     //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
                     this.player.alpha=1;
+                },
+                loop: false
+            })
+            this.time.addEvent({
+                delay: 450,
+                callback: ()=>{
+                    this.cameras.main.flash(100);
                 },
                 loop: false
             })
