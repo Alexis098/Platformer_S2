@@ -27,6 +27,7 @@ class Projectile extends ObjetEnnemi {
                 me.projo();
             }
         })*/
+
     }
 
     projo(){
@@ -42,7 +43,26 @@ class Projectile extends ObjetEnnemi {
                 //repeat: -1,
             }
         });
+
+
     }
+
+
+    //ne fonctionne pas il faudrait l'actualiser à chaque frame
+    //permet de détruire le projectile quand il dépasse une certaine distance
+    /*destru(){
+        if(this.x>this.projo.x+300 || this.x<this.x-300){
+            console.log('destroyyyyy');
+            this.destroy();
+            //this.projo.x=this.x;
+        }
+    }*/
+
+
+
+
+
+
 
     /*recurrence(){
         this.timedEvent = this.time.addEvent({ delay: 5000, callback: projo, callbackScope: this, loop: true });

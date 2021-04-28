@@ -1,5 +1,12 @@
 les graphismes sont bons, ils s'affichent et leur taille dépend de la taille du fichier initial. La plateforme mouvante a pris ces dimensionstoute seule, pareil pour l'étoile qui du coup apparait plus petite que les tuiles car bcp plus petite que du 64x64
 
+FAIRE LE GAMEPAD POUR POUVOIR JOUER SUR MOBILE (le prof en a fait un nouveau et mieux sur github)
+
+lesmissiles du tireur doivent s'autodétruire
+
+mettre le texte de l'énigme pour que ce soit jouable rapidement
+il faut des retours visuels qui différencieles dashs des TP pour montrer que l'on prend des coups avec le dash et pas la tp (majoritairement des anims à faire)
+
 Il faut que les dashs et les TP aient une véritable utilité dans le niveau de jeu 
 les dashs permettent de passer des crevasses par ex impossible à traverser avec des simple sauts
 les tp permettent de traverser des murs par ex
@@ -32,14 +39,14 @@ scene.restart; avec un delay pour laisser l'anim se faire avant de restart;
 
 
 
-PENSER A FAIRE DES ICONES DE PTS DE VIE (coeurs ou tete de lumel ?) ET DES FEEDBACKS VISUELS QUAND ON SE FAIT TOUCHER !! (pour les dash aussi et TP etc...)
+	PENSER A FAIRE DES ICONES DE PTS DE VIE (coeurs ou tete de lumel ?) ET DES FEEDBACKS VISUELS QUAND ON SE FAIT TOUCHER !! (pour les dash aussi et TP etc...)
 graphisme deplateformes et des checkpoints!
 
-pour voir les vies qui diminue dans le hud, on fait 5 images avec 1 coeur, puis 2 coeurs, etc...
-on fait ensuite if(ptsVie==5){
-this.load.image('5pv.png');
-}
-etc pour les 5 points de vie
+	pour voir les vies qui diminue dans le hud, on fait 5 images avec 1 coeur, puis 2 coeurs, etc...
+	on fait ensuite if(ptsVie==5){
+	this.load.image('5pv.png');
+	}
+	etc pour les 5 points de vie
 
 
 

@@ -27,7 +27,6 @@ class Tireur extends ObjetEnnemi{
         scene.time.addEvent({ delay: 8000, callback: this.mort, callbackScope: this, loop: true });
 
 
-
         // X
         /*this.originalX=x;
         this.minX=x;
@@ -69,19 +68,20 @@ class Tireur extends ObjetEnnemi{
                 //this.shotSound.play({volume:.5});
                 if(this.scene.player.y>this.y){
                     this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocityX(150 * this.dir);
+
                 }
+
                 else if(this.scene.player.y<this.y){
                     this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocity(150 * this.dir, -150);
                 }
 
             }
+
         }
 
-        /*if(this.projo.x>this.x+300){
-            console.log('destroyyyyy');
-            this.projo.destroy();
-            this.projo.x=this.x;
-        }*/
+
+
+
     }
 
     vivant() {
@@ -112,4 +112,8 @@ class Tireur extends ObjetEnnemi{
             this.dir = -1;
         }
     }
+
+
+
+
 }

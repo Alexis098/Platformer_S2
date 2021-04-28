@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"level1_V013.json"
+         "target":"level1_V015.json"
         }
     },
  "height":10,
@@ -172,16 +172,16 @@
          "name":"dalles",
          "objects":[
                 {
-                 "gid":4,
+                 "gid":46,
                  "height":64,
-                 "id":22,
+                 "id":23,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":64,
                  "x":5312,
-                 "y":576
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -295,7 +295,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":23,
+ "nextobjectid":24,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
@@ -733,7 +733,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
