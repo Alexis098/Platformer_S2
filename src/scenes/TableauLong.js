@@ -73,7 +73,7 @@ class TableauLong extends Tableau{
 
       //un groupe de plateformes statiques
       this.platforms = this.physics.add.staticGroup();
-      this.platforms.create(400, 450, 'ground');
+      this.platformzs.create(400, 450, 'ground');
       //this.platforms.create(500, 350, 'ground');
       this.platforms.create(600, 450, 'ground');
       //this.platforms.create(600, 250, 'ground');

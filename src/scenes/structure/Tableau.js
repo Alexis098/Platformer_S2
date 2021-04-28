@@ -137,9 +137,24 @@ class Tableau extends Phaser.Scene{
         this.player.move();
         this.hitFall();
         this.imgVies();
+        this.tp();
+        this.dsh();
 
         //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
+
+
+
+        //comme pour le dash
+        //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
+
+
+
+
+
+    }
+
+    dsh(){
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
             //this.player.anim();
             this.player.dash();
@@ -169,10 +184,9 @@ class Tableau extends Phaser.Scene{
             })
 
         }
+    }
 
-
-        //comme pour le dash
-        //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
+    tp(){
         if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif==1 && this.verifTP==1){
             //tentative de delai avant la tp de 1 seconde
             //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
@@ -210,12 +224,7 @@ class Tableau extends Phaser.Scene{
                 loop: false
             })
         }
-
-
-
-
     }
-
 
 
     /**
@@ -389,8 +398,8 @@ class Tableau extends Phaser.Scene{
                     //à la fin de la petite anim...ben il se passe rien :)
                 })*/
                 //notre joueur rebondit sur le monstre
-                player.directionY=500;
-                player.setVelocity(-300);
+                //player.directionY=500;
+                player.setVelocityY(-300);
             } else{
                 if(this.ptsVie>=2){
                     ui.ptv();

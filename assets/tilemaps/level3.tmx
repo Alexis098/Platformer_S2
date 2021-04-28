@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="85" height="10" tilewidth="64" tileheight="64" infinite="0" nextlayerid="12" nextobjectid="24">
  <editorsettings>
-  <export target="level1_V015.json" format="json"/>
+  <export target="level1_V017.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="kenny_simple_platformer" tilewidth="64" tileheight="64" tilecount="98" columns="14">
   <image source="../../../Platformer/assets/tilesets/platformPack_tilesheet.png" width="896" height="448"/>
@@ -1113,7 +1113,7 @@
   <object id="21" name="video_play" gid="33" x="4992" y="576" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="dalles">
-  <object id="23" gid="46" x="5312" y="512" width="64" height="64"/>
+  <object id="23" gid="46" x="5312" y="576" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="5" name="flyingMonsters">
   <object id="13" gid="72" x="4480" y="64" width="64" height="64"/>

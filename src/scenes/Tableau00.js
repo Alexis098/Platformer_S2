@@ -20,9 +20,22 @@ class Tableau00 extends Phaser.Scene{
                 }
                 this.game.scene.start(tableau);
                 this.scene.start("aventureBegining");*/
-                this.game.scene.start("TableauTiledRenew");
+                this.scene.start("TableauTiledRenew");
             })
         }, this);
+        this.input.on('pointerdown', function(pointer){
+            this.cameras.main.fadeOut(500, 0, 0, 0)
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+            {
+                /*if(Tableau.current){
+                    Tableau.current._destroy();
+                }
+                this.game.scene.start(tableau);
+                this.scene.start("aventureBegining");*/
+                this.scene.start("TableauTiledRenew");
+            })
+
+        },this);
         //this.image.setBodySize(0.5);
         //des étoiles
         /*this.star1=this.physics.add.sprite(200,100,"star");

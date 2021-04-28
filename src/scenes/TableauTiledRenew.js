@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V016.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V017.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -53,12 +53,16 @@ class TableauTiledRenew extends Tableau{
         super.create();
         this.compteur=0;
         //this.projectile();
-        this.img=this.add.image(5350,580,'dalle');
+/*
+        //this.img=this.add.sprite(5350,500,'dalle');
+        this.img = this.physics.add.staticGroup();
+        this.img.create(5350, 580, 'dalle');
+        //this.img.setOrigin(0,0);
         this.img.setDepth(1000);
         this.physics.add.collider(this.img, this.player);
         // this.img.setSize(64,64);
         //on en aura besoin...
-        //let ici=this;
+        //let ici=this;*/
 
         //--------chargement de la tile map & configuration de la scène-----------------------
 
@@ -112,19 +116,20 @@ class TableauTiledRenew extends Tableau{
             let star = this.stars.create(starObject.x+32, starObject.y+32 /*, 'particles'*/, 'star');
         });
 
-        this.dalles = this.physics.add.group({
-            allowGravity: false,
-            immovable: true,
-            bounceY:0,
-            bounceX:0,
-        });
-        this.dallesObjects = this.map.getObjectLayer('dalles')['objects'];
-        // On crée des étoiles pour chaque objet rencontré
-        this.dallesObjects.forEach(dalleObject => {
-            // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
-            let dalle = this.dalles.create(dalleObject.x+32, dalleObject.y+128 /*, 'particles'*/, 'dalle');
-        });
-        this.physics.add.collider(this.dalles, this.player);
+         this.dalles = this.physics.add.group({
+             allowGravity: false,
+             immovable: true,
+             bounceY:0,
+             bounceX:0,
+         });
+         this.dallesObjects = this.map.getObjectLayer('dalles')['objects'];
+         // On crée des étoiles pour chaque objet rencontré
+         this.dallesObjects.forEach(dalleObject => {
+             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
+             let dalle = this.dalles.create(dalleObject.x+32, dalleObject.y+16 /*, 'particles'*/, 'dalle');
+         });
+         this.physics.add.collider(this.dalles, this.player);
+         this.dalles.setDepth(1000);
 
 
 
@@ -392,23 +397,38 @@ class TableauTiledRenew extends Tableau{
     //rajouter la condition de réussir l'énigme pour passer à la suite
 
     finNiveau(){
-        if(this.player.x>=5300 && this.player.y>=500){
-            this.player.setVelocity(0,0);
-        }
-        if(this.player.x>=this.map.widthInPixels-100 && this.player.y>=500/*this.player.getBounds().bottom < this.dalles.getBounds().top+30 *//*&& condition de réussite de l'énigme*/){
+        /*if(this.player.x>5300 && this.player.y>500){
+            this.player.setVelocityX(0);
+            //this.player.x=5300;
+
+        }*/
+        if(this.player.x>=this.map.widthInPixels-100 && this.player.y>=510/*this.player.getBounds().bottom < this.img.getBounds().top+30 *//*&& condition de réussite de l'énigme*/){
             //PLUS SIMPLE -> this.ecranFin=this.add.sprite(600, 40, "ecran de fin"); loaded au préalable dans preload avec this.load.image('');
             //this.song.stop();
             this.compteur+=1;
-            this.img.y+=0.3;
-            this.player.body.velocity.y=0.2;
+            this.dalles.setVelocityY(10);
+            //this.player.body.velocity.y=0.2;
             console.log(this.compteur);
+
             if(this.compteur==250){
                 this.win();
             }
 
         }else{
-            this.compteur=0;
-            this.img.y=580;
+            if(this.compteur>0){
+                this.dalles.setVelocityY(-10);
+                this.compteur-=1;
+                if(this.compteur<=0){
+                    this.dalles.setVelocityY(0);
+                }
+                console.log(this.compteur);
+
+            }
+            //this.compteur=0;
+            //this.dalles.y=580;
+
+
+
         }
     }
 
