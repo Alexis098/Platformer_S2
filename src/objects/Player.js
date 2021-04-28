@@ -198,6 +198,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.posY = this.y;
         var dir;
 
+
         if (this._directionX < 0 || this.sens===-1) { //sens===-1 pour dasher dans le sens ou on regarde quand on est immobile
             dir = this.posX - 5;
         } else if (this._directionX > 0 || this.sens===1) {

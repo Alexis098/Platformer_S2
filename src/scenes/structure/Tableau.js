@@ -52,6 +52,9 @@ class Tableau extends Phaser.Scene{
         );
         this.load.audio('track', 'assets/son/kamakura.mp3');
 
+        this.load.audio('dashson', 'assets/son/dash.mp3');
+        this.load.audio('tpson', 'assets/son/tp2.mp3');
+
         this.load.image('5vies', 'assets/5vies.png');
         this.load.image('4vies', 'assets/4vies.png');
         this.load.image('3vies', 'assets/3vies.png');
@@ -158,12 +161,15 @@ class Tableau extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
             //this.player.anim();
             this.player.dash();
+            this.dashson = this.sound.add('dashson', {volume: 0.8})
+            this.dashson.play();
 
             //CAMERASHAKING au moment de faire le dash
             this.time.addEvent({
                 delay: 210,
                 callback: ()=>{
                     this.cameras.main.shake(125, 0.002);
+
                 },
                 loop: false
             })
@@ -190,6 +196,8 @@ class Tableau extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif==1 && this.verifTP==1){
             //tentative de delai avant la tp de 1 seconde
             //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
+            this.tpson = this.sound.add('tpson', {volume: 1.5})
+            this.tpson.play();
             this.player.teleportation();
             this.invincibleTP();
             this.player.alpha=0.5;
