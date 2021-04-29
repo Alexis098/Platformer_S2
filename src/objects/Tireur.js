@@ -23,8 +23,9 @@ class Tireur extends ObjetEnnemi{
         scene.time.addEvent({ delay: 2000, callback: this.test, callbackScope: this, loop: true });
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
-        //le tireur peut de nouveau tirer après qu'on l'ait touché
+        //le tireur peut de nouveau tirer après qu'on l'ai touché
         scene.time.addEvent({ delay: 8000, callback: this.mort, callbackScope: this, loop: true });
+
 
 
         // X
@@ -82,7 +83,10 @@ class Tireur extends ObjetEnnemi{
 
 
 
+
     }
+
+
 
     vivant() {
         if (this.body.touching.up && this.isAlive) {

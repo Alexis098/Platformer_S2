@@ -160,6 +160,7 @@ class Tableau extends Phaser.Scene{
     dsh(){
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
             //this.player.anim();
+            //this.player.setVelocityX(500);
             this.player.dash();
             this.dashson = this.sound.add('dashson', {volume: 0.8})
             this.dashson.play();
@@ -169,10 +170,10 @@ class Tableau extends Phaser.Scene{
                 delay: 210,
                 callback: ()=>{
                     this.cameras.main.shake(125, 0.002);
-
                 },
                 loop: false
             })
+
 
 
             //gravityDash() permet de supprimer la gravité le temps du dash pour ne pas retomber trop vite

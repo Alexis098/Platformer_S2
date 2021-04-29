@@ -140,6 +140,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                     //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.282,0.674,0.44,0.822,0.522,0.899,0.618,0.943,0.694,0.969,0.73,0.981,0.785,0.993,0.785,0.993,1.056,1.07,0.998,0,1,0"),
                     duration: 400,
                 })
+                this.body.setVelocityY(10);
                 /*gsap.to(this, {y: this.y-150, ease:
                         CustomEase.create("custom", "M0,0,C0.202,0,0.298,1,0.5,1,0.706,1,0.795,0.766,0.99,0.736,0.99,0.819,0.999,0.2,1,0.2")});
                 */
@@ -206,18 +207,30 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         }
 
         if (dir < this.posX) {
-            this.animGauche();
+
+            if (this._directionY<0){
+                this.animGaucheHaut();
+            }else{
+                this.animGauche();
+            }
             //this.setVelocityX(-3000);
             //this.setAccelerationX(-1000);
             console.log('dash à gauche');
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
-            this.animDroite();
+            if (this._directionY<0){
+                this.animDroiteHaut();
+            }else{
+                this.animDroite();
+
+            }
 
             //this.setVelocityX(3000);
             //this.setAccelerationX(1000)
             console.log('dash à droite');
         }
+
+
         //cooldown
         /*if (this.dashAvailable == false){
             //console.log("recharge"); //on attends
@@ -234,7 +247,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
     animDroite(){//tween pour l'avancement progressif du dash
-        this.scene.tweens.add({
+        //this.body.setVelocityX(4000);
+        this.tween=this.scene.tweens.add({
             targets: this,
 
                 x: '+=200',
@@ -244,10 +258,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 duration: 500,
                 //delay: 30
 
-            /*x: '+=600',
-            ease: 'Power2',
-            paused: true*/
+
         });
+
         console.log('ease sine');
 
         /*this.tween = this.tweens.add({
@@ -260,6 +273,19 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         /*this.input.once('A', function () {
             tween.play();
         });*/
+    }
+    animDroiteHaut(){
+        this.tween=this.scene.tweens.add({
+            targets: this,
+
+            x: '+=100',
+            y: '-=150',
+            ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
+            //aussi tester entre easuInOut - easeIn et easeOut
+            duration: 500,
+            //delay: 30
+        });
+        this.body.setVelocityY(10);
     }
     animGauche(){
         this.scene.tweens.add({
@@ -277,6 +303,21 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
         console.log('ease sine');
+    }
+    animGaucheHaut(){
+        this.tween=this.scene.tweens.add({
+            targets: this,
+
+            x: '-=100',
+            y: '-=150',
+            ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
+            //aussi tester entre easuInOut - easeIn et easeOut
+            duration: 500,
+            //delay: 30
+
+
+        });
+        this.body.setVelocityY(10);//ralenti la chute car application d'une vélocité plus petite que celle par défaut dans ce cas
     }
 
     teleportation() {

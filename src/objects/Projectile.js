@@ -3,7 +3,7 @@ class Projectile extends ObjetEnnemi {
         super(scene, x, y, "projo");
         this.body.allowGravity=false;
         this.setBounce(0);
-        this.setVelocityX(160);
+        //this.setVelocityX(160);
         this.setDepth(1000);
         this.body.setSize(15,30);
 
@@ -30,7 +30,7 @@ class Projectile extends ObjetEnnemi {
 
     }
 
-    projo(){
+    /*projo(){
         this.scene.tweens.add({
             targets: this,
             x: {
@@ -45,7 +45,7 @@ class Projectile extends ObjetEnnemi {
         });
 
 
-    }
+    }*/
 
 
     //ne fonctionne pas il faudrait l'actualiser à chaque frame

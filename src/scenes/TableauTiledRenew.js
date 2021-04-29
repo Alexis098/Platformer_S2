@@ -107,7 +107,8 @@ class TableauTiledRenew extends Tableau{
             allowGravity: true,
             immovable: false,
             bounceY:0,
-            bounceX:1,
+            bounceX:0.5,
+            drag:0.5,
         });
         this.starsObjects = this.map.getObjectLayer('stars')['objects'];
         // On crée des étoiles pour chaque objet rencontré
@@ -158,7 +159,7 @@ class TableauTiledRenew extends Tableau{
         ici.tireurMonstersObjects = ici.map.getObjectLayer('tireurMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
         ici.tireurMonstersObjects.forEach(monsterObject => {
             let monster=new Tireur(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
-            let projo=new Projectile(this,monsterObject.x,monsterObject.y);
+            //let projo=new Projectile(this,monsterObject.x,monsterObject.y);
             //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
             this.physics.add.collider(monster, this.devant);
