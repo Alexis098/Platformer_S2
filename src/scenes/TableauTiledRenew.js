@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V017.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V021.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -52,6 +52,7 @@ class TableauTiledRenew extends Tableau{
     create() {
         super.create();
         this.compteur=0;
+
         //this.projectile();
 /*
         //this.img=this.add.sprite(5350,500,'dalle');
@@ -83,7 +84,7 @@ class TableauTiledRenew extends Tableau{
         // this.solides = this.map.createLayer('solides', this.tileset, 0, 0);
         // this.lave = this.map.createLayer('lave', this.tileset, 0, 0);
         this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
-        this.devant = this.map.createLayer('Platforms', this.tileset, 0, 0);
+        this.devant = this.map.createLayer('Plateformes', this.tileset, 0, 0);
 
 
         //on définit les collisions, plusieurs méthodes existent:
@@ -101,6 +102,37 @@ class TableauTiledRenew extends Tableau{
 
         // 3 Permet d'utiliser l'éditeur de collision de Tiled...mais ne semble pas marcher pas avec le moteur de physique ARCADE, donc oubliez cette option :(
         //this.map.setCollisionFromCollisionGroup(true,true,this.plateformesSimples);
+        this.inZone=false;
+
+        let ici=this;
+        //PLATEFORMES
+        this.Platforms = this.physics.add.group({
+            allowGravity: false,
+            immovable: true,
+            bounceY:0,
+            bounceX:0,
+        });
+        this.PlatformsObjects = this.map.getObjectLayer('Platforms')['objects'];
+        // On crée des étoiles pour chaque objet rencontré
+        this.PlatformsObjects.forEach(PlatformsObject => {
+            // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
+            let Platforms = this.Platforms.create(PlatformsObject.x+32, PlatformsObject.y+16 /*, 'particles'*/, 'PlateformMouv');
+        });
+        //this.physics.add.collider(this.Platforms, this.player);
+
+        //this.physics.add.collider(this.Platforms, this.player);
+        this.physics.add.collider(this.Platforms, this.player, function () {
+
+        });
+
+
+
+
+
+
+
+
+
 
         //----------les objets déplaçables ---------------------
         this.stars = this.physics.add.group({
@@ -130,14 +162,14 @@ class TableauTiledRenew extends Tableau{
              let dalle = this.dalles.create(dalleObject.x+32, dalleObject.y+16 /*, 'particles'*/, 'dalle');
          });
          this.physics.add.collider(this.dalles, this.player);
-         this.dalles.setDepth(1000);
+
 
 
 
         //----------les monstres volants (objets tiled) ---------------------
 
         let monstersContainer=this.add.container();
-        let ici=this;//pour faire collider les monstres
+        //pour faire collider les monstres
         this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
         // On crée des monstres volants pour chaque objet rencontré
 
@@ -195,7 +227,7 @@ class TableauTiledRenew extends Tableau{
         //     point.videosObject=videosObject;
         // });
         this.vidEnigme=this.add.video(5050, 425, 'dialogue1');
-        this.vidEnigme.setDepth(1000);
+
 
         //AUTRE VIDEO
         //this.autreVideo=this.add.video(3000, 425, 'truc');
@@ -298,7 +330,10 @@ class TableauTiledRenew extends Tableau{
 
         //on définit les z à la fin
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
+        this.vidEnigme.setDepth(1000);
+        this.dalles.setDepth(1000);
         this.checkPoints.setDepth(1000);
+        this.Platforms.setDepth(1000);
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
 
@@ -318,6 +353,8 @@ class TableauTiledRenew extends Tableau{
         this.restoreCheckPoint();
 
     }
+
+
 
     projectile(){
         this.projo1=this.physics.add.sprite(200,400,"projo");
@@ -463,11 +500,18 @@ class TableauTiledRenew extends Tableau{
 
 
 
+
+
+
     update(){
         super.update();
         this.moveParallax();
         this.finNiveau();
         this.enigmeNiveau();
+
+
+
+
 
 
 

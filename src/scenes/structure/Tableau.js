@@ -55,12 +55,12 @@ class Tableau extends Phaser.Scene{
         this.load.audio('dashson', 'assets/son/dash.mp3');
         this.load.audio('tpson', 'assets/son/tp2.mp3');
 
-        this.load.image('5vies', 'assets/5vies.png');
-        this.load.image('4vies', 'assets/4vies.png');
-        this.load.image('3vies', 'assets/3vies.png');
-        this.load.image('2vies', 'assets/2vies.png');
-        this.load.image('1vies', 'assets/1vies.png');
-        this.load.image('0vies', 'assets/0vies.png');
+        this.load.image('5vies', 'assets/Vies/5_coeurs_128x64.png');
+        this.load.image('4vies', 'assets/Vies/4_coeurs_128x64.png');
+        this.load.image('3vies', 'assets/Vies/3_coeurs_128x64.png');
+        this.load.image('2vies', 'assets/Vies/2_coeurs_128x64.png');
+        this.load.image('1vies', 'assets/Vies/1_coeurs_128x64.png');
+        this.load.image('0vies', 'assets/Vies/0_coeurs_128x64.png');
 
     }
 
@@ -103,35 +103,42 @@ class Tableau extends Phaser.Scene{
 
     }
     imgVies(){
-        if(this.ptsVie==4){
+        if(this.ptsVie===4){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.quatreVies=this.add.sprite(600, 40, "4vies");
             this.quatreVies.setDepth(1000);
             this.quatreVies.setScrollFactor(0);
+            this.cinqVies.destroy();
+            // console.log('4coeurs');
         }
-        if(this.ptsVie==3){
+        if(this.ptsVie===3){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.troisVies=this.add.sprite(600, 40, "3vies");
             this.troisVies.setDepth(1000);
             this.troisVies.setScrollFactor(0);
+            this.quatreVies.destroy();
+            // console.log('3coeurs');
         }
-        if(this.ptsVie==2){
+        if(this.ptsVie===2){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.deuxVies=this.add.sprite(600, 40, "2vies");
             this.deuxVies.setDepth(1000);
             this.deuxVies.setScrollFactor(0);
+            this.troisVies.destroy();
         }
-        if(this.ptsVie==1){
+        if(this.ptsVie===1){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.uneVies=this.add.sprite(600, 40, "1vies");
             this.uneVies.setDepth(1000);
             this.uneVies.setScrollFactor(0);
+            this.deuxVies.destroy();
         }
-        if(this.ptsVie==0){
+        if(this.ptsVie===0){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
             this.zeroVies=this.add.sprite(600, 40, "0vies");
             this.zeroVies.setDepth(1000);
             this.zeroVies.setScrollFactor(0);
+            this.uneVies.destroy();
         }
     }
 
@@ -139,7 +146,7 @@ class Tableau extends Phaser.Scene{
         super.update();
         this.player.move();
         this.hitFall();
-        this.imgVies();
+
         this.tp();
         this.dsh();
 
@@ -416,7 +423,7 @@ class Tableau extends Phaser.Scene{
                     this.ptsVie -= 1;
                     console.log('touché');
                     console.log(this.ptsVie);
-
+                    this.imgVies();
 
                 }
                 //le joueur est mort

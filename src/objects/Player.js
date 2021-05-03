@@ -254,6 +254,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 x: '+=200',
                 //y: '-=150',
                 ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
+                //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
             //aussi tester entre easuInOut - easeIn et easeOut
                 duration: 500,
                 //delay: 30
@@ -281,7 +282,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             x: '+=100',
             y: '-=150',
             ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
-            //aussi tester entre easuInOut - easeIn et easeOut
+            //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
             duration: 500,
             //delay: 30
         });
@@ -311,6 +312,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             x: '-=100',
             y: '-=150',
             ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
+            //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
             //aussi tester entre easuInOut - easeIn et easeOut
             duration: 500,
             //delay: 30
