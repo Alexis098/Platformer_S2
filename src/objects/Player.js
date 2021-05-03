@@ -12,6 +12,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.sens = 1; //variable globale car elle est utilisée pour le sens du personnage affectant plusieurs fonctions, intégrer la fonction dans la fonction directement fait qu'elle ne sera pas prise en compte avec la deuxième fonction nécessaire pour ça
         //this.boutonDash;
         //this.temps = 0;
+        this.recup=0;
 
 
         this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
@@ -144,7 +145,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 /*gsap.to(this, {y: this.y-150, ease:
                         CustomEase.create("custom", "M0,0,C0.202,0,0.298,1,0.5,1,0.706,1,0.795,0.766,0.99,0.736,0.99,0.819,0.999,0.2,1,0.2")});
                 */
+                //recup dudash en diagonale quand on retombe au sol
+                this.recup=0;
+
+
             }
+
+
+
 
 
 
@@ -185,6 +193,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
+
     //joue l'anim de saut
     jump(){
         this.anims.play('jump', true);
@@ -208,8 +217,10 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (dir < this.posX) {
 
-            if (this._directionY<0){
+            if (this._directionY<0 && this.recup==0){
                 this.animGaucheHaut();
+                //recup dudash en diagonale quand on retombe au sol
+                this.recup=1;
             }else{
                 this.animGauche();
             }
@@ -218,8 +229,11 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             console.log('dash à gauche');
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
-            if (this._directionY<0){
+            if (this._directionY<0 && this.recup==0){
                 this.animDroiteHaut();
+                //recup dudash en diagonale quand on retombe au sol
+                this.recup=1;
+
             }else{
                 this.animDroite();
 
