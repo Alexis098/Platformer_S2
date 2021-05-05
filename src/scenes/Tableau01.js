@@ -1,13 +1,49 @@
 class Tableau01 extends Tableau00{
-
+    constructor()
+    {
+        super("Skip");
+    }
     preload() {
         super.preload();
-        this.load.image('star', 'assets/rubis.png');
-        this.load.image('ground', 'assets/test.png');
+        /*this.load.image('star', 'assets/rubis.png');
+        this.load.image('ground', 'assets/test.png');*/
+        this.load.video('cinematique', 'assets/videos/cinematique_V001.mp4')
     }
     create() {
         super.create();
+        //this.cine.setDepth(1000);
+        this.cine=this.add.video(448, 224, 'cinematique');
+        this.cine.play();
 
+        this.time.addEvent({
+            delay: 53000,
+            callback: ()=>{
+                this.scene.start("TableauTiledRenew");
+            },
+            loop: false
+        })
+        this.input.on('pointerdown', function(pointer){
+            this.cameras.main.fadeOut(500, 0, 0, 0)
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+            {
+                /*if(Tableau.current){
+                    Tableau.current._destroy();
+                }
+                this.game.scene.start(tableau);
+                this.scene.start("aventureBegining");*/
+                this.scene.start("TableauTiledRenew");
+            })
+
+        },this);
+
+
+
+
+
+
+
+
+/*
         //la plateforme rouge
         let rouge=this.physics.add.sprite(10,200,"ground");
         rouge.setDisplaySize(250,50)//taille de l'objet
@@ -43,7 +79,7 @@ class Tableau01 extends Tableau00{
         this.physics.add.collider(this.star1, groupeVert);//l'étoile1 rebondit sur les plateformes du goupe vert
         this.physics.add.collider(this.star2, groupeVert);//l'étoile1 rebondit sur les plateformes du goupe vert
         this.physics.add.collider(this.star3, groupeVert);//l'étoile1 rebondit sur les plateformes du goupe vert
-
+*/
     }
 
 }

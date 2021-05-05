@@ -18,7 +18,8 @@ let config = {
     scene: [
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
-        new Tableau00("Des étoiles"),
+        new Tableau00("Accueil"),
+        new Tableau01("Skip"),
         new TableauTiledRenew("definitiveEdition"),
         new TableauLong("Sun Chaser"),
         //new TableauTiled("100x100"),
@@ -28,7 +29,7 @@ let config = {
         new Tableau00A("toto"),
         
 
-        new Tableau01("Des plateformes"),
+
         new Tableau02("Plein d'étoiles"),
         new Tableau03("Des plateformes qui bougent"),
         new Tableau04("Jouer avec les groupes"),

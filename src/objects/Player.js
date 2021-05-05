@@ -5,7 +5,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         scene.add.existing(this)
         scene.physics.add.existing(this)
         this.setCollideWorldBounds(true)
-        this.setBounce(0.1);
+        this.setBounce(0.05);
         this.setGravityY(700)
         //this.body.allowGravity=true;
         this.setFriction(1,1);
@@ -261,23 +261,29 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
     animDroite(){//tween pour l'avancement progressif du dash
-        //this.body.setVelocityX(4000);
+
+
+       //this.body.setVelocityX(200);
+
+
         this.tween=this.scene.tweens.add({
             targets: this,
-
                 x: '+=200',
+                //speed: 4000,
                 //y: '-=150',
                 ease: 'Circ.easeInOut', //tester Circ (la mieux) Sine ou Expo aussi
                 //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
-            //aussi tester entre easuInOut - easeIn et easeOut
+            //aussi tester entre easeInOut - easeIn et easeOut
                 duration: 500,
                 //delay: 30
-
-
         });
 
-        console.log('ease sine');
+        //body.blocked sert quand on court et qu'on touche un bord mais pas quand on est immobile
+        if(this.body.blocked.right || this.body.touching.right){
+            this.x-=5;
+        }
 
+        console.log('ease sine');
         /*this.tween = this.tweens.add({
             targets: this.player,
             this.setVelocityX: '+=600',

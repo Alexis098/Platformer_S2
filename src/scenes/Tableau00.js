@@ -32,7 +32,7 @@ class Tableau00 extends Phaser.Scene{
                 }
                 this.game.scene.start(tableau);
                 this.scene.start("aventureBegining");*/
-                this.scene.start("TableauTiledRenew");
+                this.scene.start("Skip");
             })
 
         },this);

@@ -101,7 +101,7 @@ class Tableau extends Phaser.Scene{
         this.cinqVies.setScrollFactor(0);
 
 
-
+        //il faut réussir à lire la vidéo à l'emplacement du personnage
         this.dashFx=this.add.video(5050, 550, 'dashFx');
 
 
