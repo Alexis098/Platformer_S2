@@ -46,13 +46,16 @@ class TableauTiledRenew extends Tableau{
         this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
 
         this.load.image('dalle', 'assets/64x86.png');
+
+        this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
+
     }
 
 
     create() {
         super.create();
         this.compteur=0;
-
+        this.smokeFx=this.add.video(5350, 550, 'smokeFx');
         //this.projectile();
 /*
         //this.img=this.add.sprite(5350,500,'dalle');
@@ -430,7 +433,12 @@ class TableauTiledRenew extends Tableau{
     }
 
 
-
+//fx quand on active la pierre de l'énigme
+    fxFin(){
+        this.smokeFx.setDepth(1000);
+        this.smokeFx.play();
+        console.log('smoke');
+    }
 
     //rajouter la condition de réussir l'énigme pour passer à la suite
 
@@ -445,11 +453,17 @@ class TableauTiledRenew extends Tableau{
             //this.song.stop();
             this.compteur+=1;
             this.dalles.setVelocityY(10);
+            this.fxFin();
             //this.player.body.velocity.y=0.2;
             console.log(this.compteur);
 
             if(this.compteur==250){
-                this.win();
+                this.cameras.main.fadeOut(500, 0, 0, 0)
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+                {
+                    this.win();
+                })
+
             }
 
         }else{
@@ -475,7 +489,14 @@ class TableauTiledRenew extends Tableau{
         if(this.player.x>=5000){
             this.vidEnigme.alpha=1;
             //this.vidEnigme.active=true; //met en pause la video
-            this.vidEnigme.play();
+            this.vidEnigme.play(false, 4, 20);
+            this.time.addEvent({
+                delay: 4000,
+                callback: ()=>{
+
+                },
+                loop: false
+            })
 
 
 

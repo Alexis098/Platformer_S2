@@ -21,12 +21,13 @@ let config = {
         new Tableau00("Accueil"),
         new Tableau01("Skip"),
         new TableauTiledRenew("definitiveEdition"),
-        new TableauLong("Sun Chaser"),
+        new Tableau00A("toto"),
+        //new TableauLong("Sun Chaser"),
         //new TableauTiled("100x100"),
 
 
         /*new TableauZoo("Zoo"),
-        new Tableau00A("toto"),
+
         
 
 

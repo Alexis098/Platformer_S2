@@ -62,7 +62,6 @@ class Tableau extends Phaser.Scene{
         this.load.image('1vies', 'assets/Vies/1_coeurs_128x64.png');
         this.load.image('0vies', 'assets/Vies/0_coeurs_128x64.png');
 
-        this.load.video('dashFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
 
     }
 
@@ -102,7 +101,7 @@ class Tableau extends Phaser.Scene{
 
 
         //il faut réussir à lire la vidéo à l'emplacement du personnage
-        this.dashFx=this.add.video(5050, 550, 'dashFx');
+
 
 
     }
@@ -168,17 +167,13 @@ class Tableau extends Phaser.Scene{
 
     }
 
-    fxDash(){
-        this.dashFx.setDepth(1000);
-        this.dashFx.play();
-        console.log('smoke');
-    }
+
 
     dsh(){
         if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
             //this.player.anim();
             //this.player.setVelocityX(500);
-            this.fxDash();
+
 
             this.player.dash();
             this.dashson = this.sound.add('dashson', {volume: 0.8})

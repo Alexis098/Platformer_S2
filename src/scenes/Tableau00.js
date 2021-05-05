@@ -3,12 +3,18 @@ class Tableau00 extends Phaser.Scene{
     preload() {
         //super.preload();
         //this.load.image('star', 'assets/rubis.png');
-        this.load.image('artwork', 'assets/background1.jpg');
+        this.load.video('accueil', 'assets/videos/ecran_accueil_2.mp4', 'loadeddata', false, true);
+
+        //this.load.video('accueil', 'assets/videos/ecran_accueil_2.mp4');
+        //this.load.image('artwork', 'assets/background1.jpg');
         //Il faudra charger un fond animé à la place une vidéo after effects avec des effets de vent qui passe âr dessus les dunes
     }
     create() {
         //super.create();
-        this.image=this.add.image(game.config.width/2, game.config.height/2, 'artwork');
+        //this.image=this.add.image(game.config.width/2, game.config.height/2, 'artwork');
+        this.accueil=this.add.video(448, 224, 'accueil');
+        this.accueil.play(true);
+
 
         this.input.keyboard.on('keydown-ENTER', function () //'keydown-SPACE', function ()
         {
