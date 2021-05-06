@@ -4,7 +4,7 @@ class Tableau00 extends Phaser.Scene{
         //super.preload();
         //this.load.image('star', 'assets/rubis.png');
         this.load.video('accueil', 'assets/videos/ecran_accueil_2.mp4', 'loadeddata', false, true);
-
+        this.load.audio('introSon', 'assets/son/musique_daccueil_V011.mp3')
         //this.load.video('accueil', 'assets/videos/ecran_accueil_2.mp4');
         //this.load.image('artwork', 'assets/background1.jpg');
         //Il faudra charger un fond animé à la place une vidéo after effects avec des effets de vent qui passe âr dessus les dunes
@@ -14,23 +14,16 @@ class Tableau00 extends Phaser.Scene{
         //this.image=this.add.image(game.config.width/2, game.config.height/2, 'artwork');
         this.accueil=this.add.video(448, 224, 'accueil');
         this.accueil.play(true);
+        this.introSon = this.sound.add('introSon', {volume: 1.2})
+        this.introSon.play();
 
 
         this.input.keyboard.on('keydown-ENTER', function () //'keydown-SPACE', function ()
         {
             this.cameras.main.fadeOut(500, 0, 0, 0)
-            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
-            {
-                /*if(Tableau.current){
-                    Tableau.current._destroy();
-                }
-                this.game.scene.start(tableau);
-                this.scene.start("aventureBegining");*/
-                this.scene.start("TableauTiledRenew");
-            })
-        }, this);
-        this.input.on('pointerdown', function(pointer){
-            this.cameras.main.fadeOut(500, 0, 0, 0)
+            this.introSon.stop();
+            this.introSon.destroy();
+            //this.scene.stop();
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
             {
                 /*if(Tableau.current){
@@ -39,6 +32,22 @@ class Tableau00 extends Phaser.Scene{
                 this.game.scene.start(tableau);
                 this.scene.start("aventureBegining");*/
                 this.scene.start("Skip");
+            })
+        }, this);
+        this.input.on('pointerdown', function(pointer){
+            this.cameras.main.fadeOut(500, 0, 0, 0)
+            this.introSon.stop();
+            this.introSon.destroy();
+            //this.scene.stop();
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+            {
+                /*if(Tableau.current){
+                    Tableau.current._destroy();
+                }
+                this.game.scene.start(tableau);
+                this.scene.start("aventureBegining");*/
+                this.scene.start("Skip");
+
             })
 
         },this);
@@ -62,6 +71,7 @@ class Tableau00 extends Phaser.Scene{
         this.physics.add.overlap(this.player, this.star3, this.ramasserEtoile, null, this);*/
 
     }
+
 
 }
 

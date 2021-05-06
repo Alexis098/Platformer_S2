@@ -1,16 +1,16 @@
-class Tableau01 extends Tableau00{
+class Tableau01 extends Phaser.Scene /*Tableau00*/{
     constructor()
     {
         super("Skip");
     }
     preload() {
-        super.preload();
+        //super.preload();
         /*this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/test.png');*/
         this.load.video('cinematique', 'assets/videos/cinematique_V003.mp4')
     }
     create() {
-        super.create();
+        //super.create();
         //this.cine.setDepth(1000);
         this.cine=this.add.video(448, 224, 'cinematique');
         this.cine.play();
