@@ -7,7 +7,7 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
         //super.preload();
         /*this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/test.png');*/
-        this.load.video('cinematique', 'assets/videos/cinematique_V003.mp4')
+        this.load.video('cinematique', 'assets/videos/cinematique_V004.mp4')
     }
     create() {
         //super.create();
@@ -22,9 +22,9 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
             },
             loop: false
         })
-        this.input.on('pointerdown', function(pointer){
+        this.input.on('pointerdown', function(){
             this.cameras.main.fadeOut(500, 0, 0, 0)
-            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
             {
                 /*if(Tableau.current){
                     Tableau.current._destroy();

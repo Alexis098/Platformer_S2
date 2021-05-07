@@ -457,9 +457,9 @@ class TableauTiledRenew extends Tableau{
             //this.player.body.velocity.y=0.2;
             console.log(this.compteur);
 
-            if(this.compteur==250){
+            if(this.compteur===250){
                 this.cameras.main.fadeOut(500, 0, 0, 0)
-                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
                 {
                     this.win();
                 })

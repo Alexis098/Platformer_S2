@@ -24,7 +24,7 @@ class Tableau00 extends Phaser.Scene{
             this.introSon.stop();
             this.introSon.destroy();
             //this.scene.stop();
-            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
             {
                 /*if(Tableau.current){
                     Tableau.current._destroy();
@@ -34,12 +34,12 @@ class Tableau00 extends Phaser.Scene{
                 this.scene.start("Skip");
             })
         }, this);
-        this.input.on('pointerdown', function(pointer){
+        this.input.on('pointerdown', function(){
             this.cameras.main.fadeOut(500, 0, 0, 0)
             this.introSon.stop();
             this.introSon.destroy();
             //this.scene.stop();
-            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
             {
                 /*if(Tableau.current){
                     Tableau.current._destroy();
