@@ -10,6 +10,9 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
         this.load.video('cinematique', 'assets/videos/cinematique_V004.mp4')
     }
     create() {
+        this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
+
+        this.sys.scene.scale.lockOrientation("landscape")
         //super.create();
         //this.cine.setDepth(1000);
         this.cine=this.add.video(448, 224, 'cinematique');

@@ -7,6 +7,9 @@ class Tableau00A extends Phaser.Scene{
         this.load.image('ecranFin', 'assets/écran_de_fin_V001.jpg');
     }
     create() {
+        this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
+
+        this.sys.scene.scale.lockOrientation("landscape")
         //super.create();
 
         this.image=this.add.image(game.config.width/2, game.config.height/2, 'ecranFin');
