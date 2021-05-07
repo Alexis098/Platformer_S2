@@ -16,6 +16,8 @@ class Tableau00 extends Phaser.Scene{
         this.accueil.play(true);
         this.introSon = this.sound.add('introSon', {volume: 1.2})
         this.introSon.play();
+        this.introSon.setLoop(true);
+
 
 
         this.input.keyboard.on('keydown-ENTER', function () //'keydown-SPACE', function ()
