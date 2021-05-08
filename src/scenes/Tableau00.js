@@ -1,6 +1,7 @@
 class Tableau00 extends Phaser.Scene{
 
     preload() {
+
         //super.preload();
         //this.load.image('star', 'assets/rubis.png');
         this.load.video('accueil', 'assets/videos/ecran_accueil_4.mp4', 'loadeddata', false, true);
@@ -18,8 +19,15 @@ class Tableau00 extends Phaser.Scene{
         this.accueil=this.add.video(448, 224, 'accueil');
         this.accueil.play(true);
         this.introSon = this.sound.add('introSon', {volume: 1.2})
-        this.introSon.play();
+        //this.introSon.play();
         this.introSon.setLoop(true);
+        this.time.addEvent({
+            delay: 400,
+            callback: ()=>{
+                this.introSon.play();
+            },
+            loop: false
+        })
 
         /*window.setTimeout(() => {
             this.introSon.play();
@@ -29,7 +37,7 @@ class Tableau00 extends Phaser.Scene{
         this.input.keyboard.on('keydown-ENTER', function () //'keydown-SPACE', function ()
         {
             this.cameras.main.fadeOut(500, 0, 0, 0)
-            this.introSon.stop();
+            //this.introSon.stop();
             this.introSon.destroy();
             //this.scene.stop();
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
@@ -44,7 +52,7 @@ class Tableau00 extends Phaser.Scene{
         }, this);
         this.input.on('pointerdown', function(){
             this.cameras.main.fadeOut(500, 0, 0, 0)
-            this.introSon.stop();
+            //this.introSon.stop();
             this.introSon.destroy();
             //this.scene.stop();
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
@@ -79,11 +87,7 @@ class Tableau00 extends Phaser.Scene{
         this.physics.add.overlap(this.player, this.star3, this.ramasserEtoile, null, this);*/
 
     }
-    update(){
-        if (game.sound.context.state === 'suspended') {
-            game.sound.context.resume();
-        }
-    }
+
 
 
 }
