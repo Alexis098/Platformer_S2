@@ -17,8 +17,13 @@ class Tableau00 extends Phaser.Scene{
         //this.image=this.add.image(game.config.width/2, game.config.height/2, 'artwork');
         this.accueil=this.add.video(448, 224, 'accueil');
         this.accueil.play(true);
+        this.introSon = this.sound.add('introSon', {volume: 1.2})
+        //this.introSon.play();
+        this.introSon.setLoop(true);
 
-
+        window.setTimeout(() => {
+            this.introSon.play();
+        }, 500);
 
 
         this.input.keyboard.on('keydown-ENTER', function () //'keydown-SPACE', function ()
@@ -54,10 +59,6 @@ class Tableau00 extends Phaser.Scene{
             })
 
         },this);
-
-        this.introSon = this.sound.add('introSon', {volume: 1.2})
-        this.introSon.play();
-        this.introSon.setLoop(true);
         //this.image.setBodySize(0.5);
         //des étoiles
         /*this.star1=this.physics.add.sprite(200,100,"star");
