@@ -3,7 +3,7 @@ class Tableau00 extends Phaser.Scene{
     preload() {
         //super.preload();
         //this.load.image('star', 'assets/rubis.png');
-        this.load.video('accueil', 'assets/videos/ecran_accueil_2.mp4', 'loadeddata', false, true);
+        this.load.video('accueil', 'assets/videos/ecran_accueil_4.mp4', 'loadeddata', false, true);
         this.load.audio('introSon', 'assets/son/musique_daccueil_V011.mp3')
         //this.load.video('accueil', 'assets/videos/ecran_accueil_2.mp4');
         //this.load.image('artwork', 'assets/background1.jpg');
