@@ -7,7 +7,7 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
         //super.preload();
         /*this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/test.png');*/
-        this.load.video('cinematique', 'assets/videos/cinematique_V004.mp4')
+        this.load.video('cinematique', 'assets/videos/Cinematique_V004_compress.mp4')
     }
     create() {
         this.isMobile=this.game.device.os.android || this.game.device.os.iOS;

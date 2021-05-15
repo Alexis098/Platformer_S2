@@ -69,11 +69,16 @@ class Tireur extends ObjetEnnemi{
                 //this.shotSound.play({volume:.5});
                 if(this.scene.player.y>this.y){
                     this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocityX(150 * this.dir);
-
+                    /*setTimeout(function(){
+                        this.projo.destroy();
+                    },500)*/
                 }
 
                 else if(this.scene.player.y<this.y){
                     this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocity(150 * this.dir, -150);
+                    /*setTimeout(function(){
+                        this.projo.destroy();
+                    },500)*/
                 }
 
             }

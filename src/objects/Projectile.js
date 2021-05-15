@@ -12,7 +12,8 @@ class Projectile extends ObjetEnnemi {
         this.maxX=x+100;
 
         this.x=this.minX;
-        let me=this;
+        //let me=this;
+
 
         /*scene.tweens.add({
             targets:this,

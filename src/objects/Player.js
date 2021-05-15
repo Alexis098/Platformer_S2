@@ -13,6 +13,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         //this.boutonDash;
         //this.temps = 0;
         this.recup=0;
+        this.speedFactor=1;
+        this.vitesse=0;
 
 
         this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
@@ -102,16 +104,19 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         switch (true){
             case this._directionX<0:
                 this.sens=-1;
-                this.setVelocityX(-160);
+                this.setVelocityX(this.sens*160*this.speedFactor);
                 this.anims.play('left', true);
+                this.vitesse=1;
                 break;
             case this._directionX>0:
                 this.sens=1;
-                this.setVelocityX(160);
+                this.setVelocityX(this.sens*160*this.speedFactor);
                 this.anims.play('right', true);
+                this.vitesse=1;
                 break;
             default:
                 this.setVelocityX(0);
+                this.vitesse=0;
                 //this.anims.play('stance', true);
                 this.anims.play(this.sens===-1 ? 'back' : 'stance' ,true); //équivalent d'un if, pour mémoriser la position du personnage pour qu'il regarde à gauche ou à droite en fonction du dernier déplacement effectué
                 /*if(this.sens===-1){
@@ -134,14 +139,31 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
             if(this.body.blocked.down || this.body.touching.down){
                 //this.setVelocityY(-500);
-                this.scene.tweens.add({
+
+                /*this.scene.tweens.add({
                     targets: this,
                     y: '-=110',
                     ease: 'Power2',
                     //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.282,0.674,0.44,0.822,0.522,0.899,0.618,0.943,0.694,0.969,0.73,0.981,0.785,0.993,0.785,0.993,1.056,1.07,0.998,0,1,0"),
                     duration: 400,
-                })
-                this.body.setVelocityY(10);
+                })*/
+                Tableau.current.tweens.timeline({
+                    targets: Tableau.current.player.body.velocity,
+                    ease: 'Power2',
+                    duration: 100,
+                    loop: 0,
+                    tweens: [
+                        {
+                            targets: Tableau.current.player.body.velocity,
+                            y: -900
+                        },
+                        {
+                            targets: Tableau.current.player.body.velocity,
+                            y: 0
+                        }
+                    ]
+                });
+                //this.body.setVelocityY(10);
                 /*gsap.to(this, {y: this.y-150, ease:
                         CustomEase.create("custom", "M0,0,C0.202,0,0.298,1,0.5,1,0.706,1,0.795,0.766,0.99,0.736,0.99,0.819,0.999,0.2,1,0.2")});
                 */
@@ -162,7 +184,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 this.anims.play('jump', true);
             }*/
 
-
+        //quand on redescend d'un saut, quand on se rapproche du sol
+        }else{
+            //this.setVelocityY(400);
         }
 
 
@@ -203,6 +227,49 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     dash() {
         //this.scene.time.addEvent({ delay: 100, callback: this.invu, callbackScope: this, loop: true });
         //this.scene.time.addEvent({ delay: 600, callback: this.vulne, callbackScope: this, loop: true });
+
+        //permet de dasher en étant immobile
+        this._directionX=this.sens;
+        //this.speedFactor=3;
+        this.speedFactorMax=1;
+
+
+        // this.ok=0;
+        // this.suspendu=0;
+
+        // if(this.ok===1){
+        //     this.setVelocityX(this.sens*160);
+        // }
+
+        // setTimeout(function(){
+        //     this.ok=1;
+        // },300)
+
+
+
+        if(this.speedFactor>=this.speedFactorMax){
+            this.speedFactor=1;
+        }
+
+        let me=this;
+
+        //permet de dire que si le perso est immobile etqu'il dash, il redevient immobile à la fin du dash
+        if (this.vitesse===0){
+            setTimeout(function(){
+                me.speedFactor=0;
+                me._directionX=0;
+            },300)
+        }
+        //permet de faire revenir à la vitesse normale après un dash quand le perso est en mouvement
+        if(this._directionX>0 || this._directionX<0){
+            setTimeout(function(){
+                me.speedFactor=1;
+            },300)
+        }
+
+
+
+
         console.log('dash');
         this.posX = this.x;
         this.posY = this.y;
@@ -217,25 +284,88 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (dir < this.posX) {
 
-            if (this._directionY<0 && this.recup==0){
-                this.animGaucheHaut();
+            if (this._directionY<0 && this.recup===0){
+                //ancienne ligne valide pour l'ancien dash
+                ///this.animGaucheHaut();
+                this.scene.tweens.add({
+                    targets: this,
+                    speedFactor: '+=2',
+                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    duration: 100,
+                });
+
+
+                this.tween=this.scene.tweens.add({
+                    targets: this,
+                    y: '-=150',
+                    ease: 'Power1', //tester Circ (la mieux) Sine ou Expo aussi
+                    //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
+                    duration: 500,
+                    //delay: 30
+                });
+                //this.setVelocityX(-2*this.speedFactor);
+
+                //this.setVelocity(-10,-160);
+
                 //recup dudash en diagonale quand on retombe au sol
                 this.recup=1;
             }else{
-                this.animGauche();
+                //ancienne ligne valide pour l'ancien dash
+                //this.animGauche();
+                this.scene.tweens.add({
+                    targets: this,
+                    speedFactor: '+=3',
+                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    duration: 100,
+                });
+
+
+
             }
             //this.setVelocityX(-3000);
             //this.setAccelerationX(-1000);
             console.log('dash à gauche');
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
-            if (this._directionY<0 && this.recup==0){
-                this.animDroiteHaut();
-                //recup dudash en diagonale quand on retombe au sol
+
+            if (this._directionY<0 && this.recup===0){
+                //ancienne ligne valide pour l'ancien dash
+                //this.animDroiteHaut();
+                this.scene.tweens.add({
+                    targets: this,
+                    speedFactor: '+=2',
+                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    duration: 100,
+                });
+
+
+                this.tween=this.scene.tweens.add({
+                    targets: this,
+                    y: '-=150',
+                    ease: 'Power1', //tester Circ (la mieux) Sine ou Expo aussi
+                    //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
+                    duration: 500,
+                    //delay: 30
+                });
+                //this.setVelocityX(2*this.speedFactor);
+
+                //this.setVelocity(10,-160);
+
+                //recup du dash en diagonale quand on retombe au sol
                 this.recup=1;
 
             }else{
-                this.animDroite();
+                //ancienne ligne valide pour l'ancien dash
+                //this.animDroite();
+
+                this.scene.tweens.add({
+                    targets: this,
+                    speedFactor: '+=3',
+                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    duration: 100,
+                });
+
+
 
             }
 
@@ -243,6 +373,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             //this.setAccelerationX(1000)
             console.log('dash à droite');
         }
+
+
 
 
         //cooldown
@@ -257,6 +389,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         }*/
 
     }
+
 
 
 
