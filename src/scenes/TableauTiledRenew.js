@@ -18,9 +18,9 @@ class TableauTiledRenew extends Tableau{
         super.preload();
         // ------pour TILED-------------
         // nos images
-        this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
+        this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V021.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V026.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -38,14 +38,36 @@ class TableauTiledRenew extends Tableau{
 
         // -----et puis aussi-------------
 
-        this.load.image('night', 'assets/images/background.png');
+        //this.load.image('night', 'assets/images/background.png');
         //atlas de texture généré avec https://free-tex-packer.com/app/
         //on y trouve notre étoiles et une tête de mort
+
+        //-------------BACKGROUND PARALLAX--------------
+        this.load.image('ciel', 'assets/background/ciel.jpg');
+        this.load.image('voile', 'assets/background/voile_atmospherique.png');
+        this.load.image('soleils', 'assets/background/arriere_plan_4_soleils.png');
+        this.load.image('nuages', 'assets/background/arriere_plan_3_nuages.png');
+        this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2.png');
+        this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1.png');
+        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_1.png');
+        this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour.png');
+        this.load.image('light', 'assets/background/premier_plan/light.png');
+        this.load.image('plantes_arbres', 'assets/background/avant_plan/plantes_arbre.png');
+        this.load.image('premiere_roche', 'assets/background/avant_plan/premiere_roche.png');
+        this.load.image('roche_pilier', 'assets/background/avant_plan/roche_pilier.png');
+        this.load.image('dalle', 'assets/background/premier_plan/dalleEnigme.png');
+        this.load.image('rocher_devant', 'assets/background/premier_plan/rocher_devant.png');
+        this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash.png');
+        this.load.image('tuto_tp', 'assets/ecrans_narration/tuto_tp.png');
+        this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme.png');
+        this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_2.png');
+        this.load.image('texte_planete_2', 'assets/ecrans_narration/texte_planete_2_2.png');
+
 
         //this.load.video('dialogue1','assets/videos/dialogue1.mp4');
         this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
 
-        this.load.image('dalle', 'assets/64x86.png');
+        //this.load.image('dalle', 'assets/64x86.png');
 
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
 
@@ -55,7 +77,7 @@ class TableauTiledRenew extends Tableau{
     create() {
         super.create();
         this.compteur=0;
-        this.smokeFx=this.add.video(5350, 550, 'smokeFx');
+        this.smokeFx=this.add.video(5860, 2190, 'smokeFx');
         //this.projectile();
 /*
         //this.img=this.add.sprite(5350,500,'dalle');
@@ -87,8 +109,8 @@ class TableauTiledRenew extends Tableau{
         // this.solides = this.map.createLayer('solides', this.tileset, 0, 0);
         // this.lave = this.map.createLayer('lave', this.tileset, 0, 0);
         this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
-        this.devant = this.map.createLayer('Plateformes', this.tileset, 0, 0);
-
+        this.devant = this.map.createLayer('Plateformes', this.tileset, 0, 32);
+        this.mursInvisibles = this.map.createLayer('mursInvisibles', this.tileset, 0, 32);
 
         //on définit les collisions, plusieurs méthodes existent:
 
@@ -97,6 +119,8 @@ class TableauTiledRenew extends Tableau{
         //exemple ici https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
         this.devant.setCollisionByProperty({ collides: true }); //sert aussi pour déterminer quelle tuile joue quel son quand on marche dessus par ex a voir comment ça marche vraiment par contre
         //this.lave.setCollisionByProperty({ collides: true });
+        this.mursInvisibles.setCollisionByProperty({ collides: true });
+
 
 
         // 2 manière la plus simple (là où il y a des tiles ça collide et sinon non)
@@ -162,9 +186,11 @@ class TableauTiledRenew extends Tableau{
          // On crée des étoiles pour chaque objet rencontré
          this.dallesObjects.forEach(dalleObject => {
              // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
-             let dalle = this.dalles.create(dalleObject.x+32, dalleObject.y+16 /*, 'particles'*/, 'dalle');
+             let dalle = this.dalles.create(dalleObject.x+32, dalleObject.y+32 /*, 'particles'*/, 'dalle');
          });
          this.physics.add.collider(this.dalles, this.player);
+
+
 
 
 
@@ -279,8 +305,31 @@ class TableauTiledRenew extends Tableau{
 
         //---------- parallax ciel (rien de nouveau) -------------
 
+        this.ciel=this.add.sprite(3050, 1100, 'ciel');
+        this.voile=this.add.sprite(3050, 1100, 'voile');
+        this.soleils=this.add.sprite(3000, 1120, 'soleils');
+        this.nuages=this.add.sprite(3000, 1120, 'nuages');
+        this.arriere_plan_2=this.add.sprite(1720, 2050, 'arriere_plan_2');
+        this.arriere_plan_1=this.add.sprite(3050, 1110, 'arriere_plan_1');
+        this.premier_plan=this.add.sprite(3050, 1110, 'premier_plan');
+        this.premier_plan_ombre_tour=this.add.sprite(3050, 1110, 'premier_plan_ombre_tour');
+        this.light=this.add.sprite(3050, 1110, 'light');
+        this.plantes_arbres=this.add.sprite(5760, 1970, 'plantes_arbres');
+        this.roche_pilier=this.add.sprite(2600, 2075, 'roche_pilier');
+        this.premiere_roche=this.add.sprite(1175, 2200, 'premiere_roche');
+        this.rocher_devant=this.add.sprite(3000, 1110, 'rocher_devant');
+        //bulles de texte
+        this.tuto_dash=this.add.sprite(300, 2000, 'tuto_dash');
+        this.tuto_tp=this.add.sprite(1500, 2000, 'tuto_tp');
+        this.tuto_enigme=this.add.sprite(5400, 1975, 'tuto_enigme');
+        this.texte_planete_1=this.add.sprite(1000, 2000, 'texte_planete_1');
+        this.texte_planete_2=this.add.sprite(3000, 2000, 'texte_planete_2');
+
+
+
+
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
-        this.sky=this.add.tileSprite(
+        /*this.sky=this.add.tileSprite(
             0,
             0,
             this.sys.canvas.width,
@@ -299,13 +348,13 @@ class TableauTiledRenew extends Tableau{
         this.sky2.setOrigin(0,0);
         this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
         this.sky2.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
-        this.sky2.blendMode=Phaser.BlendModes.ADD;
+        this.sky2.blendMode=Phaser.BlendModes.ADD;*/
 
         //----------collisions---------------------
 
         //quoi collide avec quoi?
         this.physics.add.collider(this.player, this.devant);
-
+        this.physics.add.collider(this.player, this.mursInvisibles);
 
         this.physics.add.collider(this.stars, this.devant);
         //this.physics.add.collider(this.katanaMonstersObjects, this.devant);
@@ -333,28 +382,179 @@ class TableauTiledRenew extends Tableau{
 
         //on définit les z à la fin
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
-        this.vidEnigme.setDepth(1000);
+
         this.dalles.setDepth(1000);
-        this.checkPoints.setDepth(1000);
+        this.checkPoints.setDepth(98);
         this.Platforms.setDepth(1000);
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
 
-        monstersContainer.setDepth(z--);
+        monstersContainer.setDepth(99);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
 
-        this.devant.setDepth(z--);
+        this.devant.setDepth(103);
+        this.mursInvisibles.setDepth(103);
         // this.solides.setDepth(z--);
         // this.laveFxContainer.setDepth(z--);
         // this.lave.setDepth(z--);
-        this.player.setDepth(z--);
-        this.derriere.setDepth(z--);
+        this.player.setDepth(102);
+        this.derriere.setDepth(50);
         // this.sky2.setDepth(z--);
-        this.sky.setDepth(z--);
+        this.ciel.setDepth(1);
+        this.soleils.setDepth(2);
+        this.nuages.setDepth(3);
+        this.arriere_plan_2.setDepth(4);
+        this.arriere_plan_1.setDepth(5);
+        this.voile.setDepth(6);
+        this.premier_plan.setDepth(99);
+        this.light.setDepth(101);
+        this.premier_plan_ombre_tour.setDepth(100);
+        this.plantes_arbres.setDepth(104);
+        this.premiere_roche.setDepth(104);
+        this.roche_pilier.setDepth(104);
+        this.dalles.setDepth(97);
+        this.rocher_devant.setDepth(103);
+
+        this.tuto_dash.setDepth(99);
+        this.tuto_tp.setDepth(99);
+        this.tuto_enigme.setDepth(99);
+        this.texte_planete_1.setDepth(99);
+        this.texte_planete_2.setDepth(99);
 
         this.restoreCheckPoint();
 
+    }
+
+    apparitionTexte(){
+        if(this.player.x<500){
+            //this.tuto_dash.alpha=1;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.tuto_dash,
+                alpha:1,
+                duration: 100,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }else if(this.player.x>=500){
+            //this.tuto_dash.alpha=0;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.tuto_dash,
+                alpha:0,
+                duration: 100,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }
+        if(1250<=this.player.x && this.player.x<=1750){
+            //this.tuto_tp.alpha=1;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.tuto_tp,
+                alpha:1,
+                duration: 100,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }else{
+            //this.tuto_tp.alpha=0;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.tuto_tp,
+                alpha:0,
+                duration: 100,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }
+        if(750<=this.player.x && this.player.x<=1250){
+            //this.texte_planete_1.alpha=1;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.texte_planete_1,
+                alpha:1,
+                duration: 150,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }else{
+            //this.texte_planete_1.alpha=0;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.texte_planete_1,
+                alpha:0,
+                duration: 150,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }
+        if(2750<=this.player.x && this.player.x<=3250){
+            //this.texte_planete_2.alpha=1;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.texte_planete_2,
+                alpha:1,
+                duration: 150,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }else{
+            //this.texte_planete_2.alpha=0;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.texte_planete_2,
+                alpha:0,
+                duration: 150,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }
+        if(5150<=this.player.x){
+            //this.tuto_enigme.alpha=1;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.tuto_enigme,
+                alpha:1,
+                duration: 100,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }else{
+            //this.tuto_enigme.alpha=0;
+            Tableau.current.tweens.add({
+                targets: Tableau.current.tuto_enigme,
+                alpha:0,
+                duration: 100,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }
+        if(this.player.x>=3500){
+            Tableau.current.tweens.add({
+                targets: Tableau.current.premier_plan_ombre_tour,
+                alpha:1,
+                duration: 200,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }else{
+            Tableau.current.tweens.add({
+                targets: Tableau.current.premier_plan_ombre_tour,
+                alpha:0,
+                duration: 200,
+                ease: 'Sine.easeInOut',
+                //yoyo: false,
+                //repeat: 0
+            })
+        }
+        // if(this.player.x<4350 && this.player.x>4300 && this.player.y>300){
+        //     this.player.setVelocity(0);
+        //     this.player.x+=1*this.sens;
+        // }
     }
 
 
@@ -426,16 +626,16 @@ class TableauTiledRenew extends Tableau{
      */
     moveParallax(){
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
-        this.sky.tilePositionX=this.cameras.main.scrollX*0.6;
+        /*this.sky.tilePositionX=this.cameras.main.scrollX*0.6;
         this.sky.tilePositionY=this.cameras.main.scrollY*0.6;
         this.sky2.tilePositionX=this.cameras.main.scrollX*0.7+100;
-        this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;
+        this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;*/
     }
 
 
 //fx quand on active la pierre de l'énigme
     fxFin(){
-        this.smokeFx.setDepth(1000);
+        this.smokeFx.setDepth(101);
         this.smokeFx.play();
         console.log('smoke');
     }
@@ -448,7 +648,7 @@ class TableauTiledRenew extends Tableau{
             //this.player.x=5300;
 
         }*/
-        if(this.player.x>=this.map.widthInPixels-100 && this.player.y>=510/*this.player.getBounds().bottom < this.img.getBounds().top+30 *//*&& condition de réussite de l'énigme*/){
+        if(this.player.x<=this.map.widthInPixels-190 && this.player.x>=this.map.widthInPixels-260 && this.player.y>=2125/*this.player.getBounds().bottom < this.img.getBounds().top+30 *//*&& condition de réussite de l'énigme*/){
             //PLUS SIMPLE -> this.ecranFin=this.add.sprite(600, 40, "ecran de fin"); loaded au préalable dans preload avec this.load.image('');
             //this.song.stop();
             this.compteur+=1;
@@ -484,8 +684,8 @@ class TableauTiledRenew extends Tableau{
         }
     }
 
-    enigmeNiveau(){
-        //if(this.player.x>=3000 /*&& condition de réussite de l'énigme*/){
+    /*enigmeNiveau(){
+        //if(this.player.x>=3000){
         if(this.player.x>=5000){
             this.vidEnigme.alpha=1;
             //this.vidEnigme.active=true; //met en pause la video
@@ -516,9 +716,31 @@ class TableauTiledRenew extends Tableau{
             //console.log('alpha');
         }
 
+    }*/
+
+    fxTour(){
+        if(this.player.x>=3500){
+            Tableau.current.tweens.timeline({
+                targets: this.cameras,
+                zoom: 1.5,
+                duration: 3000,
+                ease: 'Sine.easeInOut',
+                yoyo: true,
+                repeat: -1
+            })
+        }
+        if(this.player.x>=4200){
+            Tableau.current.tweens.timeline({
+                targets: this.cameras,
+                zoom: 0.5,
+                duration: 3000,
+                ease: 'Sine.easeInOut',
+                yoyo: true,
+                repeat: -1
+            })
+        }
+
     }
-
-
 
 
 
@@ -528,7 +750,9 @@ class TableauTiledRenew extends Tableau{
         super.update();
         this.moveParallax();
         this.finNiveau();
-        this.enigmeNiveau();
+        //this.enigmeNiveau();
+        //this.fxTour();
+        this.apparitionTexte();
 
 
 

@@ -82,7 +82,7 @@ class Tableau extends Phaser.Scene{
          * Le joueur
          * @type {Player}
          */
-        this.player=new Player(this,0,0);
+        this.player=new Player(this,0,2500);
         this.song = this.sound.add('track', {volume: 0.1})
         this.song.play();
         this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
@@ -148,7 +148,7 @@ class Tableau extends Phaser.Scene{
     update(){
         super.update();
         this.player.move();
-        this.hitFall();
+        //this.hitFall();
 
         this.tp();
         this.dsh();
