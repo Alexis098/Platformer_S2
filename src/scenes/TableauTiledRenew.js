@@ -65,7 +65,7 @@ class TableauTiledRenew extends Tableau{
 
 
         //this.load.video('dialogue1','assets/videos/dialogue1.mp4');
-        this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
+        //this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
 
         //this.load.image('dalle', 'assets/64x86.png');
 
@@ -129,7 +129,7 @@ class TableauTiledRenew extends Tableau{
 
         // 3 Permet d'utiliser l'éditeur de collision de Tiled...mais ne semble pas marcher pas avec le moteur de physique ARCADE, donc oubliez cette option :(
         //this.map.setCollisionFromCollisionGroup(true,true,this.plateformesSimples);
-        this.inZone=false;
+        //this.inZone=false;
 
         let ici=this;
         //PLATEFORMES
@@ -255,7 +255,6 @@ class TableauTiledRenew extends Tableau{
         //     point.blendMode=Phaser.BlendModes.COLOR_DODGE;
         //     point.videosObject=videosObject;
         // });
-        this.vidEnigme=this.add.video(5050, 425, 'dialogue1');
 
 
         //AUTRE VIDEO
@@ -395,9 +394,7 @@ class TableauTiledRenew extends Tableau{
 
         this.devant.setDepth(103);
         this.mursInvisibles.setDepth(103);
-        // this.solides.setDepth(z--);
-        // this.laveFxContainer.setDepth(z--);
-        // this.lave.setDepth(z--);
+
         this.player.setDepth(102);
         this.derriere.setDepth(50);
         // this.sky2.setDepth(z--);
@@ -434,8 +431,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:1,
                 duration: 100,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }else if(this.player.x>=500){
             //this.tuto_dash.alpha=0;
@@ -444,8 +440,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:0,
                 duration: 100,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }
         if(1250<=this.player.x && this.player.x<=1750){
@@ -455,8 +450,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:1,
                 duration: 100,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }else{
             //this.tuto_tp.alpha=0;
@@ -465,8 +459,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:0,
                 duration: 100,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }
         if(750<=this.player.x && this.player.x<=1250){
@@ -476,8 +469,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:1,
                 duration: 150,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }else{
             //this.texte_planete_1.alpha=0;
@@ -486,8 +478,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:0,
                 duration: 150,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }
         if(2750<=this.player.x && this.player.x<=3250){
@@ -497,8 +488,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:1,
                 duration: 150,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }else{
             //this.texte_planete_2.alpha=0;
@@ -507,8 +497,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:0,
                 duration: 150,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }
         if(5150<=this.player.x){
@@ -518,8 +507,7 @@ class TableauTiledRenew extends Tableau{
                 alpha:1,
                 duration: 100,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }else{
             //this.tuto_enigme.alpha=0;
@@ -528,33 +516,27 @@ class TableauTiledRenew extends Tableau{
                 alpha:0,
                 duration: 100,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }
-        if(this.player.x>=3500){
+        if(this.player.x>=3950){
             Tableau.current.tweens.add({
                 targets: Tableau.current.premier_plan_ombre_tour,
                 alpha:1,
-                duration: 200,
+                duration: 80,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }else{
             Tableau.current.tweens.add({
                 targets: Tableau.current.premier_plan_ombre_tour,
                 alpha:0,
-                duration: 200,
+                duration: 80,
                 ease: 'Sine.easeInOut',
-                //yoyo: false,
-                //repeat: 0
+
             })
         }
-        // if(this.player.x<4350 && this.player.x>4300 && this.player.y>300){
-        //     this.player.setVelocity(0);
-        //     this.player.x+=1*this.sens;
-        // }
+
     }
 
 
@@ -719,25 +701,47 @@ class TableauTiledRenew extends Tableau{
     }*/
 
     fxTour(){
+        this.camera = this.cameras.main;
+
+        this.camera.setZoom(1);
         if(this.player.x>=3500){
-            Tableau.current.tweens.timeline({
-                targets: this.cameras,
-                zoom: 1.5,
-                duration: 3000,
-                ease: 'Sine.easeInOut',
-                yoyo: true,
-                repeat: -1
-            })
-        }
-        if(this.player.x>=4200){
-            Tableau.current.tweens.timeline({
-                targets: this.cameras,
+            this.camera.setZoom(0.5);
+            /*Tableau.current.tweens.add({
+                targets: Tableau.current.camera,
                 zoom: 0.5,
-                duration: 3000,
+                duration: 100,
                 ease: 'Sine.easeInOut',
-                yoyo: true,
-                repeat: -1
-            })
+
+            })*/
+
+            /*Tableau.current.tweens.add({
+            targets: Tableau.current.camera.zoom,
+            ease: 'Sine.easeInOut',
+            duration: 1000,
+            loop: 0,
+            tweens: [
+                {
+                    targets: Tableau.current.camera.zoom,
+                    zoom: 0.5
+                },
+                {
+                    targets: Tableau.current.camera.zoom,
+                    zoom: 0.5
+                },
+            ]
+        });*/
+        }
+
+
+        if(this.player.y<=1500){
+            this.camera.setZoom(1);
+            /*Tableau.current.tweens.add({
+                targets: Tableau.current.camera,
+                zoom: 1.5,
+                duration: 100,
+                ease: 'Sine.easeInOut',
+
+            })*/
         }
 
     }
@@ -751,7 +755,7 @@ class TableauTiledRenew extends Tableau{
         this.moveParallax();
         this.finNiveau();
         //this.enigmeNiveau();
-        //this.fxTour();
+        this.fxTour();
         this.apparitionTexte();
 
 
