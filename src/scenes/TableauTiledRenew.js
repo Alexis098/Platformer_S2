@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V026.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V027.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -34,7 +34,8 @@ class TableauTiledRenew extends Tableau{
 
         this.load.image('checkPoint', 'assets/soleil.png');
 
-        this.load.image('PlateformMouv', 'assets/plateform_rouge.png');
+        this.load.image('PlateformMouv', 'assets/plateforme_1_3.png');
+        this.load.image('platforms_longues', 'assets/platforms_longues.png');
 
         // -----et puis aussi-------------
 
@@ -49,8 +50,8 @@ class TableauTiledRenew extends Tableau{
         this.load.image('nuages', 'assets/background/arriere_plan_3_nuages.png');
         this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2.png');
         this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1.png');
-        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_1.png');
-        this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour.png');
+        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_2.png');
+        this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour_2.png');
         this.load.image('light', 'assets/background/premier_plan/light.png');
         this.load.image('plantes_arbres', 'assets/background/avant_plan/plantes_arbre.png');
         this.load.image('premiere_roche', 'assets/background/avant_plan/premiere_roche.png');
@@ -62,6 +63,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme.png');
         this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_2.png');
         this.load.image('texte_planete_2', 'assets/ecrans_narration/texte_planete_2_2.png');
+
 
 
         //this.load.video('dialogue1','assets/videos/dialogue1.mp4');
@@ -123,6 +125,7 @@ class TableauTiledRenew extends Tableau{
 
 
 
+
         // 2 manière la plus simple (là où il y a des tiles ça collide et sinon non)
         //this.devant.setCollisionByExclusion(-1, true);
         //this.lave.setCollisionByExclusion(-1, true);
@@ -149,6 +152,45 @@ class TableauTiledRenew extends Tableau{
 
         //this.physics.add.collider(this.Platforms, this.player);
         this.physics.add.collider(this.Platforms, this.player, function () {
+
+        });
+
+        this.PlatformsInTower = this.physics.add.group({
+            allowGravity: false,
+            immovable: true,
+            bounceY:0,
+            bounceX:0,
+        });
+        this.PlatformsInTowerObjects = this.map.getObjectLayer('PlatformsInTower')['objects'];
+        // On crée des étoiles pour chaque objet rencontré
+        this.PlatformsInTowerObjects.forEach(PlatformsInTowerObject => {
+            // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
+            let PlatformsInTower = this.PlatformsInTower.create(PlatformsInTowerObject.x+32, PlatformsInTowerObject.y+16 /*, 'particles'*/, 'PlateformMouv');
+        });
+        //this.physics.add.collider(this.Platforms, this.player);
+
+        //this.physics.add.collider(this.Platforms, this.player);
+        this.physics.add.collider(this.PlatformsInTower, this.player, function () {
+
+        });
+
+        this.PlatformsLongues = this.physics.add.group({
+            allowGravity: false,
+            immovable: true,
+            bounceY:0,
+            bounceX:0,
+
+        });
+        this.PlatformsLonguesObjects = this.map.getObjectLayer('PlatformsLongues')['objects'];
+        // On crée des étoiles pour chaque objet rencontré
+        this.PlatformsLonguesObjects.forEach(PlatformsLonguesObject => {
+            // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
+            let PlatformsLongues = this.PlatformsLongues.create(PlatformsLonguesObject.x, PlatformsLonguesObject.y /*, 'particles'*/, 'platforms_longues');
+        });
+        //this.physics.add.collider(this.Platforms, this.player);
+
+        //this.physics.add.collider(this.Platforms, this.player);
+        this.physics.add.collider(this.PlatformsLongues, this.player, function () {
 
         });
 
@@ -385,6 +427,8 @@ class TableauTiledRenew extends Tableau{
         this.dalles.setDepth(1000);
         this.checkPoints.setDepth(98);
         this.Platforms.setDepth(1000);
+        this.PlatformsInTower.setDepth(100);
+        this.PlatformsLongues.setDepth(102);
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
 
@@ -406,7 +450,7 @@ class TableauTiledRenew extends Tableau{
         this.voile.setDepth(6);
         this.premier_plan.setDepth(99);
         this.light.setDepth(101);
-        this.premier_plan_ombre_tour.setDepth(100);
+        this.premier_plan_ombre_tour.setDepth(101);
         this.plantes_arbres.setDepth(104);
         this.premiere_roche.setDepth(104);
         this.roche_pilier.setDepth(104);
@@ -522,7 +566,7 @@ class TableauTiledRenew extends Tableau{
         if(this.player.x>=3950){
             Tableau.current.tweens.add({
                 targets: Tableau.current.premier_plan_ombre_tour,
-                alpha:1,
+                alpha:0,
                 duration: 80,
                 ease: 'Sine.easeInOut',
 
@@ -530,7 +574,7 @@ class TableauTiledRenew extends Tableau{
         }else{
             Tableau.current.tweens.add({
                 targets: Tableau.current.premier_plan_ombre_tour,
-                alpha:0,
+                alpha:1,
                 duration: 80,
                 ease: 'Sine.easeInOut',
 
@@ -705,7 +749,12 @@ class TableauTiledRenew extends Tableau{
 
         this.camera.setZoom(1);
         if(this.player.x>=3500){
-            this.camera.setZoom(0.5);
+            //this.camera.setZoom(0.5);
+            //this.camera.pan(-100, -100, 100, 'Power2');
+            this.camera.zoomTo(0.5, 1, 'Power2');
+
+
+
             /*Tableau.current.tweens.add({
                 targets: Tableau.current.camera,
                 zoom: 0.5,
