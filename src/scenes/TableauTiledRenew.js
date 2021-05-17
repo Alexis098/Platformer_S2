@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V027.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V028.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -63,6 +63,8 @@ class TableauTiledRenew extends Tableau{
         this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme.png');
         this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_2.png');
         this.load.image('texte_planete_2', 'assets/ecrans_narration/texte_planete_2_2.png');
+        this.load.image('rocher_obstacle', 'assets/rocher_obstacle_2.png');
+
 
 
 
@@ -359,12 +361,14 @@ class TableauTiledRenew extends Tableau{
         this.roche_pilier=this.add.sprite(2600, 2075, 'roche_pilier');
         this.premiere_roche=this.add.sprite(1175, 2200, 'premiere_roche');
         this.rocher_devant=this.add.sprite(3000, 1110, 'rocher_devant');
+        this.rocher_obstacle=this.add.sprite(1590, 2100, 'rocher_obstacle');
         //bulles de texte
         this.tuto_dash=this.add.sprite(300, 2000, 'tuto_dash');
-        this.tuto_tp=this.add.sprite(1500, 2000, 'tuto_tp');
+        this.tuto_tp=this.add.sprite(1300, 2000, 'tuto_tp');
         this.tuto_enigme=this.add.sprite(5400, 1975, 'tuto_enigme');
-        this.texte_planete_1=this.add.sprite(1000, 2000, 'texte_planete_1');
+        this.texte_planete_1=this.add.sprite(800, 2000, 'texte_planete_1');
         this.texte_planete_2=this.add.sprite(3000, 2000, 'texte_planete_2');
+
 
 
 
@@ -456,11 +460,13 @@ class TableauTiledRenew extends Tableau{
         this.roche_pilier.setDepth(104);
         this.dalles.setDepth(97);
         this.rocher_devant.setDepth(103);
+        this.rocher_obstacle.setDepth(101);
 
         this.tuto_dash.setDepth(99);
         this.tuto_tp.setDepth(99);
         this.tuto_enigme.setDepth(99);
         this.texte_planete_1.setDepth(99);
+        this.texte_planete_1.alpha=0;
         this.texte_planete_2.setDepth(99);
 
         this.restoreCheckPoint();
@@ -506,7 +512,7 @@ class TableauTiledRenew extends Tableau{
 
             })
         }
-        if(750<=this.player.x && this.player.x<=1250){
+        if(750<=this.player.x && this.player.x<=1100){
             //this.texte_planete_1.alpha=1;
             Tableau.current.tweens.add({
                 targets: Tableau.current.texte_planete_1,
@@ -563,7 +569,7 @@ class TableauTiledRenew extends Tableau{
 
             })
         }
-        if(this.player.x>=3950){
+        if(this.player.x>=3850){
             Tableau.current.tweens.add({
                 targets: Tableau.current.premier_plan_ombre_tour,
                 alpha:0,
@@ -748,10 +754,10 @@ class TableauTiledRenew extends Tableau{
         this.camera = this.cameras.main;
 
         this.camera.setZoom(1);
-        if(this.player.x>=3500){
-            //this.camera.setZoom(0.5);
+        if(this.player.x>=3500  && this.player.x<=4500){
+            this.camera.setZoom(0.5);
             //this.camera.pan(-100, -100, 100, 'Power2');
-            this.camera.zoomTo(0.5, 1, 'Power2');
+            //this.camera.zoomTo(0.5, 1, 'Power2');
 
 
 
