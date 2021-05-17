@@ -50,7 +50,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('nuages', 'assets/background/arriere_plan_3_nuages.png');
         this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2.png');
         this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1.png');
-        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_2.png');
+        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_3.png');
         this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour_2.png');
         this.load.image('light', 'assets/background/premier_plan/light.png');
         this.load.image('plantes_arbres', 'assets/background/avant_plan/plantes_arbre.png');
@@ -76,6 +76,7 @@ class TableauTiledRenew extends Tableau{
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
 
         this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
+        this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte.mp3');
 
     }
 
@@ -83,6 +84,8 @@ class TableauTiledRenew extends Tableau{
     create() {
         super.create();
         this.compteur=0;
+        this.once=0;
+        this.lecture_texte_planete=0;
         this.smokeFx=this.add.video(5860, 2190, 'smokeFx');
 
 
@@ -264,6 +267,7 @@ class TableauTiledRenew extends Tableau{
             monstersContainer.add(monster);
             this.physics.add.collider(monster, this.devant);
             this.physics.add.collider(monster, this.mursInvisibles);
+
         });
 
 
@@ -480,11 +484,13 @@ class TableauTiledRenew extends Tableau{
         this.texte_planete_1.alpha=0;
         this.texte_planete_2.setDepth(99);
 
+
         this.restoreCheckPoint();
 
     }
 
     apparitionTexte(){
+
         if(this.player.x<500){
             //this.tuto_dash.alpha=1;
             Tableau.current.tweens.add({
@@ -525,6 +531,11 @@ class TableauTiledRenew extends Tableau{
         }
         if(750<=this.player.x && this.player.x<=1100){
             //this.texte_planete_1.alpha=1;
+            if(this.lecture_texte_planete===0){
+                this.texte_planete = this.sound.add('texte_planete', {volume: 0.5})
+                this.texte_planete.play();
+                this.lecture_texte_planete=1;
+            }
             Tableau.current.tweens.add({
                 targets: Tableau.current.texte_planete_1,
                 alpha:1,
@@ -766,10 +777,17 @@ class TableauTiledRenew extends Tableau{
         this.camera = this.cameras.main;
 
         this.camera.setZoom(1);
-        if(this.player.x>=3500  && this.player.x<=4500){
+
+        if(this.player.x>=2500 && this.player.x<=2600 && this.once===0){
             this.song = this.sound.add('track', {volume: 0.5})
             this.song.play();
+            this.once=1;
+
+
+        }
+        if(this.player.x>=3500  && this.player.x<=4500){
             this.camera.setZoom(0.5);
+
             //this.camera.pan(-100, -100, 100, 'Power2');
             //this.camera.zoomTo(0.5, 1, 'Power2');
 
@@ -799,6 +817,7 @@ class TableauTiledRenew extends Tableau{
                 },
             ]
         });*/
+
         }
 
 
