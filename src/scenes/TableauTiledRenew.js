@@ -26,7 +26,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('monster-fly', 'assets/monster-dragon.png');
         this.load.image('monster-katana', 'assets/monster_katana.png');
         this.load.image('tireur', 'assets/tireur.png');
-        this.load.image('projo', 'assets/projo.png');
+        this.load.image('projo', 'assets/missile_2.png');
 
 
         // ---------Les étoiles-----------
@@ -75,6 +75,8 @@ class TableauTiledRenew extends Tableau{
 
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
 
+        this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
+
     }
 
 
@@ -82,6 +84,8 @@ class TableauTiledRenew extends Tableau{
         super.create();
         this.compteur=0;
         this.smokeFx=this.add.video(5860, 2190, 'smokeFx');
+
+
         //this.projectile();
 /*
         //this.img=this.add.sprite(5350,500,'dalle');
@@ -204,7 +208,6 @@ class TableauTiledRenew extends Tableau{
 
 
 
-
         //----------les objets déplaçables ---------------------
         this.stars = this.physics.add.group({
             allowGravity: true,
@@ -251,6 +254,7 @@ class TableauTiledRenew extends Tableau{
             monstersContainer.add(monster);
         });
 
+
         //----------les monstres terrestres (objets tiled) ---------------------
 
         ici.katanaMonstersObjects = ici.map.getObjectLayer('katanaMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
@@ -259,7 +263,9 @@ class TableauTiledRenew extends Tableau{
             //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
             this.physics.add.collider(monster, this.devant);
+            this.physics.add.collider(monster, this.mursInvisibles);
         });
+
 
         ici.tireurMonstersObjects = ici.map.getObjectLayer('tireurMonsters')['objects']; //katanaMonsters est le nom du calque objet dans tiled
         ici.tireurMonstersObjects.forEach(monsterObject => {
@@ -268,6 +274,9 @@ class TableauTiledRenew extends Tableau{
             //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
             this.physics.add.collider(monster, this.devant);
+            this.physics.add.collider(monster, this.Platforms);
+            this.physics.add.collider(monster, this.PlatformsInTower);
+            this.physics.add.collider(monster, this.PlatformsLongues);
         });
 
         ici.PlateformMouvObjects = ici.map.getObjectLayer('PlateformMouv')['objects']; //katanaMonsters est le nom du calque objet dans tiled
@@ -277,6 +286,7 @@ class TableauTiledRenew extends Tableau{
             //let ici déclare la variable monster en local donc n'existe pas en dehors de cette fonction
             monstersContainer.add(monster);
             this.physics.add.collider(monster, this.player);
+
         });
 
 
@@ -444,6 +454,7 @@ class TableauTiledRenew extends Tableau{
         this.mursInvisibles.setDepth(103);
 
         this.player.setDepth(102);
+
         this.derriere.setDepth(50);
         // this.sky2.setDepth(z--);
         this.ciel.setDepth(1);
@@ -600,6 +611,7 @@ class TableauTiledRenew extends Tableau{
         this.projo1.setDepth(1000);
         this.projo1.body.setSize(35,50);
         this.physics.add.overlap(this.player, this.projo1, this.hitMonster, null, this);
+
     }
 
     //Checkpoint
@@ -755,6 +767,8 @@ class TableauTiledRenew extends Tableau{
 
         this.camera.setZoom(1);
         if(this.player.x>=3500  && this.player.x<=4500){
+            this.song = this.sound.add('track', {volume: 0.5})
+            this.song.play();
             this.camera.setZoom(0.5);
             //this.camera.pan(-100, -100, 100, 'Power2');
             //this.camera.zoomTo(0.5, 1, 'Power2');

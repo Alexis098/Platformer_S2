@@ -50,7 +50,7 @@ class Tableau extends Phaser.Scene{
             'assets/enemy_ninja.png',
             { frameWidth: 60, frameHeight: 80  }
         );
-        this.load.audio('track', 'assets/son/kamakura.mp3');
+        //this.load.audio('track', 'assets/son/kamakura.mp3');
 
         this.load.audio('dashson', 'assets/son/dash.mp3');
         this.load.audio('tpson', 'assets/son/tp2.mp3');
@@ -83,8 +83,8 @@ class Tableau extends Phaser.Scene{
          * @type {Player}
          */
         this.player=new Player(this,0,2500);
-        this.song = this.sound.add('track', {volume: 0.1})
-        this.song.play();
+        //this.song = this.sound.add('track', {volume: 0.1})
+        //this.song.play();
         this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
         this.blood.displayWidth=64;
         this.blood.displayHeight=64;
@@ -316,7 +316,7 @@ class Tableau extends Phaser.Scene{
         this.physics.pause();
         player.setTint(0xff0000);
         player.anims.play('turn');
-        this.song.stop();
+        //this.song.stop();
         this.scene.restart();
     }
 
@@ -326,7 +326,7 @@ class Tableau extends Phaser.Scene{
             this.physics.pause();
             this.player.setTint(0xff0000);
             this.player.anims.play('turn');
-            this.song.stop();
+            //this.song.stop();
             this.respawnTime();
             //this.ptsVie-=1; //pas nécessaire on recommence à un checkpoint
             //console.log(this.ptsVie);
@@ -515,7 +515,7 @@ class Tableau extends Phaser.Scene{
      */
     _destroy(){
         this.player.stop();
-        this.song.stop();
+        //this.song.stop();
         this.scene.stop();
     }
 
@@ -523,7 +523,7 @@ class Tableau extends Phaser.Scene{
      * Quand on a gagné
      */
     win(){
-        this.song.stop();
+        //this.song.stop();
         Tableau.suivant();
 
     }

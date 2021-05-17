@@ -20,7 +20,7 @@ class Patrouilleur extends ObjetEnnemi{
         this.setCollideWorldBounds(true);
         this.setBounce(0);
 
-        this.setDepth(10);
+        this.setDepth(102);
         //execute une commande au bout de 1 seconde loop permet de lancer l'action en boucle à la manière d'un update pour savoir à chaque frame si il faut lancer la ligne de code
         scene.time.addEvent({ delay: 1000, callback: this.test, callbackScope: this, loop: true });
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);

@@ -5,7 +5,7 @@ class Projectile extends ObjetEnnemi {
         this.setBounce(0);
         //this.setVelocityX(160);
         this.setDepth(1000);
-        this.body.setSize(15,30);
+        this.body.setSize(15,20);
 
         this.originalX=x;
         this.minX=x;
@@ -13,6 +13,7 @@ class Projectile extends ObjetEnnemi {
 
         this.x=this.minX;
         //let me=this;
+        this.valeur=0;
 
 
         /*scene.tweens.add({
@@ -30,6 +31,16 @@ class Projectile extends ObjetEnnemi {
         })*/
 
     }
+    /*tir(){
+        this.valeur+=1;
+        console.log(this.valeur);
+        if(this.valeur===100){
+            this.destroy();
+        }
+    }
+    update(){
+        this.tir();
+    }*/
 
     /*projo(){
         this.scene.tweens.add({
