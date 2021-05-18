@@ -18,8 +18,8 @@ let config = {
     scene: [
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
-        //new Tableau00("Accueil"),
-        //new Tableau01("Skip"),
+        new Tableau00("Accueil"),
+        new Tableau01("Skip"),
         new TableauTiledRenew("definitiveEdition"),
         new Tableau00A("toto"),
         //new TableauLong("Sun Chaser"),
