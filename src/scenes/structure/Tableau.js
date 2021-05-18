@@ -95,61 +95,158 @@ class Tableau extends Phaser.Scene{
         //TP DU PLAYER
         this.boutonTelep = this.input.keyboard.addKey('Z');
 
-        this.cinqVies=this.add.sprite(600, 40, "5vies");
+        this.cinqVies=this.add.sprite(800, 40, "5vies");
         this.cinqVies.setDepth(1000);
         this.cinqVies.setScrollFactor(0);
 
 
         //il faut réussir à lire la vidéo à l'emplacement du personnage
-
+        this.cinqVies.minX=this.cinqVies.x;
+        this.cinqVies.maxX=this.cinqVies.minX+100;
 
 
     }
     imgVies(){
+        /*let me=this;
+        if(this.ptsVie===5) {
+            if (this.player.x >= 3150 && this.player.x <= 4000) {
+                setTimeout(function(){
+                    me.cinqVies.setScale(2);
+                    me.cinqVies.x=1150;
+                    me.cinqVies.y=-150;
+                },4500)
+
+            } else if (this.player.x > 4000 && this.player.y <= 3000 || this.player.x < 3150) {
+                setTimeout(function(){
+                    me.cinqVies.setScale(1);
+                    me.cinqVies.x=800;
+                    me.cinqVies.y=40;
+                },4500)
+
+            }
+        }*/
         if(this.ptsVie===4){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
-            this.quatreVies=this.add.sprite(600, 40, "4vies");
+            this.quatreVies=this.add.sprite(800, 40, "4vies");
             this.quatreVies.setDepth(1000);
             this.quatreVies.setScrollFactor(0);
             this.cinqVies.destroy();
+
+            /*if(this.player.x>=3150  && this.player.x<=4000){
+                //this.quatreVies.setScale(2,2,1500);
+                setTimeout(function(){
+                    me.quatreVies.setScale(2);
+                    me.quatreVies.x=1150;
+                    me.quatreVies.y=-150;
+                },4500)
+            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
+                setTimeout(function(){
+                    me.quatreVies.setScale(1);
+                    me.quatreVies.x=800;
+                    me.quatreVies.y=40;
+                },4500)
+            }*/
             // console.log('4coeurs');
         }
         if(this.ptsVie===3){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
-            this.troisVies=this.add.sprite(600, 40, "3vies");
+            this.troisVies=this.add.sprite(800, 40, "3vies");
             this.troisVies.setDepth(1000);
             this.troisVies.setScrollFactor(0);
             this.quatreVies.destroy();
+
+            /*if(this.player.x>=3150  && this.player.x<=4000){
+                //this.troisVies.setScale(2,2,1500);
+                setTimeout(function(){
+                    me.troisVies.setScale(2);
+                    me.troisVies.x=1150;
+                    me.troisVies.y=-150;
+                },4500)
+            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
+                setTimeout(function(){
+                    me.troisVies.setScale(1);
+                    me.troisVies.x=800;
+                    me.troisVies.y=40;
+                },4500)
+            }*/
             // console.log('3coeurs');
         }
         if(this.ptsVie===2){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
-            this.deuxVies=this.add.sprite(600, 40, "2vies");
+            this.deuxVies=this.add.sprite(800, 40, "2vies");
             this.deuxVies.setDepth(1000);
             this.deuxVies.setScrollFactor(0);
             this.troisVies.destroy();
+
+            /*if(this.player.x>=3150  && this.player.x<=4000){
+                //this.deuxVies.setScale(2,2,1500);
+                setTimeout(function(){
+                    me.deuxVies.setScale(2);
+                    me.deuxVies.x=1150;
+                    me.deuxVies.y=-150;
+                },4500)
+            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
+                setTimeout(function(){
+                    me.deuxVies.setScale(1);
+                    me.deuxVies.x=800;
+                    me.deuxVies.y=40;
+                },4500)
+            }*/
+
         }
         if(this.ptsVie===1){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
-            this.uneVies=this.add.sprite(600, 40, "1vies");
+            this.uneVies=this.add.sprite(800, 40, "1vies");
             this.uneVies.setDepth(1000);
             this.uneVies.setScrollFactor(0);
             this.deuxVies.destroy();
+
+            /*if(this.player.x>=3150  && this.player.x<=4000){
+                //this.uneVies.setScale(2,2,1500);
+                setTimeout(function(){
+                    me.uneVies.setScale(2);
+                    me.uneVies.x=1150;
+                    me.uneVies.y=-150;
+                },4500)
+            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
+                setTimeout(function(){
+                    me.uneVies.setScale(1);
+                    me.uneVies.x=800;
+                    me.uneVies.y=40;
+                },4500)
+            }*/
         }
         if(this.ptsVie===0){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
-            this.zeroVies=this.add.sprite(600, 40, "0vies");
+            this.zeroVies=this.add.sprite(800, 40, "0vies");
             this.zeroVies.setDepth(1000);
             this.zeroVies.setScrollFactor(0);
             this.uneVies.destroy();
+
+            /*if(this.player.x>=3150  && this.player.x<=4000){
+                //this.zeroVies.setScale(2,2,1500);
+                setTimeout(function(){
+                    me.zeroVies.setScale(2);
+                    me.zeroVies.x=1150;
+                    me.zeroVies.y=-150;
+                },4500)
+            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
+                setTimeout(function(){
+                    me.zeroVies.setScale(1);
+                    me.zeroVies.x=800;
+                    me.zeroVies.y=40;
+                },4500)
+            }*/
         }
     }
+
+
 
     update(){
         super.update();
         this.player.move();
         //this.hitFall();
-
+        //this.imgVies();
         this.tp();
         this.dsh();
 
@@ -449,7 +546,7 @@ class Tableau extends Phaser.Scene{
                             me.player.isDead = false;
                             me.scene.restart();
                         })
-                        this.song.stop();
+                        //this.song.stop();
                         this.verif=1;
                         this.verifTP=1;
                         me.scene.restart();

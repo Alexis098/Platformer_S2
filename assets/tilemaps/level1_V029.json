@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"level1_V028.json"
+         "target":"level1_V029.json"
         }
     },
  "height":35,
@@ -658,8 +658,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4416,
-                 "y":1408
+                 "x":4224,
+                 "y":1344
                 }, 
                 {
                  "gid":74,

@@ -40,8 +40,11 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
         },this);
 
 
-
-
+        this.add.text(800, 10, 'Cliquez pour passer', { font: '"Press Start 2P"' });
+        // this.skip = this.add.text(790, 10, 'Cliquez pour passer', {
+        //     font:'12px "Black And White Picture"',
+        //     fill: '#fff'
+        // });
 
 
 

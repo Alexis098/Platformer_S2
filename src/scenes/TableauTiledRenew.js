@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V028.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V029.json');
 
         // ---------Les monstres------------
         this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -74,6 +74,7 @@ class TableauTiledRenew extends Tableau{
         //this.load.image('dalle', 'assets/64x86.png');
 
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
+        this.load.video('vent', 'assets/videos/FXs/vent.webm', 'loadeddata', false, true);
 
         this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
         this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte.mp3');
@@ -86,8 +87,13 @@ class TableauTiledRenew extends Tableau{
         this.compteur=0;
         this.once=0;
         this.lecture_texte_planete=0;
-        this.smokeFx=this.add.video(5860, 2190, 'smokeFx');
 
+        this.camera = this.cameras.main;
+        this.camera.setZoom(1);
+
+        this.smokeFx=this.add.video(5860, 2190, 'smokeFx');
+        this.vent=this.add.video(4700, 700, 'vent');
+        this.vent.setDepth(103);
 
         //this.projectile();
 /*
@@ -362,26 +368,26 @@ class TableauTiledRenew extends Tableau{
 
         //---------- parallax ciel (rien de nouveau) -------------
 
-        this.ciel=this.add.sprite(3050, 1100, 'ciel');
-        this.voile=this.add.sprite(3050, 1100, 'voile');
-        this.soleils=this.add.sprite(3000, 1120, 'soleils');
-        this.nuages=this.add.sprite(3000, 1120, 'nuages');
-        this.arriere_plan_2=this.add.sprite(1720, 2050, 'arriere_plan_2');
-        this.arriere_plan_1=this.add.sprite(3050, 1110, 'arriere_plan_1');
-        this.premier_plan=this.add.sprite(3050, 1110, 'premier_plan');
-        this.premier_plan_ombre_tour=this.add.sprite(3050, 1110, 'premier_plan_ombre_tour');
-        this.light=this.add.sprite(3050, 1110, 'light');
-        this.plantes_arbres=this.add.sprite(5760, 1970, 'plantes_arbres');
-        this.roche_pilier=this.add.sprite(2600, 2075, 'roche_pilier');
-        this.premiere_roche=this.add.sprite(1175, 2200, 'premiere_roche');
-        this.rocher_devant=this.add.sprite(3000, 1110, 'rocher_devant');
-        this.rocher_obstacle=this.add.sprite(1590, 2100, 'rocher_obstacle');
+        this.ciel=this.add.image(3050, 1100, 'ciel');
+        this.voile=this.add.image(3050, 1100, 'voile');
+        this.soleils=this.add.image(3000, 1120, 'soleils');
+        this.nuages=this.add.image(3000, 1120, 'nuages');
+        this.arriere_plan_2=this.add.image(1720, 2050, 'arriere_plan_2');
+        this.arriere_plan_1=this.add.image(3050, 1110, 'arriere_plan_1');
+        this.premier_plan=this.add.image(3050, 1110, 'premier_plan');
+        this.premier_plan_ombre_tour=this.add.image(3050, 1110, 'premier_plan_ombre_tour');
+        this.light=this.add.image(3050, 1110, 'light');
+        this.plantes_arbres=this.add.image(5760, 1970, 'plantes_arbres');
+        this.roche_pilier=this.add.image(2600, 2075, 'roche_pilier');
+        this.premiere_roche=this.add.image(1175, 2200, 'premiere_roche');
+        this.rocher_devant=this.add.image(3000, 1110, 'rocher_devant');
+        this.rocher_obstacle=this.add.image(1590, 2100, 'rocher_obstacle');
         //bulles de texte
-        this.tuto_dash=this.add.sprite(300, 2000, 'tuto_dash');
-        this.tuto_tp=this.add.sprite(1300, 2000, 'tuto_tp');
-        this.tuto_enigme=this.add.sprite(5400, 1975, 'tuto_enigme');
-        this.texte_planete_1=this.add.sprite(800, 2000, 'texte_planete_1');
-        this.texte_planete_2=this.add.sprite(3000, 2000, 'texte_planete_2');
+        this.tuto_dash=this.add.image(300, 2000, 'tuto_dash');
+        this.tuto_tp=this.add.image(1300, 2000, 'tuto_tp');
+        this.tuto_enigme=this.add.image(5400, 1975, 'tuto_enigme');
+        this.texte_planete_1=this.add.image(800, 2000, 'texte_planete_1');
+        this.texte_planete_2=this.add.image(3000, 2000, 'texte_planete_2');
 
 
 
@@ -444,13 +450,13 @@ class TableauTiledRenew extends Tableau{
 
         this.dalles.setDepth(1000);
         this.checkPoints.setDepth(98);
-        this.Platforms.setDepth(1000);
+        this.Platforms.setDepth(101);
         this.PlatformsInTower.setDepth(100);
         this.PlatformsLongues.setDepth(102);
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
 
-        monstersContainer.setDepth(99);
+        monstersContainer.setDepth(102);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
 
@@ -572,7 +578,7 @@ class TableauTiledRenew extends Tableau{
 
             })
         }
-        if(5150<=this.player.x){
+        if(5400<=this.player.x){
             //this.tuto_enigme.alpha=1;
             Tableau.current.tweens.add({
                 targets: Tableau.current.tuto_enigme,
@@ -685,6 +691,7 @@ class TableauTiledRenew extends Tableau{
         this.sky.tilePositionY=this.cameras.main.scrollY*0.6;
         this.sky2.tilePositionX=this.cameras.main.scrollX*0.7+100;
         this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;*/
+
     }
 
 
@@ -774,9 +781,7 @@ class TableauTiledRenew extends Tableau{
     }*/
 
     fxTour(){
-        this.camera = this.cameras.main;
 
-        this.camera.setZoom(1);
 
         if(this.player.x>=2500 && this.player.x<=2600 && this.once===0){
             this.song = this.sound.add('track', {volume: 0.5})
@@ -785,51 +790,22 @@ class TableauTiledRenew extends Tableau{
 
 
         }
-        if(this.player.x>=3500  && this.player.x<=4500){
-            this.camera.setZoom(0.5);
-
-            //this.camera.pan(-100, -100, 100, 'Power2');
-            //this.camera.zoomTo(0.5, 1, 'Power2');
-
-
-
-            /*Tableau.current.tweens.add({
-                targets: Tableau.current.camera,
-                zoom: 0.5,
-                duration: 100,
-                ease: 'Sine.easeInOut',
-
-            })*/
-
-            /*Tableau.current.tweens.add({
-            targets: Tableau.current.camera.zoom,
-            ease: 'Sine.easeInOut',
-            duration: 1000,
-            loop: 0,
-            tweens: [
-                {
-                    targets: Tableau.current.camera.zoom,
-                    zoom: 0.5
-                },
-                {
-                    targets: Tableau.current.camera.zoom,
-                    zoom: 0.5
-                },
-            ]
-        });*/
+        if(this.player.x>=3150  && this.player.x<=4000){
+            //this.camera.setZoom(0.5);
+            this.camera.zoomTo(0.5,3000);
 
         }
 
 
-        if(this.player.y<=1500){
-            this.camera.setZoom(1);
-            /*Tableau.current.tweens.add({
-                targets: Tableau.current.camera,
-                zoom: 1.5,
-                duration: 100,
-                ease: 'Sine.easeInOut',
+        else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
+            //this.camera.setZoom(1);
+            this.camera.zoomTo(1,5000);
+        }
+        if(this.player.x>=4650 && this.player.y<=601){
+            this.camera.pan(4850, 600, 1500, 'Sine');
+            this.vent.alpha=0.25;
+            this.vent.play();
 
-            })*/
         }
 
     }

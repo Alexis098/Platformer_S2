@@ -17,16 +17,16 @@ class Ui extends Phaser.Scene{
          * @type {Phaser.GameObjects.Text}
          * @private
          */
-        this._scoreText = this.add.text(16, 16, '...', {
+        this._scoreText = this.add.text(16, 16, '', {
             font:'32px "Mondwest"', //ancienne police : Hanalei Fill
             fill: '#fff'
         });
 
-        this._tutoText = this.add.text(16, 50   , 'Dash : A Téléportaiton : Z', {
+        this._tutoText = this.add.text(16, 50   , '', {
             font:'15px "Mondwest"', //ancienne police : Hanalei Fill
             fill: '#fff'
         });
-        this._pvText = this.add.text(16, 85   , 'Points de Vie : 5', {
+        this._pvText = this.add.text(16, 85   , '', {
             font:'15px "Mondwest"', //ancienne police : Hanalei Fill
             fill: '#fff'
         });
@@ -36,7 +36,7 @@ class Ui extends Phaser.Scene{
          * @type {Phaser.GameObjects.Text}
          * @private
          */
-        this._tableauText = this.add.text(this.sys.canvas.width-16, 16, '...', {
+        this._tableauText = this.add.text(this.sys.canvas.width-16, 16, '', {
             font:'32px "Mondwest"',
             align: 'right',
             fill: '#fff'
@@ -47,7 +47,7 @@ class Ui extends Phaser.Scene{
          * @type {Phaser.GameObjects.Text}
          * @private
          */
-        this._tableauTextClass = this.add.text(this.sys.canvas.width-16, 16+32, '...', {
+        this._tableauTextClass = this.add.text(this.sys.canvas.width-16, 16+32, '', {
             font:'24px "Mondwest"',
             align: 'right',
             fill: '#fff',
@@ -102,20 +102,20 @@ class Ui extends Phaser.Scene{
     gagne(points=10)
     {
         this.score+=points;
-        this._scoreText.setText('Score: ' + this.score);
+        //this._scoreText.setText('Score: ' + this.score);
     }
     ptv(points=1){
         this.pv-=points;
-        this._pvText.setText('Points de Vie : ' + this.pv);
+        //this._pvText.setText('Points de Vie : ' + this.pv);
         if(this.pv<1){
             this.pv=5;
-            this._pvText.setText('Points de Vie : ' + this.pv);
+           // this._pvText.setText('Points de Vie : ' + this.pv);
         }
     }
     update(){
         if(Tableau.current){
-            this._tableauText.setText(Tableau.current.scene.key);
-            this._tableauTextClass.setText(Tableau.current.constructor.name);
+            //this._tableauText.setText(Tableau.current.scene.key);
+            //this._tableauTextClass.setText(Tableau.current.constructor.name);
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="95" height="35" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="78">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="95" height="35" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="78">
  <editorsettings>
-  <export target="level1_V028.json" format="json"/>
+  <export target="level1_V029.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="kenny_simple_platformer" tilewidth="64" tileheight="64" tilecount="98" columns="14">
   <image source="../tilesets/platformPack_tilesheet_3.png" width="896" height="448"/>
@@ -568,7 +568,7 @@
   <object id="67" gid="3" x="4608" y="640" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="5" name="flyingMonsters">
-  <object id="73" gid="74" x="4864" y="512" width="64" height="64"/>
+  <object id="73" gid="74" x="4224" y="1344" width="64" height="64"/>
   <object id="74" gid="74" x="4096" y="768" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="6" name="katanaMonsters">
