@@ -27,12 +27,12 @@ class Tableau extends Phaser.Scene{
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/blood.png');
         this.load.spritesheet('player',
-            'assets/player_3_couleurs.png',
-            { frameWidth: 32, frameHeight: 48  }
+            'assets/animations/lumel/Run_test_27.png',/*'assets/player_3_couleurs.png',*/
+            { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('player_stance',
-            'assets/player_stance.png',
-            { frameWidth: 32, frameHeight: 48  }
+            'assets/animations/lumel/Stance_test_1.png',
+            { frameWidth: 86, frameHeight: 64  }
         );
         this.load.spritesheet('player_jump',
             'assets/player_jump1.png',
@@ -61,6 +61,13 @@ class Tableau extends Phaser.Scene{
         this.load.image('2vies', 'assets/Vies/2_coeurs_128x64.png');
         this.load.image('1vies', 'assets/Vies/1_coeurs_128x64.png');
         this.load.image('0vies', 'assets/Vies/0_coeurs_128x64.png');
+
+        /*this.load.image('5viesGrands', 'assets/Vies/grand/5_coeurs_grands.png');
+        this.load.image('4viesGrands', 'assets/Vies/grand/4_coeurs_grands.png');
+        this.load.image('3viesGrands', 'assets/Vies/grand/3_coeurs_grands.png');
+        this.load.image('2viesGrands', 'assets/Vies/grand/2_coeurs_grands.png');
+        this.load.image('1viesGrands', 'assets/Vies/grand/1_coeurs_grands.png');
+        this.load.image('0viesGrands', 'assets/Vies/grand/0_coeurs_grands.png');*/
 
 
     }
@@ -100,28 +107,18 @@ class Tableau extends Phaser.Scene{
         this.cinqVies.setScrollFactor(0);
 
 
-        //il faut réussir à lire la vidéo à l'emplacement du personnage
-        this.cinqVies.minX=this.cinqVies.x;
-        this.cinqVies.maxX=this.cinqVies.minX+100;
+
+
 
 
     }
     imgVies(){
         /*let me=this;
         if(this.ptsVie===5) {
-            if (this.player.x >= 3150 && this.player.x <= 4000) {
-                setTimeout(function(){
-                    me.cinqVies.setScale(2);
-                    me.cinqVies.x=1150;
-                    me.cinqVies.y=-150;
-                },4500)
+
 
             } else if (this.player.x > 4000 && this.player.y <= 3000 || this.player.x < 3150) {
-                setTimeout(function(){
-                    me.cinqVies.setScale(1);
-                    me.cinqVies.x=800;
-                    me.cinqVies.y=40;
-                },4500)
+
 
             }
         }*/
@@ -131,22 +128,6 @@ class Tableau extends Phaser.Scene{
             this.quatreVies.setDepth(1000);
             this.quatreVies.setScrollFactor(0);
             this.cinqVies.destroy();
-
-            /*if(this.player.x>=3150  && this.player.x<=4000){
-                //this.quatreVies.setScale(2,2,1500);
-                setTimeout(function(){
-                    me.quatreVies.setScale(2);
-                    me.quatreVies.x=1150;
-                    me.quatreVies.y=-150;
-                },4500)
-            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
-                setTimeout(function(){
-                    me.quatreVies.setScale(1);
-                    me.quatreVies.x=800;
-                    me.quatreVies.y=40;
-                },4500)
-            }*/
-            // console.log('4coeurs');
         }
         if(this.ptsVie===3){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -154,22 +135,6 @@ class Tableau extends Phaser.Scene{
             this.troisVies.setDepth(1000);
             this.troisVies.setScrollFactor(0);
             this.quatreVies.destroy();
-
-            /*if(this.player.x>=3150  && this.player.x<=4000){
-                //this.troisVies.setScale(2,2,1500);
-                setTimeout(function(){
-                    me.troisVies.setScale(2);
-                    me.troisVies.x=1150;
-                    me.troisVies.y=-150;
-                },4500)
-            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
-                setTimeout(function(){
-                    me.troisVies.setScale(1);
-                    me.troisVies.x=800;
-                    me.troisVies.y=40;
-                },4500)
-            }*/
-            // console.log('3coeurs');
         }
         if(this.ptsVie===2){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -178,21 +143,6 @@ class Tableau extends Phaser.Scene{
             this.deuxVies.setScrollFactor(0);
             this.troisVies.destroy();
 
-            /*if(this.player.x>=3150  && this.player.x<=4000){
-                //this.deuxVies.setScale(2,2,1500);
-                setTimeout(function(){
-                    me.deuxVies.setScale(2);
-                    me.deuxVies.x=1150;
-                    me.deuxVies.y=-150;
-                },4500)
-            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
-                setTimeout(function(){
-                    me.deuxVies.setScale(1);
-                    me.deuxVies.x=800;
-                    me.deuxVies.y=40;
-                },4500)
-            }*/
-
         }
         if(this.ptsVie===1){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -200,21 +150,6 @@ class Tableau extends Phaser.Scene{
             this.uneVies.setDepth(1000);
             this.uneVies.setScrollFactor(0);
             this.deuxVies.destroy();
-
-            /*if(this.player.x>=3150  && this.player.x<=4000){
-                //this.uneVies.setScale(2,2,1500);
-                setTimeout(function(){
-                    me.uneVies.setScale(2);
-                    me.uneVies.x=1150;
-                    me.uneVies.y=-150;
-                },4500)
-            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
-                setTimeout(function(){
-                    me.uneVies.setScale(1);
-                    me.uneVies.x=800;
-                    me.uneVies.y=40;
-                },4500)
-            }*/
         }
         if(this.ptsVie===0){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -223,20 +158,6 @@ class Tableau extends Phaser.Scene{
             this.zeroVies.setScrollFactor(0);
             this.uneVies.destroy();
 
-            /*if(this.player.x>=3150  && this.player.x<=4000){
-                //this.zeroVies.setScale(2,2,1500);
-                setTimeout(function(){
-                    me.zeroVies.setScale(2);
-                    me.zeroVies.x=1150;
-                    me.zeroVies.y=-150;
-                },4500)
-            }else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
-                setTimeout(function(){
-                    me.zeroVies.setScale(1);
-                    me.zeroVies.x=800;
-                    me.zeroVies.y=40;
-                },4500)
-            }*/
         }
     }
 

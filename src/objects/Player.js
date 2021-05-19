@@ -16,26 +16,30 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.speedFactor=1;
         this.vitesse=0;
 
+        //this.setOrigin(0,0);
+        this.body.setSize(40,60);
+        //this.body.setOffset(-20, 0);
+
 
         this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
         this.setOffset(0, 0);
 
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
-            frameRate: 10,
+            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3/*3*/ }),
+            frameRate: 6,
             repeat: -1
         });
 
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('player', { start: 5, end: 8 }),
-            frameRate: 10,
+            frames: this.anims.generateFrameNumbers('player', { start: 7/*5*/, end: 10/*8*/ }),
+            frameRate: 6,
             repeat: -1
         });
         this.anims.create({
             key: 'stance',
-            frames: this.anims.generateFrameNumbers('player_stance', { start: 4, end: 7  }),
+            frames: this.anims.generateFrameNumbers('player_stance', { start: 6, end: 9  }),
             frameRate: 5,
             repeat: -1
         });
