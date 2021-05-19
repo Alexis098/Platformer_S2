@@ -27,11 +27,11 @@ class Tableau extends Phaser.Scene{
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/blood.png');
         this.load.spritesheet('player',
-            'assets/animations/lumel/Run_test_27.png',/*'assets/player_3_couleurs.png',*/
+            'assets/animations/lumel/Run_test_28.png',/*'assets/player_3_couleurs.png',*/
             { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('player_stance',
-            'assets/animations/lumel/Stance_test_1.png',
+            'assets/animations/lumel/Stance_test_3.png',
             { frameWidth: 86, frameHeight: 64  }
         );
         this.load.spritesheet('player_jump',

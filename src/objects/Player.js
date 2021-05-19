@@ -17,12 +17,11 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.vitesse=0;
 
         //this.setOrigin(0,0);
-        this.body.setSize(40,60);
-        //this.body.setOffset(-20, 0);
 
 
-        this.setBodySize(this.body.width-4,this.body.height);//taille de la hitbox
-        this.setOffset(0, 0);
+
+        this.setBodySize(this.body.width-38,this.body.height);//taille de la hitbox
+        this.setOffset(15, 0);
 
         this.anims.create({
             key: 'left',
