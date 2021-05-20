@@ -20,8 +20,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
 
-        this.setBodySize(this.body.width-38,this.body.height);//taille de la hitbox
-        this.setOffset(15, 0);
+        this.setBodySize(this.body.width-38,this.body.height-5);//taille de la hitbox
+        this.setOffset(15, 5);
 
         this.anims.create({
             key: 'left',
@@ -38,8 +38,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         });
         this.anims.create({
             key: 'stance',
-            frames: this.anims.generateFrameNumbers('player_stance', { start: 6, end: 9  }),
-            frameRate: 5,
+            frames: this.anims.generateFrameNumbers('player_stance', { start: 6, end: 12/*9*/  }),
+            frameRate: 4,
             repeat: -1
         });
         this.anims.create({
@@ -138,7 +138,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
         if(this._directionY<0){ //gère la hauteur du saut du perso
-            this.jump();//fonction gérant l'anim de saut
+            //this.jump();//fonction gérant l'anim de saut
 
             if(this.body.blocked.down || this.body.touching.down){
                 //this.setVelocityY(-500);
