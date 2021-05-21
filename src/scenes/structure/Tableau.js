@@ -35,8 +35,8 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('player_stance',
-            'assets/animations/lumel/Stance_test_7.png',
-            { frameWidth: 86, frameHeight: 64  }
+            'assets/animations/lumel/Stance_test_15.png',
+            { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('player_jump',
             'assets/player_jump1.png',

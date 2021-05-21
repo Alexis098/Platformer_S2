@@ -793,7 +793,6 @@ class TableauTiledRenew extends Tableau{
         if(this.player.x>=3150  && this.player.x<=4000){
             //this.camera.setZoom(0.5);
             this.camera.zoomTo(0.5,3000);
-
         }
 
 

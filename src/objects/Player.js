@@ -38,14 +38,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         });
         this.anims.create({
             key: 'stance',
-            frames: this.anims.generateFrameNumbers('player_stance', { start: 6, end: 12/*9*/  }),
-            frameRate: 4,
+            frames: this.anims.generateFrameNumbers('player_stance', { start: 9, end: 13/*9*/  }),
+            frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'back',
             frames: this.anims.generateFrameNumbers('player_stance', { start: 0, end: 3  }),
-            frameRate: 5,
+            frameRate: 4,
             repeat: -1
         });
 
