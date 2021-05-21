@@ -23,9 +23,9 @@ class TableauTiledRenew extends Tableau{
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V029.json');
 
         // ---------Les monstres------------
-        this.load.image('monster-fly', 'assets/monster-dragon.png');
-        this.load.image('monster-katana', 'assets/monster_katana.png');
-        this.load.image('tireur', 'assets/tireur.png');
+        //this.load.image('monster-fly', 'assets/monster-dragon.png');
+        //this.load.image('monster-katana', 'assets/monster_katana.png');
+        //this.load.image('tireur', 'assets/animations/tireur/tireur_test_1.png');
         this.load.image('projo', 'assets/missile_2.png');
 
 
@@ -456,7 +456,7 @@ class TableauTiledRenew extends Tableau{
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
 
-        monstersContainer.setDepth(102);
+        monstersContainer.setDepth(103);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
 

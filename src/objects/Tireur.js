@@ -7,16 +7,17 @@ class Tireur extends ObjetEnnemi{
      */
     constructor(scene, x, y) { //constructor est l'équivalent de Create dans une classe
         super(scene, x, y, "tireur");
-        this.dir = 1;
+        this.dir = -1;
         this.isAlive = true;
 
         this.body.allowGravity=true;
         //this.setBodySize(this.body.width,this.body.height);
-        this.body.setSize(35,64);
+        this.body.setSize(35,86);
         this.setOrigin(0,0);
         //this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
         this.setBounce(0);
+        this.setOffset(0,0);
 
         this.setDepth(102);
         //execute une commande au bout de 1 seconde loop permet de lancer l'action en boucle à la manière d'un update pour savoir à chaque frame si il faut lancer la ligne de code
@@ -25,6 +26,22 @@ class Tireur extends ObjetEnnemi{
 
         //le tireur peut de nouveau tirer après qu'on l'ai touché
         scene.time.addEvent({ delay: 8000, callback: this.mort, callbackScope: this, loop: true });
+
+        this.anims.create({
+            key: 'tireurGauche',
+            frames: this.anims.generateFrameNumbers('tireurGauche', { start: 0, end: 5 }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+
+        this.anims.create({
+            key: 'tireurDroite',
+            frames: this.anims.generateFrameNumbers('tireurDroite', { start: 0, end: 5 }),
+            frameRate: 5,
+            repeat: -1
+        });
+
 
 
 
@@ -64,11 +81,17 @@ class Tireur extends ObjetEnnemi{
         this.vivant();
         this.pos();
 
+        if(this.dir<0){
+            this.anims.play('tireurGauche', true);
+        }else{
+            this.anims.play('tireurDroite', true);
+        }
+
         if(this.isAlive) {
             if (this.scene.player.x > this.x - 300 && this.scene.player.x < this.x + 300 /*&& this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25*/) {
                 //this.shotSound.play({volume:.5});
                 if(this.scene.player.y>this.y){
-                    this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocityX(150 * this.dir);
+                    this.projo = new Projectile(this.scene, this.x, this.y + 35, 'projo').setVelocityX(150 * this.dir);
                     /*setTimeout(function(){
                         this.projo.destroy();
                     },500)*/

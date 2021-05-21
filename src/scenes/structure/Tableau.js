@@ -13,6 +13,7 @@ class Tableau extends Phaser.Scene{
         this.ptsVie=5;
         this.verif=1;
         this.verifTP=1;
+        this.crush=0;
 
 
 
@@ -54,6 +55,34 @@ class Tableau extends Phaser.Scene{
             'assets/enemy_ninja.png',
             { frameWidth: 60, frameHeight: 80  }
         );
+        //TIREUR
+        this.load.spritesheet('tireurGauche',
+            'assets/animations/tireur/tireur_test_2.png',
+            { frameWidth: 64, frameHeight: 86  }
+        );
+        this.load.spritesheet('tireurDroite',
+            'assets/animations/tireur/tireur_test_2_droit.png',
+            { frameWidth: 64, frameHeight: 86  }
+        );
+        //PLANEUR
+        this.load.spritesheet('planeur',
+            'assets/animations/planeur/run_test_10.png',
+            { frameWidth: 86, frameHeight: 172  }
+        );
+        //PATROUILLEUR
+        this.load.spritesheet('patrouilleurGauche',
+            'assets/animations/patrouilleur/stance_test_1_droite.png',
+            { frameWidth: 86, frameHeight: 64  }
+        );
+        this.load.spritesheet('patrouilleurDroite',
+            'assets/animations/patrouilleur/stance_test_1_gauche.png',
+            { frameWidth: 86, frameHeight: 64  }
+        );
+        this.load.spritesheet('patrouilleurCourse',
+            'assets/animations/patrouilleur/run_test_6.png',
+            { frameWidth: 128, frameHeight: 64  }
+        );
+
         //this.load.audio('track', 'assets/son/kamakura.mp3');
 
         this.load.audio('dashson', 'assets/son/dash.mp3');
@@ -450,6 +479,7 @@ class Tableau extends Phaser.Scene{
                 if(this.ptsVie>=2){
                     ui.ptv();
                     this.invincible();
+                    this.fxHit();
                     this.ptsVie -= 1;
                     console.log('touché');
                     console.log(this.ptsVie);
@@ -498,6 +528,31 @@ class Tableau extends Phaser.Scene{
             },
             loop: false
         })
+    }
+
+    fxHit(){
+        this.cameras.main.shake(125, 0.003);
+        this.animHit=this.tweens.add({
+            targets: this.player,
+            alpha: {
+                from: 1,
+                to:0.1, //on monte de 20 px
+                duration: 125,// une demi seconde pour monter (et donc la même chose pour descendre)
+                ease: 'Sine.easeInOut', //courbe d'accélération/décélération
+                yoyo: -1, // de haut en bas, puis de bas en haut
+                repeat:2 //se répète à l'infini
+            }
+        });
+
+        // this.time.addEvent({
+        //     delay: 500,
+        //     callback: ()=>{
+        //         this.animHit=false;
+        //     },
+        //     loop: false
+        // })
+
+
     }
 
     //permettre le tween de tp tout en restant invulnérable pendant l'anim, on peut tout traverser comme ça

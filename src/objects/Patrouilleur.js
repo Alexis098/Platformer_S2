@@ -14,7 +14,8 @@ class Patrouilleur extends ObjetEnnemi{
 
         this.body.allowGravity=true;
         //this.setBodySize(this.body.width,this.body.height);
-        //this.body.setSize(35,64);
+        this.body.setSize(65,64);
+        this.setOffset(20,0);
         this.setOrigin(0,0);
         //this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
@@ -28,8 +29,35 @@ class Patrouilleur extends ObjetEnnemi{
         //le tireur peut de nouveau tirer après qu'on l'ait touché
         scene.time.addEvent({ delay: 8000, callback: this.mort, callbackScope: this, loop: true });
 
+        //Immobile
+        this.anims.create({
+            key: 'patrouilleurGauche',
+            frames: this.anims.generateFrameNumbers('patrouilleurGauche', { start: 0, end: 3 }),
+            frameRate: 5,
+            repeat: -1
+        });
 
 
+        this.anims.create({
+            key: 'patrouilleurDroite',
+            frames: this.anims.generateFrameNumbers('patrouilleurDroite', { start: 0, end: 3 }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        //Course
+        this.anims.create({
+            key: 'patrouilleurGaucheCourse',
+            frames: this.anims.generateFrameNumbers('patrouilleurCourse', { start: 6, end: 11 }),
+            frameRate: 7,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'patrouilleurDroiteCourse',
+            frames: this.anims.generateFrameNumbers('patrouilleurCourse', { start: 0, end: 5 }),
+            frameRate: 7,
+            repeat: -1
+        });
         // X
         /*this.originalX=x;
         this.minX=x;
@@ -66,14 +94,25 @@ class Patrouilleur extends ObjetEnnemi{
         this.vivant();
         this.pos();
 
+        if(this.dir>0){
+            this.anims.play('patrouilleurGauche', true);
+        }else{
+            this.anims.play('patrouilleurDroite', true);
+        }
+
         if(this.isAlive) {
             if (this.scene.player.x > this.x - 300 && this.scene.player.x < this.x + 300 /*&& this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25*/) {
                 //this.runPatSound.play({volume:0.5});
                 //if(this.scene.player.y>this.y){
-                    this.setVelocityX(150 * this.dir);
-                    if(this.scene.player.y < this.y){
-                        this.setVelocityY(-150);
-                    }
+                this.setVelocityX(150 * this.dir);
+                if(this.dir>0){
+                    this.anims.play('patrouilleurGaucheCourse', true);
+                }else{
+                    this.anims.play('patrouilleurDroiteCourse', true);
+                }
+                if(this.scene.player.y < this.y){
+                    this.setVelocityY(-150);
+                }
                 //}
                 /*else if(this.scene.player.y<this.y){
                     this.setVelocityY(200);
