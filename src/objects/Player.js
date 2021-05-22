@@ -56,7 +56,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             repeat: -1
         });
 
-
         /*this.anims.create({
             key: 'back',
             frames: [ { key: 'player', frame: 1 } ],
@@ -74,6 +73,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
     }
+
+
 
 
 
@@ -104,20 +105,24 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         //let sens = 1;
 
 
+
         switch (true){
             case this._directionX<0:
                 this.sens=-1;
                 this.setVelocityX(this.sens*160*this.speedFactor);
                 this.anims.play('left', true);
                 this.vitesse=1;
+                Tableau.current.pourPlayerPlaySand();
                 break;
             case this._directionX>0:
                 this.sens=1;
                 this.setVelocityX(this.sens*160*this.speedFactor);
                 this.anims.play('right', true);
                 this.vitesse=1;
+                Tableau.current.pourPlayerPlaySand();
                 break;
             default:
+                Tableau.current.pourPlayerPlaySandOff();
                 this.setVelocityX(0);
                 this.vitesse=0;
                 //this.anims.play('stance', true);
@@ -139,7 +144,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         if(this._directionY<0){ //gère la hauteur du saut du perso
             //this.jump();//fonction gérant l'anim de saut
-
+            Tableau.current.pourPlayerPlaySandOff();
             if(this.body.blocked.down || this.body.touching.down){
                 //this.setVelocityY(-500);
 
@@ -273,7 +278,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
 
-        console.log('dash');
+        //console.log('dash');
         this.posX = this.x;
         this.posY = this.y;
         var dir;
@@ -327,7 +332,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             }
             //this.setVelocityX(-3000);
             //this.setAccelerationX(-1000);
-            console.log('dash à gauche');
+           // console.log('dash à gauche');
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
 
@@ -374,7 +379,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
             //this.setVelocityX(3000);
             //this.setAccelerationX(1000)
-            console.log('dash à droite');
+           // console.log('dash à droite');
         }
 
 
@@ -419,7 +424,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.x-=5;
         }
 
-        console.log('ease sine');
+      //  console.log('ease sine');
         /*this.tween = this.tweens.add({
             targets: this.player,
             this.setVelocityX: '+=600',
@@ -459,7 +464,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
 
-        console.log('ease sine');
+      //  console.log('ease sine');
     }
     animGaucheHaut(){
         this.tween=this.scene.tweens.add({
@@ -479,49 +484,51 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     }
 
     teleportation() {
-        console.log('téléportation');
-        //delay:2000
-        this.posX = this.x;
-        this.posY = this.y;
-        //this.dashUse = scene.input.keyboard.addKey('SPACE');
+       //if(1250<=this.player.x && this.player.x<=1750){
+           //delay:2000
+           this.posX = this.x;
+           this.posY = this.y;
+           //this.dashUse = scene.input.keyboard.addKey('SPACE');
 
-        var dir;
-        //petit rebondaprès la TP pour du feedbacket enhainer avec du mouvement
-        this.setVelocityY(-100);
-        if (this._directionX < 0 || this.sens===-1) {
-            dir = this.posX - 5;
-        } else if (this._directionX > 0 || this.sens===1) {
-            dir = this.posX + 5;
-        }
-        if (dir < this.posX) {
-            //this.x=this.posX-100;
-            this.scene.tweens.add({
-                targets: this,
+           var dir;
+           //petit rebond après la TP pour du feedback et enchainer avec du mouvement
+           this.setVelocityY(-100);
+           if (this._directionX < 0 || this.sens===-1) {
+               dir = this.posX - 5;
+           } else if (this._directionX > 0 || this.sens===1) {
+               dir = this.posX + 5;
+           }
+           if (dir < this.posX) {
+               //this.x=this.posX-100;
+               this.scene.tweens.add({
+                   targets: this,
 
-                x: '-=250',
-                ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
-                duration: 500,
-                delay: 50
-                /*x: '+=600',
-                ease: 'Power2',
-                paused: true*/
-            });
-            console.log('TP à gauche');
-        } else if (dir > this.posX) {
-            //this.x=this.posX+100;
-            this.scene.tweens.add({
-                targets: this,
+                   x: '-=250',
+                   ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
+                   duration: 500,
+                   delay: 50
+                   /*x: '+=600',
+                   ease: 'Power2',
+                   paused: true*/
+               });
 
-                x: '+=250',
-                ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
-                duration: 500,
-                delay: 50
-                /*x: '+=600',
-                ease: 'Power2',
-                paused: true*/
-            });
-            console.log('TP à droite');
-        }
+           } else if (dir > this.posX) {
+               //this.x=this.posX+100;
+               this.scene.tweens.add({
+                   targets: this,
+
+                   x: '+=250',
+                   ease: 'Expo.easeIn', //peut marcher pour la TP plutôt en terme de synergie
+                   duration: 500,
+                   delay: 50
+                   /*x: '+=600',
+                   ease: 'Power2',
+                   paused: true*/
+               });
+
+           }
+       //}
+
     }
 
     /*invu(){

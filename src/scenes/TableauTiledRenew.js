@@ -32,7 +32,7 @@ class TableauTiledRenew extends Tableau{
         // ---------Les étoiles-----------
         this.load.image('star', 'assets/truc.png');
 
-        this.load.image('checkPoint', 'assets/soleil.png');
+        //this.load.image('checkPoint', 'assets/soleil.png');
 
         this.load.image('PlateformMouv', 'assets/plateforme_1_3.png');
         this.load.image('platforms_longues', 'assets/platforms_longues.png');
@@ -77,7 +77,11 @@ class TableauTiledRenew extends Tableau{
         this.load.video('vent', 'assets/videos/FXs/vent.webm', 'loadeddata', false, true);
 
         this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
-        this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte.mp3');
+        this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
+
+        this.load.audio('rocks', 'assets/son/rocks.mp3');
+        this.load.audio('rocksup', 'assets/son/rocks_up.mp3');
+        this.load.audio('stele_boom', 'assets/son/stele_boom.mp3');
 
     }
 
@@ -87,6 +91,9 @@ class TableauTiledRenew extends Tableau{
         this.compteur=0;
         this.once=0;
         this.lecture_texte_planete=0;
+        this.steleson=0;
+        this.stelesonup=0;
+        this.boom=0;
 
         this.camera = this.cameras.main;
         this.camera.setZoom(1);
@@ -163,6 +170,7 @@ class TableauTiledRenew extends Tableau{
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let Platforms = this.Platforms.create(PlatformsObject.x+32, PlatformsObject.y+16 /*, 'particles'*/, 'PlateformMouv');
         });
+
         //this.physics.add.collider(this.Platforms, this.player);
 
         //this.physics.add.collider(this.Platforms, this.player);
@@ -449,7 +457,7 @@ class TableauTiledRenew extends Tableau{
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
 
         this.dalles.setDepth(1000);
-        this.checkPoints.setDepth(98);
+        this.checkPoints.setDepth(0);
         this.Platforms.setDepth(101);
         this.PlatformsInTower.setDepth(100);
         this.PlatformsLongues.setDepth(102);
@@ -540,6 +548,9 @@ class TableauTiledRenew extends Tableau{
             if(this.lecture_texte_planete===0){
                 this.texte_planete = this.sound.add('texte_planete', {volume: 0.5})
                 this.texte_planete.play();
+
+
+
                 this.lecture_texte_planete=1;
             }
             Tableau.current.tweens.add({
@@ -634,7 +645,7 @@ class TableauTiledRenew extends Tableau{
     //Checkpoint
     saveCheckPoint(checkPointName){
         if (localStorage.getItem("checkPoint") !== checkPointName){
-            console.log("on atteint le checkpoint", checkPointName);
+            //console.log("on atteint le checkpoint", checkPointName);
             localStorage.setItem("checkPoint", checkPointName);
         }
     }
@@ -699,7 +710,8 @@ class TableauTiledRenew extends Tableau{
     fxFin(){
         this.smokeFx.setDepth(101);
         this.smokeFx.play();
-        console.log('smoke');
+        this.cameras.main.shake(125, 0.0007);
+        //console.log('smoke');
     }
 
     //rajouter la condition de réussir l'énigme pour passer à la suite
@@ -710,32 +722,76 @@ class TableauTiledRenew extends Tableau{
             //this.player.x=5300;
 
         }*/
+
+
+
+
         if(this.player.x<=this.map.widthInPixels-190 && this.player.x>=this.map.widthInPixels-260 && this.player.y>=2125/*this.player.getBounds().bottom < this.img.getBounds().top+30 *//*&& condition de réussite de l'énigme*/){
             //PLUS SIMPLE -> this.ecranFin=this.add.sprite(600, 40, "ecran de fin"); loaded au préalable dans preload avec this.load.image('');
             //this.song.stop();
+            this.boom=0;
+            if(this.steleson===0) {
+                this.rocks = this.sound.add('rocks', {volume: 0.5})
+                this.rocks.play();
+
+                this.steleson=1;
+                this.stelesonup=0;
+                //this.rocksup.stop();
+            }
+
             this.compteur+=1;
             this.dalles.setVelocityY(10);
             this.fxFin();
+
+
             //this.player.body.velocity.y=0.2;
-            console.log(this.compteur);
+            //console.log(this.compteur);
 
             if(this.compteur===250){
+                this.rocks.stop();
                 this.cameras.main.fadeOut(500, 0, 0, 0)
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
                 {
                     this.win();
                 })
 
+
             }
 
         }else{
+            this.steleson=0;
             if(this.compteur>0){
+
+                this.rocks.stop();
                 this.dalles.setVelocityY(-10);
                 this.compteur-=1;
-                if(this.compteur<=0){
-                    this.dalles.setVelocityY(0);
+                if(this.stelesonup===0) {
+                    this.rocksup = this.sound.add('rocksup', {volume: 0.3});
+                    this.rocksup.play();
+                    this.stelesonup=1;
                 }
-                console.log(this.compteur);
+
+
+
+                if(this.compteur<=0){
+                    this.smokeFx.play();
+                    this.dalles.setVelocityY(0);
+                    this.stele_boom = this.sound.add('stele_boom', {volume: 1});
+                    this.rocksup.stop();
+                    this.time.addEvent({
+                        callback: ()=>{
+                            this.cameras.main.shake(175, 0.002);
+                        },
+                        loop: false
+                    })
+                    if(this.boom===0){
+
+                        this.stele_boom.play();
+                        this.boom=1;
+                    }
+
+                }
+                //console.log(this.compteur);
 
             }
             //this.compteur=0;
@@ -744,6 +800,7 @@ class TableauTiledRenew extends Tableau{
 
 
         }
+
     }
 
     /*enigmeNiveau(){

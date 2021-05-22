@@ -14,8 +14,8 @@ class Patrouilleur extends ObjetEnnemi{
 
         this.body.allowGravity=true;
         //this.setBodySize(this.body.width,this.body.height);
-        this.body.setSize(65,64);
-        this.setOffset(20,0);
+        this.body.setSize(65,50);
+        this.setOffset(20,10);
         this.setOrigin(0,0);
         //this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);

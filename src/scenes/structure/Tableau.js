@@ -14,6 +14,7 @@ class Tableau extends Phaser.Scene{
         this.verif=1;
         this.verifTP=1;
         this.crush=0;
+        this.sand=0;
 
 
 
@@ -43,6 +44,7 @@ class Tableau extends Phaser.Scene{
             'assets/player_jump1.png',
             { frameWidth: 32, frameHeight: 48  }
         );
+
         this.load.spritesheet('enemy',
             'assets/enemy_4.png',
             { frameWidth: 39, frameHeight: 48  }
@@ -88,6 +90,9 @@ class Tableau extends Phaser.Scene{
         this.load.audio('dashson', 'assets/son/dash.mp3');
         this.load.audio('tpson', 'assets/son/tp2.mp3');
 
+        this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand.mp3');
+        this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
+
         this.load.image('5vies', 'assets/Vies/5_coeurs_128x64.png');
         this.load.image('4vies', 'assets/Vies/4_coeurs_128x64.png');
         this.load.image('3vies', 'assets/Vies/3_coeurs_128x64.png');
@@ -106,11 +111,13 @@ class Tableau extends Phaser.Scene{
     }
 
     create(){
+        this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
+
         Tableau.current=this;
         this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
 
         this.sys.scene.scale.lockOrientation("landscape")
-        console.log("On est sur "+this.constructor.name+" / "+this.scene.key);
+       // console.log("On est sur "+this.constructor.name+" / "+this.scene.key);
         /**
          * Le ciel en fond
          * @type {Phaser.GameObjects.Image}
@@ -205,6 +212,7 @@ class Tableau extends Phaser.Scene{
         this.dsh();
 
 
+
         //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
 
@@ -244,7 +252,7 @@ class Tableau extends Phaser.Scene{
 
             //gravityDash() permet de supprimer la gravité le temps du dash pour ne pas retomber trop vite
             //this.gravityDash();
-            console.log('appuyer sur a');
+           // console.log('appuyer sur a');
             //cooldown de 700ms
             this.verif=0;
             this.time.addEvent({
@@ -260,7 +268,7 @@ class Tableau extends Phaser.Scene{
     }
 
     tp(){
-        if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif==1 && this.verifTP==1){
+        if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif==1 && this.verifTP==1 && 1400<=this.player.x && this.player.x<=1750){
             //tentative de delai avant la tp de 1 seconde
             //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
             this.tpson = this.sound.add('tpson', {volume: 1.5})
@@ -268,7 +276,7 @@ class Tableau extends Phaser.Scene{
             this.player.teleportation();
             this.invincibleTP();
             this.player.alpha=0.5;
-            console.log('appuyer sur z');
+         //   console.log('appuyer sur z');
             //cooldown pour le dash empeche l'utilisation en même temps
             this.verif=0;
             this.time.addEvent({
@@ -373,7 +381,7 @@ class Tableau extends Phaser.Scene{
 
     hitFall(){
         if(this.player.y>=599){
-            console.log("tombé");
+          //  console.log("tombé");
             this.physics.pause();
             this.player.setTint(0xff0000);
             this.player.anims.play('turn');
@@ -456,6 +464,18 @@ class Tableau extends Phaser.Scene{
 
             ){
                 ui.gagne();
+                this.tweens.add({
+                    targets: monster,
+                    alpha: {
+                        from: 1,
+                        to:0.1, //on monte de 20 px
+                        duration: 200,// une demi seconde pour monter (et donc la même chose pour descendre)
+                        ease: 'Sine.easeInOut', //courbe d'accélération/décélération
+                        yoyo: -1, // de haut en bas, puis de bas en haut
+                        repeat:3 //se répète à l'infini
+                    }
+                });
+
                 monster.body.enable = false//mettre ici le codequi rend invulnérable
                 //this.player.anims.play('right', true);//essayer de faire jouer une anim quand on prend un coup
                 this.time.addEvent({
@@ -481,14 +501,14 @@ class Tableau extends Phaser.Scene{
                     this.invincible();
                     this.fxHit();
                     this.ptsVie -= 1;
-                    console.log('touché');
-                    console.log(this.ptsVie);
+                  //  console.log('touché');
+                 //  console.log(this.ptsVie);
                     this.imgVies();
 
                 }
                 //le joueur est mort
                 else if (this.ptsVie<2) {
-                    console.log('MORT');
+                  //  console.log('MORT');
                     if (!me.player.isDead) {
                         this.blood.setDepth(1000);
                         me.player.isDead = true;
@@ -508,7 +528,7 @@ class Tableau extends Phaser.Scene{
 
                     }
                     this.ptsVie=5;
-                    console.log('ptsVie = 5');
+                  //  console.log('ptsVie = 5');
 
                 }
             }
@@ -554,6 +574,8 @@ class Tableau extends Phaser.Scene{
 
 
     }
+
+
 
     //permettre le tween de tp tout en restant invulnérable pendant l'anim, on peut tout traverser comme ça
     invincibleTP(){
@@ -638,6 +660,23 @@ class Tableau extends Phaser.Scene{
         }
         game.scene.start(tableau);
     }
+
+    pourPlayerPlaySand(){
+        if(this.sand===0){
+            //this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
+            this.shoes_run_sand.play();
+            this.sand=1;
+        }
+
+    }
+
+    pourPlayerPlaySandOff(){
+
+        this.shoes_run_sand.stop();
+        this.sand=0;
+    }
+
+
 
 
 
