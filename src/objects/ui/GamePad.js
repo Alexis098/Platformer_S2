@@ -122,9 +122,11 @@ class GamePad extends Phaser.GameObjects.Container{
 
         btnLEFT.on('pointerdown',function(){
             Tableau.current.player.dash();
+            Tableau.current.dsh()
         });
         btnRIGHT.on('pointerdown',function(){
             Tableau.current.player.teleportation();
+            Tableau.current.tp();
         });
         btnUP.on('pointerdown',function(){
             Tableau.current.player.directionY=-1;

@@ -94,6 +94,7 @@ class TableauTiledRenew extends Tableau{
         this.steleson=0;
         this.stelesonup=0;
         this.boom=0;
+        this.flottant=0;
 
         this.camera = this.cameras.main;
         this.camera.setZoom(1);
@@ -171,11 +172,12 @@ class TableauTiledRenew extends Tableau{
             let Platforms = this.Platforms.create(PlatformsObject.x+32, PlatformsObject.y+16 /*, 'particles'*/, 'PlateformMouv');
         });
 
+
         //this.physics.add.collider(this.Platforms, this.player);
 
         //this.physics.add.collider(this.Platforms, this.player);
         this.physics.add.collider(this.Platforms, this.player, function () {
-
+            //ici.rebond();
         });
 
         this.PlatformsInTower = this.physics.add.group({
@@ -883,7 +885,6 @@ class TableauTiledRenew extends Tableau{
 
 
 
-
         //optimisation
         //teste si la caméra a bougé
         let actualPosition=JSON.stringify(this.cameras.main.worldView);
@@ -897,6 +898,28 @@ class TableauTiledRenew extends Tableau{
 
 
     }
+
+    rebond(){
+        if(this.flottant===0) {
+            Tableau.current.Platforms.setVelocityY(20);
+            this.time.addEvent({
+                delay: 100,
+                callback: () => {
+                    Tableau.current.Platforms.setVelocityY(-20);
+                },
+                loop: false
+            })
+            setTimeout(function(){
+                Tableau.current.Platforms.setVelocityY(0);
+            },200);
+
+            this.flottant=1;
+        }
+
+    }
+
+
+
 
 
 

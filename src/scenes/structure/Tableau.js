@@ -275,7 +275,7 @@ class Tableau extends Phaser.Scene{
             this.tpson.play();
             this.player.teleportation();
             this.invincibleTP();
-            this.player.alpha=0.5;
+            this.player.alpha=0;
          //   console.log('appuyer sur z');
             //cooldown pour le dash empeche l'utilisation en même temps
             this.verif=0;
@@ -290,7 +290,7 @@ class Tableau extends Phaser.Scene{
             //cooldown propre à la TPde 3secs
             this.verifTP=0;
             this.time.addEvent({
-                delay: 3000,
+                delay: 615,
                 callback: ()=>{
                     this.verifTP=1;//mettre ici le code qui rend invulnérable de nouveau
                     //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
