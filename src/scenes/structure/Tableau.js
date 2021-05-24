@@ -15,6 +15,7 @@ class Tableau extends Phaser.Scene{
         this.verifTP=1;
         this.crush=0;
         this.sand=0;
+        this.invicibleForEver = false;
 
 
 
@@ -111,10 +112,11 @@ class Tableau extends Phaser.Scene{
     }
 
     create(){
-        this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
+
 
         Tableau.current=this;
         this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
+        this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
 
         this.sys.scene.scale.lockOrientation("landscape")
        // console.log("On est sur "+this.constructor.name+" / "+this.scene.key);
@@ -451,94 +453,116 @@ class Tableau extends Phaser.Scene{
 
     }*/
 
+
     hitMonster(player, monster){
         let me=this;
 
         this.blood.setDepth(1000);
-        if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
-            if(
-                // si le player descend
-                player.body.velocity.y >= 0
-                // et si le bas du player est plus haut que le monstre
-                && player.getBounds().bottom < monster.getBounds().top+30
+        if(!this.invicibleForEver){
+            if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
+                if(
+                    // si le player descend
+                    player.body.velocity.y >= 0
+                    // et si le bas du player est plus haut que le monstre
+                    && player.getBounds().bottom < monster.getBounds().top+30
 
-            ){
-                ui.gagne();
-                this.tweens.add({
-                    targets: monster,
-                    alpha: {
-                        from: 1,
-                        to:0.1, //on monte de 20 px
-                        duration: 200,// une demi seconde pour monter (et donc la même chose pour descendre)
-                        ease: 'Sine.easeInOut', //courbe d'accélération/décélération
-                        yoyo: -1, // de haut en bas, puis de bas en haut
-                        repeat:3 //se répète à l'infini
+                ){
+                    ui.gagne();
+                    this.tweens.add({
+                        targets: monster,
+                        alpha: {
+                            from: 1,
+                            to:0.1, //on monte de 20 px
+                            duration: 200,// une demi seconde pour monter (et donc la même chose pour descendre)
+                            ease: 'Sine.easeInOut', //courbe d'accélération/décélération
+                            yoyo: -1, // de haut en bas, puis de bas en haut
+                            repeat:3 //se répète à l'infini
+                        }
+                    });
+
+                    monster.body.enable = false//mettre ici le codequi rend invulnérable
+                    //this.player.anims.play('right', true);//essayer de faire jouer une anim quand on prend un coup
+                    this.time.addEvent({
+                        delay: 1500,
+                        callback: ()=>{
+                            monster.body.enable = true;//mettre ici le code qui rend invulnérable de nouveau
+                            //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
+                        },
+                        loop: false
+                    })
+                    /*monster.isDead=true; //ok le monstre est mort
+                    monster.disableBody(true,true);//plus de collisions*/
+
+                    /*this.saigne(monster,function(){
+                        //à la fin de la petite anim...ben il se passe rien :)
+                    })*/
+                    //notre joueur rebondit sur le monstre
+                    //player.directionY=500;
+                    player.setVelocityY(-300);
+                } else{
+                    if(this.ptsVie>=2){
+                        ui.ptv();
+                        this.invincible();
+                        this.fxHit();
+                        this.ptsVie -= 1;
+
+                        //  console.log('touché');
+                        //  console.log(this.ptsVie);
+                        this.imgVies();
+
                     }
-                });
-
-                monster.body.enable = false//mettre ici le codequi rend invulnérable
-                //this.player.anims.play('right', true);//essayer de faire jouer une anim quand on prend un coup
-                this.time.addEvent({
-                    delay: 1500,
-                    callback: ()=>{
-                        monster.body.enable = true;//mettre ici le code qui rend invulnérable de nouveau
-                        //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
-                    },
-                    loop: false
-                })
-                /*monster.isDead=true; //ok le monstre est mort
-                monster.disableBody(true,true);//plus de collisions*/
-
-                /*this.saigne(monster,function(){
-                    //à la fin de la petite anim...ben il se passe rien :)
-                })*/
-                //notre joueur rebondit sur le monstre
-                //player.directionY=500;
-                player.setVelocityY(-300);
-            } else{
-                if(this.ptsVie>=2){
-                    ui.ptv();
-                    this.invincible();
-                    this.fxHit();
-                    this.ptsVie -= 1;
-                  //  console.log('touché');
-                 //  console.log(this.ptsVie);
-                    this.imgVies();
-
-                }
-                //le joueur est mort
-                else if (this.ptsVie<2) {
-                  //  console.log('MORT');
-                    if (!me.player.isDead) {
-                        this.blood.setDepth(1000);
-                        me.player.isDead = true;
-                        me.player.visible = false;
-                        //ça saigne...
-                        me.saigne(me.player, function () {
-                            //à la fin de la petite anim, on relance le jeu
-                            me.blood.visible = false;
-                            me.player.anims.play('turn');
-                            me.player.isDead = false;
+                    //le joueur est mort
+                    else if (this.ptsVie<2) {
+                        //  console.log('MORT');
+                        if (!me.player.isDead) {
+                            this.blood.setDepth(1000);
+                            me.player.isDead = true;
+                            me.player.visible = false;
+                            //ça saigne...
+                            me.saigne(me.player, function () {
+                                //à la fin de la petite anim, on relance le jeu
+                                me.blood.visible = false;
+                                me.player.anims.play('turn');
+                                me.player.isDead = false;
+                                me.scene.restart();
+                            })
+                            //this.song.stop();
+                            this.verif=1;
+                            this.verifTP=1;
                             me.scene.restart();
-                        })
-                        //this.song.stop();
-                        this.verif=1;
-                        this.verifTP=1;
-                        me.scene.restart();
+
+                        }
+                        this.ptsVie=5;
+                        //  console.log('ptsVie = 5');
 
                     }
-                    this.ptsVie=5;
-                  //  console.log('ptsVie = 5');
-
                 }
             }
         }
+
 
     }
     //trouver un moyen de rendre le perso mobile pendant cette invulnérabilité
     //invulnérable pendant un court instant quand on est touché par un ennemi
     invincible(){
-        this.player.body.enable = false//mettre ici le codequi rend invulnérable
+
+
+
+
+        this.invicibleForEver = true;
+        this.time.addEvent
+        ({
+            delay: 1000,
+            callback: ()=>
+            {
+                this.invicibleForEver = false;
+            },
+            loop: false
+        })
+
+
+
+        /*this.player.body.enable = false//mettre ici le codequi rend invulnérable
         //this.player.anims.play('right', true);//essayer de faire jouer une anim quand on prend un coup
         this.time.addEvent({
             delay: 500,
@@ -547,7 +571,7 @@ class Tableau extends Phaser.Scene{
                 //this.player.anims.play('right', false);//essayer stopper l'anim après avoir pris un coup
             },
             loop: false
-        })
+        })*/
     }
 
     fxHit(){

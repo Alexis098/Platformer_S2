@@ -568,7 +568,7 @@
   <object id="67" gid="3" x="4608" y="640" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="5" name="flyingMonsters">
-  <object id="73" gid="74" x="4224" y="1344" width="64" height="64"/>
+  <object id="73" gid="74" x="4480" y="1344" width="64" height="64"/>
   <object id="74" gid="74" x="4096" y="768" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="6" name="katanaMonsters">
