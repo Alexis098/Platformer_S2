@@ -458,7 +458,7 @@ class Tableau extends Phaser.Scene{
         let me=this;
 
         this.blood.setDepth(1000);
-        if(!this.invicibleForEver){
+        if(this.invicibleForEver!==true){
             if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
                 if(
                     // si le player descend
