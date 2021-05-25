@@ -11,33 +11,32 @@ class Tableau00 extends Phaser.Scene{
         //Il faudra charger un fond animé à la place une vidéo after effects avec des effets de vent qui passe âr dessus les dunes
     }
     create() {
-        this.isMobile=this.game.device.os.android || this.game.device.os.iOS  || this.game.device.os.mobileSafari;
-        this.isDesktop=this.game.device.os.safari;
-
-
+        this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
 
         this.sys.scene.scale.lockOrientation("landscape")
         //super.create();
         //this.image=this.add.image(game.config.width/2, game.config.height/2, 'artwork');
         this.accueil=this.add.video(448, 224, 'accueil');
+        this.accueil.play(true);
+        this.accueil.setLoop(true);
 
         if(this.game.device.os.android || this.game.device.os.iOS){
-            this.accueil.play(false);
+            this.introSon = 0;
         }else{
-            this.accueil.play(true);
-
+            this.introSon = this.sound.add('introSon', {volume: 1.2});
+            this.introSon.setLoop(true);
+            this.time.addEvent({
+                delay: 400,
+                callback: ()=>{
+                    this.introSon.play();
+                },
+                loop: false
+            })
         }
-        this.accueil.setLoop(true);
-        this.introSon = this.sound.add('introSon', {volume: 1.2});
+
+
         //this.introSon.play();
-        this.introSon.setLoop(true);
-        this.time.addEvent({
-            delay: 400,
-            callback: ()=>{
-                this.introSon.play();
-            },
-            loop: false
-        })
+
 
         /*window.setTimeout(() => {
             this.introSon.play();
