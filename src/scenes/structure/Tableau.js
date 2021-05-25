@@ -98,6 +98,7 @@ class Tableau extends Phaser.Scene{
         this.load.image('0viesGrands', 'assets/Vies/grand/0_coeurs_grands.png');*/
 
 
+        
     }
 
     create(){
