@@ -80,6 +80,7 @@ class Tableau extends Phaser.Scene{
         //this.load.audio('track', 'assets/son/kamakura.mp3');
 
 
+
         if(this.game.device.os.android || this.game.device.os.iOS){
             //rien
         }else{
@@ -682,9 +683,20 @@ class Tableau extends Phaser.Scene{
         game.scene.start(tableau);
     }
 
+    pourPlayerPlaySand(){
+        if(this.sand===0){
+            //this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
+            this.shoes_run_sand.play();
+            this.sand=1;
+        }
 
+    }
 
+    pourPlayerPlaySandOff(){
 
+        this.shoes_run_sand.stop();
+        this.sand=0;
+    }
 
 
 
