@@ -20,8 +20,8 @@ class Tableau00 extends Phaser.Scene{
         //super.create();
         //this.image=this.add.image(game.config.width/2, game.config.height/2, 'artwork');
         this.accueil=this.add.video(448, 224, 'accueil');
-        
-        if(this.isMobile){
+
+        if(this.game.device.os.android || this.game.device.os.iOS){
             this.accueil.play(false);
         }else{
             this.accueil.play(true);
