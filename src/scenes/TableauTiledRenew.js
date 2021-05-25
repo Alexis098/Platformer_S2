@@ -30,7 +30,7 @@ class TableauTiledRenew extends Tableau{
 
 
         // ---------Les étoiles-----------
-        this.load.image('star', 'assets/truc.png');
+        //this.load.image('star', 'assets/truc.png');
 
         //this.load.image('checkPoint', 'assets/soleil.png');
 

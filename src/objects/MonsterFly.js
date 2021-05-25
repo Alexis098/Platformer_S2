@@ -55,7 +55,7 @@ class MonsterFly extends ObjetEnnemi{
             })
         this.anims.create({
             key: 'planeur',
-            frames: this.anims.generateFrameNumbers('planeur', { start: 0, end:7 }),
+            frames: this.anims.generateFrameNumbers('planeur', { start: 0, end: 6 }),
             frameRate: 9,
             repeat: -1
         });

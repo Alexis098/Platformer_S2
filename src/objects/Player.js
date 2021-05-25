@@ -49,12 +49,12 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             repeat: -1
         });
 
-        this.anims.create({
+        /*this.anims.create({
             key: 'jump',
             frames: this.anims.generateFrameNumbers('player_jump', { start: 5, end: 8  }),
             frameRate: 5,
             repeat: -1
-        });
+        });*/
 
         /*this.anims.create({
             key: 'back',

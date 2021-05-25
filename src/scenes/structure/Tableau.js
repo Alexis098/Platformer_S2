@@ -26,9 +26,9 @@ class Tableau extends Phaser.Scene{
      * Par défaut on charge un fond et le player
      */
     preload(){
-        this.load.image('sky', 'assets/ciel.png');
-        this.load.image('spike', 'assets/spike.png');
-        this.load.image('blood', 'assets/blood.png');
+        //this.load.image('sky', 'assets/ciel.png');
+        //this.load.image('spike', 'assets/spike.png');
+        //this.load.image('blood', 'assets/blood.png');
        /*this.load.spritesheet('player',
             'assets/player_3_couleurs.png',
             { frameWidth: 64, frameHeight: 64  }
@@ -41,23 +41,12 @@ class Tableau extends Phaser.Scene{
             'assets/animations/lumel/Stance_test_15.png',
             { frameWidth: 64, frameHeight: 64  }
         );
-        this.load.spritesheet('player_jump',
-            'assets/player_jump1.png',
-            { frameWidth: 32, frameHeight: 48  }
-        );
+        // this.load.spritesheet('player_jump',
+        //     'assets/player_jump1.png',
+        //     { frameWidth: 32, frameHeight: 48  }
+        // );
 
-        this.load.spritesheet('enemy',
-            'assets/enemy_4.png',
-            { frameWidth: 39, frameHeight: 48  }
-        );
-        this.load.spritesheet('lance',
-            'assets/enemy_lance2.png',
-            { frameWidth: 63, frameHeight: 48  }
-        );
-        this.load.spritesheet('enemy_ninja',
-            'assets/enemy_ninja.png',
-            { frameWidth: 60, frameHeight: 80  }
-        );
+
         //TIREUR
         this.load.spritesheet('tireurGauche',
             'assets/animations/tireur/tireur_test_2.png',
@@ -515,17 +504,17 @@ class Tableau extends Phaser.Scene{
                     else if (this.ptsVie<2) {
                         //  console.log('MORT');
                         if (!me.player.isDead) {
-                            this.blood.setDepth(1000);
+                            this.blood.setDepth(0);
                             me.player.isDead = true;
                             me.player.visible = false;
                             //ça saigne...
-                            me.saigne(me.player, function () {
+                            /*me.saigne(me.player, function () {
                                 //à la fin de la petite anim, on relance le jeu
                                 me.blood.visible = false;
                                 me.player.anims.play('turn');
                                 me.player.isDead = false;
                                 me.scene.restart();
-                            })
+                            })*/
                             //this.song.stop();
                             this.verif=1;
                             this.verifTP=1;
