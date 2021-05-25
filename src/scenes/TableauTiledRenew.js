@@ -72,16 +72,20 @@ class TableauTiledRenew extends Tableau{
         //this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
 
         //this.load.image('dalle', 'assets/64x86.png');
+        if(this.game.device.os.android || this.game.device.os.iOS){
+            //rien
+        }else{
+            this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
+            this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
 
+            this.load.audio('rocks', 'assets/son/rocks.mp3');
+            this.load.audio('rocksup', 'assets/son/rocks_up.mp3');
+            this.load.audio('stele_boom', 'assets/son/stele_boom.mp3');
+        }
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
         this.load.video('vent', 'assets/videos/FXs/vent.webm', 'loadeddata', false, true);
 
-        this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
-        this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
 
-        this.load.audio('rocks', 'assets/son/rocks.mp3');
-        this.load.audio('rocksup', 'assets/son/rocks_up.mp3');
-        this.load.audio('stele_boom', 'assets/son/stele_boom.mp3');
 
     }
 
