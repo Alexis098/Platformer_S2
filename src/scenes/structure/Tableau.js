@@ -121,7 +121,7 @@ class Tableau extends Phaser.Scene{
         }else{
             this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
         }
-        
+
         this.sys.scene.scale.lockOrientation("landscape")
        // console.log("On est sur "+this.constructor.name+" / "+this.scene.key);
         /**
@@ -699,8 +699,12 @@ class Tableau extends Phaser.Scene{
     }
 
     pourPlayerPlaySandOff(){
+        if(this.game.device.os.android || this.game.device.os.iOS){
+            //rien
+        }else{
+            this.shoes_run_sand.stop();
+        }
 
-        this.shoes_run_sand.stop();
         this.sand=0;
     }
 
