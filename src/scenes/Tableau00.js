@@ -11,7 +11,8 @@ class Tableau00 extends Phaser.Scene{
         //Il faudra charger un fond animé à la place une vidéo after effects avec des effets de vent qui passe âr dessus les dunes
     }
     create() {
-        this.isMobile=this.game.device.os.android || this.game.device.os.iOS  || this.game.device.os.mobileSafari || this.game.device.os.safari;
+        this.isMobile=this.game.device.os.android || this.game.device.os.iOS  || this.game.device.os.mobileSafari;
+        this.isDesktop=this.game.device.os.safari;
 
 
 
@@ -19,7 +20,13 @@ class Tableau00 extends Phaser.Scene{
         //super.create();
         //this.image=this.add.image(game.config.width/2, game.config.height/2, 'artwork');
         this.accueil=this.add.video(448, 224, 'accueil');
-        this.accueil.play(true);
+        
+        if(this.isMobile){
+            this.accueil.play(false);
+        }else{
+            this.accueil.play(true);
+
+        }
         this.accueil.setLoop(true);
         this.introSon = this.sound.add('introSon', {volume: 1.2});
         //this.introSon.play();
