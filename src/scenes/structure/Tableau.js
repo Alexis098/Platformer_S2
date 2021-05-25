@@ -114,8 +114,14 @@ class Tableau extends Phaser.Scene{
 
         Tableau.current=this;
         this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
-        this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
 
+
+        if(this.game.device.os.android || this.game.device.os.iOS){
+            //rien
+        }else{
+            this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
+        }
+        
         this.sys.scene.scale.lockOrientation("landscape")
        // console.log("On est sur "+this.constructor.name+" / "+this.scene.key);
         /**
