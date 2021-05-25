@@ -72,16 +72,14 @@ class TableauTiledRenew extends Tableau{
         //this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
 
         //this.load.image('dalle', 'assets/64x86.png');
-        if(this.game.device.os.android || this.game.device.os.iOS){
-            //rien
-        }else{
-            this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
-            this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
 
-            this.load.audio('rocks', 'assets/son/rocks.mp3');
-            this.load.audio('rocksup', 'assets/son/rocks_up.mp3');
-            this.load.audio('stele_boom', 'assets/son/stele_boom.mp3');
-        }
+        this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
+        this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
+
+        this.load.audio('rocks', 'assets/son/rocks.mp3');
+        this.load.audio('rocksup', 'assets/son/rocks_up.mp3');
+        this.load.audio('stele_boom', 'assets/son/stele_boom.mp3');
+
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
         this.load.video('vent', 'assets/videos/FXs/vent.webm', 'loadeddata', false, true);
 
@@ -552,8 +550,13 @@ class TableauTiledRenew extends Tableau{
         if(750<=this.player.x && this.player.x<=1100){
             //this.texte_planete_1.alpha=1;
             if(this.lecture_texte_planete===0){
-                this.texte_planete = this.sound.add('texte_planete', {volume: 0.5})
-                this.texte_planete.play();
+                this.texte_planete = this.sound.add('texte_planete', {volume: 0.5});
+                if(this.game.device.os.android || this.game.device.os.iOS){
+                    //rien
+                }else{
+                    this.texte_planete.play();
+                }
+
 
 
 
@@ -737,8 +740,13 @@ class TableauTiledRenew extends Tableau{
             //this.song.stop();
             this.boom=0;
             if(this.steleson===0) {
-                this.rocks = this.sound.add('rocks', {volume: 0.5})
-                this.rocks.play();
+                if(this.game.device.os.android || this.game.device.os.iOS){
+                    //rien
+                }else{
+                    this.rocks = this.sound.add('rocks', {volume: 0.5})
+                    this.rocks.play();
+                }
+
 
                 this.steleson=1;
                 this.stelesonup=0;
@@ -754,7 +762,11 @@ class TableauTiledRenew extends Tableau{
             //console.log(this.compteur);
 
             if(this.compteur===250){
-                this.rocks.stop();
+                if(this.game.device.os.android || this.game.device.os.iOS){
+                    //rien
+                }else{
+                    this.rocks.stop();
+                }
                 this.cameras.main.fadeOut(500, 0, 0, 0)
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
                 {
@@ -768,12 +780,21 @@ class TableauTiledRenew extends Tableau{
             this.steleson=0;
             if(this.compteur>0){
 
-                this.rocks.stop();
+                if(this.game.device.os.android || this.game.device.os.iOS){
+                    //rien
+                }else{
+                    this.rocks.stop();
+                }
                 this.dalles.setVelocityY(-10);
                 this.compteur-=1;
                 if(this.stelesonup===0) {
-                    this.rocksup = this.sound.add('rocksup', {volume: 0.3});
-                    this.rocksup.play();
+                    if(this.game.device.os.android || this.game.device.os.iOS){
+                        //rien
+                    }else{
+                        this.rocksup = this.sound.add('rocksup', {volume: 0.3});
+                        this.rocksup.play();
+                    }
+
                     this.stelesonup=1;
                 }
 
@@ -783,7 +804,12 @@ class TableauTiledRenew extends Tableau{
                     this.smokeFx.play();
                     this.dalles.setVelocityY(0);
                     this.stele_boom = this.sound.add('stele_boom', {volume: 1});
-                    this.rocksup.stop();
+                    if(this.game.device.os.android || this.game.device.os.iOS){
+                        //rien
+                    }else{
+                        this.rocksup.stop();
+                    }
+
                     this.time.addEvent({
                         callback: ()=>{
                             this.cameras.main.shake(175, 0.002);
@@ -791,8 +817,12 @@ class TableauTiledRenew extends Tableau{
                         loop: false
                     })
                     if(this.boom===0){
+                        if(this.game.device.os.android || this.game.device.os.iOS){
+                            //rien
+                        }else{
+                            this.stele_boom.play();
+                        }
 
-                        this.stele_boom.play();
                         this.boom=1;
                     }
 
@@ -847,8 +877,13 @@ class TableauTiledRenew extends Tableau{
 
 
         if(this.player.x>=2500 && this.player.x<=2600 && this.once===0){
-            this.song = this.sound.add('track', {volume: 0.5})
-            this.song.play();
+            if(this.game.device.os.android || this.game.device.os.iOS){
+                //rien
+            }else{
+                this.song = this.sound.add('track', {volume: 0.5})
+                this.song.play();
+            }
+
             this.once=1;
 
 

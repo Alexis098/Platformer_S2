@@ -81,15 +81,13 @@ class Tableau extends Phaser.Scene{
 
 
 
-        if(this.game.device.os.android || this.game.device.os.iOS){
-            //rien
-        }else{
-            this.load.audio('dashson', 'assets/son/dash.mp3');
-            this.load.audio('tpson', 'assets/son/tp2.mp3');
 
-            this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand.mp3');
-            this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
-        }
+        this.load.audio('dashson', 'assets/son/dash.mp3');
+        this.load.audio('tpson', 'assets/son/tp2.mp3');
+
+        this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand.mp3');
+        this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
+
 
         this.load.image('5vies', 'assets/Vies/5_coeurs_128x64.png');
         this.load.image('4vies', 'assets/Vies/4_coeurs_128x64.png');
