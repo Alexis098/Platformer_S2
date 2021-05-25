@@ -11,7 +11,9 @@ class Tableau00 extends Phaser.Scene{
         //Il faudra charger un fond animé à la place une vidéo after effects avec des effets de vent qui passe âr dessus les dunes
     }
     create() {
-        this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
+        this.isMobile=this.game.device.os.android || this.game.device.os.iOS  || this.game.device.os.mobileSafari || this.game.device.os.safari;
+
+
 
         this.sys.scene.scale.lockOrientation("landscape")
         //super.create();
