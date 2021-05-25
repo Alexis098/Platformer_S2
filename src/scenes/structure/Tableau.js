@@ -75,6 +75,8 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 128, frameHeight: 64  }
         );
 
+
+
         //this.load.audio('track', 'assets/son/kamakura.mp3');
 
         this.load.audio('dashson', 'assets/son/dash.mp3');
@@ -98,7 +100,7 @@ class Tableau extends Phaser.Scene{
         this.load.image('0viesGrands', 'assets/Vies/grand/0_coeurs_grands.png');*/
 
 
-        
+
     }
 
     create(){

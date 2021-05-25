@@ -5,7 +5,7 @@ class Tableau00 extends Phaser.Scene{
         //super.preload();
         //this.load.image('star', 'assets/rubis.png');
         this.load.video('accueil', 'assets/videos/ecran_accueil_4.mp4', 'loadeddata', false, true);
-        this.load.audio('introSon', 'assets/son/musique_daccueil_V011_V2.mp3')
+        this.load.audio('introSon', 'assets/son/musique_daccueil_V011_V2.wav')
         //this.load.video('accueil', 'assets/videos/ecran_accueil_2.mp4');
         //this.load.image('artwork', 'assets/background1.jpg');
         //Il faudra charger un fond animé à la place une vidéo after effects avec des effets de vent qui passe âr dessus les dunes
