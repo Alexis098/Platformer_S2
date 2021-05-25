@@ -79,11 +79,16 @@ class Tableau extends Phaser.Scene{
 
         //this.load.audio('track', 'assets/son/kamakura.mp3');
 
-        this.load.audio('dashson', 'assets/son/dash.mp3');
-        this.load.audio('tpson', 'assets/son/tp2.mp3');
 
-        this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand.mp3');
-        this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
+        if(this.game.device.os.android || this.game.device.os.iOS){
+            //rien
+        }else{
+            this.load.audio('dashson', 'assets/son/dash.mp3');
+            this.load.audio('tpson', 'assets/son/tp2.mp3');
+
+            this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand.mp3');
+            this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
+        }
 
         this.load.image('5vies', 'assets/Vies/5_coeurs_128x64.png');
         this.load.image('4vies', 'assets/Vies/4_coeurs_128x64.png');
@@ -224,7 +229,7 @@ class Tableau extends Phaser.Scene{
 
 
     dsh(){
-        if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif==1){
+        if (Phaser.Input.Keyboard.JustDown(this.boutonDash) && this.verif===1){
             //this.player.anim();
             //this.player.setVelocityX(500);
 
@@ -262,7 +267,7 @@ class Tableau extends Phaser.Scene{
     }
 
     tp(){
-        if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif==1 && this.verifTP==1 && 1400<=this.player.x && this.player.x<=1750){
+        if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif===1 && this.verifTP===1 && 1400<=this.player.x && this.player.x<=1750){
             //tentative de delai avant la tp de 1 seconde
             //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
             this.tpson = this.sound.add('tpson', {volume: 1.5})
@@ -677,20 +682,9 @@ class Tableau extends Phaser.Scene{
         game.scene.start(tableau);
     }
 
-    pourPlayerPlaySand(){
-        if(this.sand===0){
-            //this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
-            this.shoes_run_sand.play();
-            this.sand=1;
-        }
 
-    }
 
-    pourPlayerPlaySandOff(){
 
-        this.shoes_run_sand.stop();
-        this.sand=0;
-    }
 
 
 
