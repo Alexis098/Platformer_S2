@@ -692,7 +692,12 @@ class Tableau extends Phaser.Scene{
     pourPlayerPlaySand(){
         if(this.sand===0){
             //this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
-            this.shoes_run_sand.play();
+
+            if(this.game.device.os.android || this.game.device.os.iOS){
+                //rien
+            }else{
+                this.shoes_run_sand.play();
+            }
             this.sand=1;
         }
 
