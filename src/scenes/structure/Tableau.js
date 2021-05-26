@@ -117,7 +117,7 @@ class Tableau extends Phaser.Scene{
         if(this.game.device.os.android || this.game.device.os.iOS){
             //rien
         }else{
-            this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1});
+            this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1.3});
         }
 
         this.sys.scene.scale.lockOrientation("landscape")
