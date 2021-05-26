@@ -550,10 +550,11 @@ class TableauTiledRenew extends Tableau{
         if(750<=this.player.x && this.player.x<=1100){
             //this.texte_planete_1.alpha=1;
             if(this.lecture_texte_planete===0){
-                this.texte_planete = this.sound.add('texte_planete', {volume: 0.5});
+
                 if(this.game.device.os.android || this.game.device.os.iOS){
                     //rien
                 }else{
+                    this.texte_planete = this.sound.add('texte_planete', {volume: 0.5});
                     this.texte_planete.play();
                 }
 
