@@ -5,11 +5,9 @@ class GamePad extends Phaser.GameObjects.Container{
     constructor(scene, x, y,size=100) {
         super(scene, x, y)
 
-        if(this.game.device.os.android || this.game.device.os.iOS){
-            //rien
-        }else{
-            scene.add.existing(this);
-        }
+
+        scene.add.existing(this);
+
 
 
         this.size=size;
