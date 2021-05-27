@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V031.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V032.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -55,11 +55,11 @@ class TableauTiledRenew extends Tableau{
         this.load.image('roche_pilier', 'assets/background/avant_plan/roche_pilier.png');
         this.load.image('dalle', 'assets/background/premier_plan/dalleEnigme.png');
         this.load.image('rocher_devant', 'assets/background/premier_plan/rocher_devant_2.png');
-        this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash.png');
-        this.load.image('tuto_tp', 'assets/ecrans_narration/tuto_tp.png');
-        this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme.png');
-        this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_2.png');
-        this.load.image('texte_planete_2', 'assets/ecrans_narration/texte_planete_2_2.png');
+        this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash_2.png');
+        this.load.image('tuto_tp', 'assets/ecrans_narration/tuto_tp_2.png');
+        this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme_2.png');
+        this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_3.png');
+        this.load.image('texte_planete_2', 'assets/ecrans_narration/texte_planete_2_3.png');
         this.load.image('rocher_obstacle', 'assets/rocher_obstacle_2.png');
 
 
@@ -178,6 +178,8 @@ class TableauTiledRenew extends Tableau{
         this.physics.add.collider(this.Platforms, this.player, function () {
             //ici.rebond();
         });
+
+
 
         this.PlatformsInTower = this.physics.add.group({
             allowGravity: false,

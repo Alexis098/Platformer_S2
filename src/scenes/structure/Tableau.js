@@ -511,7 +511,7 @@ class Tableau extends Phaser.Scene{
                         ui.ptv();
                         this.invincible();
                         this.fxHit();
-                        //this.ptsVie -= 1;
+                        this.ptsVie -= 1;
 
                         //  console.log('touché');
                         //  console.log(this.ptsVie);
