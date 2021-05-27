@@ -29,9 +29,6 @@ class TableauTiledRenew extends Tableau{
         this.load.image('projo', 'assets/missile_2.png');
 
 
-        // ---------Les étoiles-----------
-        //this.load.image('star', 'assets/truc.png');
-
         //this.load.image('checkPoint', 'assets/soleil.png');
 
         this.load.image('PlateformMouv', 'assets/plateforme_1_3.png');
