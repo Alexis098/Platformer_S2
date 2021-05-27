@@ -150,7 +150,12 @@ class Tableau extends Phaser.Scene{
         this.cinqVies.setDepth(1000);
         this.cinqVies.setScrollFactor(0);
 
-
+        // this.cinqVies.fixedToCamera = true;
+        // this.quatreVies.fixedToCamera = true;
+        // this.troisVies.fixedToCamera = true;
+        // this.deuxVies.fixedToCamera = true;
+        // this.uneVies.fixedToCamera = true;
+        // this.zeroVies.fixedToCamera = true;
 
 
 
@@ -506,7 +511,7 @@ class Tableau extends Phaser.Scene{
                         ui.ptv();
                         this.invincible();
                         this.fxHit();
-                        this.ptsVie -= 1;
+                        //this.ptsVie -= 1;
 
                         //  console.log('touché');
                         //  console.log(this.ptsVie);

@@ -47,7 +47,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('nuages', 'assets/background/arriere_plan_3_nuages.png');
         this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2_4.png');
         this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1_6.png');
-        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_7.png');
+        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_8.png');
         this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour_2.png');
         this.load.image('light', 'assets/background/premier_plan/light.png');
         this.load.image('plantes_arbres', 'assets/background/avant_plan/plantes_arbre_3.png');
