@@ -49,11 +49,11 @@ class TableauTiledRenew extends Tableau{
         this.load.image('soleils', 'assets/background/arriere_plan_4_soleils.png');
         this.load.image('nuages', 'assets/background/arriere_plan_3_nuages.png');
         this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2_4.png');
-        this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1_4.png');
-        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_5.png');
+        this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1_6.png');
+        this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_7.png');
         this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour_2.png');
         this.load.image('light', 'assets/background/premier_plan/light.png');
-        this.load.image('plantes_arbres', 'assets/background/avant_plan/plantes_arbre.png');
+        this.load.image('plantes_arbres', 'assets/background/avant_plan/plantes_arbre_3.png');
         this.load.image('premiere_roche', 'assets/background/avant_plan/premiere_roche.png');
         this.load.image('roche_pilier', 'assets/background/avant_plan/roche_pilier.png');
         this.load.image('dalle', 'assets/background/premier_plan/dalleEnigme.png');
@@ -389,7 +389,7 @@ class TableauTiledRenew extends Tableau{
         this.premier_plan=this.add.image(3050, 1110, 'premier_plan');
         this.premier_plan_ombre_tour=this.add.image(3050, 1110, 'premier_plan_ombre_tour');
         this.light=this.add.image(3050, 1110, 'light');
-        this.plantes_arbres=this.add.image(5760, 1970, 'plantes_arbres');
+        this.plantes_arbres=this.add.image(/*5760*/3015, /*1970*/1115, 'plantes_arbres');
         this.roche_pilier=this.add.image(2600, 2075, 'roche_pilier');
         this.premiere_roche=this.add.image(1175, 2200, 'premiere_roche');
         this.rocher_devant=this.add.image(3000, 1110, 'rocher_devant');

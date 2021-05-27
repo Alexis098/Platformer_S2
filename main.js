@@ -1,7 +1,7 @@
 let width=14*64; //896;
 let height=7*64; //448;
-//  let width=95*64; //896;
-//  let height=30*64; //448;
+// let width=95*64; //896;
+// let height=30*64; //448;
 
 
 let config = {
