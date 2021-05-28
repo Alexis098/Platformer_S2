@@ -7,7 +7,7 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
         //super.preload();
         /*this.load.image('star', 'assets/rubis.png');
         this.load.image('ground', 'assets/test.png');*/
-        this.load.video('cinematique', 'assets/videos/Cinematique_V004_compress.mp4')
+        this.load.video('cinematique', 'assets/videos/Cinematique_V006_compress.mp4')
     }
     create() {
         this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
@@ -40,11 +40,11 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
         },this);
 
 
-        this.add.text(800, 10, 'Cliquez pour passer', { font: '"Press Start 2P"' });
-        // this.skip = this.add.text(790, 10, 'Cliquez pour passer', {
-        //     font:'12px "Black And White Picture"',
-        //     fill: '#fff'
-        // });
+        //this.add.text(800, 10, 'Cliquez pour passer', { font: '"Press Start 2P"' });
+         this.skip = this.add.text(790, 10, 'Cliquez pour passer', {
+              font:'12px "Press Start 2P"',
+             fill: '#000'
+         });
 
 
 

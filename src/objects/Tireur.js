@@ -112,6 +112,7 @@ class Tireur extends ObjetEnnemi{
 
 
 
+
     }
 
 

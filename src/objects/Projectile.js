@@ -33,14 +33,12 @@ class Projectile extends ObjetEnnemi {
     }
     /*tir(){
         this.valeur+=1;
-        console.log(this.valeur);
+        //console.log(this.valeur);
         if(this.valeur===100){
             this.destroy();
         }
-    }
-    update(){
-        this.tir();
     }*/
+
 
     /*projo(){
         this.scene.tweens.add({
