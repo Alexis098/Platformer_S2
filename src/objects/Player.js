@@ -106,7 +106,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         //let sens = 1;
 
 
-
+        this.body.velocity.y = Math.min(500, Math.max(-500, this.body.velocity.y));
         switch (true){
             case this._directionX<0:
                 this.sens=-1;
