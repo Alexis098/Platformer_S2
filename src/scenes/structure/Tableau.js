@@ -147,15 +147,16 @@ class Tableau extends Phaser.Scene{
         this.boutonTelep = this.input.keyboard.addKey('Z');
 
         this.cinqVies=this.add.sprite(800, 40, "5vies");
+        //this.cinqVies.setOrigin(0,0);
         this.cinqVies.setDepth(1000);
         this.cinqVies.setScrollFactor(0);
 
-        // this.cinqVies.fixedToCamera = true;
-        // this.quatreVies.fixedToCamera = true;
-        // this.troisVies.fixedToCamera = true;
-        // this.deuxVies.fixedToCamera = true;
-        // this.uneVies.fixedToCamera = true;
-        // this.zeroVies.fixedToCamera = true;
+        //this.cinqVies.fixedToCamera = true;
+        //this.quatreVies.fixedToCamera = true;
+        //this.troisVies.fixedToCamera = true;
+        //this.deuxVies.fixedToCamera = true;
+        //this.uneVies.fixedToCamera = true;
+        //this.zeroVies.fixedToCamera = true;
 
 
 

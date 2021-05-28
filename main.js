@@ -1,7 +1,7 @@
 let width=14*64; //896;
 let height=7*64; //448;
-// let width=95*64; //896;
-// let height=30*64; //448;
+//  let width=95*64; //896;
+//  let height=30*64; //448;
 
 
 let config = {
@@ -18,8 +18,8 @@ let config = {
     scene: [
         new Ui(),
         //on définit ici l'ordre dans lequel les tableaux apparaissent
-        new Tableau00("Accueil"),
-        new Tableau01("Skip"),
+        //new Tableau00("Accueil"),
+        //new Tableau01("Skip"),
         new TableauTiledRenew("definitiveEdition"),
         new Tableau00A("toto"),
         //new TableauLong("Sun Chaser"),
