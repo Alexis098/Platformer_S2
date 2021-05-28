@@ -63,7 +63,8 @@ class TableauTiledRenew extends Tableau{
         this.load.image('rocher_obstacle', 'assets/rocher_obstacle_3.png');
 
 
-
+        this.load.image('blackBar_top', 'assets/blackBar_top_2.png');
+        this.load.image('blackBar_bottom', 'assets/blackBar_bottom_2.png');
 
         //this.load.video('dialogue1','assets/videos/dialogue1.mp4');
         //this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
@@ -80,6 +81,7 @@ class TableauTiledRenew extends Tableau{
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
         this.load.video('vent', 'assets/videos/FXs/vent.webm', 'loadeddata', false, true);
 
+        this.load.video('fleche_vent', 'assets/videos/FXs/fleche.webm', 'loadeddata', false, true);
 
 
     }
@@ -94,13 +96,19 @@ class TableauTiledRenew extends Tableau{
         this.stelesonup=0;
         this.boom=0;
         this.flottant=0;
+        this.cineStyle=0;
 
         this.camera = this.cameras.main;
         this.camera.setZoom(1);
 
         this.smokeFx=this.add.video(5860, 2190, 'smokeFx');
         this.vent=this.add.video(4700, 700, 'vent');
+        this.fleche_vent=this.add.video(5150, 650, 'fleche_vent');
         this.vent.setDepth(103);
+        this.fleche_vent.setDepth(103);
+
+
+
 
         //this.projectile();
 /*
@@ -903,14 +911,69 @@ class TableauTiledRenew extends Tableau{
             this.camera.zoomTo(1,5000);
         }
         if(this.player.x>=4650 && this.player.y<=601){
-            this.camera.pan(4850, 600, 1500, 'Sine');
+            //this.camera.pan(4850, 600, 1500, 'Sine');
             this.vent.alpha=0.25;
+            this.fleche_vent.alpha=0.25;
             this.vent.play();
+            this.fleche_vent.play();
+        }
 
+        if(this.player.x>=4450 && this.player.y<=801){
+            this.tweens.add({
+                targets:  this.song,
+                volume:   0,
+                duration: 1000
+            });
         }
 
     }
 
+    finalEvent(){
+
+
+            if(this.cineStyle===0 && this.player.x>=4850 && this.player.x<5000 && this.player.y>=700 && this.player.y<2000){
+                this.cineStyle=1;
+                this.player.setVelocityY(150);
+                this.cameras.main.startFollow(this.player, true, 0.08, 0.2);
+
+                this.blackBar_top=this.add.image(0, -15, 'blackBar_top');
+                this.blackBar_bottom=this.add.image(0, 15, 'blackBar_bottom');
+                this.blackBar_top.setOrigin(0,0);
+                this.blackBar_bottom.setOrigin(0,0);
+                this.blackBar_top.setDepth(1000);
+                this.blackBar_bottom.setDepth(1000);
+                this.blackBar_top.setScrollFactor(0);
+                this.blackBar_bottom.setScrollFactor(0);
+
+                this.tweens.add({
+                    targets: this.blackBar_bottom,
+
+                    y: {
+                        from: 50,
+                        to:18,
+                        duration: 750,
+                        ease: 'Sine.easeInOut',
+                        yoyo: -1,
+                        hold:2500
+
+
+                    }
+                });
+                this.tweens.add({
+                    targets: this.blackBar_top,
+
+                    y: {
+                        from: -50,
+                        to:-18,
+                        duration: 750,
+                        ease: 'Sine.easeInOut',
+                        yoyo: -1,
+                        hold:2500
+
+                    }
+                });
+            }
+    }
 
 
 
@@ -922,6 +985,8 @@ class TableauTiledRenew extends Tableau{
         //this.enigmeNiveau();
         this.fxTour();
         this.apparitionTexte();
+        this.finalEvent();
+
 
 
 
