@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="95" height="35" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="83">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="95" height="35" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="84">
  <editorsettings>
-  <export target="level1_V032.json" format="json"/>
+  <export target="level1_V033.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="kenny_simple_platformer" tilewidth="64" tileheight="64" tilecount="98" columns="14">
   <image source="../tilesets/platformPack_tilesheet_3.png" width="896" height="448"/>
@@ -550,8 +550,9 @@
  <objectgroup id="4" name="checkPoints">
   <object id="27" name="checkpoint_1" gid="32" x="64" y="2176" width="64" height="64"/>
   <object id="28" name="checkpoint_2" gid="32" x="1216" y="2176" width="64" height="64"/>
-  <object id="31" name="checkpoint_4" gid="32" x="5440" y="2176" width="64" height="64"/>
+  <object id="31" name="checkpoint_5" gid="32" x="5440" y="2176" width="64" height="64"/>
   <object id="77" name="checkpoint_3" gid="32" x="3136" y="2176" width="64" height="64"/>
+  <object id="83" name="checkpoint_4" gid="32" x="4058" y="1372" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="10" name="videos"/>
  <objectgroup id="11" name="dalles">

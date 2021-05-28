@@ -82,10 +82,10 @@ class Tableau extends Phaser.Scene{
 
 
 
-        this.load.audio('dashson', 'assets/son/dash.mp3');
+        this.load.audio('dashson', 'assets/son/dash_1.mp3');
         this.load.audio('tpson', 'assets/son/tp2.mp3');
 
-        this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand.mp3');
+        this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand_2.mp3');
         this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
 
 
@@ -118,6 +118,7 @@ class Tableau extends Phaser.Scene{
             //rien
         }else{
             this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1.3});
+            this.shoes_run_sand.loop = true;
         }
 
         this.sys.scene.scale.lockOrientation("landscape")
@@ -489,7 +490,8 @@ class Tableau extends Phaser.Scene{
                         }
                     });
 
-                    monster.body.enable = false//mettre ici le codequi rend invulnérable
+                    monster.body.enable = false;//mettre ici le codequi rend invulnérable
+
                     //this.player.anims.play('right', true);//essayer de faire jouer une anim quand on prend un coup
                     this.time.addEvent({
                         delay: 1500,

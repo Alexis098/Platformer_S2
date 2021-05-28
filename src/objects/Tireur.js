@@ -91,20 +91,31 @@ class Tireur extends ObjetEnnemi{
             if (this.scene.player.x > this.x - 300 && this.scene.player.x < this.x + 300 /*&& this.scene.player.y > this.y - 200 && this.scene.player.y < this.y + 25*/) {
                 //this.shotSound.play({volume:.5});
                 if(this.scene.player.y>this.y){
-                    this.projo = new Projectile(this.scene, this.x, this.y + 35, 'projo').setVelocityX(150 * this.dir);
+                    var projo1 = new Projectile(this.scene, this.x, this.y + 35, 'projo').setVelocityX(150 * this.dir);
+                    setTimeout(function(){
+                        projo1.body.enable = false;
+                        projo1.visible = false;
+                    },2000);
                     /*setTimeout(function(){
                         this.projo.destroy();
                     },500)*/
                 }
 
                 else if(this.scene.player.y<this.y){
-                    this.projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocity(150 * this.dir, -150);
+                    var projo = new Projectile(this.scene, this.x, this.y + 30, 'projo').setVelocity(150 * this.dir, -150);
+                    setTimeout(function(){
+                        projo.body.enable = false;
+                        projo.visible = false;
+                    },1500);
                     /*setTimeout(function(){
                         this.projo.destroy();
                     },500)*/
                 }
 
             }
+
+
+
 
         }
 
@@ -123,7 +134,7 @@ class Tireur extends ObjetEnnemi{
             //this.killEffect();
             //this.disableBody(true, true);
             this.isAlive = false;
-            console.log('tireur mort');
+            //console.log('tireur mort');
         }
 
     }
@@ -131,7 +142,7 @@ class Tireur extends ObjetEnnemi{
     mort(){
         if(this.isAlive==false){
             this.isAlive=true;
-            console.log('vivant');
+            //console.log('vivant');
         }
     }
 

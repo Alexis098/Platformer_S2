@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V032.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V034.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -60,7 +60,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme_2.png');
         this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_3.png');
         this.load.image('texte_planete_2', 'assets/ecrans_narration/texte_planete_2_3.png');
-        this.load.image('rocher_obstacle', 'assets/rocher_obstacle_2.png');
+        this.load.image('rocher_obstacle', 'assets/rocher_obstacle_3.png');
 
 
 
@@ -73,9 +73,9 @@ class TableauTiledRenew extends Tableau{
         this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
         this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
 
-        this.load.audio('rocks', 'assets/son/rocks.mp3');
-        this.load.audio('rocksup', 'assets/son/rocks_up.mp3');
-        this.load.audio('stele_boom', 'assets/son/stele_boom.mp3');
+        this.load.audio('rocks', 'assets/son/rocks_2.mp3');
+        this.load.audio('rocksup', 'assets/son/rocks_up_2.mp3');
+        this.load.audio('stele_boom', 'assets/son/stele_boom_2.mp3');
 
         this.load.video('smokeFx', 'assets/videos/FXs/dashtest3.webm', 'loadeddata', false, true);
         this.load.video('vent', 'assets/videos/FXs/vent.webm', 'loadeddata', false, true);
@@ -169,6 +169,7 @@ class TableauTiledRenew extends Tableau{
         this.PlatformsObjects.forEach(PlatformsObject => {
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let Platforms = this.Platforms.create(PlatformsObject.x+32, PlatformsObject.y+16 /*, 'particles'*/, 'PlateformMouv');
+            Platforms.setSize(0,15);
         });
 
 
@@ -192,6 +193,7 @@ class TableauTiledRenew extends Tableau{
         this.PlatformsInTowerObjects.forEach(PlatformsInTowerObject => {
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let PlatformsInTower = this.PlatformsInTower.create(PlatformsInTowerObject.x+32, PlatformsInTowerObject.y+16 /*, 'particles'*/, 'PlateformMouv');
+            PlatformsInTower.setSize(0,15);
         });
         //this.physics.add.collider(this.Platforms, this.player);
 
@@ -212,6 +214,7 @@ class TableauTiledRenew extends Tableau{
         this.PlatformsLonguesObjects.forEach(PlatformsLonguesObject => {
             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let PlatformsLongues = this.PlatformsLongues.create(PlatformsLonguesObject.x, PlatformsLonguesObject.y /*, 'particles'*/, 'platforms_longues');
+            PlatformsLongues.setSize(0,15);
         });
         //this.physics.add.collider(this.Platforms, this.player);
 
@@ -467,14 +470,14 @@ class TableauTiledRenew extends Tableau{
         debug.setDepth(z--);
         //this.blood.setDepth(z--);
 
-        monstersContainer.setDepth(103);
+        monstersContainer.setDepth(105);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
 
-        this.devant.setDepth(103);
-        this.mursInvisibles.setDepth(103);
+        this.devant.setDepth(106);
+        this.mursInvisibles.setDepth(105);
 
-        this.player.setDepth(102);
+        this.player.setDepth(104);
 
         this.derriere.setDepth(50);
         // this.sky2.setDepth(z--);
@@ -487,12 +490,12 @@ class TableauTiledRenew extends Tableau{
         this.premier_plan.setDepth(99);
         this.light.setDepth(101);
         this.premier_plan_ombre_tour.setDepth(101);
-        this.plantes_arbres.setDepth(104);
-        this.premiere_roche.setDepth(104);
-        this.roche_pilier.setDepth(104);
+        this.plantes_arbres.setDepth(107);
+        this.premiere_roche.setDepth(107);
+        this.roche_pilier.setDepth(107);
         this.dalles.setDepth(97);
-        this.rocher_devant.setDepth(103);
-        this.rocher_obstacle.setDepth(101);
+        this.rocher_devant.setDepth(107);
+        this.rocher_obstacle.setDepth(103);
 
         this.tuto_dash.setDepth(99);
         this.tuto_tp.setDepth(99);
@@ -791,11 +794,12 @@ class TableauTiledRenew extends Tableau{
                     if(this.game.device.os.android || this.game.device.os.iOS){
                         //rien
                     }else{
-                        this.rocksup = this.sound.add('rocksup', {volume: 0.3});
+                        this.rocksup = this.sound.add('rocksup', {volume: 0.4});
                         this.rocksup.play();
+                        this.stelesonup=1;
                     }
 
-                    this.stelesonup=1;
+
                 }
 
 

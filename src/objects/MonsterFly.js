@@ -17,7 +17,7 @@ class MonsterFly extends ObjetEnnemi{
         //on réduit un peu la zone de hit
         //this.setBodySize(this.body.width,this.body.height);
         this.body.setSize(40,80);
-        this.setOffset(30, 60);
+        this.setOffset(20, 34);
         this.setDepth(102);
         //définir les propriétés que l'on va utiliser dans notre animation
 
