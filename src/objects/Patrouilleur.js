@@ -26,7 +26,7 @@ class Patrouilleur extends ObjetEnnemi{
         scene.time.addEvent({ delay: 1000, callback: this.test, callbackScope: this, loop: true });
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
-        //le tireur peut de nouveau tirer après qu'on l'ait touché
+        //le patrouilleur peut de nouveau bouger après l'avoir touché
         scene.time.addEvent({ delay: 8000, callback: this.mort, callbackScope: this, loop: true });
 
         //Immobile

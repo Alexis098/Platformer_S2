@@ -11,6 +11,8 @@ class MonsterFly extends ObjetEnnemi{
         this.body.allowGravity=false;
         this.setOrigin(0,0);
 
+
+
         //gestion de la taille
         //this.setDisplaySize(64,64);
 
@@ -62,8 +64,8 @@ class MonsterFly extends ObjetEnnemi{
 
         this.anims.play('planeur', true);
 
-       
 
+        scene.time.addEvent({ delay: 100, callback: this.detection, callbackScope: this, loop: true });
     }
 
     start(){
@@ -88,5 +90,8 @@ class MonsterFly extends ObjetEnnemi{
             }
         });
     }
+
+
+
 
 }

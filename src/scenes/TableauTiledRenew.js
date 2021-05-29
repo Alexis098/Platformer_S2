@@ -83,7 +83,7 @@ class TableauTiledRenew extends Tableau{
 
         this.load.video('fleche_vent', 'assets/videos/FXs/fleche.webm', 'loadeddata', false, true);
 
-
+        this.load.audio('chutefinale', 'assets/son/chutefinale.mp3');
     }
 
 
@@ -931,13 +931,18 @@ class TableauTiledRenew extends Tableau{
     finalEvent(){
 
 
-            if(this.cineStyle===0 && this.player.x>=4850 && this.player.x<5000 && this.player.y>=700 && this.player.y<2000){
+            if(this.cineStyle===0 && this.player.x>=4800 && this.player.x<5200 && this.player.y>=700 && this.player.y<2000){
                 this.cineStyle=1;
                 this.player.setVelocityY(150);
                 this.cameras.main.startFollow(this.player, true, 0.08, 0.2);
 
-
-                this.player.jump();
+                if(this.game.device.os.android || this.game.device.os.iOS){
+                    //rien
+                }else{
+                    this.chutefinale = this.sound.add('chutefinale', {volume: 0.5})
+                    this.chutefinale.play();
+                }
+                //this.player.jump();
                 //this.player.anims.play('chute_left', true);
 
                 this.blackBar_top=this.add.image(0, -15, 'blackBar_top');
@@ -980,7 +985,7 @@ class TableauTiledRenew extends Tableau{
     }
 
     playchara(){
-        if(this.player.x>=4850 && this.player.x<5000 && this.player.y>=700 && this.player.y<2000) {
+        if(this.player.x>=4800 && this.player.x<5200 && this.player.y>=700 && this.player.y<2000) {
             this.player.jump();
         }
     }

@@ -16,7 +16,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.recup=0;
         this.speedFactor=1;
         this.vitesse=0;
-        this.jumping = false;
+
 
         //this.setOrigin(0,0);
 
@@ -245,9 +245,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     //joue l'anim de saut
     jump(){
-
-        this.anims.play('chute_right', true);
-
+        if(this.body.velocity.y>0){
+            this.anims.play('chute_right', true);
+        }
     }
 
     //Le reste des fonctions dash et teleportation se trouve dans le tableau avec la fonction move pour appeler la fonction dans le tableau
