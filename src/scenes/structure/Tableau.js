@@ -41,6 +41,11 @@ class Tableau extends Phaser.Scene{
             'assets/animations/lumel/Stance_test_15.png',
             { frameWidth: 64, frameHeight: 64  }
         );
+
+        this.load.spritesheet('spritesheet_chute',
+            'assets/animations/lumel/spritesheet_chute.png',
+            { frameWidth: 86, frameHeight: 86  }
+        );
         // this.load.spritesheet('player_jump',
         //     'assets/player_jump1.png',
         //     { frameWidth: 32, frameHeight: 48  }
@@ -74,6 +79,7 @@ class Tableau extends Phaser.Scene{
             'assets/animations/patrouilleur/run_test_6.png',
             { frameWidth: 128, frameHeight: 64  }
         );
+
 
 
 

@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V034.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V035.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -936,6 +936,10 @@ class TableauTiledRenew extends Tableau{
                 this.player.setVelocityY(150);
                 this.cameras.main.startFollow(this.player, true, 0.08, 0.2);
 
+
+                this.player.jump();
+                //this.player.anims.play('chute_left', true);
+
                 this.blackBar_top=this.add.image(0, -15, 'blackBar_top');
                 this.blackBar_bottom=this.add.image(0, 15, 'blackBar_bottom');
                 this.blackBar_top.setOrigin(0,0);
@@ -975,6 +979,12 @@ class TableauTiledRenew extends Tableau{
             }
     }
 
+    playchara(){
+        if(this.player.x>=4850 && this.player.x<5000 && this.player.y>=700 && this.player.y<2000) {
+            this.player.jump();
+        }
+    }
+
 
 
 
@@ -986,6 +996,7 @@ class TableauTiledRenew extends Tableau{
         this.fxTour();
         this.apparitionTexte();
         this.finalEvent();
+        this.playchara();
 
 
 
