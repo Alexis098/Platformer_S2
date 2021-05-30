@@ -39,8 +39,8 @@ class GamePad extends Phaser.GameObjects.Container{
                     break;
 
                 case "ArrowUp":
-                    Tableau.current.player.directionY=-1;
-                    Tableau.current.saut=0;
+                    Tableau.current.pressUp=true;
+                    //Tableau.current.player.directionY=-1;
                     break;
 
                 case "ArrowDown":
@@ -62,8 +62,8 @@ class GamePad extends Phaser.GameObjects.Container{
                     break;
 
                 case "ArrowUp":
-                    Tableau.current.player.directionY=0;
-                    Tableau.current.saut=0;
+                    Tableau.current.pressUp=false;
+                    //Tableau.current.player.directionY=0;
                     break;
 
                 case "ArrowDown":

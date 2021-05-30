@@ -16,7 +16,8 @@ class Tableau extends Phaser.Scene{
         this.crush=0;
         this.sand=0;
         this.invicibleForEver = false;
-        this.saut=0;
+
+        this.pressUp=false;
 
 
 
@@ -228,6 +229,7 @@ class Tableau extends Phaser.Scene{
         //this.imgVies();
         this.tp();
         this.dsh();
+        this.saut();
 
 
 
@@ -727,12 +729,31 @@ class Tableau extends Phaser.Scene{
         this.sand=0;
     }
 
-
-
-
-
-
+    saut(){
+        if(this.pressUp){
+            this.player.directionY=-1;
+            this.time.addEvent
+            ({
+                delay: 200,
+                callback: ()=>
+                {
+                    this.pressUp = false;
+                },
+                loop: false
+            })
+        }else{
+            this.player.directionY=0;
+        }
+    }
 }
+
+
+
+
+
+
+
+
 
 /**
  * Le tableau en cours
