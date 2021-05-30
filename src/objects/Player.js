@@ -162,6 +162,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         if(this._directionY<0){ //gère la hauteur du saut du perso
             //this.jump();//fonction gérant l'anim de saut
             Tableau.current.pourPlayerPlaySandOff();
+
             if(this.body.blocked.down || this.body.touching.down){
                 //this.setVelocityY(-500);
 
@@ -174,13 +175,13 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 })*/
                 Tableau.current.tweens.timeline({
                     targets: Tableau.current.player.body.velocity,
-                    ease: 'Power2',
+                    ease: 'Linear.easeinOut',//'Power2.easeInOut',
                     duration: 100,
                     loop: 0,
                     tweens: [
                         {
                             targets: Tableau.current.player.body.velocity,
-                            y: -900
+                            y: -850
                         },
                         {
                             targets: Tableau.current.player.body.velocity,

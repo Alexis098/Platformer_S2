@@ -16,6 +16,7 @@ class Tableau extends Phaser.Scene{
         this.crush=0;
         this.sand=0;
         this.invicibleForEver = false;
+        this.saut=0;
 
 
 

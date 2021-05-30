@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V035.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V037.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -143,6 +143,7 @@ class TableauTiledRenew extends Tableau{
         this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
         this.devant = this.map.createLayer('Plateformes', this.tileset, 0, 32);
         this.mursInvisibles = this.map.createLayer('mursInvisibles', this.tileset, 0, 32);
+        this.mursInvisibles2 = this.map.createLayer('mursInvisibles2', this.tileset, -10, 32);
 
         //on définit les collisions, plusieurs méthodes existent:
 
@@ -152,6 +153,7 @@ class TableauTiledRenew extends Tableau{
         this.devant.setCollisionByProperty({ collides: true }); //sert aussi pour déterminer quelle tuile joue quel son quand on marche dessus par ex a voir comment ça marche vraiment par contre
         //this.lave.setCollisionByProperty({ collides: true });
         this.mursInvisibles.setCollisionByProperty({ collides: true });
+        this.mursInvisibles2.setCollisionByProperty({ collides: true });
 
 
 
@@ -295,6 +297,7 @@ class TableauTiledRenew extends Tableau{
             monstersContainer.add(monster);
             this.physics.add.collider(monster, this.devant);
             this.physics.add.collider(monster, this.mursInvisibles);
+            this.physics.add.collider(monster, this.mursInvisibles2);
 
         });
 
@@ -442,6 +445,7 @@ class TableauTiledRenew extends Tableau{
         //quoi collide avec quoi?
         this.physics.add.collider(this.player, this.devant);
         this.physics.add.collider(this.player, this.mursInvisibles);
+        this.physics.add.collider(this.player, this.mursInvisibles2);
 
         this.physics.add.collider(this.stars, this.devant);
         //this.physics.add.collider(this.katanaMonstersObjects, this.devant);
@@ -472,7 +476,7 @@ class TableauTiledRenew extends Tableau{
 
         this.dalles.setDepth(1000);
         this.checkPoints.setDepth(0);
-        this.Platforms.setDepth(101);
+        this.Platforms.setDepth(102);
         this.PlatformsInTower.setDepth(100);
         this.PlatformsLongues.setDepth(102);
         debug.setDepth(z--);
@@ -484,6 +488,7 @@ class TableauTiledRenew extends Tableau{
 
         this.devant.setDepth(106);
         this.mursInvisibles.setDepth(105);
+        this.mursInvisibles2.setDepth(105);
 
         this.player.setDepth(104);
 
@@ -918,11 +923,12 @@ class TableauTiledRenew extends Tableau{
             this.fleche_vent.play();
         }
 
-        if(this.player.x>=4450 && this.player.y<=801){
+        if(this.player.x>=4550 && this.player.y<=801){
             this.tweens.add({
                 targets:  this.song,
                 volume:   0,
-                duration: 1000
+                ease:'linear',
+                duration: 1200
             });
         }
 
