@@ -197,6 +197,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 this.recup=0;
 
 
+
+
+
             }
 
 
@@ -213,6 +216,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         //quand on redescend d'un saut, quand on se rapproche du sol
         }else{
             //this.setVelocityY(400);
+
         }
 
 
@@ -312,7 +316,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (dir < this.posX) {
 
-            if (this._directionY<0 && this.recup===0){
+            if (this.body.velocity.y!=0 && this.recup===0 && this.body.velocity.y!=-0.7936507936507937){
                 //ancienne ligne valide pour l'ancien dash
                 ///this.animGaucheHaut();
                 this.scene.tweens.add({
@@ -356,7 +360,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
 
-            if (this._directionY<0 && this.recup===0){
+            if (this.body.velocity.y!=0 && this.recup===0 && this.body.velocity.y!=-0.7936507936507937){
                 //ancienne ligne valide pour l'ancien dash
                 //this.animDroiteHaut();
                 this.scene.tweens.add({

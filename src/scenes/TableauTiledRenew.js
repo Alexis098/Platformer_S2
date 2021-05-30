@@ -55,7 +55,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('roche_pilier', 'assets/background/avant_plan/roche_pilier.png');
         this.load.image('dalle', 'assets/background/premier_plan/dalleEnigme.png');
         this.load.image('rocher_devant', 'assets/background/premier_plan/rocher_devant_2.png');
-        this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash_2.png');
+        this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash_3.png');
         this.load.image('tuto_tp', 'assets/ecrans_narration/tuto_tp_2.png');
         this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme_2.png');
         this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_3.png');

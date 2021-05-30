@@ -742,6 +742,7 @@ class Tableau extends Phaser.Scene{
                 loop: false
             })
         }else{
+            this.pressUp = false;
             this.player.directionY=0;
         }
     }
