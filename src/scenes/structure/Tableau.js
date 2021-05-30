@@ -230,6 +230,7 @@ class Tableau extends Phaser.Scene{
         this.tp();
         this.dsh();
         this.saut();
+        //console.log(this.player.body.velocity.y);
 
 
 

@@ -316,20 +316,20 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (dir < this.posX) {
 
-            if (this.body.velocity.y!=0 && this.recup===0 && this.body.velocity.y!=-0.7936507936507937){
+            if (/*this.body.velocity.y!=0 &&*/ this.recup===0 && this.body.velocity.y>=-0.7 || this.body.velocity.y<=-2){
                 //ancienne ligne valide pour l'ancien dash
                 ///this.animGaucheHaut();
                 this.scene.tweens.add({
                     targets: this,
-                    speedFactor: '+=2',
-                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
-                    duration: 100,
+                    speedFactor: '+=1,75', /*2*/
+                    ease: 'Power2.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    duration: 90, /*100*/
                 });
 
 
                 this.tween=this.scene.tweens.add({
                     targets: this,
-                    y: '-=150',
+                    y: '-=110',/*150*/
                     ease: 'Power1', //tester Circ (la mieux) Sine ou Expo aussi
                     //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
                     duration: 500,
@@ -346,9 +346,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 //this.animGauche();
                 this.scene.tweens.add({
                     targets: this,
-                    speedFactor: '+=3',
+                    speedFactor: '+=2', /*3*/
                     ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
-                    duration: 100,
+                    duration: 90, /*100*/
                 });
 
 
@@ -360,20 +360,20 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
 
-            if (this.body.velocity.y!=0 && this.recup===0 && this.body.velocity.y!=-0.7936507936507937){
+            if (/*this.body.velocity.y!=0 &&*/ this.recup===0 && this.body.velocity.y>=-0.7 || this.body.velocity.y<=-2){
                 //ancienne ligne valide pour l'ancien dash
                 //this.animDroiteHaut();
                 this.scene.tweens.add({
                     targets: this,
-                    speedFactor: '+=2',
-                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
-                    duration: 100,
+                    speedFactor: '+=1,75', /*2*/
+                    ease: 'Power2.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    duration: 90, /*100*/
                 });
 
 
                 this.tween=this.scene.tweens.add({
                     targets: this,
-                    y: '-=150',
+                    y: '-=110', /*150*/
                     ease: 'Power1', //tester Circ (la mieux) Sine ou Expo aussi
                     //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
                     duration: 500,
@@ -392,9 +392,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
                 this.scene.tweens.add({
                     targets: this,
-                    speedFactor: '+=3',
+                    speedFactor: '+=2', /*3*/
                     ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
-                    duration: 100,
+                    duration: 90, /*100*/
                 });
 
 

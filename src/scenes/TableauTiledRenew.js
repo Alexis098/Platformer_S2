@@ -20,11 +20,11 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V037.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V038.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
-        //this.load.image('monster-katana', 'assets/monster_katana.png');
+
         //this.load.image('tireur', 'assets/animations/tireur/tireur_test_1.png');
         this.load.image('projo', 'assets/missile_2.png');
 
@@ -34,19 +34,15 @@ class TableauTiledRenew extends Tableau{
         this.load.image('PlateformMouv', 'assets/plateforme_1_3.png');
         this.load.image('platforms_longues', 'assets/platforms_longues.png');
 
-        // -----et puis aussi-------------
 
-        //this.load.image('night', 'assets/images/background.png');
-        //atlas de texture généré avec https://free-tex-packer.com/app/
-        //on y trouve notre étoiles et une tête de mort
 
         //-------------BACKGROUND PARALLAX--------------
         this.load.image('ciel', 'assets/background/ciel.jpg');
         this.load.image('voile', 'assets/background/voile_atmospherique.png');
         this.load.image('soleils', 'assets/background/arriere_plan_4_soleils.png');
         this.load.image('nuages', 'assets/background/arriere_plan_3_nuages.png');
-        this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2_4.png');
-        this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1_6.png');
+        this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2_5.png');/*2_4*/
+        this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1_7.png');/*1_6*/
         this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_8.png');
         this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour_2.png');
         this.load.image('light', 'assets/background/premier_plan/light.png');
@@ -66,10 +62,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('blackBar_top', 'assets/blackBar_top_2.png');
         this.load.image('blackBar_bottom', 'assets/blackBar_bottom_2.png');
 
-        //this.load.video('dialogue1','assets/videos/dialogue1.mp4');
-        //this.load.video('dialogue1', 'assets/videos/dialogue2.webm', 'loadeddata', false, true);
 
-        //this.load.image('dalle', 'assets/64x86.png');
 
         this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
         this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
@@ -110,17 +103,7 @@ class TableauTiledRenew extends Tableau{
 
 
 
-        //this.projectile();
-/*
-        //this.img=this.add.sprite(5350,500,'dalle');
-        this.img = this.physics.add.staticGroup();
-        this.img.create(5350, 580, 'dalle');
-        //this.img.setOrigin(0,0);
-        this.img.setDepth(1000);
-        this.physics.add.collider(this.img, this.player);
-        // this.img.setSize(64,64);
-        //on en aura besoin...
-        //let ici=this;*/
+
 
         //--------chargement de la tile map & configuration de la scène-----------------------
 
@@ -138,8 +121,7 @@ class TableauTiledRenew extends Tableau{
 
         //---- ajoute les plateformes simples ----------------------------
 
-        // this.solides = this.map.createLayer('solides', this.tileset, 0, 0);
-        // this.lave = this.map.createLayer('lave', this.tileset, 0, 0);
+
         this.derriere = this.map.createLayer('derriere', this.tileset, 0, 0);
         this.devant = this.map.createLayer('Plateformes', this.tileset, 0, 32);
         this.mursInvisibles = this.map.createLayer('mursInvisibles', this.tileset, 0, 32);
@@ -147,24 +129,15 @@ class TableauTiledRenew extends Tableau{
 
         //on définit les collisions, plusieurs méthodes existent:
 
-        // 1 La méthode que je préconise (il faut définir une propriété dans tiled pour que ça marche)
-        //permet de travailler sur un seul layer dans tiled et des définir les collisions en fonction des graphiques
-        //exemple ici https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
         this.devant.setCollisionByProperty({ collides: true }); //sert aussi pour déterminer quelle tuile joue quel son quand on marche dessus par ex a voir comment ça marche vraiment par contre
-        //this.lave.setCollisionByProperty({ collides: true });
+
         this.mursInvisibles.setCollisionByProperty({ collides: true });
         this.mursInvisibles2.setCollisionByProperty({ collides: true });
 
 
 
 
-        // 2 manière la plus simple (là où il y a des tiles ça collide et sinon non)
-        //this.devant.setCollisionByExclusion(-1, true);
-        //this.lave.setCollisionByExclusion(-1, true);
 
-        // 3 Permet d'utiliser l'éditeur de collision de Tiled...mais ne semble pas marcher pas avec le moteur de physique ARCADE, donc oubliez cette option :(
-        //this.map.setCollisionFromCollisionGroup(true,true,this.plateformesSimples);
-        //this.inZone=false;
 
         let ici=this;
         //PLATEFORMES
@@ -183,9 +156,7 @@ class TableauTiledRenew extends Tableau{
         });
 
 
-        //this.physics.add.collider(this.Platforms, this.player);
 
-        //this.physics.add.collider(this.Platforms, this.player);
         this.physics.add.collider(this.Platforms, this.player, function () {
             //ici.rebond();
         });
@@ -199,15 +170,11 @@ class TableauTiledRenew extends Tableau{
             bounceX:0,
         });
         this.PlatformsInTowerObjects = this.map.getObjectLayer('PlatformsInTower')['objects'];
-        // On crée des étoiles pour chaque objet rencontré
         this.PlatformsInTowerObjects.forEach(PlatformsInTowerObject => {
-            // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let PlatformsInTower = this.PlatformsInTower.create(PlatformsInTowerObject.x+32, PlatformsInTowerObject.y+16 /*, 'particles'*/, 'PlateformMouv');
             PlatformsInTower.setSize(0,15);
         });
-        //this.physics.add.collider(this.Platforms, this.player);
 
-        //this.physics.add.collider(this.Platforms, this.player);
         this.physics.add.collider(this.PlatformsInTower, this.player, function () {
 
         });
@@ -226,9 +193,6 @@ class TableauTiledRenew extends Tableau{
             let PlatformsLongues = this.PlatformsLongues.create(PlatformsLonguesObject.x, PlatformsLonguesObject.y /*, 'particles'*/, 'platforms_longues');
             PlatformsLongues.setSize(0,15);
         });
-        //this.physics.add.collider(this.Platforms, this.player);
-
-        //this.physics.add.collider(this.Platforms, this.player);
         this.physics.add.collider(this.PlatformsLongues, this.player, function () {
 
         });
@@ -250,9 +214,7 @@ class TableauTiledRenew extends Tableau{
             drag:0.5,
         });
         this.starsObjects = this.map.getObjectLayer('stars')['objects'];
-        // On crée des étoiles pour chaque objet rencontré
         this.starsObjects.forEach(starObject => {
-            // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
             let star = this.stars.create(starObject.x+32, starObject.y+32 /*, 'particles'*/, 'star');
         });
 
@@ -263,9 +225,7 @@ class TableauTiledRenew extends Tableau{
              bounceX:0,
          });
          this.dallesObjects = this.map.getObjectLayer('dalles')['objects'];
-         // On crée des étoiles pour chaque objet rencontré
          this.dallesObjects.forEach(dalleObject => {
-             // Pour chaque étoile on la positionne pour que ça colle bien car les étoiles ne font pas 64x64
              let dalle = this.dalles.create(dalleObject.x+32, dalleObject.y+32 /*, 'particles'*/, 'dalle');
          });
          this.physics.add.collider(this.dalles, this.player);
@@ -336,39 +296,6 @@ class TableauTiledRenew extends Tableau{
             point.checkPointObject=checkPointObject;
         });
 
-        // this.videos = this.physics.add.staticGroup();
-        // this.videosObjects = this.map.getObjectLayer('videos')['objects'];
-        // //on crée des checkpoints pour chaque objet rencontré
-        // this.videosObjects.forEach(videosObject => {
-        //     let point=this.videos.create(videosObject.x,videosObject.y/*,"particles"*/,"videos").setOrigin(0.5,1);
-        //     point.blendMode=Phaser.BlendModes.COLOR_DODGE;
-        //     point.videosObject=videosObject;
-        // });
-
-
-        //AUTRE VIDEO
-        //this.autreVideo=this.add.video(3000, 425, 'truc');
-        //this.autreVideo.setDepth(1000);
-
-        //Fin du niveau - zone menant à la suite du jeu
-        // this.niveaux = this.physics.add.staticGroup();
-        // this.niveauxObjects = this.map.getObjectLayer('niveaux')['objects'];
-        // //on crée des checkpoints pour chaque objet rencontré
-        // this.niveauxObjects.forEach(niveauObject => {
-        //     let point=this.niveaux.create(niveauObject.x,niveauObject.y/*,"particles"*/,"checkPoint").setOrigin(0.5,1);
-        //     point.blendMode=Phaser.BlendModes.COLOR_DODGE;
-        //     point.niveauObject=niveauObject;
-        // });
-
-
-
-        //----------les monstres terrestres (objets tiled) ---------------------
-        /*this.katanaMonstersObjects = this.map.getObjectLayer('katanaMonsters')['objects'];
-        this.katanaMonstersObjects.forEach(monsterObject => {
-            let monster=new Patrouilleur(this,monsterObject.x,monsterObject.y); //ici, on appelle le nom de la classe
-            monstersContainer.add(monster);
-        });*/
-
 
         //----------débug---------------------
 
@@ -377,18 +304,7 @@ class TableauTiledRenew extends Tableau{
         if(this.game.config.physics.arcade.debug === false){
             debug.visible=false;
         }
-        // //débug solides en vers
-        // this.solides.renderDebug(debug,{
-        //     tileColor: null, // Couleur des tiles qui ne collident pas
-        //     collidingTileColor: new Phaser.Display.Color(0, 255, 0, 255), //Couleur des tiles qui collident
-        //     faceColor: null // Color of colliding face edges
-        // });
-        // //debug lave en rouge
-        // this.lave.renderDebug(debug,{
-        //     tileColor: null, // Couleur des tiles qui ne collident pas
-        //     collidingTileColor: new Phaser.Display.Color(255, 0, 0, 255), //Couleur des tiles qui collident
-        //     faceColor: null // Color of colliding face edges
-        // });
+
 
 
         //---------- parallax ciel (rien de nouveau) -------------
@@ -461,10 +377,7 @@ class TableauTiledRenew extends Tableau{
              ici.saveCheckPoint(checkPoint.checkPointObject.name);
          }, null, this);
 
-        // this.physics.add.overlap(this.player, this.videos, function(player, videos)
-        // {
-        //     ici.enigmeNiveau(videos.videosObject.name);
-        // }, null, this);
+
 
 
 
@@ -486,7 +399,7 @@ class TableauTiledRenew extends Tableau{
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
 
-        this.devant.setDepth(106);
+        this.devant.setDepth(102);
         this.mursInvisibles.setDepth(105);
         this.mursInvisibles2.setDepth(105);
 

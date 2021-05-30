@@ -12,12 +12,12 @@ class Tireur extends ObjetEnnemi{
 
         this.body.allowGravity=true;
         //this.setBodySize(this.body.width,this.body.height);
-        this.body.setSize(35,86);
+        this.body.setSize(30,75);
         this.setOrigin(0,0);
         //this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
         this.setBounce(0);
-        this.setOffset(0,0);
+        this.setOffset(15,11);
 
         this.setDepth(102);
         //execute une commande au bout de 1 seconde loop permet de lancer l'action en boucle à la manière d'un update pour savoir à chaque frame si il faut lancer la ligne de code
