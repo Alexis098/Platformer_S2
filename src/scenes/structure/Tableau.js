@@ -53,6 +53,16 @@ class Tableau extends Phaser.Scene{
         //     { frameWidth: 32, frameHeight: 48  }
         // );
 
+        this.load.spritesheet('dashDroite',
+            'assets/animations/lumel/dash_test_1.png',
+            { frameWidth: 70, frameHeight: 64  }
+        );
+
+        this.load.spritesheet('dashGauche',
+            'assets/animations/lumel/dash_test_1.png',
+            { frameWidth: 70, frameHeight: 64  }
+        );
+
 
         //TIREUR
         this.load.spritesheet('tireurGauche',
