@@ -54,14 +54,25 @@ class Tableau extends Phaser.Scene{
         // );
 
         this.load.spritesheet('dashDroite',
-            'assets/animations/lumel/dash_test_1.png',
-            { frameWidth: 70, frameHeight: 64  }
+            'assets/animations/lumel/dash_test_12_75.png',/*dash_test_10_gauche*/
+            { frameWidth: 64, frameHeight: 64  }
         );
 
         this.load.spritesheet('dashGauche',
-            'assets/animations/lumel/dash_test_1.png',
-            { frameWidth: 70, frameHeight: 64  }
+            'assets/animations/lumel/dash_test_12_75_gauche.png',/*dash_test_9_gauche*/
+            { frameWidth: 64, frameHeight: 64  }
         );
+
+        this.load.spritesheet('dashDiagDroite',
+            'assets/animations/lumel/dash_diag_1.png',
+            { frameWidth: 64, frameHeight: 64  }
+        );
+
+        this.load.spritesheet('dashDiagGauche',
+            'assets/animations/lumel/dash_diag_1_gauche.png',
+            { frameWidth: 64, frameHeight: 64  }
+        );
+
 
 
         //TIREUR
@@ -241,6 +252,7 @@ class Tableau extends Phaser.Scene{
         this.dsh();
         this.saut();
         //console.log(this.player.body.velocity.y);
+
 
 
 
