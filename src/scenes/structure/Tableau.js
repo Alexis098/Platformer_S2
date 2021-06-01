@@ -263,9 +263,9 @@ class Tableau extends Phaser.Scene{
 
             //CAMERASHAKING au moment de faire le dash
             this.time.addEvent({
-                delay: 210,
+                delay: 100,
                 callback: ()=>{
-                    this.cameras.main.shake(125, 0.002);
+                    this.cameras.main.shake(100, 0.0027);
                 },
                 loop: false
             })
@@ -499,6 +499,13 @@ class Tableau extends Phaser.Scene{
                             repeat:3 //se répète à l'infini
                         }
                     });
+                    this.time.addEvent({
+                        delay: 100,
+                        callback: ()=>{
+                            this.cameras.main.shake(125, 0.003);
+                        },
+                        loop: false
+                    })
 
                     monster.body.enable = false;//mettre ici le codequi rend invulnérable
 
@@ -526,6 +533,14 @@ class Tableau extends Phaser.Scene{
                         this.invincible();
                         this.fxHit();
                         this.ptsVie -= 1;
+
+                        this.time.addEvent({
+                            delay: 210,
+                            callback: ()=>{
+                                this.cameras.main.shake(125, 0.003);
+                            },
+                            loop: false
+                        })
 
                         //  console.log('touché');
                         //  console.log(this.ptsVie);
@@ -731,20 +746,18 @@ class Tableau extends Phaser.Scene{
     }
 
     saut(){
-        if(this.pressUp){
-            this.player.directionY=-1;
+        if(this.player._directionY<0){
+
+            //Tableau.current.player.sauter();
             this.time.addEvent
             ({
                 delay: 200,
                 callback: ()=>
                 {
-                    this.pressUp = false;
+                    this.player._directionY=0;
                 },
                 loop: false
             })
-        }else{
-            this.pressUp = false;
-            this.player.directionY=0;
         }
     }
 }

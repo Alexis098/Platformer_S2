@@ -51,7 +51,7 @@ class TableauTiledRenew extends Tableau{
         this.load.image('roche_pilier', 'assets/background/avant_plan/roche_pilier.png');
         this.load.image('dalle', 'assets/background/premier_plan/dalleEnigme.png');
         this.load.image('rocher_devant', 'assets/background/premier_plan/rocher_devant_2.png');
-        this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash_3.png');
+        this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash_2.png');
         this.load.image('tuto_tp', 'assets/ecrans_narration/tuto_tp_2.png');
         this.load.image('tuto_enigme', 'assets/ecrans_narration/tuto_enigme_2.png');
         this.load.image('texte_planete_1', 'assets/ecrans_narration/texte_planete_1_3.png');
@@ -99,6 +99,9 @@ class TableauTiledRenew extends Tableau{
         this.fleche_vent=this.add.video(5150, 650, 'fleche_vent');
         this.vent.setDepth(103);
         this.fleche_vent.setDepth(103);
+
+
+
 
 
 
@@ -823,11 +826,17 @@ class TableauTiledRenew extends Tableau{
             this.camera.zoomTo(0.5,3000);
         }
 
+        if(this.player.x<3150){
+            //this.camera.setZoom(0.5);
+            this.camera.zoomTo(1,3000);
+        }
 
-        else if(this.player.x>4000 && this.player.y<=3000 || this.player.x<3150){
+
+        if(this.player.x>4000 && this.player.y<=1500 /*|| this.player.x<3150*/){
             //this.camera.setZoom(1);
             this.camera.zoomTo(1,5000);
         }
+
         if(this.player.x>=4650 && this.player.y<=601){
             //this.camera.pan(4850, 600, 1500, 'Sine');
             this.vent.alpha=0.25;

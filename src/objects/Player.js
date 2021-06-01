@@ -157,13 +157,44 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.dash();
         }*/
 
+        this.sauter();
 
 
+
+
+
+
+        /*dash(){ // la vitesse est la pour le dash //target est la cible du dash
+            var posX = this.x / 64;
+            posX = Math.trunc(posX);
+
+            var target;
+            if (this._directionX > 0){
+                target = posX + 4;
+            }
+            else if (this._directionX < 0){
+                target = posX - 4;
+            }
+            else {
+                target = posX;
+            }
+
+            if (target > posX){
+                this.setVelocityX(3000);
+            }
+            else if (target < posX){
+                this.setVelocityX(-3000);
+            }
+        }*/
+        
+    }
+
+    sauter(){
         if(this._directionY<0){ //gère la hauteur du saut du perso
             //this.jump();//fonction gérant l'anim de saut
             Tableau.current.pourPlayerPlaySandOff();
 
-            if(this.body.blocked.down || this.body.touching.down){
+            if( this.body.blocked.down || this.body.touching.down){
                 //this.setVelocityY(-500);
 
                 /*this.scene.tweens.add({
@@ -175,7 +206,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 })*/
                 Tableau.current.tweens.timeline({
                     targets: Tableau.current.player.body.velocity,
-                    ease: 'Linear.easeinOut',//'Power2.easeInOut',
+                    ease: 'Sine.easeInOut',//'Power2.easeInOut',
                     duration: 100,
                     loop: 0,
                     tweens: [
@@ -213,38 +244,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 this.anims.play('jump', true);
             }*/
 
-        //quand on redescend d'un saut, quand on se rapproche du sol
-        }else{
-            //this.setVelocityY(400);
-
+            //quand on redescend d'un saut, quand on se rapproche du sol
         }
-
-
-
-
-        /*dash(){ // la vitesse est la pour le dash //target est la cible du dash
-            var posX = this.x / 64;
-            posX = Math.trunc(posX);
-
-            var target;
-            if (this._directionX > 0){
-                target = posX + 4;
-            }
-            else if (this._directionX < 0){
-                target = posX - 4;
-            }
-            else {
-                target = posX;
-            }
-
-            if (target > posX){
-                this.setVelocityX(3000);
-            }
-            else if (target < posX){
-                this.setVelocityX(-3000);
-            }
-        }*/
-        
     }
 
 
@@ -316,21 +317,21 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (dir < this.posX) {
 
-            if (/*this.body.velocity.y!=0 &&*/ this.recup===0 && this.body.velocity.y>=-0.7 || this.body.velocity.y<=-2){
+            if (/*this._directionY<0*/Tableau.current.pressUp && this.recup===0 /*&& this.body.velocity.y>=-0.7 || this.body.velocity.y<=-2*/){
                 //ancienne ligne valide pour l'ancien dash
                 ///this.animGaucheHaut();
                 this.scene.tweens.add({
                     targets: this,
                     speedFactor: '+=1,75', /*2*/
-                    ease: 'Power2.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
                     duration: 90, /*100*/
                 });
 
 
                 this.tween=this.scene.tweens.add({
                     targets: this,
-                    y: '-=110',/*150*/
-                    ease: 'Power1', //tester Circ (la mieux) Sine ou Expo aussi
+                    y: '-=100',/*150*/
+                    ease: 'Power2', //tester Circ (la mieux) Sine ou Expo aussi
                     //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
                     duration: 500,
                     //delay: 30
@@ -360,21 +361,21 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         } else if (dir > this.posX) {
             //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
 
-            if (/*this.body.velocity.y!=0 &&*/ this.recup===0 && this.body.velocity.y>=-0.7 || this.body.velocity.y<=-2){
+            if (/*this._directionY<0*/Tableau.current.pressUp && this.recup===0 /*&& this.body.velocity.y>=-0.7 || this.body.velocity.y<=-2*/){
                 //ancienne ligne valide pour l'ancien dash
                 //this.animDroiteHaut();
                 this.scene.tweens.add({
                     targets: this,
                     speedFactor: '+=1,75', /*2*/
-                    ease: 'Power2.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
+                    ease: 'Circ.easeInOut', //peut marcher pour la TP plutôt en terme de synergie
                     duration: 90, /*100*/
                 });
 
 
                 this.tween=this.scene.tweens.add({
                     targets: this,
-                    y: '-=110', /*150*/
-                    ease: 'Power1', //tester Circ (la mieux) Sine ou Expo aussi
+                    y: '-=100', /*150*/
+                    ease: 'Power2', //tester Circ (la mieux) Sine ou Expo aussi
                     //ease : CustomEase.create("custom", "M0,0,C0.126,0.382,0.318,0.616,0.468,0.796,0.546,0.876,0.712,0.982,1,1"),
                     duration: 500,
                     //delay: 30
