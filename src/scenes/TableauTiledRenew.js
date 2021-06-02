@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V038.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V039.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -208,6 +208,7 @@ class TableauTiledRenew extends Tableau{
 
 
 
+
         //----------les objets déplaçables ---------------------
         this.stars = this.physics.add.group({
             allowGravity: true,
@@ -372,7 +373,7 @@ class TableauTiledRenew extends Tableau{
         //this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.stars, this.player);
         //quand on touche la lave, on meurt
-        this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
+        //this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
 
         //quand on touche un checkpoint
         this.physics.add.overlap(this.player, this.checkPoints, function(player, checkPoint)
@@ -824,17 +825,61 @@ class TableauTiledRenew extends Tableau{
         if(this.player.x>=3150  && this.player.x<=4000){
             //this.camera.setZoom(0.5);
             this.camera.zoomTo(0.5,3000);
+
+            this.tweens.add({
+                targets:  [Tableau.current.cinqVies,Tableau.current.quatreVies,Tableau.current.troisVies,Tableau.current.deuxVies,Tableau.current.uneVies,Tableau.current.zeroVies],
+                alpha:   0,
+                ease:'linear',
+                duration: 400
+            });
+
+            this.tweens.add({
+                targets:  [Tableau.current.cinqviesGrands,Tableau.current.quatreViesGrands,Tableau.current.troisViesGrands,Tableau.current.deuxViesGrands,Tableau.current.uneViesGrands,Tableau.current.zeroViesGrands],
+                delay:5250,
+                alpha:   1,
+                ease:'linear',
+                duration: 400
+            });
         }
 
         if(this.player.x<3150){
             //this.camera.setZoom(0.5);
+
             this.camera.zoomTo(1,3000);
+            this.tweens.add({
+                targets:  [Tableau.current.cinqVies,Tableau.current.quatreVies,Tableau.current.troisVies,Tableau.current.deuxVies,Tableau.current.uneVies,Tableau.current.zeroVies],
+                delay:4000,
+                alpha:   1,
+                ease:'linear',
+                duration: 400
+            });
+
+            this.tweens.add({
+                targets:  [Tableau.current.cinqviesGrands,Tableau.current.quatreViesGrands,Tableau.current.troisViesGrands,Tableau.current.deuxViesGrands,Tableau.current.uneViesGrands,Tableau.current.zeroViesGrands],
+                alpha:   0,
+                ease:'linear',
+                duration: 200
+            });
         }
 
 
         if(this.player.x>4000 && this.player.y<=1500 /*|| this.player.x<3150*/){
             //this.camera.setZoom(1);
             this.camera.zoomTo(1,5000);
+            this.tweens.add({
+                targets:  [Tableau.current.cinqVies,Tableau.current.quatreVies,Tableau.current.troisVies,Tableau.current.deuxVies,Tableau.current.uneVies,Tableau.current.zeroVies],
+                delay:4000,
+                alpha:   1,
+                ease:'linear',
+                duration: 400
+            });
+
+            this.tweens.add({
+                targets:  [Tableau.current.cinqviesGrands,Tableau.current.quatreViesGrands,Tableau.current.troisViesGrands,Tableau.current.deuxViesGrands,Tableau.current.uneViesGrands,Tableau.current.zeroViesGrands],
+                alpha:   0,
+                ease:'linear',
+                duration: 200
+            });
         }
 
         if(this.player.x>=4650 && this.player.y<=601){
@@ -872,6 +917,7 @@ class TableauTiledRenew extends Tableau{
                 }
                 //this.player.jump();
                 //this.player.anims.play('chute_left', true);
+                Tableau.current.pourPlayerPlaySandOff();
 
                 this.blackBar_top=this.add.image(0, -15, 'blackBar_top');
                 this.blackBar_bottom=this.add.image(0, 15, 'blackBar_bottom');

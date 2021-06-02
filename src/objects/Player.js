@@ -268,8 +268,10 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             //this.jump();//fonction gérant l'anim de saut
             Tableau.current.pourPlayerPlaySandOff();
 
+
             if( this.body.blocked.down || this.body.touching.down){
                 //this.setVelocityY(-500);
+
 
                 /*this.scene.tweens.add({
                     targets: this,
@@ -320,6 +322,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
             //quand on redescend d'un saut, quand on se rapproche du sol
         }
+
+
+
     }
 
 

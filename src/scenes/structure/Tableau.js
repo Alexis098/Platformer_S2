@@ -119,7 +119,7 @@ class Tableau extends Phaser.Scene{
         this.load.audio('tpson', 'assets/son/tp2.mp3');
 
         this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand_3.mp3');
-        this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
+       // this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
 
 
         this.load.image('5vies', 'assets/Vies/5_coeurs_128x64.png');
@@ -129,12 +129,12 @@ class Tableau extends Phaser.Scene{
         this.load.image('1vies', 'assets/Vies/1_coeurs_128x64.png');
         this.load.image('0vies', 'assets/Vies/0_coeurs_128x64.png');
 
-        /*this.load.image('5viesGrands', 'assets/Vies/grand/5_coeurs_grands.png');
+        this.load.image('5viesGrands', 'assets/Vies/grand/5_coeurs_grands.png');
         this.load.image('4viesGrands', 'assets/Vies/grand/4_coeurs_grands.png');
         this.load.image('3viesGrands', 'assets/Vies/grand/3_coeurs_grands.png');
         this.load.image('2viesGrands', 'assets/Vies/grand/2_coeurs_grands.png');
         this.load.image('1viesGrands', 'assets/Vies/grand/1_coeurs_grands.png');
-        this.load.image('0viesGrands', 'assets/Vies/grand/0_coeurs_grands.png');*/
+        this.load.image('0viesGrands', 'assets/Vies/grand/0_coeurs_grands.png');
 
 
 
@@ -151,6 +151,7 @@ class Tableau extends Phaser.Scene{
             //rien
         }else{
             this.shoes_run_sand = this.sound.add('shoes_run_sand', {volume: 1.3});
+            //this.jump_sand_short = this.sound.add('jump_sand_short', {volume: 0.5});
             this.shoes_run_sand.loop = true;
         }
 
@@ -185,6 +186,11 @@ class Tableau extends Phaser.Scene{
         this.cinqVies.setDepth(1000);
         this.cinqVies.setScrollFactor(0);
 
+
+        this.cinqviesGrands=this.add.sprite(1215, -160, "5viesGrands");
+        this.cinqviesGrands.setDepth(1000);
+        this.cinqviesGrands.setScrollFactor(0);
+        this.cinqviesGrands.setScale(0.7);
         //this.cinqVies.fixedToCamera = true;
         //this.quatreVies.fixedToCamera = true;
         //this.troisVies.fixedToCamera = true;
@@ -212,6 +218,19 @@ class Tableau extends Phaser.Scene{
             this.quatreVies.setDepth(1000);
             this.quatreVies.setScrollFactor(0);
             this.cinqVies.destroy();
+
+            if(this.player.x>=3150  && this.player.x<=4000){
+                this.quatreVies.alpha=0;
+            }else{
+                this.quatreVies.alpha=1;
+            }
+
+            this.quatreViesGrands=this.add.sprite(1215, -160, "4viesGrands");
+            this.quatreViesGrands.setDepth(1000);
+            this.quatreViesGrands.setScrollFactor(0);
+            this.quatreViesGrands.setScale(0.7);
+            this.cinqviesGrands.destroy();
+
         }
         if(this.ptsVie===3){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -219,6 +238,18 @@ class Tableau extends Phaser.Scene{
             this.troisVies.setDepth(1000);
             this.troisVies.setScrollFactor(0);
             this.quatreVies.destroy();
+
+            if(this.player.x>=3150  && this.player.x<=4000){
+                this.troisVies.alpha=0;
+            }else{
+                this.troisVies.alpha=1;
+            }
+
+            this.troisViesGrands=this.add.sprite(1215, -160, "3viesGrands");
+            this.troisViesGrands.setDepth(1000);
+            this.troisViesGrands.setScrollFactor(0);
+            this.troisViesGrands.setScale(0.7);
+            this.quatreViesGrands.destroy();
         }
         if(this.ptsVie===2){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -227,6 +258,17 @@ class Tableau extends Phaser.Scene{
             this.deuxVies.setScrollFactor(0);
             this.troisVies.destroy();
 
+            if(this.player.x>=3150  && this.player.x<=4000){
+                this.deuxVies.alpha=0;
+            }else{
+                this.deuxVies.alpha=1;
+            }
+
+            this.deuxViesGrands=this.add.sprite(1215, -160, "2viesGrands");
+            this.deuxViesGrands.setDepth(1000);
+            this.deuxViesGrands.setScrollFactor(0);
+            this.deuxViesGrands.setScale(0.7);
+            this.troisViesGrands.destroy();
         }
         if(this.ptsVie===1){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -234,6 +276,18 @@ class Tableau extends Phaser.Scene{
             this.uneVies.setDepth(1000);
             this.uneVies.setScrollFactor(0);
             this.deuxVies.destroy();
+
+            if(this.player.x>=3150  && this.player.x<=4000){
+                this.uneVies.alpha=0;
+            }else{
+                this.uneVies.alpha=1;
+            }
+
+            this.uneViesGrands=this.add.sprite(1215, -160, "1viesGrands");
+            this.uneViesGrands.setDepth(1000);
+            this.uneViesGrands.setScrollFactor(0);
+            this.uneViesGrands.setScale(0.7);
+            this.deuxViesGrands.destroy();
         }
         if(this.ptsVie===0){
             //ANIM this.anim.play('exemple'); puis on charge l'image avec la vie en moins ? (il faut aussi loader la spritesheet dans le preload au dessus)
@@ -241,6 +295,18 @@ class Tableau extends Phaser.Scene{
             this.zeroVies.setDepth(1000);
             this.zeroVies.setScrollFactor(0);
             this.uneVies.destroy();
+
+            if(this.player.x>=3150  && this.player.x<=4000){
+                this.zeroVies.alpha=0;
+            }else{
+                this.zeroVies.alpha=1;
+            }
+
+            this.zeroViesGrands=this.add.sprite(1215, -160, "0viesGrands");
+            this.zeroViesGrands.setDepth(1000);
+            this.zeroViesGrands.setScrollFactor(0);
+            this.zeroViesGrands.setScale(0.7);
+            this.uneViesGrands.destroy();
 
         }
     }
@@ -256,6 +322,7 @@ class Tableau extends Phaser.Scene{
         this.dsh();
         this.saut();
         //console.log(this.player.body.velocity.y);
+
 
 
 
@@ -286,6 +353,7 @@ class Tableau extends Phaser.Scene{
             this.player.dash();
             this.dashson = this.sound.add('dashson', {volume: 0.8})
             this.dashson.play();
+            this.pourPlayerPlaySandOff();
 
             //CAMERASHAKING au moment de faire le dash
             this.time.addEvent({
@@ -774,6 +842,7 @@ class Tableau extends Phaser.Scene{
     saut(){
         if(this.player._directionY<0){
 
+
             //Tableau.current.player.sauter();
             this.time.addEvent
             ({
@@ -785,7 +854,13 @@ class Tableau extends Phaser.Scene{
                 loop: false
             })
         }
+        if(this.player.body.velocity.y<-2 || this.player.body.velocity.y>2){
+            this.pourPlayerPlaySandOff();
+        }
+
     }
+
+
 }
 
 
