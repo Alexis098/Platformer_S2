@@ -145,7 +145,7 @@ class GamePad extends Phaser.GameObjects.Container{
 
 
 
-            //let btnUP=scene.add.circle(0,0,w/4,0xffffff,0.3).setInteractive();
+            let btnUP=scene.add.circle(0,0,w/4,0xffffff,0.3).setInteractive();
             let btnLEFT=scene.add.circle(0,0,w/4,0xffffff,0.3).setInteractive();
             let btnRIGHT=scene.add.circle(0,0,w/4,0xffffff,0.3).setInteractive();
 
@@ -153,15 +153,14 @@ class GamePad extends Phaser.GameObjects.Container{
 
 
 
-            //this.add(btnUP);
+            this.add(btnUP);
             this.add(btnLEFT);
             this.add(btnRIGHT);
 
 
 
-
-            /*btnUP.x=w*0.4;
-            btnUP.y=w*0.3;*/
+            btnUP.x=w*0.4;
+            btnUP.y=w*0.3;
             btnLEFT.x=w*-0.5;
             btnRIGHT.x=w*0.4;
             btnLEFT.y=w*0.6;
@@ -177,9 +176,9 @@ class GamePad extends Phaser.GameObjects.Container{
                 Tableau.current.player.teleportation();
                 Tableau.current.tp();
             });
-            /*btnUP.on('pointerdown',function(){
-                Tableau.current.player.directionY=-1;
-            });*/
+            btnUP.on('pointerdown',function(){
+                Tableau.current.mobileDashDiag();
+            });
 
 
             btnLEFT.on('pointerup',function(){
@@ -188,9 +187,9 @@ class GamePad extends Phaser.GameObjects.Container{
             btnRIGHT.on('pointerup',function(){
                 Tableau.current.player.directionX=0;
             });
-            /* btnUP.on('pointerup',function(){
+            btnUP.on('pointerup',function(){
                  Tableau.current.player.directionY=-0;
-             });*/
+             });
 
         }
 

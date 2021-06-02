@@ -328,6 +328,7 @@ class Tableau extends Phaser.Scene{
 
 
 
+
         //this.Projectile.recurrence();
         //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
 
