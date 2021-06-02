@@ -41,8 +41,9 @@ class TableauTiledRenew extends Tableau{
         this.load.image('voile', 'assets/background/voile_atmospherique.png');
         this.load.image('soleils', 'assets/background/arriere_plan_4_soleils.png');
         this.load.image('nuages', 'assets/background/arriere_plan_3_nuages.png');
-        this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2_5.png');/*2_4*/
-        this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1_7.png');/*1_6*/
+        this.load.image('arriere_plan_2', 'assets/background/arriere_plan_2_6.png');/*2_5*/
+        this.load.image('arriere_plan_1', 'assets/background/arriere_plan_1_8.png');/*1_7*/
+        this.load.image('arriere_plan_1_part_2', 'assets/background/arriere_plan_1_8_part_2.png');
         this.load.image('premier_plan', 'assets/background/premier_plan/premier_plan_sans_ombre_tour_8.png');
         this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour_2.png');
         this.load.image('light', 'assets/background/premier_plan/light.png');
@@ -317,8 +318,11 @@ class TableauTiledRenew extends Tableau{
         this.voile=this.add.image(3050, 1100, 'voile');
         this.soleils=this.add.image(3000, 1120, 'soleils');
         this.nuages=this.add.image(3000, 1120, 'nuages');
-        this.arriere_plan_2=this.add.image(/*1720*/3048, /*2050*/1120, 'arriere_plan_2');
-        this.arriere_plan_1=this.add.image(3050, 1110, 'arriere_plan_1');
+        //this.arriere_plan_2=this.add.image(/*1720*/3048, /*2050*/1120, 'arriere_plan_2');
+        //this.arriere_plan_1=this.add.image(3050, 1110, 'arriere_plan_1');
+
+        this.arriere_plan_1_part_2=this.add.image(3050, 1110, 'arriere_plan_1_part_2');
+
         this.premier_plan=this.add.image(3050, 1110, 'premier_plan');
         this.premier_plan_ombre_tour=this.add.image(3050, 1110, 'premier_plan_ombre_tour');
         this.light=this.add.image(3050, 1110, 'light');
@@ -334,7 +338,25 @@ class TableauTiledRenew extends Tableau{
         this.texte_planete_1=this.add.image(800, 2000, 'texte_planete_1');
         this.texte_planete_2=this.add.image(3000, 2000, 'texte_planete_2');
 
+        this.arriere_plan_1=this.add.tileSprite(
+            -450,
+            -20,
+            this.sys.canvas.width*2,
+            this.sys.canvas.height+6000,
+            'arriere_plan_1'
+        );
 
+        this.arriere_plan_2=this.add.tileSprite(
+            -450,
+            -20,
+            this.sys.canvas.width*2,
+            this.sys.canvas.height+6000,
+            'arriere_plan_2'
+        );
+        this.arriere_plan_1.setOrigin(0,0);
+        this.arriere_plan_2.setOrigin(0,0);
+        this.arriere_plan_1.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        this.arriere_plan_2.setScrollFactor(0);
 
 
 
@@ -416,6 +438,7 @@ class TableauTiledRenew extends Tableau{
         this.nuages.setDepth(3);
         this.arriere_plan_2.setDepth(4);
         this.arriere_plan_1.setDepth(5);
+        this.arriere_plan_1_part_2.setDepth(5);
         this.voile.setDepth(6);
         this.premier_plan.setDepth(99);
         this.light.setDepth(101);
@@ -644,6 +667,11 @@ class TableauTiledRenew extends Tableau{
         this.sky.tilePositionY=this.cameras.main.scrollY*0.6;
         this.sky2.tilePositionX=this.cameras.main.scrollX*0.7+100;
         this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;*/
+
+        this.arriere_plan_2.tilePositionX=this.cameras.main.scrollX*0.85-350;/*0.85*/
+        this.arriere_plan_2.tilePositionY=this.cameras.main.scrollY*1;
+        this.arriere_plan_1.tilePositionX=this.cameras.main.scrollX*0.9-450;/*0.9*/
+        this.arriere_plan_1.tilePositionY=this.cameras.main.scrollY*1;
 
     }
 
@@ -976,6 +1004,7 @@ class TableauTiledRenew extends Tableau{
         this.apparitionTexte();
         this.finalEvent();
         this.playchara();
+
 
 
 
