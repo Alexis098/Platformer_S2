@@ -36,11 +36,11 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 64, frameHeight: 64  }
         );*/
         this.load.spritesheet('player',
-            'assets/animations/lumel/Run_test_32.png',/*Run_test_31.png*/
+            'assets/animations/lumel/Run_test_35.png',/*Run_test_32OU 34.png*/
             { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('playerG',
-            'assets/animations/lumel/Run_test_32_gauche.png',/*Run_test_31.png*/
+            'assets/animations/lumel/Run_test_33_gauche.png',/*Run_test_32.png*/
             { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('player_stance',
@@ -118,7 +118,7 @@ class Tableau extends Phaser.Scene{
         this.load.audio('dashson', 'assets/son/dash_1.mp3');
         this.load.audio('tpson', 'assets/son/tp2.mp3');
 
-        this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand_2.mp3');
+        this.load.audio('shoes_run_sand', 'assets/son/shoes_run_sand_3.mp3');
         this.load.audio('jump_sand_short', 'assets/son/jump_sand_short.mp3');
 
 
