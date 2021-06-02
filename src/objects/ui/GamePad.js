@@ -199,8 +199,10 @@ class GamePad extends Phaser.GameObjects.Container{
 
 
 
-
+        game.input.addPointer();
+        game.input.addPointer();
     }
+
 
 
 }
