@@ -10,6 +10,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         //this.body.allowGravity=true;
         this.setFriction(1,1);
 
+
         this.sens = 1; //variable globale car elle est utilisée pour le sens du personnage affectant plusieurs fonctions, intégrer la fonction dans la fonction directement fait qu'elle ne sera pas prise en compte avec la deuxième fonction nécessaire pour ça
         //this.boutonDash;
         //this.temps = 0;
@@ -25,19 +26,19 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
         this.setBodySize(this.body.width-50,this.body.height-8);//taille de la hitbox
-        this.setOffset(22, 8);
+        this.setOffset(25, 8);
 
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3/*3*/ }),
-            frameRate: 6,
+            frames: this.anims.generateFrameNumbers('playerG', { start: 11, end: 0/*3*/ }),
+            frameRate: 16,
             repeat: -1
         });
 
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('player', { start: 7/*5*/, end: 10/*8*/ }),
-            frameRate: 6,
+            frames: this.anims.generateFrameNumbers('player', { start: 0/*7*/, end: 11/*10*/ }),
+            frameRate: 16,
             repeat: -1
         });
         this.anims.create({

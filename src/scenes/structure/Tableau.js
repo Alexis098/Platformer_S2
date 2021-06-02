@@ -36,11 +36,15 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 64, frameHeight: 64  }
         );*/
         this.load.spritesheet('player',
-            'assets/animations/lumel/Run_test_31.png',
+            'assets/animations/lumel/Run_test_32.png',/*Run_test_31.png*/
+            { frameWidth: 64, frameHeight: 64  }
+        );
+        this.load.spritesheet('playerG',
+            'assets/animations/lumel/Run_test_32_gauche.png',/*Run_test_31.png*/
             { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('player_stance',
-            'assets/animations/lumel/Stance_test_15.png',
+            'assets/animations/lumel/Stance_test_15.png',/*Stance_test_15.png*/
             { frameWidth: 64, frameHeight: 64  }
         );
 
