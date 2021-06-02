@@ -48,8 +48,8 @@ class TableauTiledRenew extends Tableau{
         this.load.image('premier_plan_ombre_tour', 'assets/background/premier_plan/premier_plan_ombre_tour_2.png');
         this.load.image('light', 'assets/background/premier_plan/light.png');
         this.load.image('plantes_arbres', 'assets/background/avant_plan/plantes_arbre_3.png');
-        this.load.image('premiere_roche', 'assets/background/avant_plan/premiere_roche.png');
-        this.load.image('roche_pilier', 'assets/background/avant_plan/roche_pilier.png');
+        this.load.image('premiere_roche', 'assets/background/avant_plan/premiere_roche_3.png');/*sans parallax : premiere_roche.png*/
+        this.load.image('roche_pilier', 'assets/background/avant_plan/roche_pilier_2.png');/*sans parallax : roche_pilier.png*/
         this.load.image('dalle', 'assets/background/premier_plan/dalleEnigme.png');
         this.load.image('rocher_devant', 'assets/background/premier_plan/rocher_devant_2.png');
         this.load.image('tuto_dash', 'assets/ecrans_narration/tuto_dash_2.png');
@@ -316,8 +316,8 @@ class TableauTiledRenew extends Tableau{
 
         this.ciel=this.add.image(3050, 1100, 'ciel');
         this.voile=this.add.image(3050, 1100, 'voile');
-        this.soleils=this.add.image(3000, 1120, 'soleils');
-        this.nuages=this.add.image(3000, 1120, 'nuages');
+        //this.soleils=this.add.image(3000, 1120, 'soleils');
+        //this.nuages=this.add.image(3000, 1120, 'nuages');
         //this.arriere_plan_2=this.add.image(/*1720*/3048, /*2050*/1120, 'arriere_plan_2');
         //this.arriere_plan_1=this.add.image(3050, 1110, 'arriere_plan_1');
 
@@ -327,8 +327,8 @@ class TableauTiledRenew extends Tableau{
         this.premier_plan_ombre_tour=this.add.image(3050, 1110, 'premier_plan_ombre_tour');
         this.light=this.add.image(3050, 1110, 'light');
         this.plantes_arbres=this.add.image(/*5760*/3015, /*1970*/1115, 'plantes_arbres');
-        this.roche_pilier=this.add.image(2600, 2075, 'roche_pilier');
-        this.premiere_roche=this.add.image(1175, 2200, 'premiere_roche');
+        //this.roche_pilier=this.add.image(2600, 2075, 'roche_pilier_2');
+        //this.premiere_roche=this.add.image(1175, 2200, 'premiere_roche_2');
         this.rocher_devant=this.add.image(3000, 1110, 'rocher_devant');
         this.rocher_obstacle=this.add.image(1590, 2100, 'rocher_obstacle');
         //bulles de texte
@@ -353,10 +353,54 @@ class TableauTiledRenew extends Tableau{
             this.sys.canvas.height+6000,
             'arriere_plan_2'
         );
+
+        this.soleils=this.add.tileSprite(
+            0,
+            -10,
+            this.sys.canvas.width,
+            this.sys.canvas.height+6000,
+            'soleils'
+        );
+
+        this.nuages=this.add.tileSprite(
+            -450,
+            -10,
+            this.sys.canvas.width*2,
+            this.sys.canvas.height+6000,
+            'nuages'
+        );
+
+        this.roche_pilier=this.add.tileSprite(
+            -450,
+            -10,
+            this.sys.canvas.width*2,
+            this.sys.canvas.height+6000,
+            'roche_pilier'
+        );
+        this.premiere_roche=this.add.tileSprite(
+            0,
+            -10,
+            this.sys.canvas.width,
+            this.sys.canvas.height+6000,
+            'premiere_roche'
+        );
+
+
         this.arriere_plan_1.setOrigin(0,0);
         this.arriere_plan_2.setOrigin(0,0);
         this.arriere_plan_1.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
         this.arriere_plan_2.setScrollFactor(0);
+
+        this.soleils.setOrigin(0,0);
+        this.soleils.setScrollFactor(0);
+
+        this.nuages.setOrigin(0,0);
+        this.nuages.setScrollFactor(0);
+
+        this.roche_pilier.setOrigin(0,0);
+        this.roche_pilier.setScrollFactor(0);
+        this.premiere_roche.setOrigin(0,0);
+        this.premiere_roche.setScrollFactor(0);
 
 
 
@@ -672,6 +716,16 @@ class TableauTiledRenew extends Tableau{
         this.arriere_plan_2.tilePositionY=this.cameras.main.scrollY*1;
         this.arriere_plan_1.tilePositionX=this.cameras.main.scrollX*0.9-450;/*0.9*/
         this.arriere_plan_1.tilePositionY=this.cameras.main.scrollY*1;
+        this.soleils.tilePositionX=this.cameras.main.scrollX*0.8+100;
+        this.soleils.tilePositionY=this.cameras.main.scrollY*1;
+        this.nuages.tilePositionX=this.cameras.main.scrollX*0.8-250;
+        this.nuages.tilePositionY=this.cameras.main.scrollY*1;
+
+        this.roche_pilier.tilePositionX=this.cameras.main.scrollX*1.5-1550;
+        this.roche_pilier.tilePositionY=this.cameras.main.scrollY*1;
+        this.premiere_roche.tilePositionX=this.cameras.main.scrollX*1.3;
+        this.premiere_roche.tilePositionY=this.cameras.main.scrollY*1;
+
 
     }
 
