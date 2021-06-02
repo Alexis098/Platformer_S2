@@ -97,8 +97,7 @@ class GamePad extends Phaser.GameObjects.Container{
             }
         });
 
-        if(this.scene.sys.game.device.os.desktop !== true)
-        {
+        if(this.scene.sys.game.device.os.desktop !== true){
             this.size=size;
             let w=this.size;
             let dragW=this.size/2;
@@ -159,8 +158,8 @@ class GamePad extends Phaser.GameObjects.Container{
 
 
 
-            btnUP.x=w*0.4;
-            btnUP.y=w*0.3;
+            btnUP.x=w*-0.05;
+            btnUP.y=w*0.1;
             btnLEFT.x=w*-0.5;
             btnRIGHT.x=w*0.4;
             btnLEFT.y=w*0.6;
@@ -177,7 +176,7 @@ class GamePad extends Phaser.GameObjects.Container{
                 Tableau.current.tp();
             });
             btnUP.on('pointerdown',function(){
-                Tableau.current.mobileDashDiag();
+                Tableau.current.player.mobileDashDiag();
             });
 
 

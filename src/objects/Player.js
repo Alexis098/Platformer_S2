@@ -708,7 +708,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         if (dir < this.posX) {
 
-            if (this.recup === 0) {
+            //if (this.recup === 0) {
 
                 this.scene.tweens.add({
                     targets: this,
@@ -729,11 +729,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
                 this.recup = 1;
 
-
-            } else if (dir > this.posX) {
+            //}
+        } else if (dir > this.posX) {
                 //this.accelerateTo(this.player, this.posX+500, this.posY+500 , 100 , 200, 200);
 
-                if (this.recup === 0) {
+                //if (this.recup === 0) {
                     this.scene.tweens.add({
                         targets: this,
                         speedFactor: '+=1,75', /*2*/
@@ -753,7 +753,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
                     this.recup = 1;
 
-                }
+
+                //}
 
             }
 
@@ -772,6 +773,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
 
-    }
+
 }
 
