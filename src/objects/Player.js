@@ -23,6 +23,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.sautPossible=false;
         this.chutePossible=false;
 
+        this.staticY = false;
+
 
 
         //this.setOrigin(0,0);
@@ -113,12 +115,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.anims.create({
             key: 'sautGauche',
             frames: this.anims.generateFrameNumbers('saut', {start: 3, end: 0}),
-            frameRate: 8,
+            frameRate: 7,
         });
         this.anims.create({
             key: 'sautDroite',
             frames: this.anims.generateFrameNumbers('saut', {start: 4, end: 7}),
-            frameRate: 8,
+            frameRate: 7,
         });
 
         this.on('animationcomplete', function () {
@@ -284,6 +286,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
                         break;
                     default:
+                        this.staticY = true;
                         Tableau.current.pourPlayerPlaySandOff();
                         this.setVelocityX(0);
                         this.vitesse = 0;

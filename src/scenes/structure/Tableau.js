@@ -19,6 +19,12 @@ class Tableau extends Phaser.Scene{
 
         this.pressUp=false;
 
+        this.arrowRightUnpressed = false;
+        this.arrowLeftUnpressed = false;
+
+        this.arrowRightPressed = false;
+        this.arrowLeftPressed = false;
+
 
 
 
@@ -333,6 +339,7 @@ class Tableau extends Phaser.Scene{
         this.tp();
         this.dsh();
         this.saut();
+        this.optiDeplacement();
         //console.log(this.player.body.velocity.y);
         //console.log(Tableau.current.pressDroite);
 
@@ -354,6 +361,47 @@ class Tableau extends Phaser.Scene{
 
 
 
+    }
+
+    optiDeplacement()
+    {
+        if(Tableau.current.arrowLeftUnpressed)
+        {
+            if(Tableau.current.player.staticY) // Quand le joueur ne saute pas ni ne tombe
+            {
+                if(Tableau.current.arrowRightPressed)
+                {
+                    Tableau.current.player.directionX = 1;
+                    Tableau.current.arrowLeftUnpressed = false;
+                }
+                else
+                {
+                    Tableau.current.player.directionX = 0;
+                    Tableau.current.arrowLeftUnpressed = false;
+                }
+            }
+        }
+        else if(Tableau.current.arrowRightUnpressed)
+        {
+            if (Tableau.current.player.staticY)
+            {
+                if (Tableau.current.arrowLeftPressed)
+                {
+                    Tableau.current.player.directionX = -1;
+                    Tableau.current.arrowRightUnpressed = false;
+                }
+                else
+                {
+                    Tableau.current.player.directionX = 0;
+                    Tableau.current.arrowRightUnpressed = false;
+                }
+            }
+        }
+
+        if (!Tableau.current.arrowLeftPressed && !Tableau.current.arrowRightPressed && Tableau.current.player.staticY)
+        {
+            Tableau.current.player.directionX = 0;
+        }
     }
 
 

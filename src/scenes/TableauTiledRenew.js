@@ -670,7 +670,7 @@ class TableauTiledRenew extends Tableau{
         }
     }
 
-    
+
 
     /**
      * Permet d'activer, désactiver des éléments en fonction de leur visibilité dans l'écran ou non
