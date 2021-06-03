@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V040.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V041.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -670,6 +670,8 @@ class TableauTiledRenew extends Tableau{
         }
     }
 
+    
+
     /**
      * Permet d'activer, désactiver des éléments en fonction de leur visibilité dans l'écran ou non
      */
@@ -779,16 +781,26 @@ class TableauTiledRenew extends Tableau{
             //console.log(this.compteur);
 
             if(this.compteur===250){
+
                 if(this.game.device.os.android || this.game.device.os.iOS){
                     //rien
                 }else{
                     this.rocks.stop();
                 }
+
+                this.player.x=75;
+                this.player.y=3000;
+
                 this.cameras.main.fadeOut(500, 0, 0, 0)
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
                 {
                     this.win();
+
                 })
+
+
+
+
 
 
             }

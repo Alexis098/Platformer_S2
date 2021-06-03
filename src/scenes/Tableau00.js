@@ -1,5 +1,6 @@
 class Tableau00 extends Phaser.Scene{
 
+
     preload() {
 
         //super.preload();

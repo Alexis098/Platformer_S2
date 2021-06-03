@@ -22,6 +22,8 @@ class Tableau extends Phaser.Scene{
 
 
 
+
+
     }
 
     /**
@@ -332,6 +334,7 @@ class Tableau extends Phaser.Scene{
         this.dsh();
         this.saut();
         //console.log(this.player.body.velocity.y);
+        //console.log(Tableau.current.pressDroite);
 
 
 
@@ -887,6 +890,8 @@ class Tableau extends Phaser.Scene{
             this.player.anims.play('back', true);
         }
     }
+
+
 
 
 

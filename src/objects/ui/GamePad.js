@@ -18,10 +18,12 @@ class GamePad extends Phaser.GameObjects.Container{
             switch (kevent.key){
                 case "ArrowRight":
                     Tableau.current.player.directionX=1;
+
                     break;
 
                 case "ArrowLeft":
                     Tableau.current.player.directionX=-1;
+
                     break;
 
                 case "ArrowUp":
@@ -40,6 +42,7 @@ class GamePad extends Phaser.GameObjects.Container{
         scene.input.keyboard.on('keyup', function(kevent){
             switch (kevent.key){
                 case "ArrowRight":
+
                     //ajoute une mini inertie à la fin du dash
                     if(Tableau.current.verif===0){
                         Tableau.current.tweens.timeline({
@@ -64,6 +67,7 @@ class GamePad extends Phaser.GameObjects.Container{
                     break;
 
                 case "ArrowLeft":
+
                     //ajoute une mini inertie à la fin du dash
                     if(Tableau.current.verif===0){
                         Tableau.current.tweens.timeline({

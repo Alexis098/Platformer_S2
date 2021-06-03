@@ -25,6 +25,21 @@ class Tableau01 extends Phaser.Scene /*Tableau00*/{
             },
             loop: false
         })
+
+        this.input.keyboard.on('keydown-ENTER', function () //'keydown-SPACE', function ()
+        {
+            this.cameras.main.fadeOut(500, 0, 0, 0)
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>
+            {
+                /*if(Tableau.current){
+                    Tableau.current._destroy();
+                }
+                this.game.scene.start(tableau);
+                this.scene.start("aventureBegining");*/
+                this.scene.start("TableauTiledRenew");
+            })
+        },this);
+
         this.input.on('pointerdown', function(){
             this.cameras.main.fadeOut(500, 0, 0, 0)
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () =>

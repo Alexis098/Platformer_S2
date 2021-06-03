@@ -19,14 +19,14 @@ class Tableau00A extends Phaser.Scene{
             this.cameras.main.fadeOut(500, 0, 0, 0)
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
             {
-                this.scene.start(Tableau00);
+                this.scene.restart("Accueil");
             })
         }, this);
         this.input.on('pointerdown', function(pointer){
             this.cameras.main.fadeOut(500, 0, 0, 0)
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) =>
             {
-                this.scene.start(Tableau00);
+                this.scene.restart("Accueil");
             })
 
         },this);

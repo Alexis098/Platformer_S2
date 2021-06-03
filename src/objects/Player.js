@@ -23,6 +23,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.sautPossible=false;
         this.chutePossible=false;
 
+
+
         //this.setOrigin(0,0);
 
 
@@ -236,6 +238,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.anims.play('dashDiagGauche', true);
             }
         }
+
+
+
+
+
 
 
         this.body.velocity.y = Math.min(500, Math.max(-500, this.body.velocity.y));
