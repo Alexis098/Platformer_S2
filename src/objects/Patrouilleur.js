@@ -111,7 +111,7 @@ class Patrouilleur extends ObjetEnnemi{
                     this.anims.play('patrouilleurDroiteCourse', true);
                 }
                 if(this.scene.player.y < this.y){
-                    this.setVelocityY(-150);
+                    this.setVelocityY(-130);
                 }
                 //}
                 /*else if(this.scene.player.y<this.y){

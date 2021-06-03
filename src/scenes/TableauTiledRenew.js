@@ -20,7 +20,7 @@ class TableauTiledRenew extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_3.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V039.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1_V040.json');
 
         // ---------Les monstres------------
         //this.load.image('monster-fly', 'assets/monster-dragon.png');
@@ -750,6 +750,7 @@ class TableauTiledRenew extends Tableau{
 
 
 
+
         if(this.player.x<=this.map.widthInPixels-190 && this.player.x>=this.map.widthInPixels-260 && this.player.y>=2125/*this.player.getBounds().bottom < this.img.getBounds().top+30 *//*&& condition de réussite de l'énigme*/){
             //PLUS SIMPLE -> this.ecranFin=this.add.sprite(600, 40, "ecran de fin"); loaded au préalable dans preload avec this.load.image('');
             //this.song.stop();
@@ -771,6 +772,7 @@ class TableauTiledRenew extends Tableau{
             this.compteur+=1;
             this.dalles.setVelocityY(10);
             this.fxFin();
+            Tableau.current.stop_chute();
 
 
             //this.player.body.velocity.y=0.2;
@@ -899,10 +901,7 @@ class TableauTiledRenew extends Tableau{
                 this.song = this.sound.add('track', {volume: 0.5})
                 this.song.play();
             }
-
             this.once=1;
-
-
         }
         if(this.player.x>=3150  && this.player.x<=4000){
             //this.camera.setZoom(0.5);

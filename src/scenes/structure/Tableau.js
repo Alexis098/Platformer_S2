@@ -52,6 +52,11 @@ class Tableau extends Phaser.Scene{
             'assets/animations/lumel/spritesheet_chute.png',
             { frameWidth: 86, frameHeight: 86  }
         );
+
+        this.load.spritesheet('chuteSaut',
+            'assets/animations/lumel/chute_test_4.png',
+            { frameWidth: 64, frameHeight: 64  }
+        );
         // this.load.spritesheet('player_jump',
         //     'assets/player_jump1.png',
         //     { frameWidth: 32, frameHeight: 48  }
@@ -68,12 +73,17 @@ class Tableau extends Phaser.Scene{
         );
 
         this.load.spritesheet('dashDiagDroite',
-            'assets/animations/lumel/dash_diag_1.png',
+            'assets/animations/lumel/dash_diag_2.png',
             { frameWidth: 64, frameHeight: 64  }
         );
 
         this.load.spritesheet('dashDiagGauche',
-            'assets/animations/lumel/dash_diag_1_gauche.png',
+            'assets/animations/lumel/dash_diag_1_gauche_2.png',
+            { frameWidth: 64, frameHeight: 64  }
+        );
+
+        this.load.spritesheet('saut',
+            'assets/animations/lumel/saut_test_3.png',
             { frameWidth: 64, frameHeight: 64  }
         );
 
@@ -354,13 +364,18 @@ class Tableau extends Phaser.Scene{
             this.player.dash();
             this.dashson = this.sound.add('dashson', {volume: 0.8})
             this.dashson.play();
-            this.pourPlayerPlaySandOff();
+            if(this.game.device.os.android || this.game.device.os.iOS){
+                //rien
+            }else{
+                this.pourPlayerPlaySandOff();
+            }
+
 
             //CAMERASHAKING au moment de faire le dash
             this.time.addEvent({
                 delay: 100,
                 callback: ()=>{
-                    this.cameras.main.shake(100, 0.0027);
+                    this.cameras.main.shake(100, 0.0035);
                 },
                 loop: false
             })
@@ -856,10 +871,23 @@ class Tableau extends Phaser.Scene{
             })
         }
         if(this.player.body.velocity.y<-2 || this.player.body.velocity.y>2){
-            this.pourPlayerPlaySandOff();
+            if(this.game.device.os.android || this.game.device.os.iOS){
+                //rien
+            }else{
+                this.pourPlayerPlaySandOff();
+            }
         }
 
     }
+
+    stop_chute(){
+        if (this.player.sens === 1) {
+            this.player.anims.play('stance', true);
+        } else if (this.player.sens === -1) {
+            this.player.anims.play('back', true);
+        }
+    }
+
 
 
 }
