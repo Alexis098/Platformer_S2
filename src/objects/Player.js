@@ -18,12 +18,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.speedFactor = 1;
         this.vitesse = 0;
 
-        /*this.isDash = false;
+        this.isDash = false;
         this.isDashDiag = false;
         this.sautPossible=false;
         this.chutePossible=false;
 
-        this.staticY = false;*/
+        this.staticY = false;
 
 
 
@@ -48,14 +48,14 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         });
         this.anims.create({
             key: 'stance',
-            frames: this.anims.generateFrameNumbers('player_stance', {start: 9, end: 13/*9*/}),
+            frames: this.anims.generateFrameNumbers('player_stance', {start: 9, end: 15/*9*/}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'back',
-            frames: this.anims.generateFrameNumbers('player_stance', {start: 0, end: 3}),
-            frameRate: 4,
+            frames: this.anims.generateFrameNumbers('player_stance', {start: 0, end: 6}),
+            frameRate: 5,
             repeat: -1
         });
 
@@ -201,7 +201,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         //let sens = 1;
 
 
-        /*if (this.sautPossible) {
+        if (this.sautPossible) {
             if (this.sens === 1) {
                 this.anims.play('sautDroite', true);
             } else if (this.sens === -1) {
@@ -239,12 +239,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             }else if (this.sens === -1){
                 this.anims.play('dashDiagGauche', true);
             }
-        }*/
-
-
-
-
-
+        }
 
 
         this.body.velocity.y = Math.min(500, Math.max(-500, this.body.velocity.y));

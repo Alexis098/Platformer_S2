@@ -44,7 +44,7 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 64, frameHeight: 64  }
         );*/
         this.load.spritesheet('player',
-            'assets/animations/lumel/Run_test_35.png',/*Run_test_32OU 34.png*/
+            'assets/animations/lumel/Run_test_36.png',/*Run_test_32OU 34.png*/
             { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('playerG',
@@ -52,7 +52,7 @@ class Tableau extends Phaser.Scene{
             { frameWidth: 64, frameHeight: 64  }
         );
         this.load.spritesheet('player_stance',
-            'assets/animations/lumel/Stance_test_15.png',/*Stance_test_15.png*/
+            'assets/animations/lumel/Stance_test_18.png',/*Stance_test_15.png*/
             { frameWidth: 64, frameHeight: 64  }
         );
 
@@ -62,7 +62,7 @@ class Tableau extends Phaser.Scene{
         );
 
         this.load.spritesheet('chuteSaut',
-            'assets/animations/lumel/chute_test_4.png',
+            'assets/animations/lumel/chute_test_6.png',
             { frameWidth: 64, frameHeight: 64  }
         );
         // this.load.spritesheet('player_jump',

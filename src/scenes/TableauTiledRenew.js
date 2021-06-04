@@ -379,7 +379,7 @@ class TableauTiledRenew extends Tableau{
         );
         this.premiere_roche=this.add.tileSprite(
             0,
-            -10,
+            10,
             this.sys.canvas.width,
             this.sys.canvas.height+6000,
             'premiere_roche'
