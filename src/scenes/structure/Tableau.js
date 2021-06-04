@@ -385,11 +385,12 @@ class Tableau extends Phaser.Scene{
 
 
             this.player.dash();
-            this.dashson = this.sound.add('dashson', {volume: 0.8})
-            this.dashson.play();
+
             if(this.game.device.os.android || this.game.device.os.iOS){
                 //rien
             }else{
+                this.dashson = this.sound.add('dashson', {volume: 0.8})
+                this.dashson.play();
                 this.pourPlayerPlaySandOff();
             }
 
@@ -426,8 +427,13 @@ class Tableau extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(this.boutonTelep) && this.verif===1 && this.verifTP===1 && 1400<=this.player.x && this.player.x<=1750){
             //tentative de delai avant la tp de 1 seconde
             //game.time.events.add(Phaser.Timer.SECOND * 1, teleportation, this);
-            this.tpson = this.sound.add('tpson', {volume: 1.5})
-            this.tpson.play();
+
+            if(this.game.device.os.android || this.game.device.os.iOS){
+                //rien
+            }else{
+                this.tpson = this.sound.add('tpson', {volume: 1})
+                this.tpson.play();
+            }
             this.player.teleportation();
             this.invincibleTP();
             this.player.alpha=0;

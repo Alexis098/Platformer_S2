@@ -833,10 +833,11 @@ class TableauTiledRenew extends Tableau{
                 if(this.compteur<=0){
                     this.smokeFx.play();
                     this.dalles.setVelocityY(0);
-                    this.stele_boom = this.sound.add('stele_boom', {volume: 1});
+
                     if(this.game.device.os.android || this.game.device.os.iOS){
                         //rien
                     }else{
+                        this.stele_boom = this.sound.add('stele_boom', {volume: 1});
                         this.rocksup.stop();
                     }
 
