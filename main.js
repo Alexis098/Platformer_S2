@@ -22,22 +22,6 @@ let config = {
         new Tableau01("Skip"),
         new TableauTiledRenew("definitiveEdition"),
         new Tableau00A("toto"),
-        //new TableauLong("Sun Chaser"),
-        //new TableauTiled("100x100"),
-
-
-        /*new TableauZoo("Zoo"),
-
-        
-
-
-        new Tableau02("Plein d'étoiles"),
-        new Tableau03("Des plateformes qui bougent"),
-        new Tableau04("Jouer avec les groupes"),
-        new Tableau05("Extend un tableau"),
-        new Tableau06("Un monstre!"),
-        new Tableau07("Un monstre volant!"),
-        new Tableau08("Un plateau qui sort du cadre"),*/
 
     ],
     width: width,

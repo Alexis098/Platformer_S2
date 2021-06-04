@@ -36,13 +36,7 @@ class Tableau extends Phaser.Scene{
      * Par défaut on charge un fond et le player
      */
     preload(){
-        //this.load.image('sky', 'assets/ciel.png');
-        //this.load.image('spike', 'assets/spike.png');
-        //this.load.image('blood', 'assets/blood.png');
-       /*this.load.spritesheet('player',
-            'assets/player_3_couleurs.png',
-            { frameWidth: 64, frameHeight: 64  }
-        );*/
+
         this.load.spritesheet('player',
             'assets/animations/lumel/Run_test_36.png',/*Run_test_32OU 34.png*/
             { frameWidth: 64, frameHeight: 64  }
@@ -209,12 +203,7 @@ class Tableau extends Phaser.Scene{
         this.cinqviesGrands.setDepth(1000);
         this.cinqviesGrands.setScrollFactor(0);
         this.cinqviesGrands.setScale(0.7);
-        //this.cinqVies.fixedToCamera = true;
-        //this.quatreVies.fixedToCamera = true;
-        //this.troisVies.fixedToCamera = true;
-        //this.deuxVies.fixedToCamera = true;
-        //this.uneVies.fixedToCamera = true;
-        //this.zeroVies.fixedToCamera = true;
+
 
 
 
@@ -340,24 +329,7 @@ class Tableau extends Phaser.Scene{
         this.dsh();
         this.saut();
         this.optiDeplacement();
-        //console.log(this.player.body.velocity.y);
-        //console.log(Tableau.current.pressDroite);
-
-
-
-
-
-
-
-        //this.Projectile.recurrence();
-        //DASH DU PLAYER, on vérifie à chaque frame si le bouton de dash est pressé et on execute la boucle si c'est le cas
-
-
-
-        //comme pour le dash
-        //On appelle la fonction teleportation() contenue dans player.js et on l'enclenche ici en vérifiant à chaque frame si la touche z est enfoncée
-
-
+       
 
 
 

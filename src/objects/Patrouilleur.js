@@ -113,10 +113,7 @@ class Patrouilleur extends ObjetEnnemi{
                 if(this.scene.player.y < this.y){
                     this.setVelocityY(-130);
                 }
-                //}
-                /*else if(this.scene.player.y<this.y){
-                    this.setVelocityY(200);
-                }*/
+
 
             }
             else{
