@@ -18,12 +18,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.speedFactor = 1;
         this.vitesse = 0;
 
-        this.isDash = false;
+        /*this.isDash = false;
         this.isDashDiag = false;
         this.sautPossible=false;
         this.chutePossible=false;
 
-        this.staticY = false;
+        this.staticY = false;*/
 
 
 
@@ -201,7 +201,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         //let sens = 1;
 
 
-        if (this.sautPossible) {
+        /*if (this.sautPossible) {
             if (this.sens === 1) {
                 this.anims.play('sautDroite', true);
             } else if (this.sens === -1) {
@@ -239,7 +239,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             }else if (this.sens === -1){
                 this.anims.play('dashDiagGauche', true);
             }
-        }
+        }*/
 
 
 
