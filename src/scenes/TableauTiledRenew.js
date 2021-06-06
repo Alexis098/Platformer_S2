@@ -65,8 +65,8 @@ class TableauTiledRenew extends Tableau{
 
 
 
-        this.load.audio('track', 'assets/son/montée_tour_platformer_s2_musique_complete.mp3');
-        this.load.audio('texte_planete', 'assets/son/son_planète_bulle_texte_2.mp3');
+        this.load.audio('track', 'assets/son/montee_tour_platformer_s2_musique_complete.mp3');
+        this.load.audio('texte_planete', 'assets/son/son_planete_bulle_texte_2.mp3');
 
         this.load.audio('rocks', 'assets/son/rocks_2.mp3');
         this.load.audio('rocksup', 'assets/son/rocks_up_2.mp3');

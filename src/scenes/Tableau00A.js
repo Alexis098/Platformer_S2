@@ -4,7 +4,7 @@ class Tableau00A extends Phaser.Scene{
 
     preload() {
         //super.preload();
-        this.load.image('ecranFin', 'assets/écran_de_fin_V001.jpg');
+        this.load.image('ecranFin', 'assets/ecran_de_fin_V001.jpg');
     }
     create() {
         this.isMobile=this.game.device.os.android || this.game.device.os.iOS;
